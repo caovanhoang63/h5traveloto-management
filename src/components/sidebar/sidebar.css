@@ -1,0 +1,154 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+body {
+	background-color: #5b6677;
+}
+.container {
+	width: 100%;
+	min-height: 100vh;
+}
+.sidebar {
+	position: relative;
+	width: 256px;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	background-color: #fff;
+	padding: 24px;
+	/* border-radius: 30px; */
+	transition: all 0.3s;
+}
+.sidebar .head {
+	display: flex;
+	gap:10px;
+	padding-bottom: 28px;
+	justify-content: center;
+	/* border-bottom: 3px solid #f6f6f6; */
+}
+.logo-full {
+	width: 200px;
+	object-fit: cover;
+	display: none;
+}
+.logo-full.active {
+	display: block;
+}
+.logo-full img {
+	width: 100%;
+	object-fit: cover;
+}
+.logo {
+	width: 30px;
+	object-fit: cover;
+	display: none;
+}
+.logo.active {
+	display: block;
+}
+.logo img{
+	width: 100%;
+	object-fit: cover;
+}
+.menu .title {
+	font-size: 10px;
+	font-weight: 500;
+	color: #757575;
+	text-transform: uppercase;
+}
+.menu ul li {
+	position: relative;
+	list-style: none;
+	margin-bottom: 5px;
+}
+.menu ul li a {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 14px;
+	font-weight: 500;
+	color: #757575;
+	text-decoration: none;
+	padding: 12px 8px;
+	border-radius: 8px;
+	transition: all 0.3s;
+}
+.menu ul li a:hover,
+.menu ul li.active a {
+	color: #000;
+	background-color: #f6f6f6;
+}
+.menu ul li i {
+	font-size: 25px;
+}
+.menu ul li .text {
+flex: 1;
+}
+.menu-btn {
+	position: absolute;
+	right: -14px;
+	top: 3.5%;
+	width: 28px;
+	height: 28px;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	color: #757575;
+	border: 2px solid #f6f6f6;
+	background-color: #fff;
+}
+.menu-btn:hover i {
+	color: #000;
+}
+.menu-btn i {
+	transition: all 0.3s;
+}
+.sidebar.active {
+	width: 92px;
+}
+.sidebar.active .menu-btn i {
+	transform: rotate(90deg);
+}
+.sidebar.active .menu > ul > li > a {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.sidebar.active .menu > ul > li > a .text {
+	position: absolute;
+	left: 70px;
+	top: 50%;
+	transform: translateY(-50%);
+	padding: 10px;
+	border-radius: 4px;
+	color: #fff;
+	background-color: #000;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s;
+}
+.sidebar.active .menu ul > li > a .text::after {
+	content: "";
+	position: absolute;
+	left: -5px;
+	top: 20%;
+	width: 20px;
+	height: 20px;
+	border-radius: 2px;
+	background-color: #000;
+	transform: rotate(45deg);
+	z-index: -1;
+}
+.sidebar.active .menu > ul > li > a:hover .text {
+	left: 50px;
+	opacity: 1;
+	visibility: visible;
+}
