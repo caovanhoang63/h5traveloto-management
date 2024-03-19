@@ -1,4 +1,4 @@
-/* style.css */
+/* table.css */
 table {
     border-collapse: collapse;
     width: 100%;
@@ -15,29 +15,30 @@ tr:hover {
     background-color: #f5f5f5;
 }
 
-.clean {
+.clean td {
     color: #448df2;
     background: #e8f1fd;
     text-align: center;
     border-radius: 16px;
 }
 
-.dirty {
+.dirty td {
     color: #f36960;
     background: #feeceb;
     text-align: center;
     border-radius: 16px;
 }
 
-
-.inspected {
+.inspected td {
     color: #41c588;
     background: #e7f8f0;
     text-align: center;
     border-radius: 16px;
 }
-.pick-up {
+
+.pick-up td {
     color: #f9a63a;
     background: #fef4e6;
     text-align: center;
-    border-radius: 16px;}
+    border-radius: 16px;
+}
