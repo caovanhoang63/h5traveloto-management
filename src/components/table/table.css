@@ -5,8 +5,15 @@ table {
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-th, td {
+td {
     padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th{
+    padding: 8px;
+    background: #f0f1f3;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }

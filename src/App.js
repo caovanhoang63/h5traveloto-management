@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import Table from "./components/table/table";
 import TableComponent from "./components/table/table";
+import Tag, {CleanTag, DirtyTag, Inspected, InspectedTag, OngoingTag, PickUpTag, RedTag} from "./components/tag/tag";
+import React from "react";
 
 const TABLE_ROWS = [
     {
@@ -52,35 +54,38 @@ const TABLE_ROWS = [
 ];
 const columns = [
     {
-        Header: "reservationId",
+        Header: "Reservation ID",
         accessor: "reservationId",
     },
     {
-        Header: "name",
+        Header: "Name",
         accessor: "name",
     },
     {
-        Header: "roomNumber",
+        Header: "Room Number",
         accessor: "roomNumber",
     },
     {
-        Header: "amountPaid",
+        Header: "Amount Paid",
         accessor: "amountPaid",
     },
     {
-        Header: "totalAmount",
+        Header: "Total Amount",
         accessor: "totalAmount",
     },
     {
-        Header: "status",
+        Header: "Status",
         accessor: "status",
     },
 
 ];
 
 function App() {
-    return (
-        <TableComponent data={TABLE_ROWS} columns={columns}></TableComponent>
+    return (<div>
+            <Table data={TABLE_ROWS} columns={columns}></Table>
+            <RedTag>5 rooms</RedTag>
+    </div>
+
     );
 }
 
