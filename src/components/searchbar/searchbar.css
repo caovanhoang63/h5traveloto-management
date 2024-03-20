@@ -1,0 +1,99 @@
+.containerSearchBar {
+    padding: 10px;
+    line-height: 24px;
+    font-size: 16px;
+    width: 400px;
+}
+.searchBar {
+    height: 40px;
+    width: 400px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #eef0f2;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.searchBar__input {
+    background-color: #f7f9fc;
+    border-radius: 4px;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0px 0px 0px 48px;
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+.searchBar__icon {
+    height: 22px;
+    width: 22px;
+    margin-left: 16px;
+    color: #858d9d;
+    position: absolute;
+}
+
+.history {
+    background-color: #f7f9fc;
+    width: 400px;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 4px;
+    box-shadow: 1px 1px 4px #858d9d;
+    margin-top: 10px;
+}
+.history__title {
+    font-weight: 500;
+    height: 100%;
+    width: 100%;
+    text-align: start;
+    padding: 8px 30px;
+    font-size: 18px;
+    box-sizing: border-box;
+}
+.history__list {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    max-height: 216px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.history__item {
+    text-align: start;
+    display: flex;
+    align-items: center;
+    padding: 6px 0;
+    box-sizing: border-box;
+}
+
+.history__icon {
+    height: 24px;
+    width: 24px;
+    padding: 0px 8px 0px 16px;
+}
+.history__icon-delete {
+    height: 16px;
+    width: 16px;
+    margin: 0px 8px;
+    padding: 2px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.history__icon-delete:hover {
+    background-color: #858d9d;
+}
+.history__item-text {
+    margin: 0px 4px;
+    flex: 1;
+}
+.searchBar:hover {
+    border: 2px solid #858d9d;
+}
+.history__item:hover {
+    background-color: #cbcccf;
+}
