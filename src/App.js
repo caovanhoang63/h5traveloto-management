@@ -22,7 +22,7 @@ const TABLE_ROWS = [
         totalAmount: "200",
         amountPaid: "100",
         date: "23/04/18",
-        status: "pick-up"
+        status: "Pick up"
     },
     {
         reservationId: "125",
@@ -31,7 +31,7 @@ const TABLE_ROWS = [
         totalAmount: "200",
         amountPaid: "100",
         date: "19/09/17",
-        status: "inspected"
+        status: "Inspected"
     },
     {
         reservationId: "126",
@@ -40,7 +40,7 @@ const TABLE_ROWS = [
         totalAmount: "200",
         amountPaid: "100",
         date: "24/12/08",
-        status: "dirty"
+        status: "Dirty"
     },
     {
         reservationId: "126",
@@ -49,7 +49,7 @@ const TABLE_ROWS = [
         totalAmount: "200",
         amountPaid: "100",
         date: "04/10/21",
-        status: "inspected"
+        status: "Inspected"
     },
 ];
 const columns = [

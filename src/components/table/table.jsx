@@ -1,7 +1,7 @@
 import React, {useMemo} from "react";
 import {useTable} from "react-table";
 import "./table.css";
-import {RedTag} from "../tag/tag";
+import Tag, {BlueTag, GreenTag, RedTag, YellowTag} from "../tag/tag";
 
 const Table = ({data, columns}) => {
     const {
@@ -14,6 +14,22 @@ const Table = ({data, columns}) => {
 
     ;
 
+    const TagType = (props) => {
+        const { text } = props;
+        if (text === "Clean" || text ==="Ongoing"|| text ==="Available") {
+            return <BlueTag>{text}</BlueTag>;
+        } else if (text === "Dirty"||text==="Full"||text==="Inactive" || text ==="Booked") {
+            return <RedTag>{text}</RedTag>;
+        }
+        else if (text === "Inspected"||text==="New"|| text ==="Reserved") {
+            return <GreenTag>{text}</GreenTag>;
+        }
+        else if (text === "Pick up"|| text ==="Waitlist"|| text ==="Blocked") {
+            return <Tag>{text}</Tag>;
+        }
+        // Xử lý trường hợp khác nếu cần
+        return <span>{text}</span>;
+    };
     return (
         <div className="table-container">
             <table {...getTableProps()}>
@@ -38,7 +54,8 @@ const Table = ({data, columns}) => {
                                     // Nếu là phần tử cuối cùng, chỉ hiển thị RedTag
                                     return (
                                         <td {...cell.getCellProps()}>
-                                            <RedTag>{cell.value}</RedTag>
+                                            {/*<RedTag>{cell.value}</RedTag>*/}
+                                            <TagType text={cell.value}></TagType>
                                         </td>
                                     );
                                 } else {
