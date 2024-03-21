@@ -1,8 +1,8 @@
 import "./searchbar.css";
 import { useState, useEffect, useRef } from "react";
-import imageSearch from "../../assets/iconSearch.png";
-import imageHistory from "../../assets/iconHistory.png";
-import imageDelete from "../../assets/iconDelete.png";
+import imageSearch from "../../assets/icons/iconSearch.png";
+import imageHistory from "../../assets/icons/iconHistory.png";
+import imageDelete from "../../assets/icons/iconDelete.png";
 
 function SearchBar() {
     const [searchQuery, setSearchQuery] = useState("");

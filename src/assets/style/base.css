@@ -1,0 +1,76 @@
+:root {
+    --white-color: #fff;
+    --primary-color: #101010;
+    --text-color: #333;
+    /* Grey */
+    --Grey50: #f0f1f3;
+    --Grey100: #d0d3d9;
+    --Grey200: #b9bdc7;
+    --Grey300: #989fad;
+    --Grey400: #858d9d;
+    --Grey500: #667085;
+    --Grey600: #5d6679;
+    --Grey700: #48505e;
+    --Grey800: #383e49;
+    --Grey900: #2b2f38;
+
+    /* Red */
+    --Red50: #feeceb;
+    --Red100: #fac5c1;
+    --Red200: #f8a9a3;
+    --Red300: #f5827a;
+    --Red400: #f36960;
+    --Red500: #f04438;
+    --Red600: #da3e33;
+    --Red700: #aa3028;
+    --Red800: #84251f;
+    --Red900: #651d18;
+
+    /* Warning */
+    --Warning50: #fef4e6;
+    --Warning100: #fdddb3;
+    --Warning200: #fbcc8e;
+    --Warning300: #fab55a;
+    --Warning400: #f9a63a;
+    --Warning500: #f79009;
+    --Warning600: #e18308;
+    --Warning700: #af6606;
+    --Warning800: #884f05;
+    --Warning900: #683c04;
+
+    /* Success */
+    --Success50: #e7f8f0;
+    --Success100: #b6e9d1;
+    --Success200: #92deba;
+    --Success300: #60cf9b;
+    --Success400: #41c588;
+    --Success500: #12b76a;
+    --Success600: #10a760;
+    --Success700: #0d824b;
+    --Success800: #0a653a;
+    --Success900: #084d2d;
+
+    /* Primary */
+    --Pprimary50: #e8f1fd;
+    --Primary100: #b6d3fa;
+    --Primary200: #93bdf8;
+    --Primary300: #629ff4;
+    --Primary400: #448df2;
+    --Primary500: #1570ef;
+    --Primary600: #1366d9;
+    --Primary700: #0f50aa;
+    --Primary800: #0c3e83;
+    --Primary900: #092f64;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    box-sizing: border-box;
+}
+

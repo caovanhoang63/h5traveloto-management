@@ -35,7 +35,7 @@ const Table = ({data, columns}) => {
             <table {...getTableProps()}>
                 <thead>
                 {headerGroups.map((headerGroup) => (
-                    <tr {...headerGroup.getHeaderGroupProps()}>
+                    <tr className={"table-header"} {...headerGroup.getHeaderGroupProps()}>
                         {headerGroup.headers.map((column) => (
                             <th {...column.getHeaderProps()}>{column.render("Header")}</th>
                         ))}

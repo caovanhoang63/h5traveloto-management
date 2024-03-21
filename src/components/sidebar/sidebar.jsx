@@ -1,6 +1,6 @@
-import img_Logo from "../../assets/logo.png"
-import img_LogoFull from "../../assets/logofull.png"
-import { useState } from "react";
+import img_Logo from "../../assets/icons/logo.png"
+import img_LogoFull from "../../assets/icons/logofull.png"
+import {Fragment, useState} from "react";
 import "./sidebar.css";
 import ico_arrow_line_left from "../../assets/icons/arrow-line-left.png";
 import ico_arrow_line_left_active from "../../assets/icons/arrow-line-left-active.png";
@@ -37,8 +37,8 @@ const Sidebar = ({data}) => {
 		</li>
 	));
 
-	return ( 
-		<div className="container">
+	return (
+		<Fragment>
 			<div className={'sidebar' + (isToggleSideBar ? ' active' : '') }>
 				<div className="menu-btn" onClick={handleClick_MenuBtn}>
 					<img src={ico_arrow_line_left} alt="" />
@@ -59,7 +59,7 @@ const Sidebar = ({data}) => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</Fragment>
 	);
 }
  

@@ -1,8 +1,20 @@
 /* table.css */
+
+.table-container {
+    position: relative;
+    width: 100%;
+    font-size: 1.6rem ;
+}
 table {
+    border: 1px var(--Grey50) solid;
     border-collapse: collapse;
     width: 100%;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+
+.table-header {
+    height: 38px;
+    background: var(--Primary100);
 }
 
 td {
@@ -16,6 +28,11 @@ th{
     background: #f0f1f3;
     text-align: left;
     border-bottom: 1px solid #ddd;
+}
+
+tr{
+    height: 76px;
+
 }
 
 tr:hover {
