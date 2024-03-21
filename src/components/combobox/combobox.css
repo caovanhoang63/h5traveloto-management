@@ -1,0 +1,27 @@
+.combobox-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+  }
+  
+  .combobox-select {
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid black;
+    border-radius: 8px;
+    outline: none;
+    width: 230px;
+    height: 40px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  
+  .combobox-select:focus {
+    border-color: dodgerblue;
+  }
+  
+  .combobox-label {
+    font-size: 14px;
+    font-weight: medium;
+    margin-bottom: 8px;
+    font-family: 'Plus Jakarta Sans', sans-serif;  }
