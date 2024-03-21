@@ -12,6 +12,11 @@ import ico_tag from "./assets/icons/tag.png";
 import ico_tag_active from "./assets/icons/tag-active.png";
 import ico_dollar_circle from "./assets/icons/dollar-circle.png";
 import ico_dollar_circle_active from "./assets/icons/dollar-circle-active.png";
+import ico_calendar from "./assets/icons/calendar.png";
+import ico_calendar_active from "./assets/icons/calendar-active.png";
+import ico_bubble_chat from "./assets/icons/bubble-chat.png";
+import ico_bubble_chat_active from "./assets/icons/bubble-chat-active.png";
+import { Calendar } from '@phosphor-icons/react';
 
 const sidebar_data = [
   {
@@ -58,7 +63,23 @@ const sidebar_data = [
     id: 5,
     ico: ico_dollar_circle,
     active_ico: ico_dollar_circle_active,
-    content: "Rate",
+    content: "Room Types",
+    isToggle: true,
+    isActive: false
+  },
+  {
+    id: 6,
+    ico: ico_calendar,
+    active_ico: ico_calendar_active,
+    content: "Booking Management",
+    isToggle: true,
+    isActive: false
+  },
+  {
+    id: 7,
+    ico: ico_bubble_chat,
+    active_ico: ico_bubble_chat_active,
+    content: "Chat",
     isToggle: true,
     isActive: false
   }
