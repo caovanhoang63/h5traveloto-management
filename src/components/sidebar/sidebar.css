@@ -82,15 +82,16 @@ body {
 	border: 2px solid var(--primary-50);
 	background-color: #fff;
 }
-.menu-btn:hover i {
+.menu-btn:hover img {
 	color: var(--primary-600);
 }
-.menu-btn i {
+.menu-btn img {
+	width: 16px;
 	transition: all 0.3s;
 }
 .sidebar.active {
 	width: 92px;
 }
-.sidebar.active .menu-btn i {
-	transform: rotate(90deg);
+.sidebar.active .menu-btn img {
+	transform: rotate(180deg);
 }
