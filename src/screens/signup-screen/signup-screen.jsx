@@ -1,47 +1,40 @@
 
 import React, { useState } from 'react';
 import Textbox from "../../components/textbox/textbox";
-import './login-screen.css';
+import './signup-screen.css';
+import logo from "../../assets/icons/logo.png";
 
 const SignupScreen = () => {
-    const [rememberMe, setRememberMe] = useState(false);
 
-    const handleRememberMeChange = () => {
-        setRememberMe(!rememberMe);
-    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         // Perform login logic here
     };
-    const logo = require('../../assets/icons/logo.png');
+    const logo = require('../../assets/icons/logo-no-background.png');
     return (
         <div className="container">
-
+            <div className="side-panel"></div>
+            <div>
                 <div className="logodiv">
-                    <img className="logoimg" src={logo} alt="logo" />
-                    <h1>H5TRAVELOTO</h1>
+                    <img src={logo} alt="logo"/>
                 </div>
-                <h2>Welcome Back</h2>
-                <h3>Enter your email and password to access your account</h3>
-                <form onSubmit={handleSubmit}>
-                    <Textbox title="Email" placeHolder="Enter your email" />
-                    <Textbox classname="passwordbox" title="Password" placeHolder="Enter your password" />
-                    <div>
-                        <label>
-                            <input
-                                type="checkbox"
-                                checked={rememberMe}
-                                onChange={handleRememberMeChange}
-                            />
-                            Remember me
-                        </label>
-                    </div>
-                    <button type="submit">Sign In</button>
-                </form>
-                <p>
-                    Already have an account? <a href="../login-screen/login-screen.jsx">Login</a>
-                </p>
+
+                <div className="content">
+                    <h2>Sign Up</h2>
+                    <form onSubmit={handleSubmit}>
+                        <Textbox classname="firstname" title="First Name" placeHolder="Enter your first name"/>
+                        <Textbox classname="lastname" title="Last Name" placeHolder="Enter your last name"/>
+                        <Textbox classname="email" title="Email" placeHolder="Enter your email"/>
+                        <Textbox classname="password" title="Password" placeHolder="Enter your password"/>
+                        <Textbox classname="confirmpassword" title="Confirm Password" placeHolder="Confirm your password"/>
+                        <button type="submit">Sign Up</button>
+                    </form>
+                    <p>
+                        Already have an account? <a href="#">Login</a>
+                    </p>
+                </div>
+            </div>
 
             <div className="side-panel"></div>
         </div>

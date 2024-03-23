@@ -1,4 +1,3 @@
-/* LoginScreen.css */
 
 body {
     font-family: Arial, sans-serif;
@@ -9,42 +8,46 @@ body {
     height: 100vh;
     margin: 0;
 }
-.content{
-    margin-top: auto; /* Add this line */
 
+.content {
+    margin-top: auto;
     height: fit-content;
 }
+
 .container {
     background-color: #ffffff;
-    padding-left: 145px;
-    padding-right: 145px;
+    padding: 145px;
     max-width: 655px;
     width: 100%;
-
-    display: flex; /* Add this line */
-    flex-direction: column; /* Add this line */
-    align-items: center; /* Add this line */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 .logodiv {
     display: flex;
     justify-content: center;
     align-items: first baseline;
     margin-top: 48px;
-    margin-bottom: 150px; /* Add this line */
+    margin-bottom: 150px;
 }
-.logodiv img{
+
+.logodiv img {
     width: 180px;
     height: 22.2px;
 }
-.textbox-input {
+
+.textbox-input  {
     height: 40px;
     width: 320px;
 }
-.textbox-input:last-child {
-    -webkit-text-security: disc;
-    text-security: disc;
+.password-textbox-input{
     height: 40px;
     width: 320px;
+}
+.password .textbox-input {
+    -webkit-text-security: disc;
+    text-security: disc;
 }
 
 h1 {
@@ -63,6 +66,7 @@ h2 {
     margin-bottom: 12px;
     text-align: center;
 }
+
 h3 {
     font-family: 'Abhaya Libre';
     color: #3D3D3D;
@@ -76,12 +80,14 @@ form {
     display: flex;
     flex-direction: column;
 }
-.remembermeDiv{
+
+.remembermeDiv {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
+
 .remembermeDiv label {
     display: flex;
     font-family: 'Abhaya Libre';
@@ -89,6 +95,7 @@ form {
     font-size: 1.4rem;
     color: #666;
 }
+
 .remembermeDiv input[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none;
@@ -144,4 +151,57 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+/* Điểm ngắt cho màn hình nhỏ hơn 768px (điện thoại di động) */
+@media (max-width: 767px) {
+    .container {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .logodiv img {
+        width: 120px;
+        height: auto;
+    }
+
+    h2 {
+        font-size: 3rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    .textbox-input {
+        width: 100%;
+    }
+
+    .textbox-input:last-child {
+        width: 100%;
+    }
+
+    button {
+        margin-bottom: 50px;
+    }
+}
+
+/* Điểm ngắt cho màn hình lớn hơn 768px (tablet và máy tính bảng nhỏ) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .container {
+        padding: 40px;
+    }
+
+    .logodiv img {
+        width: 150px;
+        height: auto;
+    }
+
+    h2 {
+        font-size: 4rem;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+    }
 }

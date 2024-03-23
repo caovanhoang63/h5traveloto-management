@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import Textbox from "../../components/textbox/textbox";
+import Textbox, {PasswordTextbox} from "../../components/textbox/textbox";
 import './login-screen.css';
 import logo from "../../assets/icons/logo.png";
 
@@ -28,8 +28,8 @@ const LoginScreen = () => {
                     <h2>Welcome Back</h2>
                     <h3>Enter your email and password to access your account</h3>
                     <form onSubmit={handleSubmit}>
-                        <Textbox title="Email" placeHolder="Enter your email"/>
-                        <Textbox classname="passwordbox" title="Password" placeHolder="Enter your password"/>
+                        <Textbox classname="email" title="Email" placeHolder="Enter your email"/>
+                        <Textbox classname="password" title="Password" placeHolder="Enter your password"/>
                         <div className="remembermeDiv">
                             <label>
                                 <input

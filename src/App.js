@@ -21,6 +21,7 @@ import ico_bubble_chat_active from "./assets/icons/bubble-chat-active.png";
 import Sidebar from "./components/sidebar/sidebar";
 import MainLayout from "./layouts/main-layout/main-layout";
 import LoginScreen from "./screens/login-screen/login-screen";
+import SignupScreen from "./screens/signup-screen/signup-screen";
 const TABLE_ROWS = [
     {
         reservationId: "123",
@@ -171,11 +172,7 @@ function App() {
         { value: 's' },
     ];
     return (
-       /*<MainLayout screenName={"hello"}>
-           <h1>123</h1>
-       </MainLayout>*/
-        <LoginScreen></LoginScreen>
-
+        <SignupScreen>  </SignupScreen>
     );
 }
 
