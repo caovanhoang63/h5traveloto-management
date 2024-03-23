@@ -1,0 +1,147 @@
+/* LoginScreen.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--Grey100);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.content{
+    margin-top: auto; /* Add this line */
+
+    height: fit-content;
+}
+.container {
+    background-color: #ffffff;
+    padding-left: 145px;
+    padding-right: 145px;
+    max-width: 655px;
+    width: 100%;
+
+    display: flex; /* Add this line */
+    flex-direction: column; /* Add this line */
+    align-items: center; /* Add this line */
+}
+.logodiv {
+    display: flex;
+    justify-content: center;
+    align-items: first baseline;
+    margin-top: 48px;
+    margin-bottom: 150px; /* Add this line */
+}
+.logodiv img{
+    width: 180px;
+    height: 22.2px;
+}
+.textbox-input {
+    height: 40px;
+    width: 320px;
+}
+.textbox-input:last-child {
+    -webkit-text-security: disc;
+    text-security: disc;
+    height: 40px;
+    width: 320px;
+}
+
+h1 {
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Noto Serif';
+    color: #121212;
+    font-size: 4.8rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-align: center;
+}
+h3 {
+    font-family: 'Abhaya Libre';
+    color: #3D3D3D;
+    font-size: 1.6rem;
+    font-weight: normal;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+.remembermeDiv{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.remembermeDiv label {
+    display: flex;
+    font-family: 'Abhaya Libre';
+    align-items: center;
+    font-size: 1.4rem;
+    color: #666;
+}
+.remembermeDiv input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    outline: none;
+    margin-right: 8px;
+    cursor: pointer;
+    position: relative;
+}
+
+.remembermeDiv input[type="checkbox"]:checked::before {
+    content: "\2713";
+    font-size: 12px;
+    color: #000000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+button {
+    background-color: #007bff;
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 100px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+p {
+    color: #666;
+    font-size: 14px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
