@@ -64,7 +64,6 @@ const LoginScreen = () => {
     const logo = require('../../assets/icons/logo-no-background.png');
     return (
         <div className="SignupScreenContainer">
-            <div className="side-panel"></div>
             <div className="SignupScreenWrapper">
                 <img className="SignupScreenLogo" src={logo} alt="logo"/>
                 <div className="SignupScreenContent">
@@ -99,7 +98,6 @@ const LoginScreen = () => {
             </div>
 
 
-            <div className="side-panel"></div>
         </div>
     );
 };
