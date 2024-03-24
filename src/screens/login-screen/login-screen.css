@@ -1,5 +1,5 @@
 
-body {
+/*body {
     font-family: Arial, sans-serif;
     background-color: var(--Grey100);
     display: flex;
@@ -7,34 +7,45 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-}
+}*/
 
-.content {
+.LoginScreenContent {
     margin-top: auto;
-    height: fit-content;
+    margin-bottom: auto;
+}
+.LoginScreenContainer {
+    font-family: Arial, sans-serif;
+    background-color: var(--Grey100);
+    display: flex;
+    justify-content: center;
+    /*height: 100vh;*/
+    min-height: 100vh;
+    margin: 0;
+
+
+
 }
 
-.container {
+.LoginScreenWrapper {
     background-color: #ffffff;
-    padding: 145px;
+    padding-left: 145px;
+    padding-right: 145px;
     max-width: 655px;
     width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.logodiv {
-    display: flex;
-    justify-content: center;
-    align-items: first baseline;
-    margin-top: 48px;
-    margin-bottom: 150px;
-}
 
-.logodiv img {
+.LoginScreenLogo {
     width: 180px;
     height: 22.2px;
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+    margin-bottom: 150px;
 }
 
 .textbox-input  {
@@ -45,21 +56,14 @@ body {
     height: 40px;
     width: 320px;
 }
-.password .textbox-input {
+.LoginScreenPassword .textbox-input {
     -webkit-text-security: disc;
     text-security: disc;
 }
 
-h1 {
-    color: #333;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
-}
 
-h2 {
-    font-family: 'Noto Serif';
+.LoginScreenH2 {
+    font-family: 'Noto Serif', serif;
     color: #121212;
     font-size: 4.8rem;
     font-weight: 700;
@@ -67,16 +71,16 @@ h2 {
     text-align: center;
 }
 
-h3 {
-    font-family: 'Abhaya Libre';
+.LoginScreenH3 {
+    font-family: 'Abhaya Libre', serif;
     color: #3D3D3D;
     font-size: 1.6rem;
     font-weight: normal;
-    margin-bottom: 30px;
+    margin-bottom: 48px;
     text-align: center;
 }
 
-form {
+.LoginScreenForm {
     display: flex;
     flex-direction: column;
 }
@@ -90,7 +94,7 @@ form {
 
 .remembermeDiv label {
     display: flex;
-    font-family: 'Abhaya Libre';
+    font-family: 'Abhaya Libre', serif;
     align-items: center;
     font-size: 1.4rem;
     color: #666;
@@ -120,11 +124,12 @@ form {
     transform: translate(-50%, -50%);
 }
 
-button {
-    background-color: #007bff;
+.LoginScreenButton {
+    font-family: 'Abhaya Libre', serif;
+    background-color: #4C4DDC;
     border: none;
     border-radius: 12px;
-    color: #fff;
+    color: var(--primary-50);
     cursor: pointer;
     font-size: 16px;
     font-weight: 600;
@@ -133,24 +138,27 @@ button {
     margin-bottom: 100px;
 }
 
-button:hover {
-    background-color: #0056b3;
+.LoginScreenButton:hover {
+    background-color: #3334CC;
 }
 
-p {
-    color: #666;
-    font-size: 14px;
-    margin-top: 20px;
-    text-align: center;
-}
-
-a {
-    color: #007bff;
+.LoginScreenA {
+    color: #4C4DDC;
     text-decoration: none;
 }
 
-a:hover {
+.LoginScreenA:hover {
     text-decoration: underline;
+}
+.LoginScreenP {
+    color: #666;
+    font-size: 1.6rem;
+    margin-bottom: 40px;
+    text-align: center;
+}
+.LoginScreenFooter{
+    background: #000000;
+    width: 100%;
 }
 
 /* Điểm ngắt cho màn hình nhỏ hơn 768px (điện thoại di động) */
@@ -165,11 +173,11 @@ a:hover {
         height: auto;
     }
 
-    h2 {
+    .LoginScreenH2 {
         font-size: 3rem;
     }
 
-    h3 {
+    .LoginScreenH3 {
         font-size: 1.2rem;
     }
 
@@ -181,7 +189,7 @@ a:hover {
         width: 100%;
     }
 
-    button {
+    .LoginScreenButton {
         margin-bottom: 50px;
     }
 }
@@ -197,11 +205,11 @@ a:hover {
         height: auto;
     }
 
-    h2 {
+    .LoginScreenH2 {
         font-size: 4rem;
     }
 
-    h3 {
+    .LoginScreenH3 {
         font-size: 1.4rem;
     }
 }

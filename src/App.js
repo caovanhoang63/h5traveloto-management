@@ -172,7 +172,7 @@ function App() {
         { value: 's' },
     ];
     return (
-        <SignupScreen>  </SignupScreen>
+        <SignupScreen/>
     );
 }
 

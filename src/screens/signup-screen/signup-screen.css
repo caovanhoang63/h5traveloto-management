@@ -1,5 +1,5 @@
 
-body {
+/*body {
     font-family: Arial, sans-serif;
     background-color: var(--Grey100);
     display: flex;
@@ -7,87 +7,154 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-}
+}*/
 
-.content {
+.SignupScreenContent {
     margin-top: auto;
-    height: fit-content;
+    margin-bottom: auto;
 }
-
-.container {
+.SignupScreenContainer {
+    font-family: Arial, sans-serif;
+    background-color: var(--Grey100);
+    display: flex;
+    justify-content: center;
+    /*height: 100vh;*/
+    min-height: 100vh;
+    margin: 0;
+}
+.SignupScreenWrapper {
     background-color: #ffffff;
-    padding: 145px;
+    padding-left: 145px;
+    padding-right: 145px;
     max-width: 655px;
     width: 100%;
-    max-height: max-content;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.logodiv {
-    display: flex;
-    justify-content: center;
-    align-items: first baseline;
-    margin-top: 48px;
-    margin-bottom: 50px;
-}
 
-.logodiv img {
+.SignupScreenLogo {
     width: 180px;
     height: 22.2px;
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+    margin-bottom: 150px;
 }
 
-.password .textbox-input,
-.confirmpassword .textbox-input {
+.textbox-input  {
+    height: 40px;
+    width: 320px;
+}
+.password-textbox-input{
+    height: 40px;
+    width: 320px;
+}
+.LoginScreenPassword .textbox-input {
     -webkit-text-security: disc;
     text-security: disc;
 }
 
-h2 {
-    font-family: 'Noto Serif';
+
+.SignupScreenH2 {
+    font-family: 'Noto Serif', serif;
     color: #121212;
     font-size: 4.8rem;
     font-weight: 700;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.SignupScreenH3 {
+    font-family: 'Abhaya Libre', serif;
+    color: #3D3D3D;
+    font-size: 1.6rem;
+    font-weight: normal;
     margin-bottom: 48px;
     text-align: center;
 }
 
-form {
+.SignupScreenForm {
     display: flex;
     flex-direction: column;
 }
 
-button {
-    background-color: #007bff;
+.remembermeDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.remembermeDiv label {
+    display: flex;
+    font-family: 'Abhaya Libre', serif;
+    align-items: center;
+    font-size: 1.4rem;
+    color: #666;
+}
+
+.remembermeDiv input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    outline: none;
+    margin-right: 8px;
+    cursor: pointer;
+    position: relative;
+}
+
+.remembermeDiv input[type="checkbox"]:checked::before {
+    content: "\2713";
+    font-size: 12px;
+    color: #000000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.SignupScreenButton {
+    font-family: 'Abhaya Libre', serif;
+    background-color: #4C4DDC;
     border: none;
     border-radius: 12px;
-    color: #fff;
+    color: var(--primary-50);
     cursor: pointer;
     font-size: 16px;
     font-weight: 600;
     padding: 12px;
     transition: background-color 0.3s ease;
+    margin-bottom: 100px;
 }
 
-button:hover {
-    background-color: #0056b3;
+.SignupScreenButton:hover {
+    background-color: #3334CC;
 }
 
-p {
-    color: #666;
-    font-size: 14px;
-    margin-top: 20px;
-    text-align: center;
-}
-
-a {
-    color: #007bff;
+.SignupScreenA {
+    color: #4C4DDC;
     text-decoration: none;
 }
 
-a:hover {
+.SignupScreenA:hover {
     text-decoration: underline;
+}
+.SignupScreenP {
+    color: #666;
+    font-size: 1.6rem;
+    margin-bottom: 40px;
+    text-align: center;
+}
+.SignupScreenFooter{
+    background: #000000;
+    width: 100%;
 }
 
 /* Điểm ngắt cho màn hình nhỏ hơn 768px (điện thoại di động) */
@@ -102,8 +169,12 @@ a:hover {
         height: auto;
     }
 
-    h2 {
+    .SignupScreenH2 {
         font-size: 3rem;
+    }
+
+    .SignupScreenH3 {
+        font-size: 1.2rem;
     }
 
     .textbox-input {
@@ -112,6 +183,10 @@ a:hover {
 
     .textbox-input:last-child {
         width: 100%;
+    }
+
+    .SignupScreenButton {
+        margin-bottom: 50px;
     }
 }
 
@@ -126,7 +201,11 @@ a:hover {
         height: auto;
     }
 
-    h2 {
+    .SignupScreenH2 {
         font-size: 4rem;
+    }
+
+    .SignupScreenH3 {
+        font-size: 1.4rem;
     }
 }
