@@ -18,8 +18,7 @@ import ico_calendar from "../../assets/icons/calendar.png";
 import ico_calendar_active from "../../assets/icons/calendar-active.png";
 import ico_bubble_chat from "../../assets/icons/bubble-chat.png";
 import ico_bubble_chat_active from "../../assets/icons/bubble-chat-active.png";
-import './main-layout.css';
-
+import "./main-layout.css";
 
 const sidebar_data = [
     {
@@ -28,7 +27,7 @@ const sidebar_data = [
         active_ico: ico_home_active,
         content: "Dashboard",
         isToggle: true,
-        isActive: false
+        isActive: false,
     },
     {
         id: 1,
@@ -36,7 +35,7 @@ const sidebar_data = [
         active_ico: ico_edit_active,
         content: "Front desk",
         isToggle: true,
-        isActive: false
+        isActive: false,
     },
     {
         id: 2,
@@ -44,7 +43,7 @@ const sidebar_data = [
         active_ico: ico_check_file_active,
         content: "Guest",
         isToggle: true,
-        isActive: false
+        isActive: false,
     },
     {
         id: 3,
@@ -52,7 +51,7 @@ const sidebar_data = [
         active_ico: ico_bookmark_active,
         content: "Rooms",
         isToggle: true,
-        isActive: false
+        isActive: false,
     },
     {
         id: 4,
@@ -60,7 +59,7 @@ const sidebar_data = [
         active_ico: ico_tag_active,
         content: "Deal",
         isToggle: true,
-        isActive: false
+        isActive: false,
     },
     {
         id: 5,
@@ -68,7 +67,7 @@ const sidebar_data = [
         active_ico: ico_dollar_circle_active,
         content: "Room Types",
         isToggle: true,
-        isActive: false
+        isActive: false,
     },
     {
         id: 6,
@@ -76,7 +75,7 @@ const sidebar_data = [
         active_ico: ico_calendar_active,
         content: "Booking Management",
         isToggle: true,
-        isActive: false
+        isActive: false,
     },
     {
         id: 7,
@@ -84,16 +83,12 @@ const sidebar_data = [
         active_ico: ico_bubble_chat_active,
         content: "Chat",
         isToggle: true,
-        isActive: false
-    }
+        isActive: false,
+    },
 ];
 
 const MainLayout = (props) => {
-    const options = [
-        { value: 'tuoi' },
-        { value: 'báo'},
-        { value: 's' },
-    ];
+    const options = [{ value: "tuoi" }, { value: "báo" }, { value: "s" }];
     return (
         <div>
             <div className={"container"}>
@@ -101,23 +96,20 @@ const MainLayout = (props) => {
                 <div className={"content-container"}>
                     <header className={"header"}>
                         <div className={"header-content"}>
-                            <SearchBar/>
+                            <SearchBar className={"searchBar--position"} />
                         </div>
                     </header>
                     <div className={"content"}>
                         <div className={"screen-name"}>
-                            <span >{props.screenName}</span>
+                            <span>{props.screenName}</span>
                         </div>
-                        <div>
-                            {props.children}
-                        </div>
+                        <div>{props.children}</div>
                     </div>
                 </div>
             </div>
-            <footer>
-            </footer>
+            <footer></footer>
         </div>
     );
-}
+};
 
 export default MainLayout;

@@ -51,7 +51,7 @@
     --Success900: #084d2d;
 
     /* Primary */
-    --Pprimary50: #e8f1fd;
+    --Primary50: #e8f1fd;
     --Primary100: #b6d3fa;
     --Primary200: #93bdf8;
     --Primary300: #629ff4;
@@ -70,7 +70,6 @@
 html {
     font-size: 62.5%;
     line-height: 1.6rem;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: "Plus Jakarta Sans", sans-serif;
     box-sizing: border-box;
 }
-

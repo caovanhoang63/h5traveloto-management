@@ -4,7 +4,7 @@ import imageSearch from "../../assets/icons/iconSearch.png";
 import imageHistory from "../../assets/icons/iconHistory.png";
 import imageDelete from "../../assets/icons/iconDelete.png";
 
-function SearchBar() {
+function SearchBar(props) {
     const [searchQuery, setSearchQuery] = useState("");
     const [searchHistory, setSearchHistory] = useState(() => {
         return JSON.parse(localStorage.getItem("searchHistory")) ?? [];
@@ -19,6 +19,7 @@ function SearchBar() {
                 containerRef.current &&
                 !containerRef.current.contains(event.target)
             ) {
+                blurInput();
                 setIsVisibleHistory(false);
             }
         };
@@ -29,6 +30,7 @@ function SearchBar() {
     }, []);
 
     const blurInput = () => {
+        inputRef.current.classList.remove("searchBar__input--focus");
         inputRef.current.blur();
         setIsVisibleHistory(false);
     };
@@ -92,7 +94,10 @@ function SearchBar() {
     };
 
     return (
-        <div className="containerSearchBar" ref={containerRef}>
+        <div
+            className={`containerSearchBar ${props.className}`}
+            ref={containerRef}
+        >
             <div className="searchBar">
                 <img src={imageSearch} alt="" className="searchBar__icon" />
                 <input
@@ -102,7 +107,12 @@ function SearchBar() {
                     className="searchBar__input"
                     placeholder="Search for room or offers"
                     onChange={(event) => setSearchQuery(event.target.value)}
-                    onFocus={() => setIsVisibleHistory(true)}
+                    onFocus={() => {
+                        setIsVisibleHistory(true);
+                        inputRef.current.classList.add(
+                            "searchBar__input--focus"
+                        );
+                    }}
                     onKeyDown={(event) => {
                         if (event.key === "Enter") {
                             handleSearch(searchQuery);
