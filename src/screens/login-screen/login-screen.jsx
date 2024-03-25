@@ -22,7 +22,6 @@ const LoginScreen = () => {
                 <img className="LoginScreenLogo" src={logo} alt="logo"/>
                 <div className="LoginScreenContent">
                     <h2 className="LoginScreenH2">Welcome Back</h2>
-                    <h3 className="LoginScreenH3">Enter your email and password to access your account</h3>
                     <form className="LoginScreenForm" onSubmit={handleSubmit}>
                         <Textbox classname="LoginScreenEmail" title="Email" placeHolder="Enter your email"/>
                         <Textbox classname="LoginScreenPassword" title="Password" placeHolder="Enter your password"/>

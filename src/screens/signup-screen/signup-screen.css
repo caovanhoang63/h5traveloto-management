@@ -79,6 +79,7 @@
 .SignupScreenForm {
     display: flex;
     flex-direction: column;
+    margin-top: 48px;
 }
 
 .remembermeDiv {
@@ -133,6 +134,14 @@
     transition: background-color 0.3s ease;
     margin-bottom: 100px;
 }
+.SignupScreenPassword .textbox-input {
+    -webkit-text-security: disc;
+    text-security: disc;
+}
+.SignupScreenConfirmPassword .textbox-input {
+    -webkit-text-security: disc;
+    text-security: disc;
+}
 
 .SignupScreenButton:hover {
     background-color: #3334CC;
@@ -173,9 +182,6 @@
         font-size: 3rem;
     }
 
-    .SignupScreenH3 {
-        font-size: 1.2rem;
-    }
 
     .textbox-input {
         width: 100%;
