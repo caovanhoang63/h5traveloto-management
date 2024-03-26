@@ -23,7 +23,7 @@ body {
 	background-color: #fff;
 	padding: 24px;
 	/* border-radius: 30px; */
-	transition: all 0.3s;
+	transition: width 0.3s;
 }
 .sidebar .head {
 	display: flex;
