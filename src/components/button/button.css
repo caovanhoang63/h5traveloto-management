@@ -1,0 +1,34 @@
+.button-container{
+    display: flex;
+    height: 36px;
+    width: auto;
+    padding: 0 8px;
+    background-color: var(--Primary500);
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 1.6rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.button-container:hover,
+.button-container:active {
+background-color: var(--Primary700);
+}
+
+.button-text,
+.button-icon {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 5px;
+    color: #fff;
+    height: 100%;
+    font-size: 1.6rem;
+    height: 36px;
+    width: auto;
+}
+.button-notext{
+    display: none;
+}
