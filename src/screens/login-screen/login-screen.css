@@ -1,0 +1,216 @@
+
+/*body {
+    font-family: Arial, sans-serif;
+    background-color: var(--Grey100);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}*/
+
+.LoginScreenContent {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.LoginScreenContainer {
+    font-family: Arial, sans-serif;
+    background-color: var(--Grey100);
+    display: flex;
+    justify-content: center;
+    /*height: 100vh;*/
+    height: 100vh;
+    margin: 0;
+
+
+
+}
+
+.LoginScreenWrapper {
+    background-color: #ffffff;
+    padding-left: 145px;
+    padding-right: 145px;
+    max-width: 655px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.LoginScreenLogo {
+    width: 180px;
+    height: 22.2px;
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+    margin-bottom: 150px;
+}
+
+.textbox-input  {
+    height: 40px;
+    width: 320px;
+}
+.password-textbox-input{
+    height: 40px;
+    width: 320px;
+}
+.LoginScreenPassword .textbox-input {
+    -webkit-text-security: disc;
+    text-security: disc;
+}
+
+
+.LoginScreenH2 {
+    font-family: 'Noto Serif', serif;
+    color: #121212;
+    font-size: 4.8rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.LoginScreenH3 {
+    font-family: 'Abhaya Libre', serif;
+    color: #3D3D3D;
+    font-size: 1.6rem;
+    font-weight: normal;
+    margin-bottom: 48px;
+    text-align: center;
+}
+
+.LoginScreenForm {
+    display: flex;
+    flex-direction: column;
+    margin-top: 48px;
+}
+
+.remembermeDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.remembermeDiv label {
+    display: flex;
+    font-family: 'Abhaya Libre', serif;
+    align-items: center;
+    font-size: 1.4rem;
+    color: #666;
+}
+
+.remembermeDiv input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    outline: none;
+    margin-right: 8px;
+    cursor: pointer;
+    position: relative;
+}
+
+.remembermeDiv input[type="checkbox"]:checked::before {
+    content: "\2713";
+    font-size: 12px;
+    color: #000000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.LoginScreenButton {
+    font-family: 'Abhaya Libre', serif;
+    background-color: #4C4DDC;
+    border: none;
+    border-radius: 12px;
+    color: var(--primary-50);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 100px;
+}
+
+.LoginScreenButton:hover {
+    background-color: #3334CC;
+}
+
+.LoginScreenA {
+    color: #4C4DDC;
+    text-decoration: none;
+}
+
+.LoginScreenA:hover {
+    text-decoration: underline;
+}
+.LoginScreenP {
+    color: #666;
+    font-size: 1.6rem;
+    margin-bottom: 40px;
+    text-align: center;
+}
+.LoginScreenFooter{
+    background: #000000;
+    width: 100%;
+}
+
+/* Điểm ngắt cho màn hình nhỏ hơn 768px (điện thoại di động) */
+@media (max-width: 767px) {
+    .container {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .logodiv img {
+        width: 120px;
+        height: auto;
+    }
+
+    .LoginScreenH2 {
+        font-size: 3rem;
+    }
+
+    .LoginScreenH3 {
+        font-size: 1.2rem;
+    }
+
+    .textbox-input {
+        width: 100%;
+    }
+
+    .textbox-input:last-child {
+        width: 100%;
+    }
+
+    .LoginScreenButton {
+        margin-bottom: 50px;
+    }
+}
+
+/* Điểm ngắt cho màn hình lớn hơn 768px (tablet và máy tính bảng nhỏ) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .container {
+        padding: 40px;
+    }
+
+    .logodiv img {
+        width: 150px;
+        height: auto;
+    }
+
+    .LoginScreenH2 {
+        font-size: 4rem;
+    }
+
+    .LoginScreenH3 {
+        font-size: 1.4rem;
+    }
+}
