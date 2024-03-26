@@ -76,12 +76,12 @@
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
-	color: var(--grey-600);
-	border: 2px solid var(--primary-50);
+	color: var(--Grey600);
+	border: 2px solid var(--Primary50);
 	background-color: #fff;
 }
 .menu-btn:hover img {
-	color: var(--primary-600);
+	color: var(--Primary600);
 }
 .menu-btn img {
 	width: 16px;
