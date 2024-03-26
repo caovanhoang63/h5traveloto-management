@@ -1,16 +1,19 @@
 
-* {
+
+.sidebar-container {
+
+}
+
+.sidebar-container ul {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: "Plus Jakarta Sans", sans-serif;
 }
 
+.sidebar-container li {
 
-.container {
-	width: 100%;
-	min-height: 100vh;
 }
+
 .sidebar {
 	position: relative;
 	width: 256px;

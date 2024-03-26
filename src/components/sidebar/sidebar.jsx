@@ -38,7 +38,7 @@ const Sidebar = ({data}) => {
 	));
 
 	return (
-		<Fragment>
+		<div className={"sidebar-container"}>
 			<div className={'sidebar' + (isToggleSideBar ? ' active' : '') }>
 				<div className="menu-btn" onClick={handleClick_MenuBtn}>
 					<img src={ico_arrow_line_left} alt="" />
@@ -59,7 +59,7 @@ const Sidebar = ({data}) => {
 					</div>
 				</div>
 			</div>
-		</Fragment>
+		</div>
 	);
 }
  
