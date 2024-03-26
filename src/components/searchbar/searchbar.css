@@ -1,8 +1,6 @@
 .containerSearchBar {
-    padding: 100px;
-    line-height: 2.4rem ;
+    line-height: 2.4rem;
     font-size: 1.6rem;
-    width: 40px ;
 }
 .searchBar {
     height: 40px;
@@ -42,16 +40,17 @@
     flex-direction: column;
     align-items: flex-start;
     border-radius: 4px;
-    box-shadow: 1px 1px 4px #858d9d;
+    box-shadow: 0px 2px 4px var(--Grey200);
     margin-top: 10px;
+    overflow: hidden;
+    animation: openHistory ease 0.2s;
 }
 .history__title {
-    font-weight: 500;
-    height: 100%;
+    font-weight: 550;
+    height: 36px;
     width: 100%;
     text-align: start;
     padding: 8px 30px;
-    font-size: 18px;
     box-sizing: border-box;
 }
 .history__list {
@@ -61,7 +60,6 @@
     margin: 0;
     max-height: 216px;
     box-sizing: border-box;
-    overflow: hidden;
 }
 .history__item {
     text-align: start;
@@ -74,26 +72,35 @@
 .history__icon {
     height: 24px;
     width: 24px;
-    padding: 0 8px 0 16px;
+    margin: 0px 4px 0px 16px;
 }
 .history__icon-delete {
-    height: 16px;
-    width: 16px;
+    height: 18px;
+    width: 18px;
     margin: 0px 8px;
     padding: 2px;
-    border-radius: 10px;
+    border-radius: 11px;
     cursor: pointer;
 }
 .history__icon-delete:hover {
-    background-color: #858d9d;
+    background-color: var(--Grey300);
 }
 .history__item-text {
     margin: 0px 4px;
     flex: 1;
 }
-.searchBar:hover {
-    border: 2px solid #858d9d;
+.searchBar__input--focus {
+    border: 2px solid var(--Primary400);
 }
 .history__item:hover {
-    background-color: #cbcccf;
+    background-color: var(--Grey100);
+}
+
+@keyframes openHistory {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
