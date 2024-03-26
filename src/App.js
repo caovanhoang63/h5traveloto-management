@@ -176,7 +176,7 @@ function App() {
     ];
     return (
         // <MainLayout ></MainLayout>
-        <Button type="submit" src={ico_tag} text="hehe" positionIcon="left"></Button>
+        <Button type="submit" src={ico_tag} text="hehe" positionIcon="right"></Button>
     )
 }
 
