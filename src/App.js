@@ -24,6 +24,8 @@ import LoginScreen from "./screens/login-screen/login-screen";
 import SignupScreen from "./screens/signup-screen/signup-screen";
 import ReactECharts from 'echarts-for-react';
 import Roomtag from "./components/dashboard/roomtag/roomtag";
+import Tag from "./components/tag/tag";
+import {Grey300, Primary50, Red400, Red50, Success300, Success50} from "./common/constant";
 
 // render echarts option.
 const TABLE_ROWS = [
@@ -175,24 +177,9 @@ function App() {
         { value: 'báo'},
         { value: 's' },
     ];
-    const option = {
-        xAxis: {
-            type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        },
-        yAxis: {
-            type: 'value'
-        },
-        series: [
-            {
-                data: [120, 200, 150, 80, 70, 110, 130],
-                type: 'bar'
-            }
-        ]
-    };
     return (
-        <Roomtag name="Single sharing" numberofdeals="2" numberofrooms="2" maxnumberofrooms="30" price="568"></Roomtag>
-);
+        <Roomtag name="Single sharing" maxnumberofrooms="30" numberofdeals="2" numberofrooms="2" price="568"></Roomtag>
+    );
 }
 
 export default App;

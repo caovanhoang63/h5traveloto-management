@@ -1,13 +1,21 @@
 import {GreenTag} from "../../tag/tag";
 import "./roomtag.css";
+import {Red400, Red50} from "../../../common/constant";
 export default function Roomtag({name,price,numberofdeals,numberofrooms,maxnumberofrooms}){
     const style= {
-        color: "blue",
+        padding:"2px 8px 2px 8px",
+        justifyContent: "center",
+        textAlign: "center",
+        height: "22px",
+        width: "59px",
+        borderRadius: "8px",
+        fontWeight: "bold",
+        fontsize: "1.2em",
     }
     return(
         <div className="roomtag-container">
             <div className="roomtag-label">
-                <GreenTag classname="roomtag-deals">{numberofdeals+" Deals"}</GreenTag>
+                <GreenTag style={style} classname="roomtag-deals">{numberofdeals+" Deals"}</GreenTag>
 
             </div>
             <div className="roomtag-content">

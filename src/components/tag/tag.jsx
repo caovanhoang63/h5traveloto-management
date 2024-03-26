@@ -13,8 +13,8 @@ function Tag({children,style,classname}) {
 
     return <span className={classname} style={style}>{children}</span>;
 }
-export function RedTag({children ,classname}){
-    const style = {
+export function RedTag({children,style ,classname}){
+    const defaultStyle = {
         display: "inline-block",
         padding: "0.5em 1em",
         margin: "0.5em",
@@ -23,21 +23,22 @@ export function RedTag({children ,classname}){
         fontsize: "0.8em",
         color: Red400,
     };
-    return <Tag classname={classname} style={style}>{children}</Tag>;
+    const renderStyle = {...defaultStyle,...style};
+    return <Tag classname={classname} style={renderStyle}>{children}</Tag>;
 }
-export function GreenTag({children,classname}){
-    const style = {
+export function GreenTag({children,style ,classname}){
+    const defaultStyle = {
         display: "inline-block",
-        padding: "0.5em 1em",
         background: Success50 ,
         borderRadius: "16px",
         fontsize: "0.8em",
         color: Success400,
     };
-    return <Tag classname={classname} style={style}>{children}</Tag>;
+    const renderStyle = {...defaultStyle,...style};
+    return <Tag classname={classname} style={renderStyle}>{children}</Tag>;
 }
-export function YellowTag({children, classname}){
-    const style = {
+export function YellowTag({children,style, classname}){
+    const defaultStyle = {
         display: "inline-block",
         padding: "0.5em 1em",
         margin: "0.5em",
@@ -46,10 +47,12 @@ export function YellowTag({children, classname}){
         fontsize: "0.8em",
         color: Warning400,
     };
-    return <Tag classname={classname} style={style}>{children}</Tag>;
+    const renderStyle = {...defaultStyle,...style};
+
+    return <Tag classname={classname} style={renderStyle}>{children}</Tag>;
 }
-export function BlueTag({children,classname}){
-    const style = {
+export function BlueTag({children,style,classname}){
+    const defaultStyle = {
         display: "inline-block",
         padding: "0.5em 1em",
         margin: "0.5em",
@@ -58,7 +61,9 @@ export function BlueTag({children,classname}){
         fontsize: "0.8em",
         color: Primary400,
     };
-    return <Tag classname={classname} style={style}>{children}</Tag>;
+    const renderStyle = {...defaultStyle,...style};
+
+    return <Tag classname={classname} style={renderStyle}>{children}</Tag>;
 }
 
 export default Tag;
