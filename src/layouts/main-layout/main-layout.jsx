@@ -96,7 +96,11 @@ const MainLayout = (props) => {
                 <div className={"content-container"}>
                     <header className={"header"}>
                         <div className={"header-content"}>
-                            <SearchBar className={"searchBar--position"} />
+                            <SearchBar className={"searchBar--position top50"} />
+                            <div className={"header-buttons"}>
+                                <span>12</span>
+                                <span>32</span>
+                            </div>
                         </div>
                     </header>
                     <div className={"content"}>

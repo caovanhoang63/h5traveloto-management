@@ -1,4 +1,5 @@
 .containerSearchBar {
+    position: relative;
     line-height: 2.4rem;
     font-size: 1.6rem;
 }
@@ -29,6 +30,11 @@
     width: 22px;
     margin-left: 16px;
     color: #858d9d;
+    position: absolute;
+}
+
+
+.historyContainer {
     position: absolute;
 }
 

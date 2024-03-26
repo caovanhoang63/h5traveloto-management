@@ -121,36 +121,39 @@ function SearchBar(props) {
                 />
             </div>
             {isVisibleHistory && (
-                <div className="history">
-                    <span className="history__title">Lịch sử tìm kiếm</span>
-                    <ul className="history__list">
-                        {searchHistory.map((value, index) => (
-                            <li
-                                key={index}
-                                className="history__item"
-                                onClick={() => handleClickItemHistory(value)}
-                            >
-                                <img
-                                    src={imageHistory}
-                                    alt=""
-                                    className="history__icon"
-                                />
-                                <span className="history__item-text">
+                <div className={"historyContainer"}>
+                    <div className="history">
+                        <span className="history__title">Lịch sử tìm kiếm</span>
+                        <ul className="history__list">
+                            {searchHistory.map((value, index) => (
+                                <li
+                                    key={index}
+                                    className="history__item"
+                                    onClick={() => handleClickItemHistory(value)}
+                                >
+                                    <img
+                                        src={imageHistory}
+                                        alt=""
+                                        className="history__icon"
+                                    />
+                                    <span className="history__item-text">
                                     {value}
                                 </span>
-                                <img
-                                    src={imageDelete}
-                                    alt=""
-                                    className="history__icon-delete"
-                                    onClick={(event) => {
-                                        event.stopPropagation();
-                                        handleDeleteItemHistory(value);
-                                    }}
-                                />
-                            </li>
-                        ))}
-                    </ul>
+                                    <img
+                                        src={imageDelete}
+                                        alt=""
+                                        className="history__icon-delete"
+                                        onClick={(event) => {
+                                            event.stopPropagation();
+                                            handleDeleteItemHistory(value);
+                                        }}
+                                    />
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
+
             )}
         </div>
     );

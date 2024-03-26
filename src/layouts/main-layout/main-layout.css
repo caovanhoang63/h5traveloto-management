@@ -1,13 +1,22 @@
 @import url("/src/assets/style/base.css");
 
+
+/* begin base css*/
+/*.top50 {*/
+/*    top: 50%;*/
+/*}*/
+/* begin base css*/
+
+
 .container {
     display: flex;
     flex-direction: row;
-    height: 100%;
+    height: 100vh;
     font-size: 1.6rem;
 }
 
 .header {
+
     position: relative;
     background: white;
     height: 100px;
@@ -15,14 +24,23 @@
 }
 .header-content {
     position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     height: 100%;
     width: 100%;
+    top: 70%;
+    transform: translateY(-50%);
 }
-.searchBar--position {
-    position: absolute;
-    top: 15%;
-    margin-left: 16px;
+
+.header-buttons {
+    display: flex;
 }
+/*.searchBar--position {*/
+/*    position: absolute;*/
+/*    top: 15%;*/
+/*    margin-left: 16px;*/
+/*}*/
 
 .content-container {
     width: 100%;
@@ -31,7 +49,7 @@
 
 .content {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 100px);
     padding: 0 2rem 0 2rem;
     background: white;
 }
