@@ -55,8 +55,10 @@
 }
 
 .screen-name {
+    display: block;
     margin-bottom: 1.6rem;
     font-size: 1.4rem;
     font-weight: 150;
     color: #858d9dff;
 }
+

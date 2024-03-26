@@ -87,7 +87,7 @@ const sidebar_data = [
     },
 ];
 
-const MainLayout = (props) => {
+const MainLayout = ({screenName ="screen name",...props}) => {
     const options = [{ value: "tuoi" }, { value: "báo" }, { value: "s" }];
     return (
         <div>
@@ -105,7 +105,7 @@ const MainLayout = (props) => {
                     </header>
                     <div className={"content"}>
                         <div className={"screen-name"}>
-                            <span>{props.screenName}</span>
+                            <span>{screenName}</span>
                         </div>
                         <div>{props.children}</div>
                     </div>

@@ -22,6 +22,7 @@ import Sidebar from "./components/sidebar/sidebar";
 import MainLayout from "./layouts/main-layout/main-layout";
 import LoginScreen from "./screens/login-screen/login-screen";
 import SignupScreen from "./screens/signup-screen/signup-screen";
+import {Layout} from "@phosphor-icons/react";
 const TABLE_ROWS = [
     {
         reservationId: "123",
@@ -172,7 +173,8 @@ function App() {
         { value: 's' },
     ];
     return (
-<SignupScreen></SignupScreen>    );
+        <MainLayout ></MainLayout>
+    )
 }
 
 export default App;
