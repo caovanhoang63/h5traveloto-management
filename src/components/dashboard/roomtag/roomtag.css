@@ -1,0 +1,48 @@
+.roomtag-container{
+    width: 230px;
+    height: 150px;
+    border-radius: 8px;
+    background: #ffffff;
+    border-color: var(--Grey100);
+    border-style: solid;
+    border-width: 1px;
+}
+.roomtag-label{
+
+    margin: 0 0 5px 16px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.roomtag-name{
+    margin: 0 0 4px 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.6rem;
+    font-weight: normal;
+}
+
+/*.roomtag-numberofrooms{
+    margin: 0 0 4px 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 2rem;
+    font-weight: normal;
+}*/
+
+
+.roomtag-content{
+    display: flex;
+    gap: 4px;
+    flex-direction: column;
+    margin: auto 0 0 16px;
+
+}
+.roomtag-p{
+    margin: 0 0 4px 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 2rem;
+    font-weight: normal;
+}
+.roomtag-span-numberofrooms{
+    color: var(--grey-600);
+}
+.roomtag-span-price{
+    color: var(--primary-600);
+}

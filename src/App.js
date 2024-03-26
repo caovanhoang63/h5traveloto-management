@@ -22,6 +22,10 @@ import Sidebar from "./components/sidebar/sidebar";
 import MainLayout from "./layouts/main-layout/main-layout";
 import LoginScreen from "./screens/login-screen/login-screen";
 import SignupScreen from "./screens/signup-screen/signup-screen";
+import ReactECharts from 'echarts-for-react';
+import Roomtag from "./components/dashboard/roomtag/roomtag";
+
+// render echarts option.
 const TABLE_ROWS = [
     {
         reservationId: "123",
@@ -171,8 +175,24 @@ function App() {
         { value: 'báo'},
         { value: 's' },
     ];
+    const option = {
+        xAxis: {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [
+            {
+                data: [120, 200, 150, 80, 70, 110, 130],
+                type: 'bar'
+            }
+        ]
+    };
     return (
-<SignupScreen></SignupScreen>    );
+        <Roomtag name="Single sharing" numberofdeals="2" numberofrooms="2" maxnumberofrooms="30" price="568"></Roomtag>
+);
 }
 
 export default App;

@@ -9,11 +9,11 @@ import {
     Warning400,
     Warning50
 } from "../../common/constant";
-function Tag({children,style}) {
+function Tag({children,style,classname}) {
 
-    return <span style ={style}>{children}</span>;
+    return <span className={classname} style={style}>{children}</span>;
 }
-export function RedTag({children}){
+export function RedTag({children ,classname}){
     const style = {
         display: "inline-block",
         padding: "0.5em 1em",
@@ -23,21 +23,20 @@ export function RedTag({children}){
         fontsize: "0.8em",
         color: Red400,
     };
-    return <Tag style={style}>{children}</Tag>;
+    return <Tag classname={classname} style={style}>{children}</Tag>;
 }
-export function GreenTag({children}){
+export function GreenTag({children,classname}){
     const style = {
         display: "inline-block",
         padding: "0.5em 1em",
-        margin: "0.5em",
         background: Success50 ,
         borderRadius: "16px",
         fontsize: "0.8em",
         color: Success400,
     };
-    return <Tag style={style}>{children}</Tag>;
+    return <Tag classname={classname} style={style}>{children}</Tag>;
 }
-export function YellowTag({children}){
+export function YellowTag({children, classname}){
     const style = {
         display: "inline-block",
         padding: "0.5em 1em",
@@ -47,9 +46,9 @@ export function YellowTag({children}){
         fontsize: "0.8em",
         color: Warning400,
     };
-    return <Tag style={style}>{children}</Tag>;
+    return <Tag classname={classname} style={style}>{children}</Tag>;
 }
-export function BlueTag({children}){
+export function BlueTag({children,classname}){
     const style = {
         display: "inline-block",
         padding: "0.5em 1em",
@@ -59,7 +58,7 @@ export function BlueTag({children}){
         fontsize: "0.8em",
         color: Primary400,
     };
-    return <Tag style={style}>{children}</Tag>;
+    return <Tag classname={classname} style={style}>{children}</Tag>;
 }
 
 export default Tag;
