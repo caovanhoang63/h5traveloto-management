@@ -34,8 +34,8 @@
     font-weight: normal;
 }
 .roomtag-span-numberofrooms{
-    color: var(--grey-600);
+    color: var(--Grey600);
 }
 .roomtag-span-price{
-    color: var(--primary-600);
+    color: var(--Primary600);
 }

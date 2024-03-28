@@ -17,6 +17,8 @@ import ico_calendar_active from "./assets/icons/calendar-active.png";
 import ico_bubble_chat from "./assets/icons/bubble-chat.png";
 import ico_bubble_chat_active from "./assets/icons/bubble-chat-active.png";
 import MainLayout from "./layouts/main-layout/main-layout";
+import Rooms from "./components/dashboard/rooms/rooms";
+import Roomtag from "./components/dashboard/roomtag/roomtag";
 const TABLE_ROWS = [
     {
         reservationId: "123",
@@ -166,10 +168,135 @@ function App() {
         { value: 'báo'},
         { value: 's' },
     ];
+    const data ={
+        "data": [
+            {
+                "id": "3spqRymCox9Vqu",
+                "status": 1,
+                "created_at": "2024-03-20T15:04:24+07:00",
+                "updated_at": "2024-03-28T08:20:27+07:00",
+                "hotel_id": "3mKb6KGah2LTSU",
+                "name": "Phòng đơn",
+                "max_customer": 1,
+                "area": 200,
+                "bed": {
+                    "single": 1,
+                    "double": 0,
+                    "king": 0,
+                    "queen": 0,
+                    "others": null
+                },
+                "price": 200000,
+                "cur_available_room": 0,
+                "images": null,
+                "total_room": 12,
+                "pay_in_hotel": true,
+                "break_fast": false,
+                "free_cancel": false,
+                "rating": 0
+            },
+            {
+                "id": "3srLErWTtTFdBm",
+                "status": 1,
+                "created_at": "2024-03-20T15:07:36+07:00",
+                "updated_at": "2024-03-28T08:20:32+07:00",
+                "hotel_id": "3mKb6KGah2LTSU",
+                "name": "Phòng đôi",
+                "max_customer": 2,
+                "area": 200,
+                "bed": {
+                    "single": 0,
+                    "double": 1,
+                    "king": 0,
+                    "queen": 0,
+                    "others": null
+                },
+                "price": 200000,
+                "cur_available_room": 0,
+                "images": null,
+                "total_room": 4,
+                "pay_in_hotel": true,
+                "break_fast": true,
+                "free_cancel": false,
+                "rating": 0
+            },
+            {
+                "id": "3stY2v2wYdkY7f",
+                "status": 1,
+                "created_at": "2024-03-20T15:08:39+07:00",
+                "updated_at": "2024-03-28T08:23:58+07:00",
+                "hotel_id": "3mKb6KGah2LTSU",
+                "name": "Phòng vip",
+                "max_customer": 4,
+                "area": 200,
+                "bed": {
+                    "single": 0,
+                    "double": 1,
+                    "king": 1,
+                    "queen": 0,
+                    "others": null
+                },
+                "price": 200000,
+                "cur_available_room": 0,
+                "images": null,
+                "total_room": 13,
+                "pay_in_hotel": true,
+                "break_fast": true,
+                "free_cancel": false,
+                "rating": 0
+            },
+            {
+                "id": "3w4MYRR5atSgm7",
+                "status": 1,
+                "created_at": "2024-03-20T15:17:52+07:00",
+                "updated_at": "2024-03-20T09:07:32+07:00",
+                "hotel_id": "3mKb6KGah2LTSU",
+                "name": "Phòng president",
+                "max_customer": 2,
+                "area": 250,
+                "bed": {
+                    "single": 0,
+                    "double": 0,
+                    "king": 1,
+                    "queen": 0,
+                    "others": {
+                        "sofa ": 1
+                    }
+                },
+                "price": 200000,
+                "cur_available_room": 0,
+                "images": null,
+                "total_room": 2,
+                "pay_in_hotel": false,
+                "break_fast": true,
+                "free_cancel": false,
+                "rating": 0
+            }
+        ],
+        "paging": {
+            "limit": 50,
+            "page": 1,
+            "total": 4,
+            "cursor": "",
+            "next_cursor": "3w4MYRR5atSgm7"
+        },
+        "filter": {
+            "hotel_id": "3mKb6KGah2LTST",
+            "bed": null,
+            "break_fast": false,
+            "free_cancel": false,
+            "rating": 0,
+            "max_price": 10000000000,
+            "min_price": 0,
+            "start_date": null,
+            "end_date": null
+        }
+    }
     return (
         <MainLayout >
-            <TransparentButton border={true} disabled={true} src={ico_tag} icon={"only"}>Hellasdasdso</TransparentButton>
+            <Rooms data={data}/>
         </MainLayout>
+
 
     )
 }

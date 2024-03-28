@@ -1,8 +1,13 @@
 import {GreenTag} from "../../tag/tag";
 import "./roomtag.css";
 import {Red400, Red50} from "../../../common/constant";
-export default function Roomtag({name,price,numberofdeals,numberofrooms,maxnumberofrooms}){
-    const style= {
+
+export default function Roomtag({name, price, numberofdeals, numberofrooms, maxnumberofrooms, style}) {
+
+    const formatPrice = (price) => {
+        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    const _style= {
         padding:"2px 8px 2px 8px",
         justifyContent: "center",
         textAlign: "center",
@@ -12,20 +17,24 @@ export default function Roomtag({name,price,numberofdeals,numberofrooms,maxnumbe
         fontWeight: "bold",
         fontsize: "1.2em",
     }
-    return(
+    if(style === undefined){
+        style = _style;
+    }
+
+    return (
         <div className="roomtag-container">
             <div className="roomtag-label">
-                <GreenTag style={style} classname="roomtag-deals">{numberofdeals+" Deals"}</GreenTag>
+                <GreenTag style={style} classname="roomtag-deals">{numberofdeals + " Deals"}</GreenTag>
 
             </div>
             <div className="roomtag-content">
                 <label className="roomtag-name">{name}</label>
                 {/*<label className="roomtag-numberofrooms">{numberofrooms + "/" + maxnumberofrooms}</label>*/}
                 <p className="roomtag-p">
-                    <span className="roomtag-span-numberofrooms" >{numberofrooms}</span>/{maxnumberofrooms}
+                    <span className="roomtag-span-numberofrooms">{numberofrooms}</span>/{maxnumberofrooms}
                 </p>
                 <p className="roomtag-p">
-                    <span className="roomtag-span-price">${price}</span>/day
+                    <span className="roomtag-span-price">{formatPrice(price) + "VND"}</span>/day
                 </p>
 
             </div>

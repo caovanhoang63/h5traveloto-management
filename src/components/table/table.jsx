@@ -12,7 +12,7 @@ const Table = ({data, columns}) => {
         prepareRow
     } = useTable({columns, data});
 
-    ;
+
 
     const TagType = (props) => {
         const { text } = props;
