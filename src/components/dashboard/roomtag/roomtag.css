@@ -1,0 +1,41 @@
+.roomtag-container{
+    display: flex;
+    flex-direction: column;
+    width: 230px;
+    height: 150px;
+    border-radius: 8px;
+    background: #ffffff;
+    border-color: var(--Grey100);
+    border-style: solid;
+    border-width: 1px;
+    position: relative;
+}
+.roomtag-label{
+    margin: 14px 0 0 16px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.roomtag-name{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.8rem;
+    font-weight: normal;
+}
+
+.roomtag-content{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: auto 0 16px 16px; /* Đã điều chỉnh margin */
+
+}
+.roomtag-p{
+    margin: 0 0 4px 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 2rem;
+    font-weight: normal;
+}
+.roomtag-span-numberofrooms{
+    color: var(--grey-600);
+}
+.roomtag-span-price{
+    color: var(--primary-600);
+}

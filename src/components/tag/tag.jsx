@@ -9,12 +9,12 @@ import {
     Warning400,
     Warning50
 } from "../../common/constant";
-function Tag({children,style}) {
+function Tag({children,style,classname}) {
 
-    return <span style ={style}>{children}</span>;
+    return <span className={classname} style={style}>{children}</span>;
 }
-export function RedTag({children}){
-    const style = {
+export function RedTag({children,style ,classname}){
+    const defaultStyle = {
         display: "inline-block",
         padding: "0.5em 1em",
         margin: "0.5em",
@@ -23,22 +23,22 @@ export function RedTag({children}){
         fontsize: "0.8em",
         color: Red400,
     };
-    return <Tag style={style}>{children}</Tag>;
+    const renderStyle = {...defaultStyle,...style};
+    return <Tag classname={classname} style={renderStyle}>{children}</Tag>;
 }
-export function GreenTag({children}){
-    const style = {
+export function GreenTag({children,style ,classname}){
+    const defaultStyle = {
         display: "inline-block",
-        padding: "0.5em 1em",
-        margin: "0.5em",
         background: Success50 ,
         borderRadius: "16px",
         fontsize: "0.8em",
         color: Success400,
     };
-    return <Tag style={style}>{children}</Tag>;
+    const renderStyle = {...defaultStyle,...style};
+    return <Tag classname={classname} style={renderStyle}>{children}</Tag>;
 }
-export function YellowTag({children}){
-    const style = {
+export function YellowTag({children,style, classname}){
+    const defaultStyle = {
         display: "inline-block",
         padding: "0.5em 1em",
         margin: "0.5em",
@@ -47,10 +47,12 @@ export function YellowTag({children}){
         fontsize: "0.8em",
         color: Warning400,
     };
-    return <Tag style={style}>{children}</Tag>;
+    const renderStyle = {...defaultStyle,...style};
+
+    return <Tag classname={classname} style={renderStyle}>{children}</Tag>;
 }
-export function BlueTag({children}){
-    const style = {
+export function BlueTag({children,style,classname}){
+    const defaultStyle = {
         display: "inline-block",
         padding: "0.5em 1em",
         margin: "0.5em",
@@ -59,7 +61,9 @@ export function BlueTag({children}){
         fontsize: "0.8em",
         color: Primary400,
     };
-    return <Tag style={style}>{children}</Tag>;
+    const renderStyle = {...defaultStyle,...style};
+
+    return <Tag classname={classname} style={renderStyle}>{children}</Tag>;
 }
 
 export default Tag;
