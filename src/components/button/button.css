@@ -1,34 +1,91 @@
 .button-container{
     display: flex;
-    height: 36px;
-    width: auto;
-    padding: 0 8px;
-    background-color: var(--Primary500);
     border: none;
     outline: none;
     border-radius: 8px;
     overflow: hidden;
-    font-size: 1.6rem;
-    font-weight: 500;
     cursor: pointer;
+    align-items: center;
+    justify-content: center;
 }
+
 
 .button-container:hover,
 .button-container:active {
-background-color: var(--Primary700);
 }
 
-.button-text,
-.button-icon {
-    display: inline-flex;
-    align-items: center;
-    padding: 5px 5px;
-    color: #fff;
-    height: 100%;
-    font-size: 1.6rem;
+.button-primary {
+    background-color: var(--Primary500);
+}
+
+.button-primary:hover,
+.button-primary:active {
+    background-color: var(--Primary400);
+}
+
+.button-secondary {
+    background-color: var(--Grey100);
+}
+
+.button-secondary:hover,
+.button-secondary:active {
+    background-color: var(--Grey50);
+
+}
+
+.button-transparent {
+    background-color: transparent;
+}
+
+.button-transparent:hover,
+.button-transparent:active {
+    background-color: var(--Grey50);
+
+}
+
+
+
+.button-content{
+    display: flex;
+    flex-direction: row;
+    height: 24px;
+    margin: 6px;
+}
+
+
+.button-sm {
     height: 36px;
+    min-width: 36px;
+}
+
+.button-md {
+    height: 40px;
+    min-width: 40px;
+}
+
+.margin-0 {
+    margin: 0!important;
+}
+.margin-6 {
+    margin : 6px !important;
+}
+
+.margin-left-8 {
+    margin-left: 8px;
+}
+
+.button-img {
+    border: none;
+    outline: none;
+    width: 24px;
+    height: 24px;
+}
+
+.button-text {
+    margin: 0;
+    padding: 0;
+    color: #fff;
     width: auto;
+    font-size: 1.6rem;
 }
-.button-notext{
-    display: none;
-}
+

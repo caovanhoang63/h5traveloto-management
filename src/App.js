@@ -1,7 +1,4 @@
-import Table from "./components/table/table";
-import SearchBar from "./components/searchbar/searchbar";
-import Combobox from "./components/combobox/combobox";
-import Button from "./components/button/button";
+import Button, {ButtonIconOnly, PrimaryButton, SecondaryButton, TransparentButton} from "./components/button/button";
 import './App.css';
 import ico_home from "./assets/icons/home.png";
 import ico_home_active from "./assets/icons/home-active.png";
@@ -19,12 +16,7 @@ import ico_calendar from "./assets/icons/calendar.png";
 import ico_calendar_active from "./assets/icons/calendar-active.png";
 import ico_bubble_chat from "./assets/icons/bubble-chat.png";
 import ico_bubble_chat_active from "./assets/icons/bubble-chat-active.png";
-import Sidebar from "./components/sidebar/sidebar";
 import MainLayout from "./layouts/main-layout/main-layout";
-import LoginScreen from "./screens/login-screen/login-screen";
-import SignupScreen from "./screens/signup-screen/signup-screen";
-import {Layout} from "@phosphor-icons/react";
-import Textbox from "./components/textbox/textbox";
 const TABLE_ROWS = [
     {
         reservationId: "123",
@@ -175,8 +167,10 @@ function App() {
         { value: 's' },
     ];
     return (
-        // <MainLayout ></MainLayout>
-        <Button type="submit" src={ico_tag} text="hehe" positionIcon="right"></Button>
+        <MainLayout >
+            <TransparentButton src={ico_tag} icon={"only"}>Hellasdasdso</TransparentButton>
+        </MainLayout>
+
     )
 }
 
