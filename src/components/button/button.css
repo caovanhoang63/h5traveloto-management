@@ -44,6 +44,9 @@
 }
 
 
+.button-border {
+    border: var(--Grey200) solid 1px !important;
+}
 
 .button-content{
     display: flex;

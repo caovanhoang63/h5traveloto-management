@@ -168,7 +168,7 @@ function App() {
     ];
     return (
         <MainLayout >
-            <TransparentButton src={ico_tag} icon={"only"}>Hellasdasdso</TransparentButton>
+            <TransparentButton border={true} disabled={true} src={ico_tag} icon={"only"}>Hellasdasdso</TransparentButton>
         </MainLayout>
 
     )

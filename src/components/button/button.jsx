@@ -107,7 +107,10 @@ export const SecondaryButton = function ({type,className,onClick,disabled,icon,s
     )
 }
 
-export const TransparentButton = function ({type,className,onClick,disabled,icon,src,alt,size,children}){
+export const TransparentButton = function ({border, type,className,onClick,disabled,icon,src,alt,size,children}){
+    if (border === true ){
+        className += " button-border"
+    }
     className=className + " button-transparent"
 
     return (
