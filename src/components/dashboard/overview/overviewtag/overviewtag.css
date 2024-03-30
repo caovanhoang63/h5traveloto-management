@@ -1,0 +1,29 @@
+.overviewtag-container{
+    width: fit-content;
+    height: 49px;
+}
+.overviewtag-header{
+    font-family: 'Plus Jakarta Sans',normal, sans-serif;
+    font-size: 1.8rem;
+    font-weight: normal;
+    color: var(--Grey400);
+}
+.overviewtag-content{
+    margin-top: 10px;
+    gap: 16px;
+    display: flex;
+}
+.overviewtag-header{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 0 auto 0 0;
+    color: var(--Grey600);
+}
+.overviewtag-contentNumber{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 2.4rem;
+    font-weight: bold;
+    margin: 0 0 0 auto;
+    color: var(--Primary600);
+}

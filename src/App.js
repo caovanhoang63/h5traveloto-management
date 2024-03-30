@@ -18,7 +18,9 @@ import ico_bubble_chat from "./assets/icons/bubble-chat.png";
 import ico_bubble_chat_active from "./assets/icons/bubble-chat-active.png";
 import MainLayout from "./layouts/main-layout/main-layout";
 import Rooms from "./components/dashboard/rooms/rooms";
-import Roomtag from "./components/dashboard/roomtag/roomtag";
+import Roomtag from "./components/dashboard/rooms/roomtag/roomtag";
+import Overviewtag from "./components/dashboard/overview/overviewtag/overviewtag";
+import Overview from "./components/dashboard/overview/overview";
 const TABLE_ROWS = [
     {
         reservationId: "123",
@@ -252,7 +254,7 @@ function App() {
                 "updated_at": "2024-03-20T09:07:32+07:00",
                 "hotel_id": "3mKb6KGah2LTSU",
                 "name": "Phòng president",
-                "max_customer": 2,
+                "max_customer": 0,
                 "area": 250,
                 "bed": {
                     "single": 0,
@@ -294,6 +296,7 @@ function App() {
     }
     return (
         <MainLayout >
+            <Overview></Overview>
             <Rooms data={data}/>
         </MainLayout>
 

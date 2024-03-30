@@ -1,5 +1,5 @@
 import {Fragment} from "react";
-import Roomtag from "../roomtag/roomtag";
+import Roomtag from "./roomtag/roomtag";
 import "./rooms.css";
 
 function Rooms({data}) {

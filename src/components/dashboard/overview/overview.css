@@ -1,7 +1,7 @@
-.rooms-container {
+.overview-container {
     display: flex;
     flex-direction: column;
-    height: 236px;
+    height: 135px;
     width: 100%;
     border-width: 1px;
     border-style: solid;
@@ -9,17 +9,18 @@
     border-radius: 8px;
 
 }
-.rooms-header{
+.overview-header{
     color: var(--Grey800);
     font-family: "Plus Jakarta Sans", serif;
     font-weight: normal;
     font-size: 2em;
     margin: 20px 0 0 16px;
 }
-.rooms-content{
+.overview-content{
     margin: auto 0 16px 16px;
     width: 100%;
     display: flex;
     flex-direction: row;
     gap: 23px;
+    justify-content: space-between;
 }
