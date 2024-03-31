@@ -8,7 +8,6 @@
     width: 400px;
     box-sizing: border-box;
     border-radius: 4px;
-    border: 1px solid #eef0f2;
     display: flex;
     align-items: center;
     position: relative;
@@ -19,20 +18,23 @@
     height: 100%;
     width: 100%;
     box-sizing: border-box;
-    padding-left: 48px;
     flex: 1;
+    padding-left: 16px;
     border: none;
     outline: none;
     font-size: 16px;
+    border: 1px solid #eef0f2;
 }
 .searchBar__icon {
     height: 22px;
     width: 22px;
     margin-left: 16px;
-    color: #858d9d;
-    position: absolute;
+    color: var(--Grey300);
 }
-
+.searchBar__button-search {
+    position: absolute;
+    right: -8px;
+}
 
 .historyContainer {
     position: absolute;
@@ -66,7 +68,9 @@
     margin: 0;
     max-height: 216px;
     box-sizing: border-box;
+    overflow: auto;
 }
+
 .history__item {
     text-align: start;
     display: flex;

@@ -1,0 +1,33 @@
+.room-container {
+    height: 100%;
+    width: 100%;
+}
+
+.room-option {
+    display: flex;
+    justify-content: space-between;
+}
+.container__button-option {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 16px;
+}
+.room-option__button {
+    margin-right: 12px;
+    background-color: white;
+}
+.room-option__button-text {
+    color: var(--Grey600);
+    line-height: 24px;
+    font-weight: 500;
+}
+.room-option__button-add {
+    width: 114px;
+}
+.room-option__button-add-text {
+    line-height: 24px;
+}
+.selected-category {
+    border: 1px solid var(--Primary400);
+    background-color: var(--Primary50);
+}

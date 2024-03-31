@@ -1,4 +1,4 @@
-.button-container{
+.button-container {
     display: flex;
     border: none;
     outline: none;
@@ -8,7 +8,6 @@
     align-items: center;
     justify-content: center;
 }
-
 
 .button-container:hover,
 .button-container:active {
@@ -30,7 +29,6 @@
 .button-secondary:hover,
 .button-secondary:active {
     background-color: var(--Grey50);
-
 }
 
 .button-transparent {
@@ -40,21 +38,18 @@
 .button-transparent:hover,
 .button-transparent:active {
     background-color: var(--Grey50);
-
 }
-
 
 .button-border {
     border: var(--Grey200) solid 1px !important;
 }
 
-.button-content{
+.button-content {
     display: flex;
     flex-direction: row;
     height: 24px;
     margin: 6px;
 }
-
 
 .button-sm {
     height: 36px;
@@ -67,10 +62,10 @@
 }
 
 .margin-0 {
-    margin: 0!important;
+    margin: 0 !important;
 }
 .margin-6 {
-    margin : 6px !important;
+    margin: 6px !important;
 }
 
 .margin-left-8 {
@@ -91,4 +86,3 @@
     width: auto;
     font-size: 1.6rem;
 }
-

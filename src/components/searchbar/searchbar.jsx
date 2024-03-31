@@ -99,7 +99,7 @@ function SearchBar(props) {
             ref={containerRef}
         >
             <div className="searchBar">
-                <img src={imageSearch} alt="" className="searchBar__icon" />
+                {/* <img src={imageSearch} alt="" className="searchBar__icon" /> */}
                 <input
                     type="text"
                     ref={inputRef}
@@ -119,6 +119,7 @@ function SearchBar(props) {
                         }
                     }}
                 />
+                <img src={imageSearch} alt="" className="searchBar__icon" />
             </div>
             {isVisibleHistory && (
                 <div className={"historyContainer"}>
@@ -129,7 +130,9 @@ function SearchBar(props) {
                                 <li
                                     key={index}
                                     className="history__item"
-                                    onClick={() => handleClickItemHistory(value)}
+                                    onClick={() =>
+                                        handleClickItemHistory(value)
+                                    }
                                 >
                                     <img
                                         src={imageHistory}
@@ -137,8 +140,8 @@ function SearchBar(props) {
                                         className="history__icon"
                                     />
                                     <span className="history__item-text">
-                                    {value}
-                                </span>
+                                        {value}
+                                    </span>
                                     <img
                                         src={imageDelete}
                                         alt=""
@@ -153,7 +156,6 @@ function SearchBar(props) {
                         </ul>
                     </div>
                 </div>
-
             )}
         </div>
     );
