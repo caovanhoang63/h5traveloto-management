@@ -13,7 +13,9 @@
     margin-bottom: 16px;
 }
 .room-option__button {
+    border-radius: 100px;
     margin-right: 12px;
+    border: 1px solid var(--Grey600);
     background-color: white;
 }
 .room-option__button-text {

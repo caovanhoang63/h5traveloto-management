@@ -97,16 +97,17 @@ function RoomPage() {
                             All Room(100)
                         </span>
                     </Button>
-                    <TransparentButton
-                        border={true}
+                    <Button
                         className={
                             "room-option__button " +
                             (selectedCategory == 2 ? "selected-category" : "")
                         }
                         onClick={() => handleClickButtonFilter(2)}
                     >
-                        Available
-                    </TransparentButton>
+                        <span className="room-option__button-text">
+                            Available(20)
+                        </span>
+                    </Button>
                     <Button
                         className={
                             "room-option__button " +
