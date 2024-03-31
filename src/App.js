@@ -17,6 +17,10 @@ import ico_calendar_active from "./assets/icons/calendar-active.png";
 import ico_bubble_chat from "./assets/icons/bubble-chat.png";
 import ico_bubble_chat_active from "./assets/icons/bubble-chat-active.png";
 import MainLayout from "./layouts/main-layout/main-layout";
+import {showErrorToast, showSuccessToast, successToast, Toast} from "./utils/toast";
+import {toast, Toaster} from "sonner";
+import {Prompt} from "./utils/prompt";
+import {Fragment} from "react";
 const TABLE_ROWS = [
     {
         reservationId: "123",
@@ -160,15 +164,22 @@ const sidebar_data = [
 
 
 
+
+
 function App() {
     const options = [
         { value: 'tuoi' },
         { value: 'báo'},
         { value: 's' },
     ];
+
+    const mess = "helo"
+    const onClickHandler = () => successToast(mess)
+
+
     return (
         <MainLayout >
-            <TransparentButton border={true} disabled={true} src={ico_tag} icon={"only"}>Hellasdasdso</TransparentButton>
+            <PrimaryButton icon={"none"} onClick={onClickHandler}>SABBBdsadsa</PrimaryButton>
         </MainLayout>
 
     )

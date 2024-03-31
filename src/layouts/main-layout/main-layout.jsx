@@ -19,6 +19,7 @@ import ico_calendar_active from "../../assets/icons/calendar-active.png";
 import ico_bubble_chat from "../../assets/icons/bubble-chat.png";
 import ico_bubble_chat_active from "../../assets/icons/bubble-chat-active.png";
 import "./main-layout.css";
+import {Toaster} from "sonner";
 
 const sidebar_data = [
     {
@@ -91,6 +92,7 @@ const MainLayout = ({screenName ="screen name",...props}) => {
     const options = [{ value: "tuoi" }, { value: "báo" }, { value: "s" }];
     return (
         <div>
+            <Toaster richColors />
             <div className={"container"}>
                 <Sidebar className={"sidebar"} data={sidebar_data}></Sidebar>
                 <div className={"content-container"}>

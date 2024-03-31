@@ -13,6 +13,8 @@
     "react-scripts": "5.0.1",
     "react-table": "^7.8.0",
     "save": "^2.9.0",
+    "sonner": "^1.4.41",
+    "sweetalert2": "^11.10.7",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
