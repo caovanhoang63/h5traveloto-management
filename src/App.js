@@ -21,6 +21,7 @@ import Rooms from "./components/dashboard/rooms/rooms";
 import Roomtag from "./components/dashboard/rooms/roomtag/roomtag";
 import Overviewtag from "./components/dashboard/overview/overviewtag/overviewtag";
 import Overview from "./components/dashboard/overview/overview";
+import Dashboard from "./components/dashboard/dashboard";
 const TABLE_ROWS = [
     {
         reservationId: "123",
@@ -296,8 +297,7 @@ function App() {
     }
     return (
         <MainLayout >
-            <Overview></Overview>
-            <Rooms data={data}/>
+            <Dashboard data={data} />
         </MainLayout>
 
 

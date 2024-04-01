@@ -1,0 +1,21 @@
+.roomstatuslabel-container{
+    display: flex;
+    flex-direction: row;
+    width: 237px;
+    height: 24px;
+    background: #fdddb3;
+}
+.roomstatuslabel-label{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.6rem;
+    font-weight: normal;
+    margin: 0 auto 0 0;
+    color: var(--Grey600);
+}
+.roomstatuslabel-amount{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.6rem;
+    font-weight: normal;
+    margin: 0 0 0 auto;
+    color: var(--Grey600);
+}

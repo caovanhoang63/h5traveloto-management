@@ -1,0 +1,9 @@
+.dashboard-container{
+    background: var(--Grey100);
+}
+.dashboard-content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+}
