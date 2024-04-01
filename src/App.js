@@ -168,10 +168,10 @@ function App() {
         { value: 's' },
     ];
     return (
-        // <MainLayout >
-        //     <TransparentButton border={true} disabled={true} src={ico_tag} icon={"only"}>Hellasdasdso</TransparentButton>
-        // </MainLayout>
-        <CreateHotel></CreateHotel>
+        <MainLayout >
+            <TransparentButton border={true} disabled={true} src={ico_tag} icon={"only"}>Hellasdasdso</TransparentButton>
+        </MainLayout>
+        // <CreateHotel></CreateHotel>
     )
 }
 

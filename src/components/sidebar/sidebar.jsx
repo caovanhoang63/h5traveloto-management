@@ -6,7 +6,7 @@ import ico_arrow_line_left from "../../assets/icons/arrow-line-left.png";
 import ico_arrow_line_left_active from "../../assets/icons/arrow-line-left-active.png";
 import Sidebar_tab from "./sidebar_tab";
 
-const Sidebar = ({data}) => {
+const Sidebar = ({isLogo = true, data}) => {
 
 	const [isToggleSideBar, setToggleSideBar] = useState(false);
 	const [activeTab, setActiveTab] = useState(null);
@@ -21,7 +21,7 @@ const Sidebar = ({data}) => {
 			setToggleSideBar(true);
 		}
 	};
-	const hanldeClick_Tab = (tab, tabs) => {
+	const hanldeClick_Tab = (tab) => {
 		setActiveTab(tab);
 	}
 	
@@ -40,19 +40,19 @@ const Sidebar = ({data}) => {
 	return (
 		<div className={"sidebar-container"}>
 			<div className={'sidebar' + (isToggleSideBar ? ' active' : '') }>
-				<div className="menu-btn" onClick={handleClick_MenuBtn}>
+				<div className="sidebar-menu-btn" onClick={handleClick_MenuBtn}>
 					<img src={ico_arrow_line_left} alt="" />
 				</div>
-				<div className="head">
-					<div className={'logo' + (isToggleSideBar ? ' active' : '')}>
+				<div className={'sidebar-head' + (isLogo ? ' active' : '')}>
+					<div className={'sidebar-logo' + (isToggleSideBar ? ' active' : '')}>
 						<img src={img_Logo} alt=""/>
 					</div>
-					<div className={'logo-full' + (isToggleSideBar ? '' : ' active')}>
+					<div className={'sidebar-logo-full' + (isToggleSideBar ? '' : ' active')}>
 						<img src={img_LogoFull} alt=""/>
 					</div>
 				</div>
-				<div className="nav">
-					<div className="menu">
+				<div className="sidebar-nav">
+					<div className="sidebar-menu">
 						<ul>
 							{tabs}
 						</ul>
