@@ -1,0 +1,28 @@
+.CreateHotelScreen-Container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--Grey50);
+    min-height: 100vh;
+}
+.CreateHotelScreen-Header {
+    width: 100vw;
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 120px;
+    border-bottom: 1px solid var(--Grey50);
+}
+.CreateHotelScreen-Header-Logo {
+    width: 150px;
+}
+.CreateHotelScreen-Header-Logo img {
+    width: 100%;
+}
+.CreateHotelScreen-Header-UserMail {
+    font-size: 1.25rem;
+    font-weight: normal;
+}

@@ -17,6 +17,7 @@ import ico_calendar_active from "./assets/icons/calendar-active.png";
 import ico_bubble_chat from "./assets/icons/bubble-chat.png";
 import ico_bubble_chat_active from "./assets/icons/bubble-chat-active.png";
 import MainLayout from "./layouts/main-layout/main-layout";
+import CreateHotel from "./screens/create-hotel-screen/create-hotel-screen";
 const TABLE_ROWS = [
     {
         reservationId: "123",
@@ -167,10 +168,10 @@ function App() {
         { value: 's' },
     ];
     return (
-        <MainLayout >
-            <TransparentButton border={true} disabled={true} src={ico_tag} icon={"only"}>Hellasdasdso</TransparentButton>
-        </MainLayout>
-
+        // <MainLayout >
+        //     <TransparentButton border={true} disabled={true} src={ico_tag} icon={"only"}>Hellasdasdso</TransparentButton>
+        // </MainLayout>
+        <CreateHotel></CreateHotel>
     )
 }
 
