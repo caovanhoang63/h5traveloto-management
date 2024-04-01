@@ -29,3 +29,8 @@
     color: var(--Grey400);
     font-family: "Plus Jakarta Sans", serif;
 }
+.feedbackblock-room{
+    color: var(--Grey800);
+    font-family: "Plus Jakarta Sans", serif;
+    align-content: center;
+}

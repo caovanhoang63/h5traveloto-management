@@ -1,9 +1,14 @@
 .dashboard-container{
-    background: var(--Grey100);
+    background: var(--Grey50);
 }
 .dashboard-content{
     display: flex;
     flex-direction: column;
     gap: 20px;
     padding: 10px;
+}
+.statistics-feedback-container{
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
 }

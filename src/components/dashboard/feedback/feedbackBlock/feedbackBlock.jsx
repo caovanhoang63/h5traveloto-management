@@ -4,10 +4,10 @@
         return (
             <div className="feedbackblock-container" onClick={_onClick}>
                 <div className="feedbackblock-content">
-                    <label className="feedbackblock-name">{customerName}</label>
+                    <span className="feedbackblock-name">{customerName}</span>
                     <p className="feedbackblock-feedback">{feedback}</p>
                 </div>
-                <label className="feedbackblock-room">{roomId}</label>
+                <span className="feedbackblock-room">{roomId}</span>
             </div>
         );
     }
