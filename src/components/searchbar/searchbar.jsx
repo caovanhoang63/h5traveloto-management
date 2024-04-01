@@ -79,6 +79,7 @@ function SearchBar(props) {
     };
 
     const handleSearch = (value) => {
+        if (value == "") return;
         setItemHistory(value);
         blurInput();
     };
@@ -119,7 +120,14 @@ function SearchBar(props) {
                         }
                     }}
                 />
-                <img src={imageSearch} alt="" className="searchBar__icon" />
+                <button
+                    className="searchBar__button-search "
+                    onClick={() => {
+                        handleSearch(searchQuery);
+                    }}
+                >
+                    <img src={imageSearch} alt="" className="searchBar__icon" />
+                </button>
             </div>
             {isVisibleHistory && (
                 <div className={"historyContainer"}>

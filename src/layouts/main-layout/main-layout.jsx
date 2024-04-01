@@ -19,7 +19,8 @@ import ico_calendar_active from "../../assets/icons/calendar-active.png";
 import ico_bubble_chat from "../../assets/icons/bubble-chat.png";
 import ico_bubble_chat_active from "../../assets/icons/bubble-chat-active.png";
 import "./main-layout.css";
-import RoomPage from "../../Pages/room_page";
+import RoomPage from "../../Pages/room-page.jsx";
+import RoomTypePage from "../../Pages/room-type-page.jsx";
 
 const sidebar_data = [
     {
@@ -111,9 +112,7 @@ const MainLayout = ({ screenName = "screen name", ...props }) => {
                             <span>{screenName}</span>
                         </div>
                         {/* <div>{props.children}</div> */}
-                        <div>
-                            <RoomPage></RoomPage>
-                        </div>
+                        <RoomPage></RoomPage>
                     </div>
                 </div>
             </div>
