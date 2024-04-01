@@ -2,6 +2,8 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	z-index: 1;
+	position: relative;
 }
 
 .sidebar {
@@ -12,7 +14,10 @@
 	flex-direction: column;
 	gap: 10px;
 	background-color: #fff;
-	padding: 24px;
+	padding-left: 18px;
+	padding-right: 18px;
+	padding-top: 24px;
+	padding-bottom: 24px;
 	/* border-radius: 30px; */
 	transition: width 0.3s;
 }
@@ -22,7 +27,7 @@
 .sidebar .sidebar-head.active {
 	display: flex;
 	gap:10px;
-	padding-bottom: 28px;
+	padding-bottom: 26px;
 	justify-content: center;
 	/* border-bottom: 3px solid #f6f6f6; */
 }
@@ -37,7 +42,7 @@
 	width: 100%;
 }
 .sidebar-logo {
-	width: 30px;
+	width: 40px;
 	display: none;
 }
 .sidebar-logo.active {

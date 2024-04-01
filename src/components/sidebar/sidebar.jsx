@@ -6,7 +6,7 @@ import ico_arrow_line_left from "../../assets/icons/arrow-line-left.png";
 import ico_arrow_line_left_active from "../../assets/icons/arrow-line-left-active.png";
 import Sidebar_tab from "./sidebar_tab";
 
-const Sidebar = ({isLogo = true, data}) => {
+const Sidebar = ({data, isLogo = true}) => {
 
 	const [isToggleSideBar, setToggleSideBar] = useState(false);
 	const [activeTab, setActiveTab] = useState(null);
