@@ -119,7 +119,7 @@ const MainLayout = ({ screenName = "screen name", ...props }) => {
                         <div className={"screen-name"}>
                             <span>{screenName}</span>
                         </div>
-                        <div>{props.children}</div>
+                        <div className={"screen-content"}>{props.children}</div>
                     </div>
                 </div>
             </div>

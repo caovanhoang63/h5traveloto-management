@@ -133,32 +133,31 @@ function RoomPage() {
         getRooms(params)
             .then((res) => {
                 const data = res;
-                console.log(data);
+                console.log(data.data);
 
                 // data.data => array cac phong
                 // data.paging => du lieu lien quan den paging
                 // data.filter => du lieu lien quan den filer
 
-                // data la du lieu tra ve
-                // const length = data.data.length;
-                // const allData = [];
-                // const availableData = [];
-                // const bookedData = [];
-                // for (let i = 0; i < length; i++) {
-                //     if (data[i].status == "Available") {
-                //         availableData.push(data[i]);
-                //     } else if (data[i].status == "Booked") {
-                //         bookedData.push(data[i]);
-                //     }
-                //     allData.push(data[i]);
-                // }
-                // setRecords({
-                //     all: allData,
-                //     available: availableData,
-                //     booked: bookedData,
-                // });
+                const length = data.data.length;
+                const allData = [];
+                const availableData = [];
+                const bookedData = [];
+                for (let i = 0; i < length; i++) {
+                    if (data.data[i].status == 1) {
+                        availableData.push(data.data[i]);
+                    } else if (data.data[i].status == 2) {
+                        bookedData.push(data.data[i]);
+                    }
+                    allData.push(data.data[i]);
+                }
+                setRecords({
+                    all: allData,
+                    available: availableData,
+                    booked: bookedData,
+                });
             })
-            .catch();
+            .catch((e) => console.log(e));
     }, []);
     // Xu ly sau khi lay du lieu tu API
     useEffect(() => {
@@ -179,9 +178,17 @@ function RoomPage() {
             if (i == records[type].length) {
                 break;
             }
-            row.push(records[type][i]);
+            row.push(ConvertDataTable(records[type][i]));
         }
         setTableData(row);
+    }
+    function ConvertDataTable(data) {
+        return {
+            roomNumber: data.name,
+            roomType: data.room_type_id,
+            roomFloor: data.floor,
+            status: data.status ? "Available" : "Booked",
+        };
     }
 
     const handleClickPage = (page) => {
