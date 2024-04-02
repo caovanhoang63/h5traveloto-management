@@ -1,13 +1,16 @@
 import ico_arrow_right_active from "../../assets/icons/arrow_right_active.png";
 import Divider from "../divider/divider";
 import CheckBox from "../checkbox/checkbox";
+import RadioButton from "../radiobutton/radiobutton";
+import "../radiobutton/radiobutton.css";
 import "./facilities-property.css";
 
 const FacilitiesProperty = ({data}) => {
 
     const facilities = data.facilities && data.facilities.map && data.facilities.map(facility => (
         <li key={data.facilities.id}>
-            <CheckBox/>
+            <RadioButton group={"radio"}/>
+            {/* <CheckBox/> */}
             <div>{facility.name_en}</div>
         </li>
     ));
