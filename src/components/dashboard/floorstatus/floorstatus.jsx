@@ -3,38 +3,49 @@ import "./floorstatus.css";
 import Chart from "../chart/chart";
 export default function Floorstatus() {
     const option = {
-            tooltip: {
-                trigger: 'item'
-            },
-            legend: {
-                top: '5%',
-                left: 'center'
-            },
-            series: [
-                {
-                    name: 'Access From',
-                    type: 'pie',
-                    radius: ['40%', '70%'],
-                    center: ['50%', '70%'],
-                    // adjust the start and end angle
-                    startAngle: 180,
-                    endAngle: 360,
-                    data: [
-                        { value: 1048, name: 'Search Engine' },
-                        { value: 735, name: 'Direct' },
-                        { value: 580, name: 'Email' },
-                        { value: 484, name: 'Union Ads' },
-                        { value: 300, name: 'Video Ads' }
-                    ]
-                }
-            ]
-        };
+        tooltip: {
+            trigger: 'item'
+        },
+        legend: {
+            orient: 'vertical',
+            x: 'right',
+            data: ['Competed', 'Yet to Complete'],
+        },
+        series: [
+            {
+                bottom: 10,
+                type: 'pie',
+                radius: ['70%', '90%'],
+                center: ['50%', '50%'],
+                avoidLabelOverlap: false,
+
+                label: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    label: {
+                        show: false,
+                        fontSize: '30',
+                        fontWeight: 'bold'
+                    }
+                },
+                labelLine: {
+                    show: false
+                },
+                data: [
+                    { value: 80, name: 'Competed' },
+                    { value: 20, name: 'Yet to Complete' }
+                ]
+            }
+        ],
+        color: ['#0080FF', '#F2F2F2'] // Màu sắc tương ứng với dữ liệu
+    };
     return (
         <div className="floorstatus-container">
             <h1 className="floorstatus-header">Floor status</h1>
-            {/*<div className="floorstatus-content">*/}
-                <Chart option={option}></Chart>
-            {/*</div>*/}
+            <Chart option={option}></Chart>
+
 
         </div>
     );

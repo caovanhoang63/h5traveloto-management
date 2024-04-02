@@ -12,10 +12,10 @@
 }
 .roomtag-label{
     margin: 14px 0 0 16px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+
 }
 .roomtag-name{
-    font-family: 'Plus Jakarta Sans', sans-serif;
+
     font-size: 1.8rem;
     font-weight: normal;
 }
@@ -29,7 +29,6 @@
 }
 .roomtag-p{
     margin: 0 0 4px 0;
-    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 2rem;
     font-weight: normal;
 }

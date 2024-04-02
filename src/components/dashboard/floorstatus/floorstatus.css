@@ -18,3 +18,10 @@
     font-size: 2em;
     margin: 20px 0 16px 16px;
 }
+.floorstatus-piechart{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}

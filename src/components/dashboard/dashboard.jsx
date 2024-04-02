@@ -10,14 +10,13 @@ import Floorstatus from "./floorstatus/floorstatus";
 function Dashboard({roomsdata,feedbackdata}) {
 
     return (
-
         <>
             <div className="dashboard-container">
                 <div className="dashboard-content">
                     <Overview></Overview>
                     <Rooms data={roomsdata}/>
 
-                    <div className={"testconatainer"}>
+                    <div className={"roomstatus-floorstatus-container"}>
                         <RoomStatus></RoomStatus>
                         <Floorstatus></Floorstatus>
                     </div>

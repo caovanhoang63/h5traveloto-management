@@ -9,3 +9,31 @@
         border-radius: 8px;
         background: #ffffff;
 }
+.roomstatus-header{
+    color: var(--Grey800);
+    font-family: "Plus Jakarta Sans", serif;
+    font-weight: normal;
+    font-size: 2em;
+    margin: 20px 0 auto 16px;
+}
+.roomstatus-content{
+    display: flex;
+    flex-direction: row;
+    gap: 98px;
+    margin: auto 16px 25px 16px;
+}
+.roomstatuslabel-container{
+    gap: 15px;
+}
+.roomstatus-content-left{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+.roomstatus-content-right  {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
