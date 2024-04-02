@@ -1,12 +1,10 @@
-
 import React, { useState } from 'react';
 import Textbox, {PasswordTextbox} from "../../components/textbox/textbox";
-import logo from "../../assets/icons/logo.png";
 import './signup-screen.css';
 import {PrimaryButton} from "../../components/button/button";
-import app from "../../App";
+import {register} from "../../api/user";
 
-const LoginScreen = () => {
+const SignUpScreen = () => {
     const [rememberMe, setRememberMe] = useState(false);
 
     const handleRememberMeChange = () => {
@@ -15,7 +13,27 @@ const LoginScreen = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Perform login logic here
+        if (e.target.password.value !== e.target.confirm_password.value) {
+            alert("password does not match!");
+            return;
+        }
+
+        const userRegister = {
+            first_name : e.target.first_name.value,
+            last_name : e.target.last_name.value,
+            email : e.target.email.value,
+            password : e.target.password.value,
+        }
+
+        register(userRegister)
+            .then( (res) => {
+            alert("register success!")
+        })
+            .catch( (error) => {
+                const data = error.response.data
+                console.log("message: ", data.message)
+            }
+        )
 
     };
     const logo = require('../../assets/icons/logo-no-background.png');
@@ -26,12 +44,12 @@ const LoginScreen = () => {
                 <div className="SignupScreenContent">
                     <h2 className="SignupScreenH2">Sign Up</h2>
                     <form className="SignupScreenForm" onSubmit={handleSubmit}>
-                        <Textbox id={"fisrtname"} classname="SignupScreenFirstName" title="First Name"
+                        <Textbox id={"first_name"} classname="SignupScreenFirstName" title="First Name"
                                  placeHolder="Enter your first name"/>
-                        <Textbox id={"lastname"} classname="SignupScreenLastName" title="Last Name" placeHolder="Enter your last name"/>
+                        <Textbox id={"last_name"} classname="SignupScreenLastName" title="Last Name" placeHolder="Enter your last name"/>
                         <Textbox id={"email"} classname="SignupScreenEmail" title="Email" placeHolder="Enter your email"/>
                         <Textbox id={"password"} classname="SignupScreenPassword" title="Password" placeHolder="Enter your password"/>
-                        <Textbox id={"confirmpassword"} classname="SignupScreenConfirmPassword" title="Confirm Password"
+                        <Textbox id={"confirm_password"} classname="SignupScreenConfirmPassword" title="Confirm Password"
                                  placeHolder="Confirm your password"/>
 
                         <PrimaryButton type={"submit"}>Sign Up</PrimaryButton>
@@ -49,4 +67,4 @@ const LoginScreen = () => {
     );
 };
 
-export default LoginScreen;
+export default SignUpScreen;

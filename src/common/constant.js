@@ -59,3 +59,6 @@ export const Primary600 = '#1366d9';
 export const Primary700 = '#0f50aa';
 export const Primary800 = '#0c3e83';
 export const Primary900 = '#092f64';
+
+
+export const API_ROOT = 'http://192.168.0.54:8080/v1'

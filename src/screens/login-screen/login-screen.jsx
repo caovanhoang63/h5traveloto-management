@@ -1,10 +1,11 @@
 
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Textbox, {PasswordTextbox} from "../../components/textbox/textbox";
 import logo from "../../assets/icons/logo.png";
 import './login-screen.css';
 import {PrimaryButton} from "../../components/button/button";
 import app from "../../App";
+import {authentication} from "../../api/user";
 
 const LoginScreen = () => {
     const [rememberMe, setRememberMe] = useState(false);
@@ -13,11 +14,24 @@ const LoginScreen = () => {
         setRememberMe(!rememberMe);
     };
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Perform login logic here
+        const userLogin = {
+            email: e.target.email.value,
+            password: e.target.password.value
+        };
 
+        authenticate(userLogin).then((response) => {
+            const data =  response.data.data
+            localStorage.setItem("token", data.access_token.Token)
+            console.log(data.access_token.Token)
+        }).catch((error) => {
+            const data = error.response.data
+            console.log(data.message);
+        });
     };
+
     const logo = require('../../assets/icons/logo-no-background.png');
     return (
         <div className="LoginScreenContainer">
@@ -48,8 +62,6 @@ const LoginScreen = () => {
                     Up</a>
                 </p>
             </div>
-
-
         </div>
     );
 };
