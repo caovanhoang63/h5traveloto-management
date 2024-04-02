@@ -1,0 +1,72 @@
+.messagequeue-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    border-radius: 8px;
+    /* box-sizing: border-box; */
+    /* max-height: 70px;
+    max-width: 270px; */
+    height: 160px;
+    width: 90%;
+    margin-top: 15px;
+    /* cursor: pointer; */
+    background-color: white;
+    border: 1px solid var(--Grey300);
+}
+.messagequeue-header{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    height: 25%;
+    width: 100%;
+    background-color: white;
+    padding-top: 5px;
+    padding: 10px;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+.messagequeue-body{
+    height: 50%;
+    width: 100%;
+    background-color: white;
+    border-top:1px solid var(--Grey300);
+    border-bottom:1px solid var(--Grey300);
+    color:var(--Grey900);
+    margin-top: 3px;
+    font-size: 1.2rem;
+    font-weight: lighter;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+.messagequeue-footer{
+    height: 25%;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    justify-items: space-between;
+}
+.messagequeue-date{
+    margin-left: 10px;
+    color: var(--Grey700);
+    text-align: right;
+    font-size: 1.2rem;
+}
+.messagequeue-time{
+    margin-left: 10px;
+    color: var(--Grey700);
+    text-align: right;
+    font-size: 1.2rem;
+}
+.messagequeue-button{
+    position:absolute;
+    top: 5.5px;
+    right: 5px;
+    height: 27px;
+    width: 75px;
+    border-radius: 10px;
+}

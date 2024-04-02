@@ -20,6 +20,7 @@ import MainLayout from "./layouts/main-layout/main-layout";
 import LoginScreen from "./screens/login-screen/login-screen";
 import ChatScreen from "./screens/chat-screen/chat-screen";
 import ActiveChat from "./components/activechat/activechat";
+import MessageQueue from "./components/messagequeue/messagequeue";
 const TABLE_ROWS = [
     {
         reservationId: "123",
@@ -170,12 +171,15 @@ function App() {
         { value: 's' },
     ];
     return (
-        <MainLayout screenName="Chat Screen">
-            {/* <TransparentButton border={true} disabled={true} src={ico_tag} icon={"only"}>Hellasdasdso</TransparentButton> */}
-            {/* <ChatScreen></ChatScreen> */}
-            {/* <LoginScreen></LoginScreen> */}
-            <ChatScreen ></ChatScreen>
+        // <MainLayout screenName="Chat Screen">
+        //     {/* <TransparentButton border={true} disabled={true} src={ico_tag} icon={"only"}>Hellasdasdso</TransparentButton> */}
+        //     {/* <ChatScreen></ChatScreen> */}
+        //     {/* <LoginScreen></LoginScreen> */}
+        //     <ChatScreen ></ChatScreen>
             
+        // </MainLayout>
+        <MainLayout> 
+        <ChatScreen></ChatScreen>
         </MainLayout>
     )
 }
