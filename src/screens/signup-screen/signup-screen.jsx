@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import Textbox, {PasswordTextbox} from "../../components/textbox/textbox";
 import logo from "../../assets/icons/logo.png";
 import './signup-screen.css';
+import {PrimaryButton} from "../../components/button/button";
+import app from "../../App";
 
 const LoginScreen = () => {
     const [rememberMe, setRememberMe] = useState(false);
@@ -14,6 +16,7 @@ const LoginScreen = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         // Perform login logic here
+
     };
     const logo = require('../../assets/icons/logo-no-background.png');
     return (
@@ -23,15 +26,15 @@ const LoginScreen = () => {
                 <div className="SignupScreenContent">
                     <h2 className="SignupScreenH2">Sign Up</h2>
                     <form className="SignupScreenForm" onSubmit={handleSubmit}>
-                        <Textbox classname="SignupScreenFirstName" title="First Name"
+                        <Textbox id={"fisrtname"} classname="SignupScreenFirstName" title="First Name"
                                  placeHolder="Enter your first name"/>
-                        <Textbox classname="SignupScreenLastName" title="Last Name" placeHolder="Enter your last name"/>
-                        <Textbox classname="SignupScreenEmail" title="Email" placeHolder="Enter your email"/>
-                        <Textbox classname="SignupScreenPassword" title="Password" placeHolder="Enter your password"/>
-                        <Textbox classname="SignupScreenConfirmPassword" title="Confirm Password"
+                        <Textbox id={"lastname"} classname="SignupScreenLastName" title="Last Name" placeHolder="Enter your last name"/>
+                        <Textbox id={"email"} classname="SignupScreenEmail" title="Email" placeHolder="Enter your email"/>
+                        <Textbox id={"password"} classname="SignupScreenPassword" title="Password" placeHolder="Enter your password"/>
+                        <Textbox id={"confirmpassword"} classname="SignupScreenConfirmPassword" title="Confirm Password"
                                  placeHolder="Confirm your password"/>
 
-                        <button className="SignupScreenButton" type="submit">Sign In</button>
+                        <PrimaryButton type={"submit"}>Sign Up</PrimaryButton>
                     </form>
                 </div>
                 <p className="SignupScreenP">

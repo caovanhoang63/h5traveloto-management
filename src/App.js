@@ -22,6 +22,7 @@ import Roomtag from "./components/dashboard/rooms/roomtag/roomtag";
 import Overviewtag from "./components/dashboard/overview/overviewtag/overviewtag";
 import Overview from "./components/dashboard/overview/overview";
 import Dashboard from "./components/dashboard/dashboard";
+import LoginScreen from "./screens/login-screen/login-screen";
 const TABLE_ROWS = [
     {
         reservationId: "123",
@@ -710,9 +711,10 @@ function App() {
         }
     }
     return (
-        <MainLayout >
+        /*<MainLayout >
             <Dashboard roomsdata={data} feedbackdata={feedbackdata} />
-        </MainLayout>
+        </MainLayout>*/
+        <LoginScreen />
 
 
     )
