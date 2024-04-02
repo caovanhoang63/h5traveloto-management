@@ -160,7 +160,6 @@ const sidebar_data = [
 ];
 
 
-
 function App() {
     const options = [
         { value: 'tuoi' },
@@ -172,7 +171,6 @@ function App() {
         //     <TransparentButton border={true} disabled={true} src={ico_tag} icon={"only"}>Hellasdasdso</TransparentButton>
         // </MainLayout>
         <CreateHotel></CreateHotel>
-        
     )
 }
 

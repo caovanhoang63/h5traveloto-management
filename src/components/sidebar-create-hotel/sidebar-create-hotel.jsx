@@ -14,6 +14,7 @@ const SidebarCreateHotel = ({data, progress}) => {
 		<li key={tab.id} onClick={() => {hanldeClick_Tab(tab)}}>
 			<SidebarTabCreateHotel 
 			content={tab.content}
+			navigate={tab.navigate}
 			taskNum={tab.taskNum}
 			isActive={tab === activeTab}
 			/>

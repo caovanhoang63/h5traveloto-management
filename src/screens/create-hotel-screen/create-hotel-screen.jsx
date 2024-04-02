@@ -1,6 +1,17 @@
 import img_LogoFull from "../../assets/icons/logofull.png";
 import SidebarCreateHotel from "../../components/sidebar-create-hotel/sidebar-create-hotel";
-
+import { 
+    BrowserRouter,
+    createBrowserRouter,
+    createRoutesFromElements,
+    Route,
+    RouterProvider
+} from "react-router-dom";
+import CH_GeneralInformation from "./general-information/ch-general-information";
+import CH_PropertyDetails from "./property-details/ch-property-details";
+import CH_PropertyFacilities from "./property-facilities/ch-property-facilities";
+import CH_PhotosInformation from "./photos-information/ch-photos-information";
+import CH_Payment from "./payment/ch-payment";
 import './create-hotel-screen.css';
 
 const CreateHotel = () => {
@@ -9,29 +20,46 @@ const CreateHotel = () => {
         {
             id: 1,
             content: "General Information",
+            navigate: "",
             taskNum: 10
         },
         {
             id: 2,
             content: "Property Details",
+            navigate: "property_details",
             taskNum: 0
         },
         {
             id: 3,
             content: "Property Facilities",
+            navigate: "property_facilities",
             taskNum: 5
         },
         {
             id: 4,
             content: "Photos",
+            navigate: "photos",
             taskNum: 5
         },
         {
             id: 5,
             content: "Payment",
+            navigate: "payment",
             taskNum: 5
         }
     ]
+
+    // const router = createBrowserRouter(
+    //     createRoutesFromElements(
+    //         <Route path="/">
+    //             <Route index element={<CH_GeneralInformation/>}/>
+    //             <Route path="property_details" element={<CH_PropertyDetails/>}/>
+    //             <Route path="property_facilities" element={<CH_PropertyFacilities/>}/>
+    //             <Route path="photos" element={<CH_PhotosInformation/>}/>
+    //             <Route path="payment" element={<CH_Payment/>}/>
+    //         </Route>
+    //     )
+    // )
 
 	const userMail = "user@gmail.com";
 
@@ -51,7 +79,7 @@ const CreateHotel = () => {
                 <SidebarCreateHotel data={data} progress={10}/>
             </div>
             <div className="CreateHotelScreen-Fields">
-                <div>Something</div>
+                <CH_GeneralInformation></CH_GeneralInformation>
             </div>
         </div>
     </div>

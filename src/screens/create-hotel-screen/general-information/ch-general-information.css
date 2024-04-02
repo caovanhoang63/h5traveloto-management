@@ -1,0 +1,31 @@
+.CH_GeneralInformation-Container {
+    margin-top: 25px;    
+    margin-left: 20px;
+    position: relative;
+}
+.CH_GeneralInformation-Header {
+    font-size: 2rem;
+    color: black;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+.CH_GeneralInformation-Main {
+    background-color: var(--white-color);
+	padding: 10px;
+	border-radius: 8px;
+    font-size: 1.5rem;
+    color: var(--Grey600);
+}
+.CH_GeneralInformation-Property {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    align-items: center;
+    gap: 10px;
+}
+.CH_GeneralInformation-Title {
+    flex: 1;
+}
+.CH_GeneralInformation-Content {
+    width: 100px;
+}
