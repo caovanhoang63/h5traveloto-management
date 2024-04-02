@@ -19,6 +19,8 @@ import ico_calendar_active from "../../assets/icons/calendar-active.png";
 import ico_bubble_chat from "../../assets/icons/bubble-chat.png";
 import ico_bubble_chat_active from "../../assets/icons/bubble-chat-active.png";
 import "./main-layout.css";
+import RoomPage from "../../Pages/room-page.jsx";
+import RoomTypePage from "../../Pages/room-type-page.jsx";
 
 const sidebar_data = [
     {
@@ -87,7 +89,7 @@ const sidebar_data = [
     },
 ];
 
-const MainLayout = ({screenName ="screen name",...props}) => {
+const MainLayout = ({ screenName = "screen name", ...props }) => {
     const options = [{ value: "tuoi" }, { value: "báo" }, { value: "s" }];
     return (
         <div>
@@ -96,7 +98,9 @@ const MainLayout = ({screenName ="screen name",...props}) => {
                 <div className={"content-container"}>
                     <header className={"header"}>
                         <div className={"header-content"}>
-                            <SearchBar className={"searchBar--position top50"} />
+                            <SearchBar
+                                className={"searchBar--position top50"}
+                            />
                             <div className={"header-buttons"}>
                                 <span>12</span>
                                 <span>32</span>
@@ -107,7 +111,8 @@ const MainLayout = ({screenName ="screen name",...props}) => {
                         <div className={"screen-name"}>
                             <span>{screenName}</span>
                         </div>
-                        <div>{props.children}</div>
+                        {/* <div>{props.children}</div> */}
+                        <RoomPage></RoomPage>
                     </div>
                 </div>
             </div>

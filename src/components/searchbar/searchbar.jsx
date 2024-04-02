@@ -79,6 +79,7 @@ function SearchBar(props) {
     };
 
     const handleSearch = (value) => {
+        if (value == "") return;
         setItemHistory(value);
         blurInput();
     };
@@ -99,7 +100,7 @@ function SearchBar(props) {
             ref={containerRef}
         >
             <div className="searchBar">
-                <img src={imageSearch} alt="" className="searchBar__icon" />
+                {/* <img src={imageSearch} alt="" className="searchBar__icon" /> */}
                 <input
                     type="text"
                     ref={inputRef}
@@ -119,6 +120,14 @@ function SearchBar(props) {
                         }
                     }}
                 />
+                <button
+                    className="searchBar__button-search "
+                    onClick={() => {
+                        handleSearch(searchQuery);
+                    }}
+                >
+                    <img src={imageSearch} alt="" className="searchBar__icon" />
+                </button>
             </div>
             {isVisibleHistory && (
                 <div className={"historyContainer"}>
@@ -129,7 +138,9 @@ function SearchBar(props) {
                                 <li
                                     key={index}
                                     className="history__item"
-                                    onClick={() => handleClickItemHistory(value)}
+                                    onClick={() =>
+                                        handleClickItemHistory(value)
+                                    }
                                 >
                                     <img
                                         src={imageHistory}
@@ -137,8 +148,8 @@ function SearchBar(props) {
                                         className="history__icon"
                                     />
                                     <span className="history__item-text">
-                                    {value}
-                                </span>
+                                        {value}
+                                    </span>
                                     <img
                                         src={imageDelete}
                                         alt=""
@@ -153,7 +164,6 @@ function SearchBar(props) {
                         </ul>
                     </div>
                 </div>
-
             )}
         </div>
     );
