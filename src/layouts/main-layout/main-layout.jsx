@@ -19,8 +19,8 @@ import ico_calendar_active from "../../assets/icons/calendar-active.png";
 import ico_bubble_chat from "../../assets/icons/bubble-chat.png";
 import ico_bubble_chat_active from "../../assets/icons/bubble-chat-active.png";
 import "./main-layout.css";
-import RoomPage from "../../Pages/room-page.jsx";
-import RoomTypePage from "../../Pages/room-type-page.jsx";
+import RoomPage from "../../screens/room-screen/room-page.jsx";
+import RoomTypePage from "../../screens/room-type-screen/room-type-page.jsx";
 
 const sidebar_data = [
     {

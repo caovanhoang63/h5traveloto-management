@@ -44,18 +44,8 @@ const LoginScreen = () => {
                 <div className="LoginScreenContent">
                     <h2 className="LoginScreenH2">Welcome Back</h2>
                     <form className="LoginScreenForm" onSubmit={handleSubmit}>
-                        <Textbox
-                            id={"email"}
-                            classname="LoginScreenEmail"
-                            title="Email"
-                            placeHolder="Enter your email"
-                        />
-                        <Textbox
-                            id={"password"}
-                            classname="LoginScreenPassword"
-                            title="Password"
-                            placeHolder="Enter your password"
-                        />
+                        <Textbox id={"email"} classname="LoginScreenEmail" title="Email" placeHolder="Enter your email"/>
+                        <Textbox id={"password"} classname="LoginScreenPassword" title="Password" placeHolder="Enter your password"/>
                         <div className="remembermeDiv">
                             <label>
                                 <input
@@ -66,17 +56,12 @@ const LoginScreen = () => {
                                 Remember me
                             </label>
                         </div>
-                        <PrimaryButton type={"submit"}>Login</PrimaryButton>
+                        <PrimaryButton type={"submit"} size={"md"}>Login</PrimaryButton>
                     </form>
                 </div>
                 <p className="LoginScreenP">
                     Don't have an account?{" "}
-                    <a
-                        className="LoginScreenA"
-                        href="../signup-screen/signup-screen.jsx"
-                    >
-                        Sign Up
-                    </a>
+                    <a className="LoginScreenA" href="../signup-screen/signup-screen.jsx">Sign Up</a>
                 </p>
             </div>
         </div>

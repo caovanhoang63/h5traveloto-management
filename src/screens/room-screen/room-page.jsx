@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Button, { PrimaryButton } from "../components/button/button";
-import Table from "../components/table/table";
+import Button, { PrimaryButton } from "../../components/button/button";
+import Table from "../../components/table/table";
 import "./room-page.css";
-import PageNavigation from "../components/pagenavigation/pagenavigation";
-import { getRooms } from "../api/room_api";
+import PageNavigation from "../../components/pagenavigation/pagenavigation";
+import { getRooms } from "../../api/room_api";
 
 const columns = [
     {
@@ -14,104 +14,16 @@ const columns = [
         Header: "Room type",
         accessor: "roomType",
     },
-
     {
         Header: "Room floor",
         accessor: "roomFloor",
     },
-
     {
         Header: "Status",
         accessor: "status",
     },
 ];
 
-// const data = [
-//     {
-//         roomNumber: "101",
-//         roomType: "Single",
-//         roomFloor: "1",
-//         roomFacility: "WiFi",
-//         status: "Available",
-//     },
-//     {
-//         roomNumber: "102",
-//         roomType: "Double",
-//         roomFloor: "1",
-//         roomFacility: "TV",
-//         status: "Booked",
-//     },
-//     {
-//         roomNumber: "103",
-//         roomType: "Single",
-//         roomFloor: "1",
-//         roomFacility: "WiFi",
-//         status: "Available",
-//     },
-//     {
-//         roomNumber: "104",
-//         roomType: "Single",
-//         roomFloor: "1",
-//         roomFacility: "WiFi",
-//         status: "Booked",
-//     },
-//     {
-//         roomNumber: "105",
-//         roomType: "Single",
-//         roomFloor: "1",
-//         roomFacility: "WiFi",
-//         status: "Available",
-//     },
-//     {
-//         roomNumber: "106",
-//         roomType: "Single",
-//         roomFloor: "1",
-//         roomFacility: "WiFi",
-//         status: "Available",
-//     },
-//     {
-//         roomNumber: "107",
-//         roomType: "Single",
-//         roomFloor: "1",
-//         roomFacility: "WiFi",
-//         status: "Booked",
-//     },
-//     {
-//         roomNumber: "108",
-//         roomType: "Single",
-//         roomFloor: "1",
-//         roomFacility: "WiFi",
-//         status: "Available",
-//     },
-//     {
-//         roomNumber: "109",
-//         roomType: "Single",
-//         roomFloor: "1",
-//         roomFacility: "WiFi",
-//         status: "Booked",
-//     },
-//     {
-//         roomNumber: "110",
-//         roomType: "Single",
-//         roomFloor: "1",
-//         roomFacility: "WiFi",
-//         status: "Booked",
-//     },
-//     {
-//         roomNumber: "111",
-//         roomType: "Single",
-//         roomFloor: "1",
-//         roomFacility: "WiFi",
-//         status: "Available",
-//     },
-//     {
-//         roomNumber: "112",
-//         roomType: "Single",
-//         roomFloor: "1",
-//         roomFacility: "WiFi",
-//         status: "Available",
-//     },
-// ];
 
 function RoomPage() {
     const rowsData = 6; //So dong du lieu

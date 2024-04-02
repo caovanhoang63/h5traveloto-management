@@ -1,11 +1,11 @@
 import Button, {
     PrimaryButton,
     TransparentButton,
-} from "../components/button/button";
-import PageNavigation from "../components/pagenavigation/pagenavigation";
-import IconFilter from "../assets/icons/icon-filter.png";
+} from "../../components/button/button";
+import PageNavigation from "../../components/pagenavigation/pagenavigation";
+import IconFilter from "../../assets/icons/icon-filter.png";
 import "./room-type-page.css";
-import Table from "../components/table/table";
+import Table from "../../components/table/table";
 import { useEffect, useState } from "react";
 
 function RoomTypePage() {

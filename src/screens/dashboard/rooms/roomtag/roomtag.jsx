@@ -1,4 +1,4 @@
-import {GreenTag} from "../../../tag/tag";
+import {GreenTag} from "../../../../components/tag/tag";
 import "./roomtag.css";
 import {Red400, Red50} from "../../../../common/constant";
 

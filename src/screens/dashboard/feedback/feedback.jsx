@@ -1,15 +1,37 @@
 import "./feedback.css"
 import FeedbackBlock from "./feedbackBlock/feedbackBlock";
+import {useEffect, useState} from "react";
+import {getReviews} from "../../../api/reviews";
 
-function Feedback({data}) {
-    const func = () => {
-        console.log("clicked");
+function Feedback() {
+
+    const hotelId = "\"3mKb6KGah2LTST\"";
+
+    const params = {
+        hotel_id : hotelId,
     }
+    const [reviews, setReviews] = useState([])
+
+
+    useEffect(() => {
+        getReviews(params).then((res => {
+            console.log(res.data)
+            setReviews(res.data)
+        })).catch(
+            (e) => {
+
+            })
+    }, []);
+
+
+    const func = () => {}
+    
+    
     return (
         <div className="feedback-container">
             <h1 className="feedback-header">Feedback</h1>
             <div className="feedback-blocks">
-                {data.data.map((feedback) => (
+                {reviews.map((feedback) => (
                     <FeedbackBlock
                         key={feedback.id}
                         feedback={feedback.comment}

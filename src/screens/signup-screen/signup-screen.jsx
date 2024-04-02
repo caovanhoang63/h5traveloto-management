@@ -3,8 +3,12 @@ import Textbox, {PasswordTextbox} from "../../components/textbox/textbox";
 import './signup-screen.css';
 import {PrimaryButton} from "../../components/button/button";
 import {register} from "../../api/user_api";
+import {useNavigate} from "react-router-dom";
+
+
 
 const SignUpScreen = () => {
+    const navigate = useNavigate()
     const [rememberMe, setRememberMe] = useState(false);
 
     const handleRememberMeChange = () => {
@@ -25,17 +29,16 @@ const SignUpScreen = () => {
             password : e.target.password.value,
         }
 
-        register(userRegister)
-            .then( (res) => {
+        register(userRegister).then((res)=>{
             alert("register success!")
+            navigate("/login")
+        }).catch( (error) => {
+            const data = error.response.data
+            console.log("message: ", data.message)
         })
-            .catch( (error) => {
-                const data = error.response.data
-                console.log("message: ", data.message)
-            }
-        )
 
     };
+
     const logo = require('../../assets/icons/logo-no-background.png');
     return (
         <div className="SignupScreenContainer">
@@ -52,17 +55,14 @@ const SignUpScreen = () => {
                         <Textbox id={"confirm_password"} classname="SignupScreenConfirmPassword" title="Confirm Password"
                                  placeHolder="Confirm your password"/>
 
-                        <PrimaryButton type={"submit"}>Sign Up</PrimaryButton>
+                        <PrimaryButton type={"submit"} size={"md"}>Sign Up</PrimaryButton>
                     </form>
                 </div>
                 <p className="SignupScreenP">
-                    Don't have an account? <a className="SignupScreenA"
-                                              href="../signup-screen/signup-screen.jsx">Sign
-                    Up</a>
+                    Already have an account?
+                    <a className="SignupScreenA" href="/login">Login</a>
                 </p>
             </div>
-
-
         </div>
     );
 };

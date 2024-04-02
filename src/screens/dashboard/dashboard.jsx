@@ -7,22 +7,21 @@ import Statistics from "./occupancyStatistics/occupancyStatistics";
 import RoomStatus from "./roomstatus/roomstatus";
 import Floorstatus from "./floorstatus/floorstatus";
 
-function Dashboard({roomsdata,feedbackdata}) {
+function Dashboard({roomsdata}) {
 
     return (
         <>
             <div className="dashboard-container">
                 <div className="dashboard-content">
                     <Overview></Overview>
-                    <Rooms data={roomsdata}/>
-
+                    {/*<Rooms data={roomsdata}/>*/}
                     <div className={"roomstatus-floorstatus-container"}>
                         <RoomStatus></RoomStatus>
                         <Floorstatus></Floorstatus>
                     </div>
                     <div className="statistics-feedback-container">
                         <Statistics></Statistics>
-                        <Feedback data={feedbackdata}></Feedback>
+                        <Feedback></Feedback>
                     </div>
 
                 </div>
