@@ -26,7 +26,7 @@ const Sidebar = ({data, isLogo = true}) => {
 	}
 	
 	const tabs = data && data.map && data.map(tab => (
-		<li key={tab.id} onClick={() => {hanldeClick_Tab(tab, tabs)}}>
+		<li key={tab.id} onClick={() => {hanldeClick_Tab(tab)}}>
 			<Sidebar_tab
 				img={tab.ico} 
 				img_active={tab.active_ico} 

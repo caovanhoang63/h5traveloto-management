@@ -4,11 +4,13 @@
     background-color: var(--Grey50);
     min-height: 100vh;
 }
+
+/* Header */
 .CreateHotelScreen-Header {
     width: 100vw;
     background-color: white;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     padding-left: 50px;
     display: flex;
     flex-direction: row;
@@ -17,12 +19,27 @@
     border-bottom: 1px solid var(--Grey50);
 }
 .CreateHotelScreen-Header-Logo {
-    width: 150px;
+    width: 180px;
 }
 .CreateHotelScreen-Header-Logo img {
     width: 100%;
 }
 .CreateHotelScreen-Header-UserMail {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: normal;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Main */
+.CreateHotelScreen-Main {
+    display: flex;
+    flex-direction: row;
+}
+.CreateHotelScreen-SidebarContainer {
+    padding-left: 50px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-right: 10px;
 }

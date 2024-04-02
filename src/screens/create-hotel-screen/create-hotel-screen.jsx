@@ -15,6 +15,21 @@ const CreateHotel = () => {
             id: 2,
             content: "Property Details",
             taskNum: 0
+        },
+        {
+            id: 3,
+            content: "Property Facilities",
+            taskNum: 5
+        },
+        {
+            id: 4,
+            content: "Photos",
+            taskNum: 5
+        },
+        {
+            id: 5,
+            content: "Payment",
+            taskNum: 5
         }
     ]
 
@@ -32,8 +47,11 @@ const CreateHotel = () => {
 			</div>
         </div>
         <div className="CreateHotelScreen-Main">
-            <div className="CreateHotelScreen-SidebarContainer">                
-                <SidebarCreateHotel data={data} finishPercent={10}/>
+            <div className="CreateHotelScreen-SidebarContainer">
+                <SidebarCreateHotel data={data} progress={10}/>
+            </div>
+            <div className="CreateHotelScreen-Fields">
+                <div>Something</div>
             </div>
         </div>
     </div>
