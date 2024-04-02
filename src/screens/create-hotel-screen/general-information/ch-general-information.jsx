@@ -10,8 +10,8 @@ const CH_GeneralInformation = () => {
             </div>
             <div className="CH_GeneralInformation-Main">
                 <div className="CH_GeneralInformation-Property">
-                    <Textbox className="CH_GeneralInformation-Content"/>
                     <TextBlock className="CH_GeneralInformation-Title" content="Property Name"/>
+                    <Textbox className="CH_GeneralInformation-Content"/>
                 </div>
             </div>
         </div>

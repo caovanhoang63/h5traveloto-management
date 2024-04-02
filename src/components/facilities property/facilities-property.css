@@ -1,0 +1,58 @@
+.FacilitiesProperty-Container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 8px;
+    padding: 0px;
+    font-size: 1.5rem;
+    color: var(--Grey600);
+}
+.FacilitiesProperty-Header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+    margin-right: 20px;
+}
+.FacilitiesProperty-Header-Title {
+    color: black;
+    font-weight: 600;
+    flex: 1;
+}
+.FacilitiesProperty-Header-Utilities {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.FacilitiesProperty-Header-Utilities-Title {
+    width: 124px;
+    border-right: 1px solid var(--Grey400);
+    padding-right: 12px;
+    margin-right: 12px;
+}
+.FacilitiesProperty-Header-Utilities-Btn {
+    display: flex;
+    color: var(--Primary600);
+    cursor: pointer;
+    font-weight: 700;
+}
+.FacilitiesProperty-Header-Utilities-Btn img {
+    width: 16px;
+    margin-left: 5px;
+    rotate: 90deg;
+    transition: all 0.3s;
+}
+
+.FacilitiesProperty-Main ul li {
+    position: relative;
+	list-style: none;
+	margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+}
+input[type=checkbox] {
+    width: 20px;
+}

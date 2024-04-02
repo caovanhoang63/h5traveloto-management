@@ -19,6 +19,7 @@
 .CH_GeneralInformation-Property {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     position: relative;
     align-items: center;
     gap: 10px;
@@ -28,4 +29,5 @@
 }
 .CH_GeneralInformation-Content {
     width: 100px;
+    flex: 9999;
 }
