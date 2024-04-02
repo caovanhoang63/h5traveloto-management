@@ -4,6 +4,8 @@ import './dashboard.css';
 import RoomstatusLabel from "./roomstatus/roomstatuslabel/roomstatuslabel";
 import Feedback from "./feedback/feedback";
 import Statistics from "./occupancyStatistics/occupancyStatistics";
+import RoomStatus from "./roomstatus/roomstatus";
+import Floorstatus from "./floorstatus/floorstatus";
 
 function Dashboard({roomsdata,feedbackdata}) {
 
@@ -14,9 +16,10 @@ function Dashboard({roomsdata,feedbackdata}) {
                 <div className="dashboard-content">
                     <Overview></Overview>
                     <Rooms data={roomsdata}/>
-                    <div className="statistics-feedback-container">
-                        <Statistics></Statistics>
-                        <Feedback data={feedbackdata}></Feedback>
+
+                    <div className={"testconatainer"}>
+                        <RoomStatus></RoomStatus>
+                        <Floorstatus></Floorstatus>
                     </div>
                     <div className="statistics-feedback-container">
                         <Statistics></Statistics>

@@ -11,6 +11,7 @@ function Statistics() {
         yAxis: {
             type: 'value'
         },
+        height: 140,
         series: [
             {
                 data: [120, 200, 150, 80, 70, 110, 130],

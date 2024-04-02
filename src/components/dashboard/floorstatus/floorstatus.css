@@ -1,8 +1,8 @@
 
-.statistics-container {
+.floorstatus-container {
     display: flex;
     flex-direction: column;
-    height: 281px;
+    height: 206px;
     width: 40%;
     border-width: 1px;
     border-style: solid;
@@ -11,7 +11,7 @@
     background: #ffffff;
 
 }
-.statistics-header{
+.floorstatus-header{
     color: var(--Grey800);
     font-family: "Plus Jakarta Sans", serif;
     font-weight: normal;

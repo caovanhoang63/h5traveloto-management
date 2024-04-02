@@ -31,10 +31,10 @@ export default function Floorstatus() {
         };
     return (
         <div className="floorstatus-container">
-            <h1 className="floorstatus-header">Occupancy Statistics</h1>
-            <div className="floorstatus-content">
+            <h1 className="floorstatus-header">Floor status</h1>
+            {/*<div className="floorstatus-content">*/}
                 <Chart option={option}></Chart>
-            </div>
+            {/*</div>*/}
 
         </div>
     );

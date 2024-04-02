@@ -1,0 +1,11 @@
+.roomstatus-container{
+        display: flex;
+        flex-direction: column;
+        height: 206px;
+        width: 60%;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #000000;
+        border-radius: 8px;
+        background: #ffffff;
+}
