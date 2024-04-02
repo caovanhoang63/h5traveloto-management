@@ -7,10 +7,11 @@ const token = localStorage.getItem('token');
 export const instance = axios.create({
     baseURL: API_ROOT,
     timeout: 5000,
-    header :  {
-        Authorization: `Bearer ${token}`,
-        Accept: 'application/json',
+    headers :  {
+        "Authorization" : `Bearer ${token}`,
+        "Accept" : 'application/json',
     }
+
 });
 
 // Alter defaults after instance has been created

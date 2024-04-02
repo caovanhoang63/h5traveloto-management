@@ -5,7 +5,7 @@ import logo from "../../assets/icons/logo.png";
 import './login-screen.css';
 import {PrimaryButton} from "../../components/button/button";
 import app from "../../App";
-import {authentication} from "../../api/user";
+import {authenticate} from "../../api/user_api";
 
 const LoginScreen = () => {
     const [rememberMe, setRememberMe] = useState(false);

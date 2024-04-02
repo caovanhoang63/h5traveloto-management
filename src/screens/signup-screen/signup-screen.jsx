@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Textbox, {PasswordTextbox} from "../../components/textbox/textbox";
 import './signup-screen.css';
 import {PrimaryButton} from "../../components/button/button";
-import {register} from "../../api/user";
+import {register} from "../../api/user_api";
 
 const SignUpScreen = () => {
     const [rememberMe, setRememberMe] = useState(false);
