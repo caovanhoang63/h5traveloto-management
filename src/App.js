@@ -174,12 +174,15 @@ function App() {
     ];
 
     const mess = "helo"
-    const onClickHandler = () => successToast(mess)
-
+    const onClickHandler = () => successToast(mess,{
+    })
+    const prompt  = () => Prompt().custom({
+        msg : <h1>Hello vai lon</h1>
+    })
 
     return (
         <MainLayout >
-            <PrimaryButton icon={"none"} onClick={onClickHandler}>SABBBdsadsa</PrimaryButton>
+            <PrimaryButton icon={"none"} onClick={prompt}>SABBBdsadsa</PrimaryButton>
         </MainLayout>
 
     )
