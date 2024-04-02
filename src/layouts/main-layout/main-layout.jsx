@@ -30,6 +30,7 @@ const sidebar_data = [
         content: "Dashboard",
         isToggle: true,
         isActive: false,
+        navLink: "/dashboard",
     },
     {
         id: 1,
@@ -38,6 +39,7 @@ const sidebar_data = [
         content: "Front desk",
         isToggle: true,
         isActive: false,
+        navLink: "/frontdesk",
     },
     {
         id: 2,
@@ -46,6 +48,7 @@ const sidebar_data = [
         content: "Guest",
         isToggle: true,
         isActive: false,
+        navLink: "/guest",
     },
     {
         id: 3,
@@ -54,6 +57,7 @@ const sidebar_data = [
         content: "Rooms",
         isToggle: true,
         isActive: false,
+        navLink: "/rooms",
     },
     {
         id: 4,
@@ -62,6 +66,7 @@ const sidebar_data = [
         content: "Deal",
         isToggle: true,
         isActive: false,
+        navLink: "/deal",
     },
     {
         id: 5,
@@ -70,6 +75,7 @@ const sidebar_data = [
         content: "Room Types",
         isToggle: true,
         isActive: false,
+        navLink: "/roomtypes",
     },
     {
         id: 6,
@@ -78,6 +84,7 @@ const sidebar_data = [
         content: "Booking Management",
         isToggle: true,
         isActive: false,
+        navLink: "/bookingmanagement",
     },
     {
         id: 7,
@@ -86,6 +93,7 @@ const sidebar_data = [
         content: "Chat",
         isToggle: true,
         isActive: false,
+        navLink: "/chat",
     },
 ];
 
@@ -111,8 +119,7 @@ const MainLayout = ({ screenName = "screen name", ...props }) => {
                         <div className={"screen-name"}>
                             <span>{screenName}</span>
                         </div>
-                        {/* <div>{props.children}</div> */}
-                        <RoomPage></RoomPage>
+                        <div>{props.children}</div>
                     </div>
                 </div>
             </div>
