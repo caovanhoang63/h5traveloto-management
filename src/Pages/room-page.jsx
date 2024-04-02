@@ -3,8 +3,7 @@ import Button, { PrimaryButton } from "../components/button/button";
 import Table from "../components/table/table";
 import "./room-page.css";
 import PageNavigation from "../components/pagenavigation/pagenavigation";
-import {getRooms} from "../api/room_api";
-
+import { getRooms } from "../api/room_api";
 
 const columns = [
     {
@@ -27,94 +26,92 @@ const columns = [
     },
 ];
 
-const data = [
-    {
-        roomNumber: "101",
-        roomType: "Single",
-        roomFloor: "1",
-        roomFacility: "WiFi",
-        status: "Available",
-    },
-    {
-        roomNumber: "102",
-        roomType: "Double",
-        roomFloor: "1",
-        roomFacility: "TV",
-        status: "Booked",
-    },
-    {
-        roomNumber: "103",
-        roomType: "Single",
-        roomFloor: "1",
-        roomFacility: "WiFi",
-        status: "Available",
-    },
-    {
-        roomNumber: "104",
-        roomType: "Single",
-        roomFloor: "1",
-        roomFacility: "WiFi",
-        status: "Booked",
-    },
-    {
-        roomNumber: "105",
-        roomType: "Single",
-        roomFloor: "1",
-        roomFacility: "WiFi",
-        status: "Available",
-    },
-    {
-        roomNumber: "106",
-        roomType: "Single",
-        roomFloor: "1",
-        roomFacility: "WiFi",
-        status: "Available",
-    },
-    {
-        roomNumber: "107",
-        roomType: "Single",
-        roomFloor: "1",
-        roomFacility: "WiFi",
-        status: "Booked",
-    },
-    {
-        roomNumber: "108",
-        roomType: "Single",
-        roomFloor: "1",
-        roomFacility: "WiFi",
-        status: "Available",
-    },
-    {
-        roomNumber: "109",
-        roomType: "Single",
-        roomFloor: "1",
-        roomFacility: "WiFi",
-        status: "Booked",
-    },
-    {
-        roomNumber: "110",
-        roomType: "Single",
-        roomFloor: "1",
-        roomFacility: "WiFi",
-        status: "Booked",
-    },
-    {
-        roomNumber: "111",
-        roomType: "Single",
-        roomFloor: "1",
-        roomFacility: "WiFi",
-        status: "Available",
-    },
-    {
-        roomNumber: "112",
-        roomType: "Single",
-        roomFloor: "1",
-        roomFacility: "WiFi",
-        status: "Available",
-    },
-];
-
-
+// const data = [
+//     {
+//         roomNumber: "101",
+//         roomType: "Single",
+//         roomFloor: "1",
+//         roomFacility: "WiFi",
+//         status: "Available",
+//     },
+//     {
+//         roomNumber: "102",
+//         roomType: "Double",
+//         roomFloor: "1",
+//         roomFacility: "TV",
+//         status: "Booked",
+//     },
+//     {
+//         roomNumber: "103",
+//         roomType: "Single",
+//         roomFloor: "1",
+//         roomFacility: "WiFi",
+//         status: "Available",
+//     },
+//     {
+//         roomNumber: "104",
+//         roomType: "Single",
+//         roomFloor: "1",
+//         roomFacility: "WiFi",
+//         status: "Booked",
+//     },
+//     {
+//         roomNumber: "105",
+//         roomType: "Single",
+//         roomFloor: "1",
+//         roomFacility: "WiFi",
+//         status: "Available",
+//     },
+//     {
+//         roomNumber: "106",
+//         roomType: "Single",
+//         roomFloor: "1",
+//         roomFacility: "WiFi",
+//         status: "Available",
+//     },
+//     {
+//         roomNumber: "107",
+//         roomType: "Single",
+//         roomFloor: "1",
+//         roomFacility: "WiFi",
+//         status: "Booked",
+//     },
+//     {
+//         roomNumber: "108",
+//         roomType: "Single",
+//         roomFloor: "1",
+//         roomFacility: "WiFi",
+//         status: "Available",
+//     },
+//     {
+//         roomNumber: "109",
+//         roomType: "Single",
+//         roomFloor: "1",
+//         roomFacility: "WiFi",
+//         status: "Booked",
+//     },
+//     {
+//         roomNumber: "110",
+//         roomType: "Single",
+//         roomFloor: "1",
+//         roomFacility: "WiFi",
+//         status: "Booked",
+//     },
+//     {
+//         roomNumber: "111",
+//         roomType: "Single",
+//         roomFloor: "1",
+//         roomFacility: "WiFi",
+//         status: "Available",
+//     },
+//     {
+//         roomNumber: "112",
+//         roomType: "Single",
+//         roomFloor: "1",
+//         roomFacility: "WiFi",
+//         status: "Available",
+//     },
+// ];
 
 function RoomPage() {
     const rowsData = 6; //So dong du lieu
@@ -127,48 +124,40 @@ function RoomPage() {
         booked: [],
     });
     let params = {
-        limit : 8,
-        page : 1,
-
-    }
-
-
+        limit: 8,
+        page: 1,
+    };
 
     //Fetch API
     useEffect(() => {
         getRooms(params)
-            .then(
-                (res) => {
-                    const data = res
-                    console.log(data)
+            .then((res) => {
+                const data = res;
+                console.log(data.data);
 
-                    // data.data => array cac phong
-                    // data.paging => du lieu lien quan den paging
-                    // data.filter => du lieu lien quan den filer
+                // data.data => array cac phong
+                // data.paging => du lieu lien quan den paging
+                // data.filter => du lieu lien quan den filer
 
-                    // data la du lieu tra ve
-                    const length = data.length;
-                    const allData = [];
-                    const availableData = [];
-                    const bookedData = [];
-                    for (let i = 0; i < length; i++) {
-                        if (data[i].status == "Available") {
-                            availableData.push(data[i]);
-                        } else if (data[i].status == "Booked") {
-                            bookedData.push(data[i]);
-                        }
-                        allData.push(data[i]);
+                const length = data.data.length;
+                const allData = [];
+                const availableData = [];
+                const bookedData = [];
+                for (let i = 0; i < length; i++) {
+                    if (data.data[i].status == 1) {
+                        availableData.push(data.data[i]);
+                    } else if (data.data[i].status == 2) {
+                        bookedData.push(data.data[i]);
                     }
-                    setRecords({
-                        all: allData,
-                        available: availableData,
-                        booked: bookedData,
-                    });
+                    allData.push(data.data[i]);
                 }
-            )
-            .catch(
-
-            )
+                setRecords({
+                    all: allData,
+                    available: availableData,
+                    booked: bookedData,
+                });
+            })
+            .catch((e) => console.log(e));
     }, []);
     // Xu ly sau khi lay du lieu tu API
     useEffect(() => {
@@ -189,9 +178,17 @@ function RoomPage() {
             if (i == records[type].length) {
                 break;
             }
-            row.push(records[type][i]);
+            row.push(ConvertDataTable(records[type][i]));
         }
         setTableData(row);
+    }
+    function ConvertDataTable(data) {
+        return {
+            roomNumber: data.name,
+            roomType: data.room_type_id,
+            roomFloor: data.floor,
+            status: data.status ? "Available" : "Booked",
+        };
     }
 
     const handleClickPage = (page) => {
