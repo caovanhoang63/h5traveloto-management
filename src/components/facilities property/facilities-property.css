@@ -42,15 +42,45 @@
 .FacilitiesProperty-Header-Utilities-Btn img {
     width: 16px;
     margin-left: 5px;
-    rotate: 90deg;
+    rotate: -90deg;
     transition: all 0.3s;
 }
-
+.FacilitiesProperty-Header-Utilities-Btn.Collapse img {
+    rotate: 90deg;
+}
+.FacilitiesProperty-Header-Utilities-Btn .FacilitiesProperty-Btn-Expand {
+    display: none;
+}
+.FacilitiesProperty-Header-Utilities-Btn .FacilitiesProperty-Btn-Collapse {
+    display: block;   
+}
+.FacilitiesProperty-Header-Utilities-Btn.Collapse .FacilitiesProperty-Btn-Expand {
+    display: block;
+}
+.FacilitiesProperty-Header-Utilities-Btn.Collapse .FacilitiesProperty-Btn-Collapse {
+    display: none;
+}
+.FacilitiesProperty-Main {
+    transition: height 0.3s;
+}
+.FacilitiesProperty-Main.Collapsed {
+    display: none;
+}
+.FacilitiesProperty-Main ul {
+    padding-right: 30px;
+}
 .FacilitiesProperty-Main ul li {
     position: relative;
 	list-style: none;
+    margin-top: 10px;
 	margin-bottom: 5px;
     display: flex;
     flex-direction: row;
-    padding-bottom: 10px;
+    height: 40px;
+    align-items: center;
+}
+.FacilitiesProperty-Main-Title {
+    padding-left: 10px;
+    padding-right: 10px;
+    color: var(--Grey500);
 }
