@@ -21,12 +21,14 @@ import SignUpScreen from "./screens/signup-screen/signup-screen";
 import RoomPage from "./screens/room-screen/room-page";
 import ChatScreen from "./screens/chat-screen/chat-screen";
 import RoomTypePage from "./screens/room-type-screen/room-type-page";
+import CreateHotel from "./screens/create-hotel-screen/create-hotel-screen";
 
 function App() {
     const isAuthenticated = !!localStorage.getItem("token");
     return (
         <BrowserRouter>
             <Routes>
+                <Route path="/createhotel" element={<CreateHotel/>}/>
                 <Route path="/login" element={<LoginScreen/>}/>
                 <Route path="/signup" element={<SignUpScreen/>}/>
                 <Route path="/"

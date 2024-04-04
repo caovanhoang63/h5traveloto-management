@@ -11,7 +11,9 @@ const CH_GeneralInformation = () => {
             <div className="CH_GeneralInformation-Main">
                 <div className="CH_GeneralInformation-Property">
                     <TextBlock className="CH_GeneralInformation-Title" content="Property Name"/>
-                    <Textbox className="CH_GeneralInformation-Content"/>
+                    <div className="CH_GeneralInformation-Content">
+                        <Textbox/>
+                    </div>
                 </div>
             </div>
         </div>

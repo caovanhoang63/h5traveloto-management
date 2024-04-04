@@ -1,29 +1,29 @@
-  .textbox-input {
-    padding: 8px 12px;
-    font-size: 14px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    border: 1px solid black;
-    border-radius: 8px;
-    outline: none;
-    transition: border-color 0.3s ease;
-    height: 20px;
-    width: 200px;
-  }
-  .textbox-input:focus {
-    border-color: dodgerblue;
-  }
-  .textbox-input:hover{
-    border-color: dodgerblue;
-  }
-  .textbox-label {
-    font-size: 14px;
-    font-weight: medium;
-    margin-bottom: 8px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-  }
-  .textbox-container{
-    display: flex;
+.textbox-input {
+  padding: 8px 12px;
+  font-size: 14px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  border: 1px solid black;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  height: 20px;
+  width: 200px;
+}
+.textbox-input:focus {
+  border-color: dodgerblue;
+}
+.textbox-input:hover{
+  border-color: dodgerblue;
+}
+.textbox-label {
+  font-size: 14px;
+  font-weight: medium;
+  margin-bottom: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.textbox-container{
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: 20px;
-  }
+}
