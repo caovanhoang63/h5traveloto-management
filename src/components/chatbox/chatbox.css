@@ -1,0 +1,13 @@
+.chat-box {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: var(--Grey100);
+  }
+  
+  .messages-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: var(--Primary50);
+  }

@@ -1,0 +1,38 @@
+.room-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.room-option {
+    display: flex;
+    justify-content: space-between;
+}
+.container__button-option {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 16px;
+}
+.room-option__button {
+    border-radius: 100px;
+    margin-right: 12px;
+    border: 1px solid var(--Grey600);
+    background-color: white;
+    color: var(--Grey600);
+}
+
+.room-option__button-add {
+    width: 114px;
+}
+.selected-category {
+    border: 1px solid var(--Primary400);
+    background-color: var(--Primary50);
+    color: var(--Primary400);
+}
+.room-content {
+    flex: 1;
+    width: auto;
+}
+.room-page-navigation {
+    width: 100%;
+}

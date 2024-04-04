@@ -1,0 +1,26 @@
+.room-type-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+/* Option button */
+.room-type-option {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+}
+.room-type-option__button-add {
+    margin-right: 10px;
+}
+.room-type-option__button-filter {
+    color: var(--Grey600);
+}
+/* Table */
+.room-type-table {
+    flex: 1;
+}
+/* navigation page */
+.room-type-page-navigation {
+}

@@ -19,6 +19,8 @@ import ico_calendar_active from "../../assets/icons/calendar-active.png";
 import ico_bubble_chat from "../../assets/icons/bubble-chat.png";
 import ico_bubble_chat_active from "../../assets/icons/bubble-chat-active.png";
 import "./main-layout.css";
+import RoomPage from "../../screens/room-screen/room-page.jsx";
+import RoomTypePage from "../../screens/room-type-screen/room-type-page.jsx";
 
 const sidebar_data = [
     {
@@ -28,6 +30,7 @@ const sidebar_data = [
         content: "Dashboard",
         isToggle: true,
         isActive: false,
+        navLink: "/dashboard",
     },
     {
         id: 1,
@@ -36,6 +39,7 @@ const sidebar_data = [
         content: "Front desk",
         isToggle: true,
         isActive: false,
+        navLink: "/frontdesk",
     },
     {
         id: 2,
@@ -44,6 +48,7 @@ const sidebar_data = [
         content: "Guest",
         isToggle: true,
         isActive: false,
+        navLink: "/guest",
     },
     {
         id: 3,
@@ -52,6 +57,7 @@ const sidebar_data = [
         content: "Rooms",
         isToggle: true,
         isActive: false,
+        navLink: "/rooms",
     },
     {
         id: 4,
@@ -60,6 +66,7 @@ const sidebar_data = [
         content: "Deal",
         isToggle: true,
         isActive: false,
+        navLink: "/deal",
     },
     {
         id: 5,
@@ -68,6 +75,7 @@ const sidebar_data = [
         content: "Room Types",
         isToggle: true,
         isActive: false,
+        navLink: "/roomtypes",
     },
     {
         id: 6,
@@ -76,6 +84,7 @@ const sidebar_data = [
         content: "Booking Management",
         isToggle: true,
         isActive: false,
+        navLink: "/bookingmanagement",
     },
     {
         id: 7,
@@ -84,10 +93,11 @@ const sidebar_data = [
         content: "Chat",
         isToggle: true,
         isActive: false,
+        navLink: "/chat",
     },
 ];
 
-const MainLayout = ({screenName ="screen name",...props}) => {
+const MainLayout = ({ screenName = "screen name", ...props }) => {
     const options = [{ value: "tuoi" }, { value: "báo" }, { value: "s" }];
     return (
         <div>
@@ -96,7 +106,9 @@ const MainLayout = ({screenName ="screen name",...props}) => {
                 <div className={"content-container"}>
                     <header className={"header"}>
                         <div className={"header-content"}>
-                            <SearchBar className={"searchBar--position top50"} />
+                            <SearchBar
+                                className={"searchBar--position top50"}
+                            />
                             <div className={"header-buttons"}>
                                 <span>12</span>
                                 <span>32</span>
@@ -107,7 +119,7 @@ const MainLayout = ({screenName ="screen name",...props}) => {
                         <div className={"screen-name"}>
                             <span>{screenName}</span>
                         </div>
-                        <div>{props.children}</div>
+                        <div className={"screen-content"}>{props.children}</div>
                     </div>
                 </div>
             </div>
