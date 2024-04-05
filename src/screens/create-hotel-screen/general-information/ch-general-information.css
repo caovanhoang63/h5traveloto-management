@@ -18,10 +18,19 @@
     font-size: 1.5rem;
     color: var(--Grey600);
 }
-.CH_GeneralInformation-Property {
+
+/* Divider */
+.CH_GeneralInformation-Divider {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Property Name */
+.CH_GeneralInformation-PropertyName {
     display: flex;
     flex-direction: row;
     align-items: center;
+    padding: 10px;
 }
 .CH_GeneralInformation-Title {
     flex: 1;
@@ -36,3 +45,4 @@
     width: 60%;
     height: 40px;
 }
+
