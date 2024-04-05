@@ -1,6 +1,8 @@
 .CH_GeneralInformation-Container {
     margin-top: 25px;    
     margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 25px;
     position: relative;
 }
 .CH_GeneralInformation-Header {
@@ -19,14 +21,18 @@
 .CH_GeneralInformation-Property {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    position: relative;
     align-items: center;
-    gap: 10px;
 }
 .CH_GeneralInformation-Title {
     flex: 1;
 }
 .CH_GeneralInformation-Content {
-    width: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 60%;
+}
+.CH_GeneralInformation-Content-Box {    
+    width: 60%;
+    height: 40px;
 }

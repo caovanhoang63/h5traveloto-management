@@ -1,4 +1,4 @@
-.textbox-input {
+.bettertextbox-input {
   padding: 8px 12px;
   font-size: 14px;
   font-family: 'Plus Jakarta Sans', sans-serif;
@@ -6,24 +6,25 @@
   border-radius: 8px;
   outline: none;
   transition: border-color 0.3s ease;
-  height: 20px;
-  width: 200px;
+  height: 100%;
+  width: 100%;
 }
-.textbox-input:focus {
+.bettertextbox-input:focus {
   border-color: dodgerblue;
 }
-.textbox-input:hover{
+.bettertextbox-input:hover{
   border-color: dodgerblue;
 }
-.textbox-label {
+.bettertextbox-label {
   font-size: 14px;
   font-weight: medium;
-  margin-bottom: 8px;
+  /* margin-bottom: 8px; */
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
-.textbox-container{
+.bettertextbox-container{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
+  height: 100%;
 }
