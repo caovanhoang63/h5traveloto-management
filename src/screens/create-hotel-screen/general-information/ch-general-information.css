@@ -21,19 +21,19 @@
 
 /* Divider */
 .CH_GeneralInformation-Divider {
+    padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;
 }
 
-/* Property Name */
-.CH_GeneralInformation-PropertyName {
+.CH_GeneralInformation-Property {
     display: flex;
     flex-direction: row;
-    align-items: center;
     padding: 10px;
 }
 .CH_GeneralInformation-Title {
     flex: 1;
+    padding-top: 10px;
 }
 .CH_GeneralInformation-Content {
     display: flex;
@@ -42,7 +42,38 @@
     width: 60%;
 }
 .CH_GeneralInformation-Content-Box {    
-    width: 60%;
-    height: 40px;
+    width: 80%;
+}
+.CH_GeneralInformation-Content-Box ul {
+    padding: 0;
+    margin: 0;
+}
+.CH_GeneralInformation-Content-Box ul li {
+    list-style: none;
+}
+
+/* Property Types */
+.PropertyType-Containter {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 10px;
+}
+.PropertyType-Field {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.PropertyType-Field-Name {
+    padding-top: 10px;
+    color: var(--Primary800);
+    opacity: 0.75;
+    font-weight: 600;
+}
+.PropertyType-Field-Description {
+    padding-top: 10px;
+    color: var(--Primary800);
+    opacity: 0.75;
 }
 

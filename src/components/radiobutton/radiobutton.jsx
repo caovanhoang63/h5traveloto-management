@@ -1,10 +1,10 @@
 // import "./radiobutton.css";
 
-const RadioButton = (group) => {
+const RadioButton = (group, value) => {
     return ( 
-        <label className="RadioButton-Container" htmlFor="radiobutton">
-            <input type="radio" name="radio" id="radiobutton"/>
-            <span className="RadioButton-CheckMark"/>
+        <label className="RadioButton-Container">
+            <input type="radio" name={group} value={value}/>
+            <span className="RadioButton-Checkmark"/>
         </label>
     );
 }
