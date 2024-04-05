@@ -2,6 +2,7 @@ import TextBlock from "../../../components/textblock/textblock";
 import Textbox from "../../../components/textbox/textbox";
 import Divider from "../../../components/divider/divider";
 import RadioButton from "../../../components/radiobutton/radiobutton";
+import ComboBox from "../../../components/combobox/combobox";
 import { SecondaryButton } from "../../../components/button/button";
 import ico_plus from "../../../assets/icons/plus.png";
 import ico_plus_active from "../../../assets/icons/plus-active.png";
@@ -84,26 +85,11 @@ const CH_GeneralInformation = () => {
             </div>
         </li>
     ))
-    const province_raw = {
-        "data": [
-            {
-              "code": "01",
-              "name": "Hà Nội",
-              "name_en": "Ha Noi",
-              "full_name": "Thành phố Hà Nội",
-              "full_name_en": "Ha Noi City",
-              "code_name": "ha_noi"
-            },
-            {
-              "code": "02",
-              "name": "Hà Giang",
-              "name_en": "Ha Giang",
-              "full_name": "Tỉnh Hà Giang",
-              "full_name_en": "Ha Giang Province",
-              "code_name": "ha_giang"
-            }
-        ]
-    };
+    const options = [
+        { value: 'Thu Duc' },
+        { value: 'Ho Chi Minh'},
+        { value: 'Ha Noi' },
+    ];
     
 
     return ( 
@@ -149,6 +135,11 @@ const CH_GeneralInformation = () => {
                             <div className="CH_GeneralInformation-Content-Box-Address">
                                 <TextBlock content="Street Address"/>
                                 <Textbox/>
+                            </div>
+                            <div className="CH_GeneralInformation-Content-Box-Address">
+                                <TextBlock content="Province"/>
+                                <ComboBox options={options} placeholderText="Select"/>
+                                {/* <Textbox/> */}
                             </div>
                         </div>
                     </div>

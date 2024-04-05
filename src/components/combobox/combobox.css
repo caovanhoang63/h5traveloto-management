@@ -2,18 +2,20 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-top: 20px;
+    margin-top: 0;
+    padding: 0;
   }
   
   .combobox-select {
     padding: 8px 12px;
-    font-size: 16px;
+    /* font-size: 16px; */
     border: 1px solid black;
     border-radius: 8px;
     outline: none;
     width: 230px;
     height: 40px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: inherit;
+    /* font-family: 'Plus Jakarta Sans', sans-serif; */
   }
   
   .combobox-select:focus {
@@ -21,7 +23,11 @@
   }
   
   .combobox-label {
-    font-size: 14px;
-    font-weight: medium;
-    margin-bottom: 8px;
-    font-family: 'Plus Jakarta Sans', sans-serif;  }
+    /* font-size: 14px;
+    font-weight: medium; */
+    margin-bottom: 10px;
+    /* font-family: 'Plus Jakarta Sans', sans-serif;   */
+  }
+  .combobox-label.unactive {
+    display: none;
+  }
