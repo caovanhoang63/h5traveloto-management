@@ -1,12 +1,10 @@
 @import url("/src/assets/style/base.css");
 
-
 /* begin base css*/
 /*.top50 {*/
 /*    top: 50%;*/
 /*}*/
 /* begin base css*/
-
 
 .container {
     display: flex;
@@ -16,7 +14,6 @@
 }
 
 .header {
-
     position: relative;
     background: white;
     height: 100px;
@@ -62,3 +59,7 @@
     color: #858d9dff;
 }
 
+.screen-content {
+    height: 100%;
+    width: 100%;
+}

@@ -1,0 +1,38 @@
+.feedbackblock-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.feedbackblock-container:hover{
+    background-color: var(--Grey50);
+}
+.feedbackblock-content{
+    display: flex;
+    flex-direction: row;
+}
+.feedbackblock-name{
+    color: var(--Grey600);
+    width: 60%;
+    font-family: "Plus Jakarta Sans", serif;
+
+}
+.feedbackblock-room{
+    width:40%;
+    color: var(--Grey800);
+    font-family: "Plus Jakarta Sans", serif;
+    vertical-align: center;
+}
+.feedbackblock-feedback{
+    overflow-x: auto;
+    overflow-y: auto;
+    scrollbar-width: none;
+    color: var(--Grey400);
+    font-family: "Plus Jakarta Sans", serif;
+}
+.feedbackblock-room{
+    color: var(--Grey800);
+    font-family: "Plus Jakarta Sans", serif;
+    align-content: center;
+}

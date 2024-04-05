@@ -1,0 +1,20 @@
+.roomstatuslabel-container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 40%;
+    position: relative;
+}
+.roomstatuslabel-content-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: "Plus Jakarta Sans",normal, serif;
+    font-size: 2rem;
+}
+.roomstatuslabel-roomtype-label, .roomstatuslabel-roomtype-amount{
+    color: var(--Grey600);
+}
+.roomstatuslabel-label, .roomstatuslabel-amount{
+    color: var(--Grey400);
+}

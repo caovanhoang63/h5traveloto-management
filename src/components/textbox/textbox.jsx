@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import './textbox.css'
 
-const Textbox = ({classname,title,placeHolder}) => {
+const Textbox = ({id,classname,title,placeHolder}) => {
     const [text, setText] = useState('');
   
     const handleChange = (e) => {
@@ -11,9 +11,10 @@ const Textbox = ({classname,title,placeHolder}) => {
     return (<div className={classname}>
             <div className="textbox-container">
                 <label className='textbox-label'
-                       htmlFor='textbox-input'>{title || ""}
+                       htmlFor={id}>{title || ""}
                 </label>
                 <input
+                    id={id}
                     type="text"
                     value={text}
                     onChange={handleChange}

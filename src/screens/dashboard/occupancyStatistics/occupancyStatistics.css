@@ -1,0 +1,20 @@
+
+.statistics-container {
+    display: flex;
+    flex-direction: column;
+    height: 281px;
+    width: 60%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000000;
+    border-radius: 8px;
+    background: #ffffff;
+
+}
+.statistics-header{
+    color: var(--Grey800);
+    font-family: "Plus Jakarta Sans", serif;
+    font-weight: normal;
+    font-size: 2em;
+    margin: 20px 0 16px 16px;
+}

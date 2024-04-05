@@ -1,10 +1,14 @@
-
 import React, { useState } from 'react';
 import Textbox, {PasswordTextbox} from "../../components/textbox/textbox";
-import logo from "../../assets/icons/logo.png";
 import './signup-screen.css';
+import {PrimaryButton} from "../../components/button/button";
+import {register} from "../../api/user_api";
+import {useNavigate} from "react-router-dom";
 
-const LoginScreen = () => {
+
+
+const SignUpScreen = () => {
+    const navigate = useNavigate()
     const [rememberMe, setRememberMe] = useState(false);
 
     const handleRememberMeChange = () => {
@@ -13,8 +17,28 @@ const LoginScreen = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Perform login logic here
+        if (e.target.password.value !== e.target.confirm_password.value) {
+            alert("password does not match!");
+            return;
+        }
+
+        const userRegister = {
+            first_name : e.target.first_name.value,
+            last_name : e.target.last_name.value,
+            email : e.target.email.value,
+            password : e.target.password.value,
+        }
+
+        register(userRegister).then((res)=>{
+            alert("register success!")
+            navigate("/login")
+        }).catch( (error) => {
+            const data = error.response.data
+            console.log("message: ", data.message)
+        })
+
     };
+
     const logo = require('../../assets/icons/logo-no-background.png');
     return (
         <div className="SignupScreenContainer">
@@ -23,27 +47,24 @@ const LoginScreen = () => {
                 <div className="SignupScreenContent">
                     <h2 className="SignupScreenH2">Sign Up</h2>
                     <form className="SignupScreenForm" onSubmit={handleSubmit}>
-                        <Textbox classname="SignupScreenFirstName" title="First Name"
+                        <Textbox id={"first_name"} classname="SignupScreenFirstName" title="First Name"
                                  placeHolder="Enter your first name"/>
-                        <Textbox classname="SignupScreenLastName" title="Last Name" placeHolder="Enter your last name"/>
-                        <Textbox classname="SignupScreenEmail" title="Email" placeHolder="Enter your email"/>
-                        <Textbox classname="SignupScreenPassword" title="Password" placeHolder="Enter your password"/>
-                        <Textbox classname="SignupScreenConfirmPassword" title="Confirm Password"
+                        <Textbox id={"last_name"} classname="SignupScreenLastName" title="Last Name" placeHolder="Enter your last name"/>
+                        <Textbox id={"email"} classname="SignupScreenEmail" title="Email" placeHolder="Enter your email"/>
+                        <Textbox id={"password"} classname="SignupScreenPassword" title="Password" placeHolder="Enter your password"/>
+                        <Textbox id={"confirm_password"} classname="SignupScreenConfirmPassword" title="Confirm Password"
                                  placeHolder="Confirm your password"/>
 
-                        <button className="SignupScreenButton" type="submit">Sign In</button>
+                        <PrimaryButton type={"submit"} size={"md"}>Sign Up</PrimaryButton>
                     </form>
                 </div>
                 <p className="SignupScreenP">
-                    Don't have an account? <a className="SignupScreenA"
-                                              href="../signup-screen/signup-screen.jsx">Sign
-                    Up</a>
+                    Already have an account?
+                    <a className="SignupScreenA" href="/login">Login</a>
                 </p>
             </div>
-
-
         </div>
     );
 };
 
-export default LoginScreen;
+export default SignUpScreen;

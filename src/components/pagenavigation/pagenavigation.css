@@ -1,0 +1,37 @@
+.page-navigate-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: 20px 0 20px 0;
+}
+.page-navigation__button {
+    width: auto;
+    background-color: white;
+    border: 1px solid var(--Grey600);
+    color: var(--Grey600);
+    width: 100px;
+}
+.page-navigation__button:hover {
+    background-color: var(--Grey50);
+}
+.page-navigation__container-page {
+    display: flex;
+    flex-direction: row;
+}
+.page-navigation__button-page {
+    background-color: white;
+    color: var(--Grey600);
+}
+.page-navigation__button-page--selected {
+    color: var(--Primary400);
+    background-color: var(--Primary50);
+}
+.page-navigate__button--disable {
+    color: var(--Grey200);
+    border: 1px solid var(--Grey200);
+    background: initial;
+    cursor: default;
+}
+.page-navigate__button--disable:hover {
+    background-color: initial;
+}

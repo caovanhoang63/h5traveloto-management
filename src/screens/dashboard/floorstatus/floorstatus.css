@@ -1,0 +1,27 @@
+
+.floorstatus-container {
+    display: flex;
+    flex-direction: column;
+    height: 206px;
+    width: 40%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000000;
+    border-radius: 8px;
+    background: #ffffff;
+
+}
+.floorstatus-header{
+    color: var(--Grey800);
+    font-family: "Plus Jakarta Sans", serif;
+    font-weight: normal;
+    font-size: 2em;
+    margin: 20px 0 16px 16px;
+}
+.floorstatus-piechart{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}

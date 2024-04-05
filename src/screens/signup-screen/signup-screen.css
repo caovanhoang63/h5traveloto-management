@@ -18,8 +18,7 @@
     background-color: var(--Grey100);
     display: flex;
     justify-content: center;
-    /*height: 100vh;*/
-    min-height: 100vh;
+    height: 100vh;
     margin: 0;
 }
 .SignupScreenWrapper {
@@ -41,7 +40,7 @@
     display: flex;
     justify-content: center;
     margin-top: 48px;
-    margin-bottom: 150px;
+    margin-bottom: 20px;
 }
 
 .textbox-input  {
@@ -126,7 +125,7 @@
     background-color: #4C4DDC;
     border: none;
     border-radius: 12px;
-    color: var(--primary-50);
+    color: var(--Primary50);
     cursor: pointer;
     font-size: 16px;
     font-weight: 600;
