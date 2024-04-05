@@ -2,7 +2,9 @@ import TextBlock from "../../../components/textblock/textblock";
 import Textbox from "../../../components/textbox/textbox";
 import Divider from "../../../components/divider/divider";
 import RadioButton from "../../../components/radiobutton/radiobutton";
-import CheckBox from "../../../components/checkbox/checkbox";
+import { SecondaryButton } from "../../../components/button/button";
+import ico_plus from "../../../assets/icons/plus.png";
+import ico_plus_active from "../../../assets/icons/plus-active.png";
 import "./ch-general-information.css";
 
 const CH_GeneralInformation = () => {
@@ -82,6 +84,27 @@ const CH_GeneralInformation = () => {
             </div>
         </li>
     ))
+    const province_raw = {
+        "data": [
+            {
+              "code": "01",
+              "name": "Hà Nội",
+              "name_en": "Ha Noi",
+              "full_name": "Thành phố Hà Nội",
+              "full_name_en": "Ha Noi City",
+              "code_name": "ha_noi"
+            },
+            {
+              "code": "02",
+              "name": "Hà Giang",
+              "name_en": "Ha Giang",
+              "full_name": "Tỉnh Hà Giang",
+              "full_name_en": "Ha Giang Province",
+              "code_name": "ha_giang"
+            }
+        ]
+    };
+    
 
     return ( 
         <div className="CH_GeneralInformation-Container">
@@ -89,7 +112,7 @@ const CH_GeneralInformation = () => {
                 General Information
             </div>
             <div className="CH_GeneralInformation-Main">
-                <div className="CH_GeneralInformation-Property">
+                <div className="CH_GeneralInformation-Property Name">
                     <div className="CH_GeneralInformation-Title">
                         <TextBlock content="Property Name"/>
                     </div>
@@ -102,7 +125,7 @@ const CH_GeneralInformation = () => {
                 <div className="CH_GeneralInformation-Divider">
                     <Divider isHorizontal={true} thick="1px" type="solid" color="#e8f1fd"/>
                 </div>
-                <div className="CH_GeneralInformation-Property">
+                <div className="CH_GeneralInformation-Property Type">
                     <div className="CH_GeneralInformation-Title">
                         <TextBlock content="Property Type"/>
                     </div>
@@ -116,6 +139,33 @@ const CH_GeneralInformation = () => {
                 </div>
                 <div className="CH_GeneralInformation-Divider">
                     <Divider isHorizontal={true} thick="1px" type="solid" color="#e8f1fd"/>
+                </div>
+                <div className="CH_GeneralInformation-Property Address">
+                    <div className="CH_GeneralInformation-Title">
+                        <TextBlock content="Property Address"/>
+                    </div>
+                    <div className="CH_GeneralInformation-Content">
+                        <div className="CH_GeneralInformation-Content-Box">
+                            <div className="CH_GeneralInformation-Content-Box-Address">
+                                <TextBlock content="Street Address"/>
+                                <Textbox/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="CH_GeneralInformation-Divider">
+                    <Divider isHorizontal={true} thick="1px" type="solid" color="#e8f1fd"/>
+                </div>
+                <div className="CH_GeneralInformation-Property Hotlines">
+                    <div className="CH_GeneralInformation-Title">
+                        <TextBlock content="Hotlines"/>
+                    </div>
+                    <div className="CH_GeneralInformation-Content">
+                        <div className="CH_GeneralInformation-Content-Box">
+                            <Textbox/>
+                            <SecondaryButton icon={"only"} src={ico_plus} alt={ico_plus_active}/>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@ const Textbox = ({id,classname,title,placeHolder}) => {
     };
   
     return (
-    // <div className={classname}>
+    <div className={classname}>
             <div className="bettertextbox-container">
                 <label className='bettertextbox-label'
                        htmlFor={id}>{title || ""}
@@ -23,7 +23,7 @@ const Textbox = ({id,classname,title,placeHolder}) => {
                     className="bettertextbox-input"
                 />
             </div>
-        // </div>
+        </div>
 
     );
   };
