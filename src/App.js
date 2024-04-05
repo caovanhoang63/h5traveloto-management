@@ -21,6 +21,7 @@ import LoginScreen from "./screens/login-screen/login-screen";
 import ChatScreen from "./screens/chat-screen/chat-screen";
 import ActiveChat from "./components/activechat/activechat";
 import MessageQueue from "./components/messagequeue/messagequeue";
+import ComboBox from "./components/combobox/combobox";
 const TABLE_ROWS = [
     {
         reservationId: "123",
@@ -166,21 +167,24 @@ const sidebar_data = [
 
 function App() {
     const options = [
-        { value: 'tuoi' },
-        { value: 'báo'},
-        { value: 's' },
+        { value: 'Thu Duc' },
+        { value: 'Ho Chi Minh'},
+        { value: 'Ha Noi' },
     ];
+    //xu ly su kien khi chon combobox neu co
+    const TestOnChangeCombobox = (e)=> console.log(e)
     return (
-        // <MainLayout screenName="Chat Screen">
+         // <MainLayout screenName="Chat Screen">
         //     {/* <TransparentButton border={true} disabled={true} src={ico_tag} icon={"only"}>Hellasdasdso</TransparentButton> */}
         //     {/* <ChatScreen></ChatScreen> */}
         //     {/* <LoginScreen></LoginScreen> */}
         //     <ChatScreen ></ChatScreen>
             
         // </MainLayout>
-        <MainLayout> 
-        <ChatScreen></ChatScreen>
-        </MainLayout>
+        // <MainLayout> 
+        // <ChatScreen></ChatScreen>
+        // </MainLayout>
+        <ComboBox id={`combobox-1`} options={options} placeholderText={`Select option`} label={`Address`} onChange={TestOnChangeCombobox}></ComboBox>
     )
 }
 
