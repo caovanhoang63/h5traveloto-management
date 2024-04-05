@@ -42,7 +42,7 @@
     align-items: center;
     width: 60%;
 }
-.CH_GeneralInformation-Content-Box {    
+.CH_GeneralInformation-Content-Box {
     width: 80%;
 }
 .CH_GeneralInformation-Content-Box ul {
@@ -86,4 +86,15 @@
     font-size: 1.3125rem;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+.CH_GeneralInformation-Property.Address .CH_GeneralInformation-Content-Box {
+    width: 60%;
+}
+
+/* Hotlines */
+.CH_GeneralInformation-Property.Hotlines .CH_GeneralInformation-Content-Box {
+    width: 60%;
+}
+.CH_GeneralInformation-Content-AddContactBtn {
+    padding: 10px;
 }

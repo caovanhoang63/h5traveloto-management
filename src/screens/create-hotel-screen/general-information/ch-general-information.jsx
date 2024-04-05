@@ -139,7 +139,27 @@ const CH_GeneralInformation = () => {
                             <div className="CH_GeneralInformation-Content-Box-Address">
                                 <TextBlock content="Province"/>
                                 <ComboBox options={options} placeholderText="Select"/>
-                                {/* <Textbox/> */}
+                            </div>
+                            <div className="CH_GeneralInformation-Content-Box-Address">
+                                <TextBlock content="District"/>
+                                <ComboBox options={options} placeholderText="Select"/>
+                            </div>
+                            <div className="CH_GeneralInformation-Content-Box-Address">
+                                <TextBlock content="Ward"/>
+                                <ComboBox options={options} placeholderText="Select"/>
+                            </div>
+                            <div style={{fontWeight: "bold", paddingTop: "10px", paddingBottom: "10px"}}>
+                                Location
+                            </div>
+                            <div style={{display: "flex", flex: "row", gap: "30px"}}>
+                                <div className="CH_GeneralInformation-Content-Box-Address">
+                                    <TextBlock content="Latitude"/>
+                                    <ComboBox options={options} placeholderText="Select"/>
+                                </div>
+                                <div className="CH_GeneralInformation-Content-Box-Address">
+                                    <TextBlock content="Longitude"/>
+                                    <ComboBox options={options} placeholderText="Select"/>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -154,6 +174,8 @@ const CH_GeneralInformation = () => {
                     <div className="CH_GeneralInformation-Content">
                         <div className="CH_GeneralInformation-Content-Box">
                             <Textbox/>
+                        </div>
+                        <div className="CH_GeneralInformation-Content-AddContactBtn">
                             <SecondaryButton icon={"only"} src={ico_plus} alt={ico_plus_active}/>
                         </div>
                     </div>
