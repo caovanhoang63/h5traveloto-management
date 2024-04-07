@@ -46,7 +46,3 @@
 .CH_PropertyDetails-Content-Box {
     width: 80%;
 }
-.CH_PropertyDetails-Content-Box textarea {
-    resize: none;
-    width: 100%;
-}

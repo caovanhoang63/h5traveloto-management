@@ -17,7 +17,7 @@ const CH_PropertyDetails = () => {
                     </div>
                     <div className="CH_PropertyDetails-Content">
                         <div className="CH_PropertyDetails-Content-Box">
-                            <div style={{width: "200px"}}>
+                            <div style={{width: "150px", height: "35px"}}>
                                 <UnitTextBox unit="km"/>
                             </div>
                         </div>
@@ -32,7 +32,7 @@ const CH_PropertyDetails = () => {
                     </div>
                     <div className="CH_PropertyDetails-Content">
                         <div className="CH_PropertyDetails-Content-Box">
-                            <div style={{width: "200px"}}>
+                            <div style={{width: "150px", height: "35px"}}>
                                 <UnitTextBox unit="floors"/>
                             </div>
                         </div>

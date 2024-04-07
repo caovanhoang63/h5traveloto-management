@@ -1,0 +1,11 @@
+.TextArea-Content textarea {
+    resize: none;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}

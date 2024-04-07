@@ -1,7 +1,7 @@
 .bettertextbox-input {
   padding: 8px 12px;
-  font-size: 14px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: inherit;
+  font-family: inherit;
   border: 1px solid black;
   border-radius: 8px;
   outline: none;
@@ -17,7 +17,7 @@
   border-color: dodgerblue;
 }
 .bettertextbox-label {
-  font-size: 14px;
+  font-size: inherit;
   font-weight: medium;
   /* margin-bottom: 8px; */
   /* font-family: 'Plus Jakarta Sans', sans-serif; */

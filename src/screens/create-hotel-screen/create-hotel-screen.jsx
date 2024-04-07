@@ -80,8 +80,8 @@ const CreateHotel = () => {
             </div>
             <div className="CreateHotelScreen-Fields">                                     
                 {/* <CH_GeneralInformation></CH_GeneralInformation> */}
-                <CH_PropertyFacilities></CH_PropertyFacilities>
-                {/* <CH_PropertyDetails/> */}
+                {/* <CH_PropertyFacilities></CH_PropertyFacilities> */}
+                <CH_PropertyDetails/>
             </div>
         </div>
     </div>

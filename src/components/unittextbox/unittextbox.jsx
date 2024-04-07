@@ -5,7 +5,6 @@ const UnitTextBox = ({id, classname, title, placeHolder, unit}) => {
     const [text, setText] = useState('');
     const [isActive, setActive] = useState(false);
 
-    var isHover = false;
     var isFocus = false;
 
     const handleChange = (e) => {
@@ -28,7 +27,7 @@ const UnitTextBox = ({id, classname, title, placeHolder, unit}) => {
     }
 
     return ( 
-        <div className={classname}>
+        // <div className={classname}>
             <div className="UnitTextBox-Container">
                 <label className="UnitTextBox-Label" htmlFor={id}>
                     {title || ""}
@@ -46,10 +45,12 @@ const UnitTextBox = ({id, classname, title, placeHolder, unit}) => {
                     className="UnitTextBox-Input"
                     />
                 <div className={"UnitTextBox-Unit" + (isActive ? " active" : "")}>
-                    {unit}
+                    <div className="UnitTextBox-Unit-Content">
+                        {unit}
+                    </div>
                 </div>
             </div>
-        </div>
+        // </div>
      );
 }
  

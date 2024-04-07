@@ -2,9 +2,11 @@ import "./textarea.css";
 
 const TextArea = () => {
     return ( 
-        <div>
-
-        </div>
+        <div className="TextArea-Content">
+            <textarea>
+                
+            </textarea>
+        </div>        
      );
 }
  
