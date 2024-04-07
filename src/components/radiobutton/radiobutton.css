@@ -12,7 +12,9 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-
+    font: inherit;
+    font-weight: inherit;
+    font-size: inherit;
 }
 /* Hide the browser's default radio button */
 .RadioButton-Container input {

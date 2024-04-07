@@ -1,0 +1,44 @@
+.UnitTextBox-Container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    /* margin-bottom: 20px; */
+    height: 100%;
+}
+.UnitTextBox-Label {
+    font-size: 14px;
+    font-weight: medium;
+}
+.UnitTextBox-Input {
+    padding: 8px 12px;
+    font-size: 14px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    border: 1px solid black;
+    border-right: 0px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    height: 100%;
+    width: 100%;
+    color: inherit;
+}
+.UnitTextBox-Input:focus {
+    border-color: var(--Primary500);
+}
+.UnitTextBox-Input:hover {
+    border-color: var(--Primary500);
+}
+
+.UnitTextBox-Unit {
+    padding: 8px 12px;
+    background-color: var(--Grey200);
+    border: 1px solid black;
+    border-left: 0px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    color: white;
+}
+.UnitTextBox-Unit.active {
+    border-color: var(--Primary500);
+}

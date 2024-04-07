@@ -17,8 +17,9 @@ const FacilitiesProperty = ({data}) => {
     const facilities = data.facilities && data.facilities.map && data.facilities.map(facility => (
         <div>
             <li key={data.facilities.id}>
-                <CheckBox/>
-                <div className="FacilitiesProperty-Main-Title">{facility.name_en}</div>
+                <CheckBox content={
+                    <div className="FacilitiesProperty-Main-Title">{facility.name_en}</div>
+                }/>
             </li>   
             <Divider isHorizontal={true} thick="1px" type="dotted" color="#e8f1fd"/> 
         </div>

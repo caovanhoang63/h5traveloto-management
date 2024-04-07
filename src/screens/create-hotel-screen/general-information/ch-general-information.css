@@ -23,6 +23,7 @@
 /* Divider */
 .CH_GeneralInformation-Divider {
     padding-top: 10px;
+    padding-bottom: 10px;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -67,7 +68,7 @@
     flex-direction: column;
 }
 .PropertyType-Field-Name {
-    padding-top: 10px;
+    padding-top: 5px;
     color: var(--Primary800);
     opacity: 0.75;
     font-weight: 600;

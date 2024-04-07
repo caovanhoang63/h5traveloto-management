@@ -78,9 +78,10 @@ const CreateHotel = () => {
             <div className="CreateHotelScreen-SidebarContainer">
                 <SidebarCreateHotel data={data} progress={10}/>
             </div>
-            <div className="CreateHotelScreen-Fields">
-                <CH_GeneralInformation></CH_GeneralInformation>
-                {/* <CH_PropertyFacilities></CH_PropertyFacilities> */}
+            <div className="CreateHotelScreen-Fields">                                     
+                {/* <CH_GeneralInformation></CH_GeneralInformation> */}
+                <CH_PropertyFacilities></CH_PropertyFacilities>
+                {/* <CH_PropertyDetails/> */}
             </div>
         </div>
     </div>

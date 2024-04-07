@@ -73,15 +73,19 @@ const CH_GeneralInformation = () => {
     const propertyTypes = datathing.data && datathing.data.map && datathing.data.map(type => (
         <li key={datathing.data.id}>
             <div className="PropertyType-Containter">
-                <RadioButton group="propertyType"/>
-                <div className="PropertyType-Field">
-                    <div className="PropertyType-Field-Name">
-                        {type.name}
-                    </div>
-                    <div className="PropertyType-Field-Description">
-                        {type.description}
-                    </div>
-                </div>
+                <RadioButton 
+                    group="propertyType" 
+                    value={type.id} 
+                    content={
+                        <div className="PropertyType-Field">
+                            <div className="PropertyType-Field-Name">
+                                {type.name}
+                            </div>
+                            <div className="PropertyType-Field-Description">
+                                {type.description}
+                            </div>
+                        </div>
+                    }/>
             </div>
         </li>
     ))
@@ -151,7 +155,7 @@ const CH_GeneralInformation = () => {
                             <div style={{fontWeight: "bold", paddingTop: "10px", paddingBottom: "10px"}}>
                                 Location
                             </div>
-                            <div style={{display: "flex", flex: "row", gap: "30px"}}>
+                            <div style={{display: "flex", flex: "row", gap: "30px"}}>  
                                 <div className="CH_GeneralInformation-Content-Box-Address">
                                     <TextBlock content="Latitude"/>
                                     <ComboBox options={options} placeholderText="Select"/>

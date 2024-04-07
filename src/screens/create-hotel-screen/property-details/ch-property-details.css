@@ -1,0 +1,52 @@
+.CH_PropertyDetails-Container {
+    margin-top: 25px;    
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 25px;
+    position: relative;
+}
+.CH_PropertyDetails-Header {
+    font-size: 2rem;
+    color: black;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+.CH_PropertyDetails-Main {
+    background-color: var(--white-color);
+	padding: 10px;
+    padding-bottom: 0;
+	border-radius: 8px;
+    font-size: 1.5rem;
+    color: var(--Grey600);
+}
+
+/*Divider*/
+.CH_PropertyDetails-Divider {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.CH_PropertyDetails-Property {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+.CH_PropertyDetails-Title {
+    flex: 1;
+    padding-top: 10px;
+}
+.CH_PropertyDetails-Content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 60%;
+}
+.CH_PropertyDetails-Content-Box {
+    width: 80%;
+}
+.CH_PropertyDetails-Content-Box textarea {
+    resize: none;
+    width: 100%;
+}

@@ -2,14 +2,19 @@
     display: block;
     position: relative;
     padding-left: 35px;
-    margin-bottom: 12px;
+    /* margin-bottom: 12px; */
     cursor: pointer;
     font-size: 22px;
-    height: 15px;
+    height: 25px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    font: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    display: flex;
+    align-items: center;
 }
 /* Hide the browser's default checkbox */
 .CheckBox-Container input {
