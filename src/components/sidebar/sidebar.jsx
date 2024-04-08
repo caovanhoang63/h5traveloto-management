@@ -24,14 +24,23 @@ const Sidebar = ({data, isLogo = true}) => {
 		setActiveTab(tab);
 	}
 	
-	const tabs = data && data.map && data.map(tab => (
-		<li key={tab.id} onClick={() => {hanldeClick_Tab(tab)}}>
+	const tabs = 
+		data && 
+		data.map && 
+		data.map(tab => (
+		<li 
+			key={tab.id} 
+			onClick={() => {
+				hanldeClick_Tab(tab)
+			}}
+		>
 			<Sidebar_tab
 				img={tab.ico} 
 				img_active={tab.active_ico} 
 				content={tab.content} 
 				isToggle={isToggleSideBar} 
 				isActive={tab === activeTab}
+				navLink={tab.navLink}
 				/>
 		</li>
 	));

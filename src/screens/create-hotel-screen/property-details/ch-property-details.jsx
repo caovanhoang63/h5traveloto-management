@@ -47,8 +47,8 @@ const CH_PropertyDetails = () => {
                     </div>
                     <div className="CH_PropertyDetails-Content">
                         <div className="CH_PropertyDetails-Content-Box">
-                            <div style={{width: "400px"}}>
-                                <textarea/>
+                            <div style={{width: "400px", height: "100px"}}>
+                                <TextArea/>
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@ const CH_PropertyDetails = () => {
                     </div>
                     <div className="CH_PropertyDetails-Content">
                         <div className="CH_PropertyDetails-Content-Box">
-                            <div style={{width: "400px"}}>
+                            <div style={{width: "400px", height: "100px"}}>
                                 <TextArea/>
                             </div>
                         </div>

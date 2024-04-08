@@ -1,14 +1,8 @@
 import img_LogoFull from "../../assets/icons/logofull.png";
 import SidebarCreateHotel from "../../components/sidebar-create-hotel/sidebar-create-hotel";
-import { 
-    BrowserRouter,
-    createBrowserRouter,
-    createRoutesFromElements,
-    Route,
-    RouterProvider
-} from "react-router-dom";
 import CH_GeneralInformation from "./general-information/ch-general-information";
 import CH_PropertyDetails from "./property-details/ch-property-details";
+import CH_PropertyPolicies from "./property-policies/ch-property-policies";
 import CH_PropertyFacilities from "./property-facilities/ch-property-facilities";
 import CH_PhotosInformation from "./photos-information/ch-photos-information";
 import CH_Payment from "./payment/ch-payment";
@@ -31,18 +25,24 @@ const CreateHotel = () => {
         },
         {
             id: 3,
+            content: "Property Policies",
+            navigate: "property_policies",
+            taskNum: 0
+        },
+        {
+            id: 4,
             content: "Property Facilities",
             navigate: "property_facilities",
             taskNum: 5
         },
         {
-            id: 4,
+            id: 5,
             content: "Photos",
             navigate: "photos",
             taskNum: 5
         },
         {
-            id: 5,
+            id: 6,
             content: "Payment",
             navigate: "payment",
             taskNum: 5
@@ -81,7 +81,8 @@ const CreateHotel = () => {
             <div className="CreateHotelScreen-Fields">                                     
                 {/* <CH_GeneralInformation></CH_GeneralInformation> */}
                 {/* <CH_PropertyFacilities></CH_PropertyFacilities> */}
-                <CH_PropertyDetails/>
+                {/* <CH_PropertyDetails/> */}
+                <CH_PropertyPolicies/>
             </div>
         </div>
     </div>

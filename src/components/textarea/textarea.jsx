@@ -1,11 +1,10 @@
 import "./textarea.css";
 
-const TextArea = () => {
+const TextArea = ({id, placeHolder}) => {
     return ( 
         <div className="TextArea-Content">
-            <textarea>
-                
-            </textarea>
+            <label htmlFor={id}></label>
+            <textarea placeholder={placeHolder}/>
         </div>        
      );
 }
