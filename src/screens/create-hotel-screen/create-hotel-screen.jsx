@@ -1,20 +1,14 @@
 import img_LogoFull from "../../assets/icons/logofull.png";
 import SidebarCreateHotel from "../../components/sidebar-create-hotel/sidebar-create-hotel";
-import CH_GeneralInformation from "./general-information/ch-general-information";
-import CH_PropertyDetails from "./property-details/ch-property-details";
-import CH_PropertyPolicies from "./property-policies/ch-property-policies";
-import CH_PropertyFacilities from "./property-facilities/ch-property-facilities";
-import CH_PhotosInformation from "./photos-information/ch-photos-information";
-import CH_Payment from "./payment/ch-payment";
 import './create-hotel-screen.css';
 
-const CreateHotel = () => {
+const CreateHotel = ({...props}) => {
 
     const data = [
         {
             id: 1,
             content: "General Information",
-            navigate: "",
+            navigate: "general_information",
             taskNum: 10
         },
         {
@@ -49,18 +43,6 @@ const CreateHotel = () => {
         }
     ]
 
-    // const router = createBrowserRouter(
-    //     createRoutesFromElements(
-    //         <Route path="/">
-    //             <Route index element={<CH_GeneralInformation/>}/>
-    //             <Route path="property_details" element={<CH_PropertyDetails/>}/>
-    //             <Route path="property_facilities" element={<CH_PropertyFacilities/>}/>
-    //             <Route path="photos" element={<CH_PhotosInformation/>}/>
-    //             <Route path="payment" element={<CH_Payment/>}/>
-    //         </Route>
-    //     )
-    // )
-
 	const userMail = "user@gmail.com";
 
     return ( 
@@ -78,11 +60,8 @@ const CreateHotel = () => {
             <div className="CreateHotelScreen-SidebarContainer">
                 <SidebarCreateHotel data={data} progress={10}/>
             </div>
-            <div className="CreateHotelScreen-Fields">                                     
-                {/* <CH_GeneralInformation></CH_GeneralInformation> */}
-                {/* <CH_PropertyFacilities></CH_PropertyFacilities> */}
-                {/* <CH_PropertyDetails/> */}
-                <CH_PropertyPolicies/>
+            <div className="CreateHotelScreen-Fields">
+                {props.children}
             </div>
         </div>
     </div>

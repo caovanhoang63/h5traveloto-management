@@ -155,7 +155,7 @@ const CH_PropertyFacilities = () => {
             "description_vn": "Cho phép nhận phòng sớm"
           }
         ]
-      }
+    }
 
     return ( 
         <div className="CH_PropertyFacilities-Container">

@@ -22,13 +22,19 @@ import RoomPage from "./screens/room-screen/room-page";
 import ChatScreen from "./screens/chat-screen/chat-screen";
 import RoomTypePage from "./screens/room-type-screen/room-type-page";
 import CreateHotel from "./screens/create-hotel-screen/create-hotel-screen";
+import CH_GeneralInformation from "./screens/create-hotel-screen/general-information/ch-general-information";
+import CH_PropertyDetails from "./screens/create-hotel-screen/property-details/ch-property-details";
+import CH_PropertyPolicies from "./screens/create-hotel-screen/property-policies/ch-property-policies";
+import CH_PropertyFacilities from "./screens/create-hotel-screen/property-facilities/ch-property-facilities";
+import CH_PhotosInformation from "./screens/create-hotel-screen/photos-information/ch-photos-information";
+import CH_Payment from "./screens/create-hotel-screen/payment/ch-payment";
+
 
 function App() {
     const isAuthenticated = !!localStorage.getItem("token");
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/createhotel" element={<CreateHotel/>}/>
                 <Route path="/login" element={<LoginScreen/>}/>
                 <Route path="/signup" element={<SignUpScreen/>}/>
                 <Route path="/"
@@ -52,7 +58,20 @@ function App() {
                         </MainLayout>
                     }
                 ></Route>
-
+                <Route path="/createhotel/*" 
+                    element={
+                        <CreateHotel>
+                            <Routes>
+                                <Route path="/general_information" element={<CH_GeneralInformation/>}/>
+                                <Route path="/property_details" element={<CH_PropertyDetails/>}/>
+                                <Route path="/property_policies" element={<CH_PropertyPolicies/>}/>
+                                <Route path="/property_facilities" element={<CH_PropertyFacilities/>}/>
+                                <Route path="/photos" element={<CH_PhotosInformation/>}/>
+                                <Route path="/payment" element={<CH_Payment/>}/>
+                            </Routes>
+                        </CreateHotel>
+                    }
+                />
             </Routes>
         </BrowserRouter>
     );
