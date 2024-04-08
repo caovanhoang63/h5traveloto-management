@@ -16,7 +16,7 @@ const FacilitiesProperty = ({data}) => {
 
     const facilities = data.facilities && data.facilities.map && data.facilities.map(facility => (
         <div>
-            <li key={data.facilities.id}>
+            <li className="FacilitiesProperty-Main-ul-li" key={data.facilities.id}>
                 <CheckBox content={
                     <div className="FacilitiesProperty-Main-Title">{facility.name_en}</div>
                 }/>
@@ -50,7 +50,7 @@ const FacilitiesProperty = ({data}) => {
                 <Divider isHorizontal={true} thick="1px" type="solid" color="#e8f1fd"/>
             </div>
             <div className={"FacilitiesProperty-Main" + (isCollapsed ? " Collapsed" : "")}>
-                <ul>
+                <ul className="FacilitiesProperty-Main-ul">
                     {facilities}
                 </ul>
             </div>

@@ -66,10 +66,11 @@
 .FacilitiesProperty-Main.Collapsed {
     display: none;
 }
-.FacilitiesProperty-Main ul {
+.FacilitiesProperty-Main .FacilitiesProperty-Main-ul {
     padding-right: 30px;
+    padding-left: 40px;
 }
-.FacilitiesProperty-Main ul li {
+.FacilitiesProperty-Main .FacilitiesProperty-Main-ul .FacilitiesProperty-Main-ul-li {
     position: relative;
 	list-style: none;
     margin-top: 10px;
