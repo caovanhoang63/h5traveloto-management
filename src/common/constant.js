@@ -59,4 +59,4 @@ export const Primary700 = "#0f50aa";
 export const Primary800 = "#0c3e83";
 export const Primary900 = "#092f64";
 
-export const API_ROOT = "http://localhost:8080/v1";
+export const API_ROOT = "https://api.h5traveloto.site/v1";

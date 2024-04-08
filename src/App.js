@@ -22,12 +22,12 @@ import RoomPage from "./screens/room-screen/room-page";
 import ChatScreen from "./screens/chat-screen/chat-screen";
 import RoomTypePage from "./screens/room-type-screen/room-type-page";
 import CreateHotel from "./screens/create-hotel-screen/create-hotel-screen";
-import CH_GeneralInformation from "./screens/create-hotel-screen/general-information/ch-general-information";
-import CH_PropertyDetails from "./screens/create-hotel-screen/property-details/ch-property-details";
-import CH_PropertyPolicies from "./screens/create-hotel-screen/property-policies/ch-property-policies";
-import CH_PropertyFacilities from "./screens/create-hotel-screen/property-facilities/ch-property-facilities";
-import CH_PhotosInformation from "./screens/create-hotel-screen/photos-information/ch-photos-information";
-import CH_Payment from "./screens/create-hotel-screen/payment/ch-payment";
+import CH_GeneralInformation from "./screens/create-hotel-screen/components/general-information/ch-general-information";
+import CH_PropertyDetails from "./screens/create-hotel-screen/components/property-details/ch-property-details";
+import CH_PropertyPolicies from "./screens/create-hotel-screen/components/property-policies/ch-property-policies";
+import CH_PropertyFacilities from "./screens/create-hotel-screen/components/property-facilities/ch-property-facilities";
+import CH_PhotosInformation from "./screens/create-hotel-screen/components/photos-information/ch-photos-information";
+import CH_Payment from "./screens/create-hotel-screen/components/payment/ch-payment";
 
 
 function App() {
@@ -37,6 +37,7 @@ function App() {
             <Routes>
                 <Route path="/login" element={<LoginScreen/>}/>
                 <Route path="/signup" element={<SignUpScreen/>}/>
+                <Route path="/createhotel" element={<CreateHotel/>} />
                 <Route path="/"
                     element={
                         isAuthenticated ? (

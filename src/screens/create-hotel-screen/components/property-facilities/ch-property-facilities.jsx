@@ -1,4 +1,4 @@
-import FacilitiesProperty from "../../../components/facilities property/facilities-property";
+import FacilitiesProperty from "../../../../components/facilities property/facilities-property";
 import "./ch-property-facilities.css";
 
 const CH_PropertyFacilities = () => {

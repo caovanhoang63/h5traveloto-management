@@ -1,11 +1,11 @@
-import TextBlock from "../../../components/textblock/textblock";
-import Textbox from "../../../components/textbox/textbox";
-import Divider from "../../../components/divider/divider";
-import RadioButton from "../../../components/radiobutton/radiobutton";
-import ComboBox from "../../../components/combobox/combobox";
-import { SecondaryButton } from "../../../components/button/button";
-import ico_plus from "../../../assets/icons/plus.png";
-import ico_plus_active from "../../../assets/icons/plus-active.png";
+import TextBlock from "../../../../components/textblock/textblock";
+import Textbox from "../../../../components/textbox/textbox";
+import Divider from "../../../../components/divider/divider";
+import RadioButton from "../../../../components/radiobutton/radiobutton";
+import ComboBox from "../../../../components/combobox/combobox";
+import { SecondaryButton } from "../../../../components/button/button";
+import ico_plus from "../../../../assets/icons/plus.png";
+import ico_plus_active from "../../../../assets/icons/plus-active.png";
 import "./ch-general-information.css";
 
 const CH_GeneralInformation = () => {

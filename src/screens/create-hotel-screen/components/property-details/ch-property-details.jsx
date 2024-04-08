@@ -1,7 +1,7 @@
-import TextBlock from "../../../components/textblock/textblock";
-import TextArea from "../../../components/textarea/textarea";
-import UnitTextBox from "../../../components/unittextbox/unittextbox";
-import Divider from "../../../components/divider/divider";
+import TextBlock from "../../../../components/textblock/textblock";
+import TextArea from "../../../../components/textarea/textarea";
+import UnitTextBox from "../../../../components/unittextbox/unittextbox";
+import Divider from "../../../../components/divider/divider";
 import "./ch-property-details.css";
 
 const CH_PropertyDetails = () => {
