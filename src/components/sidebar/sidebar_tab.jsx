@@ -26,15 +26,15 @@ const Sidebar_tab = ({
     return (
         <div
             className={
-                "tab" +
+                "sidebar-tab" +
                 (isToggle ? " untoggle" : "") +
                 (isActive ? " active" : "")
             }
         >
             <Link to={navLink}>
-                <img className="unactive-ico" src={img} alt="" />
-                <img className="active-ico" src={img_active} alt="" />
-                <span className="text">{content}</span>
+                <img className="sidebar-tab-unactive-ico" src={img} alt="" />
+                <img className="sidebar-tab-active-ico" src={img_active} alt="" />
+                <span className="sidebar-tab-text">{content}</span>
             </Link>
         </div>
     );
