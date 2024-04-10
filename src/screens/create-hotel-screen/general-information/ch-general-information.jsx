@@ -1,8 +1,8 @@
 import TextBlock from "../../../components/textblock/textblock";
-import Textbox from "../../../components/textbox/textbox";
+import FlexComboBox from "../../../components/flexcombobox/flexcombobox";
+import FlexTextbox from "../../../components/flextextbox/flextextbox";
 import Divider from "../../../components/divider/divider";
 import RadioButton from "../../../components/radiobutton/radiobutton";
-import ComboBox from "../../../components/combobox/combobox";
 import { SecondaryButton } from "../../../components/button/button";
 import ico_plus from "../../../assets/icons/plus.png";
 import ico_plus_active from "../../../assets/icons/plus-active.png";
@@ -108,7 +108,7 @@ const CH_GeneralInformation = () => {
                     </div>
                     <div className="CH_GeneralInformation-Content">
                         <div className="CH_GeneralInformation-Content-Box">
-                            <Textbox/>
+                            <FlexTextbox/>
                         </div>
                     </div>
                 </div>
@@ -138,19 +138,19 @@ const CH_GeneralInformation = () => {
                         <div className="CH_GeneralInformation-Content-Box">
                             <div className="CH_GeneralInformation-Content-Box-Address">
                                 <TextBlock content="Street Address"/>
-                                <Textbox/>
+                                <FlexTextbox/>
                             </div>
                             <div className="CH_GeneralInformation-Content-Box-Address">
                                 <TextBlock content="Province"/>
-                                <ComboBox options={options} placeholderText="Select"/>
+                                <FlexComboBox options={options} placeholderText="Select"/>
                             </div>
                             <div className="CH_GeneralInformation-Content-Box-Address">
                                 <TextBlock content="District"/>
-                                <ComboBox options={options} placeholderText="Select"/>
+                                <FlexComboBox options={options} placeholderText="Select"/>
                             </div>
                             <div className="CH_GeneralInformation-Content-Box-Address">
                                 <TextBlock content="Ward"/>
-                                <ComboBox options={options} placeholderText="Select"/>
+                                <FlexComboBox options={options} placeholderText="Select"/>
                             </div>
                             <div style={{fontWeight: "bold", paddingTop: "10px", paddingBottom: "10px"}}>
                                 Location
@@ -158,11 +158,11 @@ const CH_GeneralInformation = () => {
                             <div style={{display: "flex", flex: "row", gap: "30px"}}>  
                                 <div className="CH_GeneralInformation-Content-Box-Address">
                                     <TextBlock content="Latitude"/>
-                                    <ComboBox options={options} placeholderText="Select"/>
+                                    <FlexComboBox options={options} placeholderText="Select"/>
                                 </div>
                                 <div className="CH_GeneralInformation-Content-Box-Address">
                                     <TextBlock content="Longitude"/>
-                                    <ComboBox options={options} placeholderText="Select"/>
+                                    <FlexComboBox options={options} placeholderText="Select"/>
                                 </div>
                             </div>
                         </div>
@@ -177,7 +177,7 @@ const CH_GeneralInformation = () => {
                     </div>
                     <div className="CH_GeneralInformation-Content">
                         <div className="CH_GeneralInformation-Content-Box">
-                            <Textbox/>
+                            <FlexTextbox/>
                         </div>
                         <div className="CH_GeneralInformation-Content-AddContactBtn">
                             <SecondaryButton icon={"only"} src={ico_plus} alt={ico_plus_active}/>

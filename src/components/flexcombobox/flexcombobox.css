@@ -1,0 +1,35 @@
+.flexcombobox-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 0;
+    padding: 0;
+  }
+  
+  .flexcombobox-select {
+    padding: 8px 12px;
+    /* font-size: 16px; */
+    border: 1px solid black;
+    border-radius: 8px;
+    outline: none;
+    /* width: 230px;
+    height: 40px; */
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    /* font-family: 'Plus Jakarta Sans', sans-serif; */
+  }
+  
+  .flexcombobox-select:focus {
+    border-color: dodgerblue;
+  }
+  
+  .flexcombobox-label {
+    /* font-size: 14px;
+    font-weight: medium; */
+    margin-bottom: 10px;
+    /* font-family: 'Plus Jakarta Sans', sans-serif;   */
+  }
+  .flexcombobox-label.unactive {
+    display: none;
+  }

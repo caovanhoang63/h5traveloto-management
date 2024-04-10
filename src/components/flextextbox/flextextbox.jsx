@@ -1,16 +1,17 @@
 import React, {useState} from 'react'
-import './textbox.css'
+import './flextextbox.css'
 
-const Textbox = ({id,classname,title,placeHolder}) => {
+const FlexTextbox = ({id,classname,title,placeHolder}) => {
     const [text, setText] = useState('');
   
     const handleChange = (e) => {
       setText(e.target.value);
     };
   
-    return (<div className={classname}>
-        <div className="textbox-container">
-            <label className='textbox-label'
+    return (
+    <div className={classname}>
+            <div className="bettertextbox-container">
+                <label className='bettertextbox-label'
                        htmlFor={id}>{title || ""}
                 </label>
                 <input
@@ -19,7 +20,7 @@ const Textbox = ({id,classname,title,placeHolder}) => {
                     value={text}
                     onChange={handleChange}
                     placeholder={placeHolder}
-                    className="textbox-input"
+                    className="bettertextbox-input"
                 />
             </div>
         </div>
@@ -27,4 +28,4 @@ const Textbox = ({id,classname,title,placeHolder}) => {
     );
   };
   
-  export default Textbox;
+  export default FlexTextbox;

@@ -102,7 +102,7 @@ const MainLayout = ({ screenName = "screen name", ...props }) => {
     return (
         <div>
             <div className={"container"}>
-                <Sidebar className={"sidebar"} isLogo={true} data={sidebar_data}></Sidebar>
+                <Sidebar className={"sidebar"} data={sidebar_data}></Sidebar>
                 <div className={"content-container"}>
                     <header className={"header"}>
                         <div className={"header-content"}>
