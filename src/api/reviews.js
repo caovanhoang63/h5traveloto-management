@@ -3,7 +3,7 @@ import {instance} from "./index";
 
 
 
-export const getReviews = async (params) => {
+export const listReviews = async (params) => {
     const response = await instance.get(
         `/reviews`,
         {

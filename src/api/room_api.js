@@ -12,3 +12,4 @@ export const getRooms = async (params) => {
     );
     return response.data;
 };
+

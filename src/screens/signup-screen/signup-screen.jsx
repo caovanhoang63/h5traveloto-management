@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Textbox, {PasswordTextbox} from "../../components/textbox/textbox";
 import './signup-screen.css';
 import {PrimaryButton} from "../../components/button/button";
-import {register} from "../../api/user_api";
+import {Register, register} from "../../api/user_api";
 import {useNavigate} from "react-router-dom";
 
 
@@ -29,7 +29,7 @@ const SignUpScreen = () => {
             password : e.target.password.value,
         }
 
-        register(userRegister).then((res)=>{
+        Register(userRegister).then((res)=>{
             alert("register success!")
             navigate("/login")
         }).catch( (error) => {

@@ -1,26 +1,31 @@
 import "./feedback.css"
 import FeedbackBlock from "./feedbackBlock/feedbackBlock";
 import {useEffect, useState} from "react";
-import {getReviews} from "../../../api/reviews";
+import {listReviews} from "../../../api/reviews";
 
 function Feedback() {
 
-    const hotelId = "\"3mKb6KGah2LTST\"";
+    // const hotelId = "\"3mKb6KGah2LTST\"";
 
-    const params = {
-        hotel_id : hotelId,
-    }
+    // const params = {
+    //     hotel_id : hotelId,
+    // }
+    const params = {}
     const [reviews, setReviews] = useState([])
 
 
     useEffect(() => {
-        getReviews(params).then((res => {
+
+        listReviews(params).then((res => {
             console.log(res.data)
             setReviews(res.data)
         })).catch(
             (e) => {
+                // handle loi
+            }).finally(
 
-            })
+        )
+
     }, []);
 
 

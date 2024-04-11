@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Textbox, { PasswordTextbox } from "../../components/textbox/textbox";
-import logo from "../../assets/icons/logo.png";
 import "./login-screen.css";
 import { PrimaryButton } from "../../components/button/button";
-import app from "../../App";
-import { authenticate } from "../../api/user_api";
 import { useNavigate } from "react-router-dom";
+import {Authenticate} from "../../api/user_api";
 
 const LoginScreen = () => {
     const [rememberMe, setRememberMe] = useState(false);
@@ -22,17 +20,18 @@ const LoginScreen = () => {
             password: e.target.password.value,
         };
 
-        authenticate(userLogin)
+        Authenticate(userLogin)
             .then((response) => {
-                const data = response.data.data;
-                localStorage.setItem("token", data.access_token.Token);
+                const data = response.data;
+                localStorage.setItem("refresh-token", data.refresh_token.Token);
                 console.log(data.access_token.Token);
-                // transform link to /main
+
+
+
                 navigate("/dashboard");
             })
             .catch((error) => {
-                const data = error.response.data;
-                console.log(data.message);
+                console.log(error)
             });
     };
 

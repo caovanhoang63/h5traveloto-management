@@ -1,8 +1,18 @@
 // user apis
 import {instance} from "./index";
 
-export const authenticate = async (userLogin)=>
-    instance.post("/authenticate",userLogin)
+export const Authenticate = async (userLogin)=>
+    (await instance.post("/authenticate",userLogin)).data
 
-export const register = async (userRegister) =>
-    instance.post("/register",userRegister)
+export const Register = async (userRegister) =>
+   ( await instance.post("/register",userRegister)).data
+
+export const RenewToken = async (RefreshToken) => {
+    console.log("call")
+
+    return (await instance.post("/renew-token", RefreshToken)).data
+}
+
+
+
+
