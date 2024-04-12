@@ -3,79 +3,36 @@ import FlexComboBox from "../../../components/flexcombobox/flexcombobox";
 import FlexTextbox from "../../../components/flextextbox/flextextbox";
 import Divider from "../../../components/divider/divider";
 import RadioButton from "../../../components/radiobutton/radiobutton";
-import { SecondaryButton } from "../../../components/button/button";
+import {SecondaryButton} from "../../../components/button/button";
 import ico_plus from "../../../assets/icons/plus.png";
 import ico_plus_active from "../../../assets/icons/plus-active.png";
 import "./ch-general-information.css";
+import {useEffect, useState} from "react";
+import {listReviews} from "../../../api/reviews";
+import {getProvinces} from "../../../api/create-hotel/get-provinces";
+import {getHoteltypes} from "../../../api/create-hotel/get-hoteltypes";
+import {getWards} from "../../../api/create-hotel/get-wards";
+import {getDistricts} from "../../../api/create-hotel/get-districts";
 
 const CH_GeneralInformation = () => {
+    //get hotel types
+    const [hoteltypes, setHoteltypes] = useState([]);
+    useEffect(() => {
+        getHoteltypes().then((res => {
+            setHoteltypes(res.data)
+        })).catch(
+            (e) => {
+                // handle loi
+            }).finally(
 
-    const datathing = {
-        "data": [
-          {
-            "id": "e5CU5TqMPMAm",
-            "status": 1,
-            "created_at": "2024-03-22T17:38:32+07:00",
-            "updated_at": "2024-03-22T17:38:32+07:00",
-            "name": "Hotel",
-            "description": "Establishment that provides accommodations, meals, and other services for paying guests (travellers, tourists)"
-          },
-          {
-            "id": "gGzXbwVZJtdw",
-            "status": 1,
-            "created_at": "2024-03-22T17:39:17+07:00",
-            "updated_at": "2024-03-22T17:39:17+07:00",
-            "name": "Hostel",
-            "description": "Budget accommodation (usually shared-room type) rent by individual travellers (backpackers) or groups"
-          },
-          {
-            "id": "iUwuq6uD6V5R",
-            "status": 1,
-            "created_at": "2024-03-22T17:39:35+07:00",
-            "updated_at": "2024-03-22T17:39:35+07:00",
-            "name": "Villa",
-            "description": "Furnished country house located in countryside area that is often rented for vacation purpose"
-          },
-          {
-            "id": "3mHP91UN6pvMwH",
-            "status": 1,
-            "created_at": "2024-03-22T17:39:50+07:00",
-            "updated_at": "2024-03-22T17:39:50+07:00",
-            "name": "Resort",
-            "description": "A fancy accommodation that is located in a very scenic or sometimes remote location without compromising modern technology and amenities"
-          },
-          {
-            "id": "3mKb6Ph3kjwmM9",
-            "status": 1,
-            "created_at": "2024-03-22T17:40:02+07:00",
-            "updated_at": "2024-03-22T17:40:02+07:00",
-            "name": "Apartment",
-            "description": "Serviced apartment complex with hotel-style booking system that enables travellers to stay for a period of time"
-          },
-          {
-            "id": "3mMo3p2iKSucjP",
-            "status": 1,
-            "created_at": "2024-03-22T17:40:19+07:00",
-            "updated_at": "2024-03-22T17:40:19+07:00",
-            "name": "Guest house / B&B",
-            "description": "An establishment that offers a spare room in private accommodation (e.g. private house, boarding house). It also provides breakfast"
-          },
-          {
-            "id": "3mPHrgmyPvbSL1",
-            "status": 1,
-            "created_at": "2024-03-22T17:40:35+07:00",
-            "updated_at": "2024-03-22T10:46:54+07:00",
-            "name": "Other",
-            "description": ""
-          }
-        ]
-    }
-    const propertyTypes = datathing.data && datathing.data.map && datathing.data.map(type => (
-        <li key={datathing.data.id}>
+        )
+    }, []);
+    const propertyTypes = hoteltypes.map && hoteltypes.map(type => (
+        <li key={type.id}>
             <div className="PropertyType-Containter">
-                <RadioButton 
-                    group="propertyType" 
-                    value={type.id} 
+                <RadioButton
+                    group="propertyType"
+                    value={type.id}
                     content={
                         <div className="PropertyType-Field">
                             <div className="PropertyType-Field-Name">
@@ -89,14 +46,81 @@ const CH_GeneralInformation = () => {
             </div>
         </li>
     ))
-    const options = [
-        { value: 'Thu Duc' },
-        { value: 'Ho Chi Minh'},
-        { value: 'Ha Noi' },
-    ];
-    
 
-    return ( 
+    //get provinces
+    const [provinces, setProvinces] = useState([]);
+    const [selectedProvince, setSelectedProvince] = useState(null);
+    useEffect(() => {
+        getProvinces().then((res => {
+            setProvinces(res.data)
+
+        })).catch(
+            (e) => {
+                // handle loi
+            }).finally(
+
+        )
+    }, []);
+
+    const provinceOptions = provinces.map(province => ({
+        value: province.name,
+        code: province.code
+    }));
+    const handleProvinceChange = (value) => {
+        const selectedProvince = provinces.find(province => province.name === value);
+        if (selectedProvince) {
+            setSelectedProvince(selectedProvince.code);
+
+        }
+    };
+
+    //get districts
+    const [selectedDistrict, setSelectedDistrict] = useState(null)
+    const [district, setDistrict] = useState([]);
+    useEffect(() => {
+        const fetchDistricts = async () => {
+            if (selectedProvince) {
+                try {
+                    const response = await getDistricts(selectedProvince);
+                    setDistrict(response.data);
+                } catch (e) {
+                    // handle error
+                }
+            }
+        };
+
+        fetchDistricts();
+    }, [selectedProvince]);
+    const districtOptions = district.map(district => ({value: district.name}));
+    const handleDistrictChange = (value) => {
+        const selectedDistrict = district.find(district => district.name === value);
+        if (selectedDistrict) {
+            console.log(selectedDistrict.code);
+            setSelectedDistrict(selectedDistrict.code);
+
+        }
+    };
+
+    //get wards
+    const [ward, setWard] = useState([]);
+    useEffect(() => {
+        const fetchWards = async () => {
+            if (selectedDistrict) {
+                try {
+                    const response = await getWards(selectedDistrict);
+                    setWard(response.data);
+                } catch (e) {
+                    // handle error
+                }
+            }
+        };
+
+        fetchWards();
+    }, [selectedDistrict]);
+    const wardOptions = ward.map(ward => ({value: ward.name}));
+
+
+    return (
         <div className="CH_GeneralInformation-Container">
             <div className="CH_GeneralInformation-Header">
                 General Information
@@ -142,27 +166,29 @@ const CH_GeneralInformation = () => {
                             </div>
                             <div className="CH_GeneralInformation-Content-Box-Address">
                                 <TextBlock content="Province"/>
-                                <FlexComboBox options={options} placeholderText="Select"/>
+                                <FlexComboBox options={provinceOptions} placeholderText="Select"
+                                              onChange={handleProvinceChange}/>
                             </div>
                             <div className="CH_GeneralInformation-Content-Box-Address">
                                 <TextBlock content="District"/>
-                                <FlexComboBox options={options} placeholderText="Select"/>
+                                <FlexComboBox options={districtOptions} placeholderText="Select"
+                                              onChange={handleDistrictChange}/>
                             </div>
                             <div className="CH_GeneralInformation-Content-Box-Address">
                                 <TextBlock content="Ward"/>
-                                <FlexComboBox options={options} placeholderText="Select"/>
+                                <FlexComboBox options={wardOptions} placeholderText="Select"/>
                             </div>
                             <div style={{fontWeight: "bold", paddingTop: "10px", paddingBottom: "10px"}}>
                                 Location
                             </div>
-                            <div style={{display: "flex", flex: "row", gap: "30px"}}>  
+                            <div style={{display: "flex", flex: "row", gap: "30px"}}>
                                 <div className="CH_GeneralInformation-Content-Box-Address">
                                     <TextBlock content="Latitude"/>
-                                    <FlexComboBox options={options} placeholderText="Select"/>
+                                    <FlexComboBox options={provinceOptions} placeholderText="Select"/>
                                 </div>
                                 <div className="CH_GeneralInformation-Content-Box-Address">
                                     <TextBlock content="Longitude"/>
-                                    <FlexComboBox options={options} placeholderText="Select"/>
+                                    <FlexComboBox options={provinceOptions} placeholderText="Select"/>
                                 </div>
                             </div>
                         </div>
@@ -188,5 +214,5 @@ const CH_GeneralInformation = () => {
         </div>
     );
 }
- 
+
 export default CH_GeneralInformation;
