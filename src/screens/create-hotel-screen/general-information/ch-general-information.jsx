@@ -3,7 +3,7 @@ import FlexComboBox from "../../../components/flexcombobox/flexcombobox";
 import FlexTextbox from "../../../components/flextextbox/flextextbox";
 import Divider from "../../../components/divider/divider";
 import RadioButton from "../../../components/radiobutton/radiobutton";
-import {SecondaryButton} from "../../../components/button/button";
+import {PrimaryButton, SecondaryButton} from "../../../components/button/button";
 import ico_plus from "../../../assets/icons/plus.png";
 import ico_plus_active from "../../../assets/icons/plus-active.png";
 import "./ch-general-information.css";
@@ -13,7 +13,33 @@ import {getProvinces} from "../../../api/create-hotel/get-provinces";
 import {getHoteltypes} from "../../../api/create-hotel/get-hoteltypes";
 import {getWards} from "../../../api/create-hotel/get-wards";
 import {getDistricts} from "../../../api/create-hotel/get-districts";
-
+const info = {
+    name: "",
+    address: "",
+    hotel_type : "",
+    province_code: null,
+    hotline : "",
+    dictrict_code : null,
+    ward_code: null,
+    lat: null,
+    lng :	null,
+    star : null,
+    facility_ids : [],
+    hotel_detail : {
+        number_of_floor : null,
+        distance_to_center_city :null,
+        description : "",
+        location_detail : "",
+        check_in_time : "",
+        check_out_time : "",
+        require_document : null,
+        minimun_age : null,
+        cancellation_policy : null,
+        smoking_policy : "",
+        pet_policy : "",
+        additional_policies : ""
+    }
+}
 const CH_GeneralInformation = () => {
     //get hotel types
     const [hoteltypes, setHoteltypes] = useState([]);
@@ -27,10 +53,14 @@ const CH_GeneralInformation = () => {
 
         )
     }, []);
+    const hotelTypeOnChange = (event) => {
+        info.hotel_type = event.target.value;
+    }
     const propertyTypes = hoteltypes.map && hoteltypes.map(type => (
         <li key={type.id}>
             <div className="PropertyType-Containter">
                 <RadioButton
+                    onchange={hotelTypeOnChange}
                     group="propertyType"
                     value={type.id}
                     content={
@@ -43,6 +73,7 @@ const CH_GeneralInformation = () => {
                             </div>
                         </div>
                     }/>
+
             </div>
         </li>
     ))
@@ -69,7 +100,9 @@ const CH_GeneralInformation = () => {
     const handleProvinceChange = (value) => {
         const selectedProvince = provinces.find(province => province.name === value);
         if (selectedProvince) {
+            info.province_code = selectedProvince.code;
             setSelectedProvince(selectedProvince.code);
+
 
         }
     };
@@ -95,7 +128,7 @@ const CH_GeneralInformation = () => {
     const handleDistrictChange = (value) => {
         const selectedDistrict = district.find(district => district.name === value);
         if (selectedDistrict) {
-            console.log(selectedDistrict.code);
+            info.dictrict_code = selectedDistrict.code;
             setSelectedDistrict(selectedDistrict.code);
 
         }
@@ -103,6 +136,7 @@ const CH_GeneralInformation = () => {
 
     //get wards
     const [ward, setWard] = useState([]);
+    const [selectedWard, setSelectedWard] = useState()
     useEffect(() => {
         const fetchWards = async () => {
             if (selectedDistrict) {
@@ -118,7 +152,29 @@ const CH_GeneralInformation = () => {
         fetchWards();
     }, [selectedDistrict]);
     const wardOptions = ward.map(ward => ({value: ward.name}));
+    const handleWardChange = (value) => {
+        const selectedWard = ward.find(ward => ward.name === value);
+        if (selectedWard) {
+            info.ward_code = selectedWard.code;
+            setSelectedWard(selectedWard.code);
+        }
+    };
 
+    const hotelNameOnChange = (value) => {
+        info.name = value;
+    }
+    const hotelAddressOnChange = (value) => {
+        info.address = value;
+    }
+    const hotlineOnChange = (value) => {
+        info.hotline = value;
+    }
+
+
+    const nextPage = () => {
+
+        console.log(info);
+    }
 
     return (
         <div className="CH_GeneralInformation-Container">
@@ -132,7 +188,7 @@ const CH_GeneralInformation = () => {
                     </div>
                     <div className="CH_GeneralInformation-Content">
                         <div className="CH_GeneralInformation-Content-Box">
-                            <FlexTextbox/>
+                            <FlexTextbox onChange={hotelNameOnChange}/>
                         </div>
                     </div>
                 </div>
@@ -162,7 +218,7 @@ const CH_GeneralInformation = () => {
                         <div className="CH_GeneralInformation-Content-Box">
                             <div className="CH_GeneralInformation-Content-Box-Address">
                                 <TextBlock content="Street Address"/>
-                                <FlexTextbox/>
+                                <FlexTextbox onChange={hotelAddressOnChange}/>
                             </div>
                             <div className="CH_GeneralInformation-Content-Box-Address">
                                 <TextBlock content="Province"/>
@@ -176,7 +232,7 @@ const CH_GeneralInformation = () => {
                             </div>
                             <div className="CH_GeneralInformation-Content-Box-Address">
                                 <TextBlock content="Ward"/>
-                                <FlexComboBox options={wardOptions} placeholderText="Select"/>
+                                <FlexComboBox options={wardOptions} placeholderText="Select" onChange={handleWardChange}/>
                             </div>
                             <div style={{fontWeight: "bold", paddingTop: "10px", paddingBottom: "10px"}}>
                                 Location
@@ -190,7 +246,9 @@ const CH_GeneralInformation = () => {
                                     <TextBlock content="Longitude"/>
                                     <FlexComboBox options={provinceOptions} placeholderText="Select"/>
                                 </div>
+
                             </div>
+                            <PrimaryButton>Locate</PrimaryButton>
                         </div>
                     </div>
                 </div>
@@ -203,13 +261,14 @@ const CH_GeneralInformation = () => {
                     </div>
                     <div className="CH_GeneralInformation-Content">
                         <div className="CH_GeneralInformation-Content-Box">
-                            <FlexTextbox/>
+                            <FlexTextbox onChange={hotlineOnChange}/>
                         </div>
                         <div className="CH_GeneralInformation-Content-AddContactBtn">
                             <SecondaryButton icon={"only"} src={ico_plus} alt={ico_plus_active}/>
                         </div>
                     </div>
                 </div>
+                <PrimaryButton onClick={nextPage} >Next</PrimaryButton>
             </div>
         </div>
     );
