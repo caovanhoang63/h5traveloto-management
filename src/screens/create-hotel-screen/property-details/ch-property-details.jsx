@@ -3,9 +3,29 @@ import TextArea from "../../../components/textarea/textarea";
 import UnitTextBox from "../../../components/unittextbox/unittextbox";
 import Divider from "../../../components/divider/divider";
 import "./ch-property-details.css";
+import {useContext} from "react";
+import {InfoContext} from "../../../context/createhotel-context";
+import {PrimaryButton} from "../../../components/button/button";
 
 const CH_PropertyDetails = () => {
-    return ( 
+    const { info, setInfo } = useContext(InfoContext);
+    const onChange = (e) => {
+    }
+    const nextOnClick = () => {
+        console.log(info);
+    }
+
+    const locationDetailsOnchange = (e) => {
+        console.log(e.value);
+        setInfo({
+            ...info,
+            locationDetails: e.value
+        })
+    }
+
+
+    return (
+
         <div className="CH_PropertyDetails-Container">
             <div className="CH_PropertyDetails-Header">
                 Property Details
@@ -13,12 +33,12 @@ const CH_PropertyDetails = () => {
             <div className="CH_PropertyDetails-Main">
                 <div className="CH_PropertyDetails-Property Distant">
                     <div className="CH_PropertyDetails-Title">
-                        <TextBlock content="Distant to City Center"/>
+                        <TextBlock content="Distant to City Center" />
                     </div>
                     <div className="CH_PropertyDetails-Content">
                         <div className="CH_PropertyDetails-Content-Box">
                             <div style={{width: "150px", height: "35px"}}>
-                                <UnitTextBox unit="km"/>
+                                <UnitTextBox unit="km" onchange={onChange}/>
                             </div>
                         </div>
                     </div>
@@ -48,7 +68,7 @@ const CH_PropertyDetails = () => {
                     <div className="CH_PropertyDetails-Content">
                         <div className="CH_PropertyDetails-Content-Box">
                             <div style={{width: "400px", height: "100px"}}>
-                                <TextArea/>
+                                <TextArea />
                             </div>
                         </div>
                     </div>
@@ -63,11 +83,12 @@ const CH_PropertyDetails = () => {
                     <div className="CH_PropertyDetails-Content">
                         <div className="CH_PropertyDetails-Content-Box">
                             <div style={{width: "400px", height: "100px"}}>
-                                <TextArea/>
+                                <TextArea onchange={locationDetailsOnchange} />
                             </div>
                         </div>
                     </div>
                 </div>
+                <PrimaryButton onClick={nextOnClick}>Next</PrimaryButton>
             </div>
         </div>
      );

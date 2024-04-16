@@ -1,6 +1,7 @@
 import img_LogoFull from "../../assets/icons/logofull.png";
 import SidebarCreateHotel from "../../components/sidebar-create-hotel/sidebar-create-hotel";
 import './create-hotel-screen.css';
+import {InfoProvider} from "../../context/createhotel-context";
 
 const CreateHotel = ({...props}) => {
 
@@ -43,29 +44,31 @@ const CreateHotel = ({...props}) => {
         }
     ]
 
-	const userMail = "user@gmail.com";
+    const userMail = "user@gmail.com";
 
-    return ( 
-    <div className="CreateHotelScreen-Container">
-        <div className="CreateHotelScreen-Header">
-			<div className="CreateHotelScreen-Header-Logo">
-				<img src={img_LogoFull}></img>
-			</div>
-			<div className="CreateHotelScreen-Header-UserMail">
-				<div>Logged-in as:</div>
-				<div>{userMail}</div>
-			</div>
-        </div>
-        <div className="CreateHotelScreen-Main">
-            <div className="CreateHotelScreen-SidebarContainer">
-                <SidebarCreateHotel data={data} progress={10}/>
+    return (
+        <InfoProvider>
+            <div className="CreateHotelScreen-Container">
+                <div className="CreateHotelScreen-Header">
+                    <div className="CreateHotelScreen-Header-Logo">
+                        <img src={img_LogoFull}></img>
+                    </div>
+                    <div className="CreateHotelScreen-Header-UserMail">
+                        <div>Logged-in as:</div>
+                        <div>{userMail}</div>
+                    </div>
+                </div>
+                <div className="CreateHotelScreen-Main">
+                    <div className="CreateHotelScreen-SidebarContainer">
+                        <SidebarCreateHotel data={data} progress={10}/>
+                    </div>
+                    <div className="CreateHotelScreen-Fields">
+                        {props.children}
+                    </div>
+                </div>
             </div>
-            <div className="CreateHotelScreen-Fields">
-                {props.children}
-            </div>
-        </div>
-    </div>
+        </InfoProvider>
     );
 }
- 
+
 export default CreateHotel;

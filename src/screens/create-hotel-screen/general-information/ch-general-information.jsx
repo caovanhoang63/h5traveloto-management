@@ -7,40 +7,16 @@ import {PrimaryButton, SecondaryButton} from "../../../components/button/button"
 import ico_plus from "../../../assets/icons/plus.png";
 import ico_plus_active from "../../../assets/icons/plus-active.png";
 import "./ch-general-information.css";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {listReviews} from "../../../api/reviews";
 import {getProvinces} from "../../../api/create-hotel/get-provinces";
 import {getHoteltypes} from "../../../api/create-hotel/get-hoteltypes";
 import {getWards} from "../../../api/create-hotel/get-wards";
 import {getDistricts} from "../../../api/create-hotel/get-districts";
-const info = {
-    name: "",
-    address: "",
-    hotel_type : "",
-    province_code: null,
-    hotline : "",
-    dictrict_code : null,
-    ward_code: null,
-    lat: null,
-    lng :	null,
-    star : null,
-    facility_ids : [],
-    hotel_detail : {
-        number_of_floor : null,
-        distance_to_center_city :null,
-        description : "",
-        location_detail : "",
-        check_in_time : "",
-        check_out_time : "",
-        require_document : null,
-        minimun_age : null,
-        cancellation_policy : null,
-        smoking_policy : "",
-        pet_policy : "",
-        additional_policies : ""
-    }
-}
+import {InfoContext} from "../../../context/createhotel-context";
+
 const CH_GeneralInformation = () => {
+    const { info, setInfo } = useContext(InfoContext);
     //get hotel types
     const [hoteltypes, setHoteltypes] = useState([]);
     useEffect(() => {
