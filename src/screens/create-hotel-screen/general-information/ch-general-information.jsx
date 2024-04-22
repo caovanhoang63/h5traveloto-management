@@ -8,12 +8,12 @@ import ico_plus from "../../../assets/icons/plus.png";
 import ico_plus_active from "../../../assets/icons/plus-active.png";
 import "./ch-general-information.css";
 import {useContext, useEffect, useState} from "react";
-import {listReviews} from "../../../api/reviews";
 import {getProvinces} from "../../../api/create-hotel/get-provinces";
 import {getHoteltypes} from "../../../api/create-hotel/get-hoteltypes";
 import {getWards} from "../../../api/create-hotel/get-wards";
 import {getDistricts} from "../../../api/create-hotel/get-districts";
 import {InfoContext} from "../../../context/createhotel-context";
+import UnitTextBox from "../../../components/unittextbox/unittextbox";
 
 const CH_GeneralInformation = () => {
     const { info, setInfo } = useContext(InfoContext);
@@ -76,7 +76,7 @@ const CH_GeneralInformation = () => {
     const handleProvinceChange = (value) => {
         const selectedProvince = provinces.find(province => province.name === value);
         if (selectedProvince) {
-            info.province_code = selectedProvince.code;
+            info.province_code = parseInt(selectedProvince.code);
             setSelectedProvince(selectedProvince.code);
 
 
@@ -104,7 +104,7 @@ const CH_GeneralInformation = () => {
     const handleDistrictChange = (value) => {
         const selectedDistrict = district.find(district => district.name === value);
         if (selectedDistrict) {
-            info.dictrict_code = selectedDistrict.code;
+            info.dictrict_code = parseInt(selectedDistrict.code);
             setSelectedDistrict(selectedDistrict.code);
 
         }
@@ -131,7 +131,7 @@ const CH_GeneralInformation = () => {
     const handleWardChange = (value) => {
         const selectedWard = ward.find(ward => ward.name === value);
         if (selectedWard) {
-            info.ward_code = selectedWard.code;
+            info.ward_code = parseInt(selectedWard.code);
             setSelectedWard(selectedWard.code);
         }
     };
@@ -145,10 +145,12 @@ const CH_GeneralInformation = () => {
     const hotlineOnChange = (value) => {
         info.hotline = value;
     }
+    const starsOnChange = (value) => {
+        info.star = parseInt(value);
+    }
 
 
     const nextPage = () => {
-
         console.log(info);
     }
 
@@ -208,7 +210,8 @@ const CH_GeneralInformation = () => {
                             </div>
                             <div className="CH_GeneralInformation-Content-Box-Address">
                                 <TextBlock content="Ward"/>
-                                <FlexComboBox options={wardOptions} placeholderText="Select" onChange={handleWardChange}/>
+                                <FlexComboBox options={wardOptions} placeholderText="Select"
+                                              onChange={handleWardChange}/>
                             </div>
                             <div style={{fontWeight: "bold", paddingTop: "10px", paddingBottom: "10px"}}>
                                 Location
@@ -239,12 +242,22 @@ const CH_GeneralInformation = () => {
                         <div className="CH_GeneralInformation-Content-Box">
                             <FlexTextbox onChange={hotlineOnChange}/>
                         </div>
-                        <div className="CH_GeneralInformation-Content-AddContactBtn">
-                            <SecondaryButton icon={"only"} src={ico_plus} alt={ico_plus_active}/>
+                    </div>
+                </div>
+                <div className="CH_GeneralInformation-Divider">
+                    <Divider isHorizontal={true} thick="1px" type="solid" color="#e8f1fd"/>
+                </div>
+                <div className="CH_GeneralInformation-Property Hotlines">
+                    <div className="CH_GeneralInformation-Title">
+                        <TextBlock content="Star"/>
+                    </div>
+                    <div className="CH_GeneralInformation-Content">
+                        <div className="CH_GeneralInformation-Content-Box">
+                            <UnitTextBox unit="Stars" onchange={starsOnChange}/>
                         </div>
                     </div>
                 </div>
-                <PrimaryButton onClick={nextPage} >Next</PrimaryButton>
+                <PrimaryButton onClick={nextPage}>Next</PrimaryButton>
             </div>
         </div>
     );

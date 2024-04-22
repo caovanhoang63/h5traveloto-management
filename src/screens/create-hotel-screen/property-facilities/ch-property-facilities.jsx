@@ -5,6 +5,7 @@ import {getHotelfacilities} from "../../../api/create-hotel/get-hotelfacilities"
 import {getHoteltypes} from "../../../api/create-hotel/get-hoteltypes";
 import {PrimaryButton} from "../../../components/button/button";
 import {InfoContext} from "../../../context/createhotel-context";
+import {postCreatehotel} from "../../../api/create-hotel/post-createhotel";
 
 const CH_PropertyFacilities = () => {
     const { info, setInfo } = useContext(InfoContext);
@@ -29,8 +30,15 @@ const CH_PropertyFacilities = () => {
                 <FacilitiesProperty data={facility}/>
             </li>
         ));
+
     const nextOnClick = () => {
         console.log(info)
+        console.log(localStorage.getItem("token"))
+        postCreatehotel(info).then((res) => {
+            console.log(res)
+        }).catch((e) => {
+            console.log(e)
+        })
     }
     return (
 

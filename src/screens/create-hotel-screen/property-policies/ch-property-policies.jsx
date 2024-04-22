@@ -10,10 +10,22 @@ import FlexCombobox from "../../../components/flexcombobox/flexcombobox";
 import Combobox from "../../../components/combobox/combobox";
 import {PaintRoller} from "@phosphor-icons/react";
 import {PrimaryButton} from "../../../components/button/button";
-import HourPicker from "../../../components/HourPicker";
+import HourPicker from "../../../components/hourpicker/HourPicker";
+import {useContext, useEffect} from "react";
+import {InfoContext, InfoProvider} from "../../../context/createhotel-context";
 
 const CH_PropertyPolicies = () => {
-    let locationDetailsOnchange;
+
+
+    const locationDetailsOnchange = (e) => {
+        setInfo((prevInfo) => ({
+            ...prevInfo,
+            hotel_detail: {
+                ...prevInfo.hotel_detail,
+                additional_policies: e
+            }
+        }));
+    }
 
     const SmokingPolicyOptions = [
         {value: "free"},
@@ -27,12 +39,80 @@ const CH_PropertyPolicies = () => {
         {value: "ban"},
 
     ];
+    const { info, setInfo } = useContext(InfoContext);
 
+    const checkInTimeOnchange = (value) => {
+        const hour = String(value.$H).padStart(2, '0');
+        const minute = String(value.$m).padStart(2, '0');
+        const second = String(value.$s).padStart(2, '0');
+        const checkInTime = `${hour}:${minute}:${second}`;
 
-    const onChange = (value) => {
+        setInfo((prevInfo) => ({
+            ...prevInfo,
+            hotel_detail: {
+                ...prevInfo.hotel_detail,
+                check_in_time: checkInTime
+            }
+        }));
+    }
+    const checkOutTimeOnchange = (value) => {
+        const hour = String(value.$H).padStart(2, '0');
+        const minute = String(value.$m).padStart(2, '0');
+        const second = String(value.$s).padStart(2, '0');
+        const checkOutTime = `${hour}:${minute}:${second}`;
+
+        setInfo((prevInfo) => ({
+            ...prevInfo,
+            hotel_detail: {
+                ...prevInfo.hotel_detail,
+                check_out_time: checkOutTime
+            }
+        }));
+    }
+    const minimumAgesOnChange = (value) => {
+        setInfo((prevInfo) => ({
+            ...prevInfo,
+            hotel_detail: {
+                ...prevInfo.hotel_detail,
+                minimum_age: parseInt(value)
+            }
+        }));
+    }
+    const cancelPolicyOnChange = (value) => {
+        setInfo((prevInfo) => ({
+            ...prevInfo,
+            hotel_detail: {
+                ...prevInfo.hotel_detail,
+                cancellation_policy: parseInt(value)
+            }
+        }));
+    }
+    const smokingOnChange = (e) => {
+        setInfo((prevInfo) => ({
+            ...prevInfo,
+            hotel_detail: {
+                ...prevInfo.hotel_detail,
+                smoking_policy: e
+            }
+        }));
+    }
+
+    const requireDocumentOnChange = (value) => {
         console.log(value);
     }
 
+    const petOnChange = (e) => {
+        setInfo((prevInfo) => ({
+            ...prevInfo,
+            hotel_detail: {
+                ...prevInfo.hotel_detail,
+                pet_policy: e
+            }
+        }));
+    }
+    const nextOnClick = () => {
+        console.log(info);
+    }
 
 
     return (
@@ -47,7 +127,7 @@ const CH_PropertyPolicies = () => {
                     </div>
                     <div className="CH_PropertyPolicies-Content">
                         <div className="CH_PropertyPolicies-Content-Box">
-                            <TextBlock content="From"/>
+                            <HourPicker label={"From"} onChange={checkInTimeOnchange}/>
                         </div>
                     </div>
                 </div>
@@ -57,8 +137,8 @@ const CH_PropertyPolicies = () => {
                     </div>
                     <div className="CH_PropertyPolicies-Content">
                         <div className="CH_PropertyPolicies-Content-Box">
-                            <TextBlock content="To"/>
-                            <FlexTextbox/>
+                            <HourPicker label={"To"} onChange={checkOutTimeOnchange}/>
+
                         </div>
                     </div>
                 </div>
@@ -72,7 +152,7 @@ const CH_PropertyPolicies = () => {
                     <div className="CH_PropertyPolicies-Content">
                         <div className="CH_PropertyPolicies-Content-Box">
                             <div style={{width: "150px", height: "35px"}}>
-                                <Checkbox onChange={onChange}/>
+                                <Checkbox onChange={requireDocumentOnChange}/>
                             </div>
                         </div>
                     </div>
@@ -87,7 +167,7 @@ const CH_PropertyPolicies = () => {
                     <div className="CH_PropertyPolicies-Content">
                         <div className="CH_PropertyPolicies-Content-Box">
                             <div style={{width: "150px", height: "35px"}}>
-                                <UnitTextBox unit="years old"/>
+                                <UnitTextBox unit="years old" onchange={minimumAgesOnChange}/>
                             </div>
                         </div>
                     </div>
@@ -102,7 +182,7 @@ const CH_PropertyPolicies = () => {
                     <div className="CH_PropertyPolicies-Content">
                         <div className="CH_PropertyPolicies-Content-Box">
                             <div style={{width: "150px", height: "35px"}}>
-                                <UnitTextBox unit="%"/>
+                                <UnitTextBox unit="%" onchange={cancelPolicyOnChange}/>
                             </div>
                         </div>
                     </div>
@@ -117,7 +197,7 @@ const CH_PropertyPolicies = () => {
                     </div>
                     <div className="CH_PropertyPolicies-Content">
                         <div className="CH_PropertyPolicies-Content-Box">
-                            <FlexCombobox options={SmokingPolicyOptions}/>
+                            <FlexCombobox options={SmokingPolicyOptions} onChange={smokingOnChange}/>
 
 
                         </div>
@@ -128,12 +208,12 @@ const CH_PropertyPolicies = () => {
                 </div>
                 <div className="CH_PropertyPolicies-Property Floors">
                     <div className="CH_PropertyPolicies-Title">
-                        Cancellation Policy
+                        Pet Policy
                     </div>
                     <div className="CH_PropertyPolicies-Content">
                         <div className="CH_PropertyPolicies-Content-Box">
                             <div className={"CH_PropertyPolicies-Content-Box-Address"}>
-                                <FlexCombobox options={PetPolicyOptions}/>
+                                <FlexCombobox options={PetPolicyOptions} onChange={petOnChange}/>
                             </div>
                         </div>
                     </div>
@@ -153,7 +233,7 @@ const CH_PropertyPolicies = () => {
                         </div>
                     </div>
                 </div>
-                <PrimaryButton>Next</PrimaryButton>
+                <PrimaryButton onClick={nextOnClick}>Next</PrimaryButton>
             </div>
         </div>
     );

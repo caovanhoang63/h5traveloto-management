@@ -9,18 +9,22 @@ import {PrimaryButton} from "../../../components/button/button";
 
 const CH_PropertyDetails = () => {
     const { info, setInfo } = useContext(InfoContext);
-    const onChange = (e) => {
+    const distantOnChange = (e) => {
+        info.hotel_detail.distance_to_center_city = parseInt(e);
     }
     const nextOnClick = () => {
         console.log(info);
     }
 
+    const descriptionOnChange = (e) => {
+        info.hotel_detail.description = e
+    }
+
+    const numberoffloorsOnChange = (e) => {
+        info.hotel_detail.number_of_floor = parseInt(e)
+    }
     const locationDetailsOnchange = (e) => {
-        console.log(e.value);
-        setInfo({
-            ...info,
-            locationDetails: e.value
-        })
+        info.hotel_detail.location_detail = e
     }
 
 
@@ -38,7 +42,7 @@ const CH_PropertyDetails = () => {
                     <div className="CH_PropertyDetails-Content">
                         <div className="CH_PropertyDetails-Content-Box">
                             <div style={{width: "150px", height: "35px"}}>
-                                <UnitTextBox unit="km" onchange={onChange}/>
+                                <UnitTextBox unit="km" onchange={distantOnChange}/>
                             </div>
                         </div>
                     </div>
@@ -53,7 +57,7 @@ const CH_PropertyDetails = () => {
                     <div className="CH_PropertyDetails-Content">
                         <div className="CH_PropertyDetails-Content-Box">
                             <div style={{width: "150px", height: "35px"}}>
-                                <UnitTextBox unit="floors"/>
+                                <UnitTextBox unit="floors" onchange={numberoffloorsOnChange}/>
                             </div>
                         </div>
                     </div>
@@ -68,7 +72,7 @@ const CH_PropertyDetails = () => {
                     <div className="CH_PropertyDetails-Content">
                         <div className="CH_PropertyDetails-Content-Box">
                             <div style={{width: "400px", height: "100px"}}>
-                                <TextArea />
+                                <TextArea onchange={descriptionOnChange} />
                             </div>
                         </div>
                     </div>
