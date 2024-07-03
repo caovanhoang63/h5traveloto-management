@@ -1,5 +1,6 @@
 .booking-container {
     display: flex;
+    flex-direction: column;
     height: 100%;
     width: 100%;
 }
@@ -13,6 +14,7 @@
     background-color: var(--GreyHeader);
     align-items: center;
     padding: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 .booking-type {
     flex: 1;
@@ -38,4 +40,8 @@
     flex-direction: row;
     align-content: space-between;
     margin-right: 12px;
+}
+
+.booking-table {
+    margin: 16px 0;
 }
