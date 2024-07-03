@@ -1,0 +1,101 @@
+.CH_GeneralInformation-Container {
+    margin-top: 25px;    
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 25px;
+    position: relative;
+}
+.CH_GeneralInformation-Header {
+    font-size: 2rem;
+    color: black;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+.CH_GeneralInformation-Main {
+    background-color: var(--white-color);
+	padding: 10px;
+    padding-bottom: 0;
+	border-radius: 8px;
+    font-size: 1.5rem;
+    color: var(--Grey600);
+}
+
+/* Divider */
+.CH_GeneralInformation-Divider {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.CH_GeneralInformation-Property {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+.CH_GeneralInformation-Title {
+    flex: 1;
+    padding-top: 10px;
+}
+.CH_GeneralInformation-Content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 60%;
+}
+.CH_GeneralInformation-Content-Box {
+    width: 80%;
+}
+.CH_GeneralInformation-Content-Box ul {
+    padding: 0;
+    margin: 0;
+}
+.CH_GeneralInformation-Content-Box ul li {
+    list-style: none;
+}
+
+/* Property Types */
+.PropertyType-Containter {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 25px;
+}
+.PropertyType-Field {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.PropertyType-Field-Name {
+    padding-top: 5px;
+    color: var(--Primary800);
+    opacity: 0.75;
+    font-weight: 600;
+}
+.PropertyType-Field-Description {
+    padding-top: 10px;
+    color: var(--Primary800);
+    opacity: 0.75;
+}
+
+/* Address */
+.CH_GeneralInformation-Content-Box-Address {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 1.3125rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.CH_GeneralInformation-Property.Address .CH_GeneralInformation-Content-Box {
+    width: 60%;
+}
+
+/* Hotlines */
+.CH_GeneralInformation-Property.Hotlines .CH_GeneralInformation-Content-Box {
+    width: 60%;
+}
+.CH_GeneralInformation-Content-AddContactBtn {
+    padding: 10px;
+}

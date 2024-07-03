@@ -1,10 +1,10 @@
 
-.tab {
+.sidebar-tab {
     position: relative;
 	list-style: none;
 	margin-bottom: 5px;
 }
-.tab a {
+.sidebar-tab a {
     display: flex;
 	align-items: center;
 	gap: 10px;
@@ -16,40 +16,40 @@
 	border-radius: 8px;
 	transition: all 0.3s;
 }
-.tab a:hover,
-.tab.active a {
+.sidebar-tab a:hover,
+.sidebar-tab.active a {
 	color: var(--Primary600);
 	background-color: var(--Primary50);
 }
-.tab a img {
+.sidebar-tab a img {
 	width: 32px;
 }
-.tab .text {
+.sidebar-tab .sidebar-tab-text {
 	flex: 1;
 }
 
-.tab a .active-ico {
+.sidebar-tab a .sidebar-tab-active-ico {
 	display: none;
 }
-.tab.active a .active-ico,
-.tab a:hover .active-ico {
+.sidebar-tab.active a .sidebar-tab-active-ico,
+.sidebar-tab a:hover .sidebar-tab-active-ico {
 	display: block;
 }
-.tab a .unactive-ico {
+.sidebar-tab a .sidebar-unactive-ico {
 	display: block;
 }
-.tab.active a .unactive-ico,
-.tab a:hover .unactive-ico {
+.sidebar-tab.active a .sidebar-tab-unactive-ico,
+.sidebar-tab a:hover .sidebar-tab-unactive-ico {
 	display: none;
 }
 
-.tab.untoggle a {
+.sidebar-tab.untoggle a {
     position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
-.tab.untoggle a .text {
+.sidebar-tab.untoggle a .sidebar-tab-text {
     position: absolute;
 	left: 70px;
 	top: 50%;
@@ -60,9 +60,9 @@
 	background-color: #000;
 	opacity: 0;
 	visibility: hidden;
-	transition: all 0.3s;
+	/* transition: all 0.3s; */
 }
-.tab.untoggle a .text::after {
+.sidebar-tab.untoggle a .sidebar-tab-text::after {
     content: "";
 	position: absolute;
 	left: -5px;
@@ -74,7 +74,7 @@
 	transform: rotate(45deg);
 	z-index: -1;
 }
-.tab.untoggle a:hover .text {
+.sidebar-tab.untoggle a:hover .sidebar-tab-text {
     left: 50px;
 	opacity: 1;
 	visibility: visible;

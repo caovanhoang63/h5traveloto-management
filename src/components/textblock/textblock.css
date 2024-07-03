@@ -1,0 +1,7 @@
+.TextBlock-Holder {
+    display: flex;
+    flex-direction: row;
+}
+.TextBlock-Holder-Important {
+    color: var(--Primary400);
+}

@@ -6,72 +6,71 @@ import ico_arrow_line_left from "../../assets/icons/arrow-line-left.png";
 import ico_arrow_line_left_active from "../../assets/icons/arrow-line-left-active.png";
 import Sidebar_tab from "./sidebar_tab";
 
-const Sidebar = ({ data }) => {
+const Sidebar = ({data, isLogo = true}) => {
     const [isToggleSideBar, setToggleSideBar] = useState(false);
     const [activeTab, setActiveTab] = useState(null);
 
-    const handleClick_MenuBtn = () => {
-        if (isToggleSideBar) {
-            setToggleSideBar(false);
-        } else {
-            setToggleSideBar(true);
-        }
-    };
-    const hanldeClick_Tab = (tab, tabs) => {
-        setActiveTab(tab);
-    };
+	const handleClick_MenuBtn = () => { 
+		if (isToggleSideBar)
+		{
+			setToggleSideBar(false);
+		}
+		else
+		{
+			setToggleSideBar(true);
+		}
+	};
+	const hanldeClick_Tab = (tab) => {
+		setActiveTab(tab);
+	}
+	
+	const tabs = 
+		data && 
+		data.map && 
+		data.map(tab => (
+		<li 
+			key={tab.id} 
+			onClick={() => {
+				hanldeClick_Tab(tab)
+			}}
+		>
+			<Sidebar_tab
+				img={tab.ico} 
+				img_active={tab.active_ico} 
+				content={tab.content} 
+				isToggle={isToggleSideBar} 
+				isActive={tab === activeTab}
+				navLink={tab.navLink}
+				/>
+		</li>
+	));
 
-    const tabs =
-        data &&
-        data.map &&
-        data.map((tab) => (
-            <li
-                key={tab.id}
-                onClick={() => {
-                    hanldeClick_Tab(tab, tabs);
-                }}
-            >
-                <Sidebar_tab
-                    img={tab.ico}
-                    img_active={tab.active_ico}
-                    content={tab.content}
-                    isToggle={isToggleSideBar}
-                    isActive={tab === activeTab}
-                    navLink={tab.navLink}
-                />
-            </li>
-        ));
-
-    return (
-        <div className={"sidebar-container"}>
-            <div className={"sidebar" + (isToggleSideBar ? " active" : "")}>
-                <div className="menu-btn" onClick={handleClick_MenuBtn}>
-                    <img src={ico_arrow_line_left} alt="" />
-                </div>
-                <div className="head">
-                    <div
-                        className={"logo" + (isToggleSideBar ? " active" : "")}
-                    >
-                        <img src={img_Logo} alt="" />
-                    </div>
-                    <div
-                        className={
-                            "logo-full" + (isToggleSideBar ? "" : " active")
-                        }
-                    >
-                        <img src={img_LogoFull} alt="" />
-                    </div>
-                </div>
-                <div className="nav">
-                    <div className="menu">
-                        <ul>{tabs}</ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-};
-
+	return (
+		<div className={"sidebar-container"}>
+			<div className={'sidebar' + (isToggleSideBar ? ' active' : '') }>
+				<div className="sidebar-menu-btn" onClick={handleClick_MenuBtn}>
+					<img src={ico_arrow_line_left} alt="" />
+				</div>
+				<div className={'sidebar-head' + (isLogo ? ' active' : '')}>
+					<div className={'sidebar-logo' + (isToggleSideBar ? ' active' : '')}>
+						<img src={img_Logo} alt=""/>
+					</div>
+					<div className={'sidebar-logo-full' + (isToggleSideBar ? '' : ' active')}>
+						<img src={img_LogoFull} alt=""/>
+					</div>
+				</div>
+				<div className="sidebar-nav">
+					<div className="sidebar-menu">
+						<ul>
+							{tabs}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+}
+ 
 export default Sidebar;
 
 // import Sidebar from './components/sidebar/sidebar';

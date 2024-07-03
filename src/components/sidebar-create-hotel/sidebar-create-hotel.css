@@ -1,0 +1,36 @@
+.sidebar-ch-container {
+	background-color: var(--white-color);
+	padding: 0px;
+	border-radius: 8px;
+}
+.sidebar-ch-container ul {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	z-index: 1;
+    width: 230px;
+	position: relative;
+}
+.sidebar-ch {
+	position: relative;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	padding-left: 18px;
+	padding-right: 18px;
+	padding-top: 24px;
+	padding-bottom: 24px;
+}
+.sidebar-ch-menu ul li {
+	position: relative;
+	list-style: none;
+	margin-bottom: 5px;
+	padding-bottom: 10px;
+}
+.sidebar-ch-progress {
+	display: flex;
+	color: var(--Grey600);
+	font-size: 1.5rem;
+	justify-content: center;
+	padding-top: 10px;
+}
