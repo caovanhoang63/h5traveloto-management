@@ -33,12 +33,12 @@ const CH_PropertyFacilities = () => {
 
     const nextOnClick = () => {
         console.log(info)
-        console.log(localStorage.getItem("token"))
+        /*console.log(localStorage.getItem("token"))
         postCreatehotel(info).then((res) => {
             console.log(res)
         }).catch((e) => {
             console.log(e)
-        })
+        })*/
     }
     return (
 

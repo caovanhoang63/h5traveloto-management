@@ -1,13 +1,22 @@
-import { Upload } from 'antd';
+import {message, Upload} from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import useFilePreview from '../../hooks/useFilePreview';
+
 const { Dragger } = Upload;
-const DragAndDrop = ({ addFile, removeFile }) => {
+
+const DragAndDrop = ({ addFile, removeFile, selectedFiles }) => {
     const [handlePreview, previewContent] = useFilePreview();
-    const beforeUploadHandler = (file) => {
-        addFile(file);
-        return false;
+
+    const beforeUploadHandler = async (file) => {
+        try {
+            await addFile(file);
+            message.success(`${file.name} file uploaded successfully`);
+        } catch (error) {
+            message.error(`${file.name} file upload failed.`);
+        }
+        return false;  // Prevent default upload behavior
     };
+
     return (
         <>
             <Dragger
@@ -18,6 +27,7 @@ const DragAndDrop = ({ addFile, removeFile }) => {
                 beforeUpload={beforeUploadHandler}
                 onPreview={handlePreview}
                 accept="image/*"
+                fileList={selectedFiles}
             >
                 <p className="ant-upload-drag-icon">
                     <PlusOutlined />
@@ -30,4 +40,5 @@ const DragAndDrop = ({ addFile, removeFile }) => {
         </>
     );
 };
+
 export default DragAndDrop;

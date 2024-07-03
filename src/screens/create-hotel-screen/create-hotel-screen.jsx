@@ -35,12 +35,6 @@ const CreateHotel = ({...props}) => {
             content: "Photos",
             navigate: "photos",
             taskNum: 5
-        },
-        {
-            id: 6,
-            content: "Payment",
-            navigate: "payment",
-            taskNum: 5
         }
     ]
 
