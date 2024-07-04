@@ -31,6 +31,11 @@ import CH_Payment from "./screens/create-hotel-screen/payment/ch-payment";
 import {useEffect, useState} from "react";
 import {RenewToken} from "./api/user_api";
 import {Spinner} from "@phosphor-icons/react";
+import {GeneralRoomTypes} from "./screens/room-type-screen/general-room-types/general_room_types";
+import {
+    FacilitiesRoomTypes,
+    RoomTypesFacilities
+} from "./screens/room-type-screen/facilities_room_types/facilities_room_types";
 
 
 function App() {
@@ -90,11 +95,15 @@ function App() {
                                    <Route path="/dashboard" element={<Dashboard/>}/>
                                    <Route path="/rooms" element={<RoomPage></RoomPage>}/>
                                    <Route path="/chat" element={<ChatScreen/>} />
-                                   <Route path="/roomtypes" element={<RoomTypePage/>} />
+                                   <Route path="/roomtypes" element={<RoomTypePage>
+                                   </RoomTypePage>} />
+                                   <Route path="/general" element={<GeneralRoomTypes/>}/>
+                                   <Route path="/facilities" element={<RoomTypesFacilities/>}/>
                                </Routes>
                            </MainLayout>
                        }
                 ></Route>
+
                 <Route path="/createhotel/*"
                        element={
                            <CreateHotel>

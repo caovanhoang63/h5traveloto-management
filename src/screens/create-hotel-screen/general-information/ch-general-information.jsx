@@ -14,8 +14,13 @@ import {getWards} from "../../../api/create-hotel/get-wards";
 import {getDistricts} from "../../../api/create-hotel/get-districts";
 import {InfoContext} from "../../../context/createhotel-context";
 import UnitTextBox from "../../../components/unittextbox/unittextbox";
+import {tab} from "@testing-library/user-event/dist/tab";
+import { useNavigate } from 'react-router-dom';
+
 
 const CH_GeneralInformation = () => {
+    const navigate = useNavigate();
+
     const { info, setInfo } = useContext(InfoContext);
     //get hotel types
     const [hoteltypes, setHoteltypes] = useState([]);
@@ -29,6 +34,7 @@ const CH_GeneralInformation = () => {
 
         )
     }, []);
+
     const hotelTypeOnChange = (event) => {
         info.hotel_type = event.target.value;
     }
@@ -152,6 +158,9 @@ const CH_GeneralInformation = () => {
 
     const nextPage = () => {
         console.log(info);
+        navigate('/createhotel/property_details');
+
+
     }
 
     return (

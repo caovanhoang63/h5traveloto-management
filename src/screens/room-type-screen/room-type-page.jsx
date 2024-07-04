@@ -7,8 +7,12 @@ import IconFilter from "../../assets/icons/icon-filter.png";
 import "./room-type-page.css";
 import Table from "../../components/table/table";
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import {RoomTypesProvider} from "../../context/createroomtypes-context";
+
 
 function RoomTypePage() {
+    const navigate = useNavigate();
     const columns = [
         {
             Header: "Room type",
@@ -152,36 +156,42 @@ function RoomTypePage() {
         RenderDataTable((page - 1) * rowsData);
     };
 
+    const handleAddRoomType = () => {
+        navigate('/general');
+
+    };
+
     return (
-        <div className="room-type-container">
-            <div className="room-type-option">
-                <PrimaryButton className={"room-type-option__button-add"}>
-                    Add room type
-                </PrimaryButton>
-                <TransparentButton
-                    className={"room-type-option__button-filter"}
-                    border={true}
-                    icon={"trailing"}
-                    src={IconFilter}
-                    alt=""
-                >
-                    Filter
-                </TransparentButton>
+            <div className="room-type-container">
+                <div className="room-type-option">
+                    <PrimaryButton className={"room-type-option__button-add"} onClick={handleAddRoomType}>
+                        Add room type
+                    </PrimaryButton>
+                    <TransparentButton
+                        className={"room-type-option__button-filter"}
+                        border={true}
+                        icon={"trailing"}
+                        src={IconFilter}
+                        alt=""
+                    >
+                        Filter
+                    </TransparentButton>
+                </div>
+                <div className="room-type-table">
+                    <Table data={tableData} columns={columns}></Table>
+                </div>
+                <div className="room-type-page-navigation">
+                    {data.length > rowsData && (
+                        <PageNavigation
+                            page={Math.ceil(records.length / rowsData)}
+                            onNextPage={handleClickPage}
+                            onPreviousPage={handleClickPage}
+                            onClickPage={handleClickPage}
+                        ></PageNavigation>
+                    )}
+                </div>
             </div>
-            <div className="room-type-table">
-                <Table data={tableData} columns={columns}></Table>
-            </div>
-            <div className="room-type-page-navigation">
-                {data.length > rowsData && (
-                    <PageNavigation
-                        page={Math.ceil(records.length / rowsData)}
-                        onNextPage={handleClickPage}
-                        onPreviousPage={handleClickPage}
-                        onClickPage={handleClickPage}
-                    ></PageNavigation>
-                )}
-            </div>
-        </div>
+
     );
 }
 

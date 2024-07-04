@@ -25,7 +25,7 @@ import {uploadFile} from "../../../api/create-hotel/upload-image";
 // This sets default values for language and region for geocoding requests.
 /*
 setDefaults({
-    key: "AIzaSyA29xIpnJZRE4BDhAoZD7YVGLeB4DVUqpo", // Your API key here.
+    key: "", // Your API key here.
     language: "en", // Default language for responses.
     region: "es", // Default region for responses.
 });
