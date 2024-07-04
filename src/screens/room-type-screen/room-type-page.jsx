@@ -157,11 +157,12 @@ function RoomTypePage() {
     };
 
     const handleAddRoomType = () => {
-        navigate('/general');
+        navigate('/create-general');
 
     };
 
     return (
+        <RoomTypesProvider>
             <div className="room-type-container">
                 <div className="room-type-option">
                     <PrimaryButton className={"room-type-option__button-add"} onClick={handleAddRoomType}>
@@ -191,6 +192,8 @@ function RoomTypePage() {
                     )}
                 </div>
             </div>
+
+        </RoomTypesProvider>
 
     );
 }

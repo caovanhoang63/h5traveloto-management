@@ -33,9 +33,9 @@ import {RenewToken} from "./api/user_api";
 import {Spinner} from "@phosphor-icons/react";
 import {GeneralRoomTypes} from "./screens/room-type-screen/general-room-types/general_room_types";
 import {
-    FacilitiesRoomTypes,
     RoomTypesFacilities
 } from "./screens/room-type-screen/facilities_room_types/facilities_room_types";
+import {RoomTypesProvider} from "./context/createroomtypes-context";
 
 
 function App() {
@@ -92,13 +92,24 @@ function App() {
                        element={
                            <MainLayout>
                                <Routes>
-                                   <Route path="/dashboard" element={<Dashboard/>}/>
-                                   <Route path="/rooms" element={<RoomPage></RoomPage>}/>
-                                   <Route path="/chat" element={<ChatScreen/>} />
-                                   <Route path="/roomtypes" element={<RoomTypePage>
-                                   </RoomTypePage>} />
-                                   <Route path="/general" element={<GeneralRoomTypes/>}/>
-                                   <Route path="/facilities" element={<RoomTypesFacilities/>}/>
+                                   <Route path="/dashboard" element={<Dashboard />} />
+                                   <Route path="/rooms" element={<RoomPage />} />
+                                   <Route path="/chat" element={<ChatScreen />} />
+                                   <Route path="/roomtypes" element={
+                                       <RoomTypesProvider>
+                                           <RoomTypePage />
+                                       </RoomTypesProvider>
+                                   } />
+                                   <Route path="/create-general" element={
+                                       <RoomTypesProvider>
+                                           <GeneralRoomTypes />
+                                       </RoomTypesProvider>
+                                   } />
+                                   <Route path="/create-facilities" element={
+                                       <RoomTypesProvider>
+                                           <RoomTypesFacilities />
+                                       </RoomTypesProvider>
+                                   } />
                                </Routes>
                            </MainLayout>
                        }

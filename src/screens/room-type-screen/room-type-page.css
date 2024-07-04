@@ -8,6 +8,7 @@
 .room-type-option {
     display: flex;
     flex-direction: row;
+
     justify-content: flex-end;
     margin-bottom: 16px;
 }
