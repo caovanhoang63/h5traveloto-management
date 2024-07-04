@@ -1,0 +1,39 @@
+.frontdesk-table-container {
+    position: relative;
+    width: 100%;
+    font-size: 1.6rem ;
+}
+table {
+    border: 1px var(--Grey50) solid;
+    border-collapse: collapse;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.frontdesk-table-header {
+    height: 38px;
+    background: var(--Primary100);
+}
+
+.frontdesk-table-body td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    color: var(--Grey600);
+}
+
+.frontdesk-table-header th{
+    padding: 8px;
+    background: #f0f1f3;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    color: var(--Grey500);
+}
+
+.frontdesk-table-body tr{
+    height: 76px;
+}
+
+.frontdesk-table-container tr:hover {
+    background-color: #f5f5f5;
+}

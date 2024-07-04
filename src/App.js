@@ -31,6 +31,7 @@ import CH_Payment from "./screens/create-hotel-screen/payment/ch-payment";
 import {useEffect, useState} from "react";
 import {RenewToken} from "./api/user_api";
 import {Spinner} from "@phosphor-icons/react";
+import FrontDesk from "./screens/front-desk/front-desk";
 
 
 function App() {
@@ -91,6 +92,7 @@ function App() {
                                    <Route path="/rooms" element={<RoomPage></RoomPage>}/>
                                    <Route path="/chat" element={<ChatScreen/>} />
                                    <Route path="/roomtypes" element={<RoomTypePage/>} />
+                                   <Route path="/frontdesk" element={<FrontDesk/>}/>
                                </Routes>
                            </MainLayout>
                        }
