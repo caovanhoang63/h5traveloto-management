@@ -1,4 +1,4 @@
-import FacilitiesProperty from "../../../components/facilities property/facilities-property";
+import FacilitiesProperty from "../../../../components/facilities property/facilities-property";
 import "./ch-property-facilities.css";
 import {useContext, useEffect, useState} from "react";
 import {getHotelfacilities} from "../../../api/create-hotel/get-hotelfacilities";
