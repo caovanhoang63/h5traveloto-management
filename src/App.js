@@ -28,6 +28,7 @@ import CH_PropertyPolicies from "./screens/create-hotel-screen/components/proper
 import CH_PropertyFacilities from "./screens/create-hotel-screen/components/property-facilities/ch-property-facilities";
 import CH_PhotosInformation from "./screens/create-hotel-screen/components/photos-information/ch-photos-information";
 import CH_Payment from "./screens/create-hotel-screen/components/payment/ch-payment";
+import GuestScreen from "./screens/guest-screen/guest-screen";
 
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
                                 <Route path="/rooms" element={<RoomPage></RoomPage>}/>
                                 <Route path="/chat" element={<ChatScreen/>} />
                                 <Route path="/roomtypes" element={<RoomTypePage/>} />
+                                <Route path="/guest" element={<GuestScreen/>} />
                             </Routes>
                         </MainLayout>
                     }

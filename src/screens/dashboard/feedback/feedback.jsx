@@ -13,7 +13,7 @@ function Feedback() {
     const [reviews, setReviews] = useState([])
 
 
-    useEffect(() => {
+    /*useEffect(() => {
         getReviews(params).then((res => {
             console.log(res.data)
             setReviews(res.data)
@@ -21,7 +21,7 @@ function Feedback() {
             (e) => {
 
             })
-    }, []);
+    }, []);*/
 
 
     const func = () => {}
