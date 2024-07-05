@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     padding: 0px;
-    border-radius: 8px;
+    border-radius: 3px;
     /* box-sizing: border-box; */
     /* max-height: 70px;
     max-width: 270px; */
@@ -48,7 +48,7 @@
     display: flex;
     padding: 5px;
     align-items: center;
-    justify-items: space-between;
+    justify-items: center;
 }
 .messagequeue-date{
     margin-left: 10px;
@@ -61,6 +61,7 @@
     color: var(--Grey700);
     text-align: right;
     font-size: 1.2rem;
+
 }
 .messagequeue-button{
     position:absolute;
