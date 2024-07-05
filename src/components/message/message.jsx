@@ -1,5 +1,6 @@
 import React from "react";
 import "./message.css"
+import {avatarClasses} from "@mui/material";
 const Message = ({message}) => {
 
   return (
@@ -9,7 +10,7 @@ const Message = ({message}) => {
       className={`chat-bubble ${message.id=="5" ? "right" : ""}`}>
       <img
         className="chat-bubble__left"
-        src={message.avatar}
+        src={message.image}
         alt="user avatar"
       />
       <div className="chat-bubble__right">

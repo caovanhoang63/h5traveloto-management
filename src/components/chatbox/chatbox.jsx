@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import Message from "../message/message";
 import SendMessage from "../sendmessage/sendmessage";
 import "./chatbox.css"
+import {getHotelChats, getListChatByRoomId} from "../../api/chat_api";
 
-const ChatBox = ({socket}) => {
+const ChatBox = ({socket,onSendMessage,selectedMessage}) => {
   const [messages, setMessages] = useState([]);
   const scroll = useRef();
 
@@ -27,10 +28,25 @@ const ChatBox = ({socket}) => {
 //     return () => unsubscribe;
 //   }, []);
     useEffect(()=>{
-        fetch('https://jsonplaceholder.typicode.com/posts/1/comments')
+        /*fetch('https://jsonplaceholder.typicode.com/posts/1/comments')
             .then(res => res.json())
-            .then(messages =>setMessages(messages))
+            .then(messages =>setMessages(messages))*/
+        getListChats(selectedMessage);
     },[])
+
+    const getListChats = (selectedMessage) => {
+        const params ={
+
+        }
+        getListChatByRoomId()
+            .then((res) => {
+                const chats = res.data;
+                console.log(chats);
+                setMessages(chats);
+            }).catch((e) => {
+                console.log(e);
+        })
+    }
   return (
     <main className="chat-box">
       <div className="messages-wrapper">
@@ -40,7 +56,7 @@ const ChatBox = ({socket}) => {
       </div>
       {/* when a new message enters the chat, the screen scrolls down to the scroll div */}
       <span ref={scroll}></span>
-      <SendMessage ws={socket} scroll={scroll}></SendMessage>
+      <SendMessage  onSendMessage={onSendMessage} selectedMessage={selectedMessage} scroll={scroll}></SendMessage>
     </main>
   );
 };

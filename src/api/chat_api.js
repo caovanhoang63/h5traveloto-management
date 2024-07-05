@@ -12,3 +12,12 @@ export const getHotelChats = async (params) => {
     );
     return response.data;
 };
+const roomId = "66867ac347a0f0c408503fa8";
+export const getListChatByRoomId = async (params) => {
+    const response = await instance.get(
+        `/chat/rooms/${roomId}/messages`,
+        {
+            params: params,
+        }
+    );
+}

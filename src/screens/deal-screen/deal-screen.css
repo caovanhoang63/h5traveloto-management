@@ -1,0 +1,23 @@
+.deal-screen-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+/* Option button */
+.deal-screen-option {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+}
+.deal-screen-option__button-add {
+    margin-right: 10px;
+}
+.deal-screen-option__button-filter {
+    color: var(--Grey600);
+}
+/* Table */
+.deal-screen-table {
+    flex: 1;
+}
