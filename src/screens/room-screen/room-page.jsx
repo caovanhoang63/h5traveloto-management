@@ -3,7 +3,7 @@ import Button, { PrimaryButton } from "../../components/button/button";
 import Table from "../../components/table/table";
 import "./room-page.css";
 import PageNavigation from "../../components/pagenavigation/pagenavigation";
-import { getRooms } from "../../api/room_api";
+import { getRoomByHotelId } from "../../api/room_api";
 
 const columns = [
     {
@@ -24,7 +24,6 @@ const columns = [
     },
 ];
 
-
 function RoomPage() {
     const rowsData = 6; //So dong du lieu
     const [selectedCategory, setSelectedCategory] = useState("all");
@@ -42,15 +41,10 @@ function RoomPage() {
 
     //Fetch API
     useEffect(() => {
-        getRooms(params)
+        getRoomByHotelId({})
             .then((res) => {
                 const data = res;
                 console.log(data.data);
-
-                // data.data => array cac phong
-                // data.paging => du lieu lien quan den paging
-                // data.filter => du lieu lien quan den filer
-
                 const length = data.data.length;
                 const allData = [];
                 const availableData = [];

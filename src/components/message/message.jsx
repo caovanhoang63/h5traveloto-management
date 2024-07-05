@@ -6,7 +6,7 @@ const Message = ({message}) => {
     <div className={`chat-layout`}> 
     <div
     //kiem tra id de hien thi
-      className={`chat-bubble ${true ? "right" : ""}`}> 
+      className={`chat-bubble ${message.id=="5" ? "right" : ""}`}>
       <img
         className="chat-bubble__left"
         src={message.avatar}

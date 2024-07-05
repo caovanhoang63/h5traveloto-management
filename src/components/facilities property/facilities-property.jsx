@@ -4,20 +4,35 @@ import CheckBox from "../checkbox/checkbox";
 import RadioButton from "../radiobutton/radiobutton";
 import "../radiobutton/radiobutton.css";
 import "./facilities-property.css";
-import { useState } from "react";
+import {useContext, useEffect, useState} from "react";
+import {InfoContext} from "../../context/createhotel-context";
+
 
 const FacilitiesProperty = ({data}) => {
     const [isCollapsed, setCollapse] = useState(true);
+    const { info, setInfo } = useContext(InfoContext);
 
     const hanldeExpand = () => {
         if(isCollapsed) setCollapse(false)
         else setCollapse(true);
     };
+    const handleCheck = (facilityId) => {
+        setInfo((prevInfo) => ({
+            ...prevInfo,
+            facility_ids: prevInfo.facility_ids.includes(facilityId)
+                ? prevInfo.facility_ids.filter((id) => id !== facilityId)
+                : [...prevInfo.facility_ids, facilityId],
+        }));
+    };
+
+    useEffect(() => {
+    }, [info.facility_ids]);
 
     const facilities = data.facilities && data.facilities.map && data.facilities.map(facility => (
-        <div>
-            <li className="FacilitiesProperty-Main-ul-li" key={data.facilities.id}>
-                <CheckBox content={
+
+        <div key={facility.id}>
+            <li className="FacilitiesProperty-Main-ul-li" >
+                <CheckBox onclick={() => handleCheck(facility.id)}  content={
                     <div className="FacilitiesProperty-Main-Title">{facility.name_en}</div>
                 }/>
             </li>   

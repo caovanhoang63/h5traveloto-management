@@ -1,0 +1,46 @@
+.guest-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+/* Option button */
+.guest-option {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+}
+
+.guest-container__button-option {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 16px;
+}
+
+.guest-option__button {
+    border-radius: 100px;
+    margin-right: 12px;
+    border: 1px solid var(--Grey600);
+    background-color: white;
+    color: var(--Grey600);
+}
+
+.guest-selected-category {
+    border: 1px solid var(--Primary400);
+    background-color: var(--Primary50);
+    color: var(--Primary400);
+}
+.guest-option__button-add {
+    margin-right: 10px;
+}
+.guest-option__button-filter {
+    color: var(--Grey600);
+}
+/* Table */
+.guest-table {
+    flex: 1;
+}
+/* navigation page */
+.guest-page-navigation {
+}

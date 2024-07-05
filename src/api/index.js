@@ -1,7 +1,7 @@
 import { API_ROOT } from "../common/constant";
 import axios from "axios";
 
-const getToken = () => localStorage.getItem("token");
+const getToken = () => sessionStorage.getItem("access-token");
 
 export const instance = axios.create({
     baseURL: API_ROOT,
@@ -16,6 +16,7 @@ export const instance = axios.create({
 instance.interceptors.request.use(
     (config) => {
         // Update Authorization header with the latest token from localStorage
+        
         config.headers.Authorization = `Bearer ${getToken()}`;
         return config;
     },

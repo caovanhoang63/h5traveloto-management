@@ -15,7 +15,7 @@ function RoomStatus() {
             <span className={"roomstatus-header"}>Room status</span>
             <div className={"roomstatus-content"}>
                     <RoomstatusLabel label={"Occupied rooms"} roomAmount={40} cleanAmount={90} dirtyAmount={4} inspectedAmount={60}></RoomstatusLabel>
-                    <RoomstatusLabel label={"Occupied rooms"} roomAmount={40} cleanAmount={90} dirtyAmount={4} inspectedAmount={60}></RoomstatusLabel>
+                    <RoomstatusLabel label={"Available rooms"} roomAmount={40} cleanAmount={90} dirtyAmount={4} inspectedAmount={60}></RoomstatusLabel>
 
             </div>
 

@@ -7,8 +7,17 @@ import IconFilter from "../../assets/icons/icon-filter.png";
 import "./room-type-page.css";
 import Table from "../../components/table/table";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import ModalStatus from "../../components/modal/modal-status";
+import SweetAlert2 from "react-sweetalert2";
+import ModalCustom from "../../components/modal/modal-custom";
+import Toast from "../../components/modal/toast";
+import { useNavigate } from 'react-router-dom';
+import {RoomTypesProvider} from "../../context/createroomtypes-context";
+
 
 function RoomTypePage() {
+    const navigate = useNavigate();
     const columns = [
         {
             Header: "Room type",
@@ -152,12 +161,47 @@ function RoomTypePage() {
         RenderDataTable((page - 1) * rowsData);
     };
 
+    const handleAddRoomType = () => {
+        navigate('/create-general');
+
+    };
+
+    const [isOpen, setIsOpen] = useState(false);
+    const clickAddRoomType = () => {
+        // ModalStatus({
+        //     title: "Add room type",
+        //     text: "Add room type success",
+        //     type: "warning",
+        // });
+        setIsOpen(true);
+    };
+
     return (
         <div className="room-type-container">
             <div className="room-type-option">
-                <PrimaryButton className={"room-type-option__button-add"}>
+                <PrimaryButton
+                    className={"room-type-option__button-add"}
+                    onClick={handleAddRoomType}
+                >
                     Add room type
                 </PrimaryButton>
+                {isOpen && (
+                    <ModalCustom
+                        content={
+                            <Table data={tableData} columns={columns}></Table>
+                        }
+                        onConfirm={() => {
+                            setIsOpen(false);
+                            Toast({
+                                title: "Thêm phòng thành công!",
+                                type: "success",
+                            });
+                        }}
+                        onClose={() => {
+                            setIsOpen(false);
+                        }}
+                    ></ModalCustom>
+                )}
                 <TransparentButton
                     className={"room-type-option__button-filter"}
                     border={true}
