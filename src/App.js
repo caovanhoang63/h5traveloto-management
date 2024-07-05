@@ -33,7 +33,6 @@ import {RenewToken} from "./api/user_api";
 import {Spinner} from "@phosphor-icons/react";
 import FrontDesk from "./screens/front-desk/front-desk";
 import DealScreen from "./screens/deal-screen/deal-screen";
-import BookingManagementScreen from "./screens/booking-management-screen/booking-management-screen";
 
 
 function App() {
@@ -96,7 +95,6 @@ function App() {
                                    <Route path="/roomtypes" element={<RoomTypePage/>} />
                                    <Route path="/frontdesk" element={<FrontDesk/>}/>
                                    <Route path="/deal" element={<DealScreen/>}/>
-                                   <Route path="/bookingmanagement" element={<BookingManagementScreen/>}/>
                                </Routes>
                            </MainLayout>
                        }
