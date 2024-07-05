@@ -15,10 +15,9 @@ export const instance = axios.create({
 // Axios request interceptor to update token
 instance.interceptors.request.use(
     (config) => {
-        const token = sessionStorage.getItem('token')
         // Update Authorization header with the latest token from localStorage
-
-        config.headers.Authorization = `Bearer ${token}`;
+        
+        config.headers.Authorization = `Bearer ${getToken()}`;
         return config;
     },
     (error) => {
