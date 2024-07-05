@@ -36,6 +36,7 @@ import {
     RoomTypesFacilities
 } from "./screens/room-type-screen/facilities_room_types/facilities_room_types";
 import {RoomTypesProvider} from "./context/createroomtypes-context";
+import BookingManagementPage from "./screens/booking-management-screen/booking-management-page";
 
 function App() {
     const refreshToken = localStorage.getItem("refresh-token");
@@ -90,6 +91,7 @@ function App() {
                                    <Route path="/dashboard" element={<Dashboard />} />
                                    <Route path="/rooms" element={<RoomPage />} />
                                    <Route path="/chat" element={<ChatScreen />} />
+                                   <Route path="/bookingmanagement" element={<BookingManagementPage />} />
                                    <Route path="/roomtypes" element={
                                        <RoomTypesProvider>
                                            <RoomTypePage />

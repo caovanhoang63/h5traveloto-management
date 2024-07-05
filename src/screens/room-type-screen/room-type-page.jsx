@@ -17,6 +17,7 @@ import {RoomTypesProvider} from "../../context/createroomtypes-context";
 
 
 function RoomTypePage() {
+    const navigate = useNavigate();
     const columns = [
         {
             Header: "Room type",
@@ -180,7 +181,7 @@ function RoomTypePage() {
             <div className="room-type-option">
                 <PrimaryButton
                     className={"room-type-option__button-add"}
-                    onClick={clickAddRoomType}
+                    onClick={handleAddRoomType}
                 >
                     Add room type
                 </PrimaryButton>
