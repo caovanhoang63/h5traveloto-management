@@ -1,0 +1,106 @@
+.frontdesk-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.frontdesk-filter {
+    background-color: var(--Grey50);
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.frondesk-filter-container-button {
+    display: flex;
+    flex-direction: row;
+}
+
+.frontdesk-button-filter {
+    border-radius: 100px;
+    margin-right: 12px;
+    border: 1px solid var(--Grey600);
+    background-color: white;
+    color: var(--Grey600);
+}
+
+.frontdesk-button-filter.active {
+    border: 1px solid var(--Primary400);
+    background-color: var(--Primary50);
+    color: var(--Primary400);
+}
+
+.frontdesk-filter-container-date {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    align-items: center;
+}
+.frontdesk-dates {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+.frontdesk-date {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 10px 30px 10px 0px;
+    font-weight: 600;
+    color: var(--Grey800);
+}
+.frondesk-checkbtn {
+    flex: 2;
+}
+
+.frontdesk-filter-container-guestnum {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.frontdesk-filter-container-guestnum .guestnum-label {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.frontdesk-filter-container-guestnum .guestnum-label .label {
+    color: var(--Grey800);
+    font-weight: 600;
+}
+.frontdesk-filter-container-guestnum .guestnum-label .body {
+    color: var(--Grey600);
+    font-weight: 600;
+}
+
+.frontdesk-filter-container-guestnum .guestnum-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    gap: 15px;
+    padding: 0px 10px;
+    padding-right: 20px;
+}
+
+.filter-btn {
+    background-color: var(--Primary50);
+    border: 1px solid var(--Primary400);
+    border-radius: 50%;
+    width: 100%;
+}
+
+.frontdesk-table {
+    margin: 10px;
+    flex: 1;
+}
+
+.frontdesk-pagenav {
+    margin: 10px;
+}

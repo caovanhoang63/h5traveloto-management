@@ -38,6 +38,9 @@ import CH_PropertyPolicies from "./screens/create-hotel-screen/components/proper
 import CH_PropertyFacilities from "./screens/create-hotel-screen/components/property-facilities/ch-property-facilities";
 import CH_PhotosInformation from "./screens/create-hotel-screen/components/photos-information/ch-photos-information";
 import GuestScreen from "./screens/guest-screen/guest-screen";
+import FrontDesk from "./screens/front-desk/front-desk";
+import DealScreen from "./screens/deal-screen/deal-screen";
+
 
 function App() {
     const refreshToken = localStorage.getItem("refresh-token");
@@ -109,6 +112,8 @@ function App() {
                                            <RoomTypesFacilities />
                                        </RoomTypesProvider>
                                    } />
+                                   <Route path="/frontdesk" element={<FrontDesk/>}/>
+                                   <Route path="/deal" element={<DealScreen/>}/>
                                </Routes>
                            </MainLayout>
                        }
@@ -123,6 +128,7 @@ function App() {
                                    <Route path="/property_policies" element={<CH_PropertyPolicies/>}/>
                                    <Route path="/property_facilities" element={<CH_PropertyFacilities/>}/>
                                    <Route path="/photos" element={<CH_PhotosInformation/>}/>
+                                   <Route path="/payment" element={<CH_Payment/>}/>
                                </Routes>
                            </CreateHotel>
                        }

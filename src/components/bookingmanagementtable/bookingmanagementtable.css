@@ -1,0 +1,39 @@
+.booking-management-table-container {
+    position: relative;
+    width: 100%;
+    font-size: 1.6rem ;
+}
+.booking-management-table-container table {
+    border: 1px var(--Grey50) solid;
+    border-collapse: collapse;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.booking-management-table-header {
+    height: 38px;
+    background: var(--Primary100);
+}
+
+.booking-management-table-body td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    color: var(--Grey600);
+}
+
+.booking-management-table-header th{
+    padding: 8px;
+    background: #f0f1f3;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    color: var(--Grey500);
+}
+
+.booking-management-table-body tr{
+    height: 76px;
+}
+
+.booking-management-table-container tr:hover {
+    background-color: #f5f5f5;
+}
