@@ -2,10 +2,10 @@ import Overview from "./overview/overview";
 import Rooms from "./rooms/rooms";
 import './dashboard.css';
 import RoomstatusLabel from "./roomstatus/roomstatuslabel/roomstatuslabel";
-import Feedback from "./feedback/feedback";
+import PendingBooking from "./feedback/PendingBooking";
 import Statistics from "./occupancyStatistics/occupancyStatistics";
 import RoomStatus from "./roomstatus/roomstatus";
-import Floorstatus from "./floorstatus/floorstatus";
+import CustomersFeedback from "./floorstatus/CustomersFeedback";
 
 function Dashboard({roomsdata}) {
 
@@ -17,11 +17,11 @@ function Dashboard({roomsdata}) {
                     {/*<Rooms data={roomsdata}/>*/}
                     <div className={"roomstatus-floorstatus-container"}>
                         <RoomStatus></RoomStatus>
-                        <Floorstatus></Floorstatus>
+                        <CustomersFeedback></CustomersFeedback>
                     </div>
                     <div className="statistics-feedback-container">
                         <Statistics></Statistics>
-                        <Feedback></Feedback>
+                        <PendingBooking></PendingBooking>
                     </div>
 
                 </div>

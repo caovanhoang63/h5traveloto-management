@@ -14,13 +14,13 @@
     font-family: "Plus Jakarta Sans", serif;
     font-weight: normal;
     font-size: 2em;
-    margin: 20px 0 auto 16px;
+    margin: 20px 0 25px 16px;
 }
 .roomstatus-content{
     display: flex;
     flex-direction: row;
     gap: 98px;
-    margin: auto 16px 25px 16px;
+    margin: 25px 16px 25px 16px;
 }
 .roomstatuslabel-container{
     gap: 15px;

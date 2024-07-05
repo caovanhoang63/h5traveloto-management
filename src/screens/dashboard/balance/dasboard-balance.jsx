@@ -9,16 +9,17 @@ export function DasboardBalance(){
 
     return(
         <div className={"Balance_container"}>
-            <img className={"Balance-Eye"}
-                src={eyeClicked ? eye : eyeSlash}
-                alt={eyeClicked ? "Eye" : "Eye Slash"}
-                onClick={() => setEyeClicked(!eyeClicked)}
-            />
+
             <div className={"Balance"}>
                 <h2 className={`Balance-number ${eyeClicked ? 'Balance-hidden' : ''}`}>
                     {eyeClicked ? "********" : "10.000.000VND"}
                 </h2>
             </div>
+            <img className={"Balance-Eye"}
+                 src={eyeClicked ? eye : eyeSlash}
+                 alt={eyeClicked ? "Eye" : "Eye Slash"}
+                 onClick={() => setEyeClicked(!eyeClicked)}
+            />
         </div>
     )
 }

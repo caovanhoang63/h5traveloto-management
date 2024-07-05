@@ -1,0 +1,12 @@
+.pendingbookingblock-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+
+}
+.pendingbookingblock-upper {
+    font-size: 2rem;
+    font-family: "Plus Jakarta Sans", serif;
+}
