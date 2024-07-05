@@ -18,11 +18,8 @@ instance.interceptors.request.use(
         const token = sessionStorage.getItem('token')
         // Update Authorization header with the latest token from localStorage
 
-<<<<<<< Updated upstream
-        config.headers.Authorization = `Bearer ${token}`;
-=======
+
         config.headers.Authorization = `Bearer ${getToken()}`;
->>>>>>> Stashed changes
         return config;
     },
     (error) => {
