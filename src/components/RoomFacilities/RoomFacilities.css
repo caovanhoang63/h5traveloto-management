@@ -1,0 +1,87 @@
+.FacilitiesProperty-Container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 8px;
+    padding: 0px;
+    font-size: 1.5rem;
+    color: var(--Grey600);
+}
+.FacilitiesProperty-Header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+    margin-right: 20px;
+}
+.FacilitiesProperty-Header-Title {
+    color: black;
+    font-weight: 600;
+    flex: 1;
+}
+.FacilitiesProperty-Header-Utilities {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.FacilitiesProperty-Header-Utilities-Title {
+    width: 124px;
+    border-right: 1px solid var(--Grey400);
+    padding-right: 12px;
+    margin-right: 12px;
+}
+.FacilitiesProperty-Header-Utilities-Btn {
+    display: flex;
+    color: var(--Primary600);
+    cursor: pointer;
+    font-weight: 700;
+}
+.FacilitiesProperty-Header-Utilities-Btn img {
+    width: 16px;
+    margin-left: 5px;
+    rotate: -90deg;
+    transition: all 0.3s;
+}
+.FacilitiesProperty-Header-Utilities-Btn.Collapse img {
+    rotate: 90deg;
+}
+.FacilitiesProperty-Header-Utilities-Btn .FacilitiesProperty-Btn-Expand {
+    display: none;
+}
+.FacilitiesProperty-Header-Utilities-Btn .FacilitiesProperty-Btn-Collapse {
+    display: block;
+}
+.FacilitiesProperty-Header-Utilities-Btn.Collapse .FacilitiesProperty-Btn-Expand {
+    display: block;
+}
+.FacilitiesProperty-Header-Utilities-Btn.Collapse .FacilitiesProperty-Btn-Collapse {
+    display: none;
+}
+.FacilitiesProperty-Main {
+    transition: height 0.3s;
+}
+.FacilitiesProperty-Main.Collapsed {
+    display: none;
+}
+.FacilitiesProperty-Main .FacilitiesProperty-Main-ul {
+    padding-right: 30px;
+    padding-left: 40px;
+}
+.FacilitiesProperty-Main .FacilitiesProperty-Main-ul .FacilitiesProperty-Main-ul-li {
+    position: relative;
+    list-style: none;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    align-items: center;
+}
+.FacilitiesProperty-Main-Title {
+    padding-left: 10px;
+    padding-right: 10px;
+    color: var(--Grey500);
+}

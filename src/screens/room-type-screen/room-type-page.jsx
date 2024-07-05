@@ -12,6 +12,9 @@ import ModalStatus from "../../components/modal/modal-status";
 import SweetAlert2 from "react-sweetalert2";
 import ModalCustom from "../../components/modal/modal-custom";
 import Toast from "../../components/modal/toast";
+import { useNavigate } from 'react-router-dom';
+import {RoomTypesProvider} from "../../context/createroomtypes-context";
+
 
 function RoomTypePage() {
     const columns = [
@@ -137,8 +140,7 @@ function RoomTypePage() {
             console.log("lay du lieu");
         }, 500);
     }, []);
-
-    //console.log(records);
+    console.log(records);
     // re-render sau khi fetch
     useEffect(() => {
         RenderDataTable(0);
@@ -156,6 +158,11 @@ function RoomTypePage() {
 
     const handleClickPage = (page) => {
         RenderDataTable((page - 1) * rowsData);
+    };
+
+    const handleAddRoomType = () => {
+        navigate('/create-general');
+
     };
 
     const [isOpen, setIsOpen] = useState(false);

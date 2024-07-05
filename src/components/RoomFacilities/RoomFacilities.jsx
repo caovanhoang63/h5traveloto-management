@@ -3,30 +3,31 @@ import Divider from "../divider/divider";
 import CheckBox from "../checkbox/checkbox";
 import RadioButton from "../radiobutton/radiobutton";
 import "../radiobutton/radiobutton.css";
-import "./facilities-property.css";
+import "./RoomFacilities.css";
 import {useContext, useEffect, useState} from "react";
-import {InfoContext} from "../../context/createhotel-context";
+import {RoomTypesContext} from "../../context/createroomtypes-context";
 
 
-const FacilitiesProperty = ({data}) => {
+const RoomFacilities = ({data}) => {
     const [isCollapsed, setCollapse] = useState(true);
-    const { info, setInfo } = useContext(InfoContext);
+    const { roomTypesInfo, setRoomTypesInfo } = useContext(RoomTypesContext);
 
     const hanldeExpand = () => {
         if(isCollapsed) setCollapse(false)
         else setCollapse(true);
     };
     const handleCheck = (facilityId) => {
-        setInfo((prevInfo) => ({
+        setRoomTypesInfo((prevInfo) => ({
             ...prevInfo,
             facility_ids: prevInfo.facility_ids.includes(facilityId)
                 ? prevInfo.facility_ids.filter((id) => id !== facilityId)
                 : [...prevInfo.facility_ids, facilityId],
         }));
+
     };
 
     useEffect(() => {
-    }, [info.facility_ids]);
+    }, [roomTypesInfo.facility_ids]);
 
     const facilities = data.facilities && data.facilities.map && data.facilities.map(facility => (
 
@@ -35,12 +36,12 @@ const FacilitiesProperty = ({data}) => {
                 <CheckBox onclick={() => handleCheck(facility.id)}  content={
                     <div className="FacilitiesProperty-Main-Title">{facility.name_en}</div>
                 }/>
-            </li>   
-            <Divider isHorizontal={true} thick="1px" type="dotted" color="#e8f1fd"/> 
+            </li>
+            <Divider isHorizontal={true} thick="1px" type="dotted" color="#e8f1fd"/>
         </div>
     ));
 
-    return ( 
+    return (
         <div className="FacilitiesProperty-Container">
             <div className="FacilitiesProperty-Header">
                 <div className="FacilitiesProperty-Header-Title">
@@ -70,7 +71,7 @@ const FacilitiesProperty = ({data}) => {
                 </ul>
             </div>
         </div>
-     );
+    );
 }
- 
-export default FacilitiesProperty;
+
+export default RoomFacilities;

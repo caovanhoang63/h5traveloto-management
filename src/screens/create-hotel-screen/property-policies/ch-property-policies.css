@@ -19,3 +19,54 @@
     font-size: 1.5rem;
     color: var(--Grey600);
 }
+
+.CH_PropertyPolicies-CheckinTime, .CH_PropertyPolicies-CheckoutTime {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.CH_PropertyPolicies-Content-Box {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 1.3125rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+.CH_PropertyPolicies-Divider {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.CH_PropertyPolicies-Property {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+.CH_PropertyPolicies-Title {
+    flex: 1;
+    padding-top: 10px;
+}
+.CH_PropertyPolicies-Content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 60%;
+}
+.CH_PropertyPolicies-Content-Box {
+    width: 80%;
+}
+
+.CH_PropertyPolicies-Content-Box-Address {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 1.3125rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

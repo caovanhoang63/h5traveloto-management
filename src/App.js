@@ -20,7 +20,6 @@ import LoginScreen from "./screens/login-screen/login-screen";
 import SignUpScreen from "./screens/signup-screen/signup-screen";
 import RoomPage from "./screens/room-screen/room-page";
 import ChatScreen from "./screens/chat-screen/chat-screen";
-import BookingManagementPage from "./screens/booking-management-screen/booking-management-page";
 import RoomTypePage from "./screens/room-type-screen/room-type-page";
 import CreateHotel from "./screens/create-hotel-screen/create-hotel-screen";
 import CH_GeneralInformation from "./screens/create-hotel-screen/general-information/ch-general-information";
@@ -32,6 +31,11 @@ import CH_Payment from "./screens/create-hotel-screen/payment/ch-payment";
 import { useEffect, useState } from "react";
 import { RenewToken } from "./api/user_api";
 import { Spinner } from "@phosphor-icons/react";
+import {GeneralRoomTypes} from "./screens/room-type-screen/general-room-types/general_room_types";
+import {
+    RoomTypesFacilities
+} from "./screens/room-type-screen/facilities_room_types/facilities_room_types";
+import {RoomTypesProvider} from "./context/createroomtypes-context";
 
 function App() {
     const refreshToken = localStorage.getItem("refresh-token");
@@ -79,64 +83,46 @@ function App() {
                         )
                     }
                 />
-                <Route
-                    path="/*"
-                    element={
-                        <MainLayout>
-                            <Routes>
-                                <Route
-                                    path="/dashboard"
-                                    element={<Dashboard />}
-                                />
-                                <Route
-                                    path="/rooms"
-                                    element={<RoomPage></RoomPage>}
-                                />
-                                <Route path="/chat" element={<ChatScreen />} />
-                                <Route
-                                    path="/roomtypes"
-                                    element={<RoomTypePage />}
-                                />
-                                <Route
-                                    path="/bookingmanagement"
-                                    element={<BookingManagementPage />}
-                                />
-                            </Routes>
-                        </MainLayout>
-                    }
+                <Route path="/*"
+                       element={
+                           <MainLayout>
+                               <Routes>
+                                   <Route path="/dashboard" element={<Dashboard />} />
+                                   <Route path="/rooms" element={<RoomPage />} />
+                                   <Route path="/chat" element={<ChatScreen />} />
+                                   <Route path="/roomtypes" element={
+                                       <RoomTypesProvider>
+                                           <RoomTypePage />
+                                       </RoomTypesProvider>
+                                   } />
+                                   <Route path="/create-general" element={
+                                       <RoomTypesProvider>
+                                           <GeneralRoomTypes />
+                                       </RoomTypesProvider>
+                                   } />
+                                   <Route path="/create-facilities" element={
+                                       <RoomTypesProvider>
+                                           <RoomTypesFacilities />
+                                       </RoomTypesProvider>
+                                   } />
+                               </Routes>
+                           </MainLayout>
+                       }
                 ></Route>
-                <Route
-                    path="/createhotel/*"
-                    element={
-                        <CreateHotel>
-                            <Routes>
-                                <Route
-                                    path="/general_information"
-                                    element={<CH_GeneralInformation />}
-                                />
-                                <Route
-                                    path="/property_details"
-                                    element={<CH_PropertyDetails />}
-                                />
-                                <Route
-                                    path="/property_policies"
-                                    element={<CH_PropertyPolicies />}
-                                />
-                                <Route
-                                    path="/property_facilities"
-                                    element={<CH_PropertyFacilities />}
-                                />
-                                <Route
-                                    path="/photos"
-                                    element={<CH_PhotosInformation />}
-                                />
-                                <Route
-                                    path="/payment"
-                                    element={<CH_Payment />}
-                                />
-                            </Routes>
-                        </CreateHotel>
-                    }
+
+                <Route path="/createhotel/*"
+                       element={
+                           <CreateHotel>
+                               <Routes>
+                                   <Route path="/general_information" element={<CH_GeneralInformation/>}/>
+                                   <Route path="/property_details" element={<CH_PropertyDetails/>}/>
+                                   <Route path="/property_policies" element={<CH_PropertyPolicies/>}/>
+                                   <Route path="/property_facilities" element={<CH_PropertyFacilities/>}/>
+                                   <Route path="/photos" element={<CH_PhotosInformation/>}/>
+                                   <Route path="/payment" element={<CH_Payment/>}/>
+                               </Routes>
+                           </CreateHotel>
+                       }
                 />
             </Routes>
         </BrowserRouter>
