@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./unittextbox.css";
 
-const UnitTextBox = ({id, classname, title, placeHolder, unit,onchange}) => {
+const UnitTextBox = ({id, classname, title, placeHolder, unit}) => {
     const [text, setText] = useState('');
     const [isActive, setActive] = useState(false);
 
@@ -9,9 +9,6 @@ const UnitTextBox = ({id, classname, title, placeHolder, unit,onchange}) => {
 
     const handleChange = (e) => {
         setText(e.target.value);
-        if (onchange) {
-            onchange(e.target.value);
-        }
     };
     const handleFocusIn = () => {
         isFocus = true;

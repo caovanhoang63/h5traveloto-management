@@ -28,6 +28,9 @@ const SidebarCreateHotel = ({data, progress}) => {
 					<ul>
 						{tabs}
 					</ul>
+					<div className="sidebar-ch-progress">
+						<div>{"Mandatory Field Progress: "+ progress + "%"}</div>
+					</div>
 				</div>
 			</div>
 		</div>

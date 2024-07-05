@@ -33,7 +33,7 @@
 import React from "react";
 import { useState } from "react";
 import "./sendmessage.css"
-const SendMessage = ({ws}) => {
+const SendMessage = () => {
   const [message, setMessage] = useState("");
   const sendMessage = async (event) => {
     event.preventDefault();
@@ -41,12 +41,6 @@ const SendMessage = ({ws}) => {
         alert("Enter valid message");
         return;
       }
-      const messages = {
-          message: message,
-          room_id: ""
-      }
-      //ws.send(JSON.stringify(messages));
-      ws.emit("message_sent", messages);
       setMessage("");
   }
   return (

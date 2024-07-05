@@ -1,14 +1,10 @@
 import "./textarea.css";
 
-const TextArea = ({id, placeHolder,onchange }) => {
-    const handleChange = (e) => {
-        onchange(e.target.value);
-    }
-
+const TextArea = ({id, placeHolder}) => {
     return ( 
         <div className="TextArea-Content">
             <label htmlFor={id}></label>
-            <textarea placeholder={placeHolder} onChange={handleChange}/>
+            <textarea placeholder={placeHolder}/>
         </div>        
      );
 }

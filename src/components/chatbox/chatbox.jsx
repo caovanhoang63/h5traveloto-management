@@ -2,8 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Message from "../message/message";
 import SendMessage from "../sendmessage/sendmessage";
 import "./chatbox.css"
-
-const ChatBox = ({socket}) => {
+const ChatBox = () => {
   const [messages, setMessages] = useState([]);
   const scroll = useRef();
 
@@ -40,7 +39,7 @@ const ChatBox = ({socket}) => {
       </div>
       {/* when a new message enters the chat, the screen scrolls down to the scroll div */}
       <span ref={scroll}></span>
-      <SendMessage ws={socket} scroll={scroll}></SendMessage>
+      <SendMessage scroll={scroll}></SendMessage>
     </main>
   );
 };
