@@ -4,8 +4,9 @@ import UnitTextBox from "../../../../components/unittextbox/unittextbox";
 import Divider from "../../../../components/divider/divider";
 import "./ch-property-details.css";
 import {useContext} from "react";
-import {InfoContext} from "../../../context/createhotel-context";
-import {PrimaryButton} from "../../../components/button/button";
+import {InfoContext} from "../../../../context/createhotel-context";
+import {PrimaryButton} from "../../../../components/button/button";
+
 
 const CH_PropertyDetails = () => {
     const { info, setInfo } = useContext(InfoContext);

@@ -1,18 +1,15 @@
 import "./ch-property-policies.css";
-import TextBlock from "../../../components/textblock/textblock";
-import UnitTextBox from "../../../components/unittextbox/unittextbox";
-import Divider from "../../../components/divider/divider";
-import TextArea from "../../../components/textarea/textarea";
-import FlexTextbox from "../../../components/flextextbox/flextextbox";
-import CheckBox from "../../../components/checkbox/checkbox";
-import Checkbox from "../../../components/checkbox/checkbox";
-import FlexCombobox from "../../../components/flexcombobox/flexcombobox";
-import Combobox from "../../../components/combobox/combobox";
-import {PaintRoller} from "@phosphor-icons/react";
-import {PrimaryButton} from "../../../components/button/button";
-import HourPicker from "../../../components/hourpicker/HourPicker";
-import {useContext, useEffect} from "react";
-import {InfoContext, InfoProvider} from "../../../context/createhotel-context";
+import {useContext} from "react";
+import {InfoContext} from "../../../../context/createhotel-context";
+import TextBlock from "../../../../components/textblock/textblock";
+import HourPicker from "../../../../components/hourpicker/HourPicker";
+import Divider from "../../../../components/divider/divider";
+import Checkbox from "../../../../components/checkbox/checkbox";
+import UnitTextBox from "../../../../components/unittextbox/unittextbox";
+import FlexCombobox from "../../../../components/flexcombobox/flexcombobox";
+import TextArea from "../../../../components/textarea/textarea";
+import {PrimaryButton} from "../../../../components/button/button";
+
 
 const CH_PropertyPolicies = () => {
 

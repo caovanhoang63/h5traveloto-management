@@ -1,4 +1,4 @@
-import TextBlock from "../../../components/textblock/textblock";
+/*import TextBlock from "../../../components/textblock/textblock";
 import FlexComboBox from "../../../components/flexcombobox/flexcombobox";
 import FlexTextbox from "../../../components/flextextbox/flextextbox";
 import Divider from "../../../components/divider/divider";
@@ -6,7 +6,7 @@ import RadioButton from "../../../components/radiobutton/radiobutton";
 import {PrimaryButton, SecondaryButton} from "../../../components/button/button";
 import ico_plus from "../../../assets/icons/plus.png";
 import ico_plus_active from "../../../assets/icons/plus-active.png";
-import "./ch-general-information.css";
+
 import {useContext, useEffect, useState} from "react";
 import {getProvinces} from "../../../api/create-hotel/get-provinces";
 import {getHoteltypes} from "../../../api/create-hotel/get-hoteltypes";
@@ -15,8 +15,22 @@ import {getDistricts} from "../../../api/create-hotel/get-districts";
 import {InfoContext} from "../../../context/createhotel-context";
 import UnitTextBox from "../../../components/unittextbox/unittextbox";
 import {tab} from "@testing-library/user-event/dist/tab";
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';*/
+import "./ch-general-information.css";
+import {useNavigate} from "react-router-dom";
+import {useContext, useEffect, useState} from "react";
+import {InfoContext} from "../../../../context/createhotel-context";
+import {getHoteltypes} from "../../../../api/create-hotel/get-hoteltypes";
+import RadioButton from "../../../../components/radiobutton/radiobutton";
+import {getProvinces} from "../../../../api/create-hotel/get-provinces";
+import {getDistricts} from "../../../../api/create-hotel/get-districts";
+import {getWards} from "../../../../api/create-hotel/get-wards";
+import TextBlock from "../../../../components/textblock/textblock";
+import FlexTextbox from "../../../../components/flextextbox/flextextbox";
+import Divider from "../../../../components/divider/divider";
+import {PrimaryButton} from "../../../../components/button/button";
+import UnitTextBox from "../../../../components/unittextbox/unittextbox";
+import FlexCombobox from "../../../../components/flexcombobox/flexcombobox";
 
 const CH_GeneralInformation = () => {
     const navigate = useNavigate();
@@ -209,17 +223,17 @@ const CH_GeneralInformation = () => {
                             </div>
                             <div className="CH_GeneralInformation-Content-Box-Address">
                                 <TextBlock content="Province"/>
-                                <FlexComboBox options={provinceOptions} placeholderText="Select"
+                                <FlexCombobox options={provinceOptions} placeholderText="Select"
                                               onChange={handleProvinceChange}/>
                             </div>
                             <div className="CH_GeneralInformation-Content-Box-Address">
                                 <TextBlock content="District"/>
-                                <FlexComboBox options={districtOptions} placeholderText="Select"
+                                <FlexCombobox options={districtOptions} placeholderText="Select"
                                               onChange={handleDistrictChange}/>
                             </div>
                             <div className="CH_GeneralInformation-Content-Box-Address">
                                 <TextBlock content="Ward"/>
-                                <FlexComboBox options={wardOptions} placeholderText="Select"
+                                <FlexCombobox options={wardOptions} placeholderText="Select"
                                               onChange={handleWardChange}/>
                             </div>
                             <div style={{fontWeight: "bold", paddingTop: "10px", paddingBottom: "10px"}}>
@@ -228,11 +242,11 @@ const CH_GeneralInformation = () => {
                             <div style={{display: "flex", flex: "row", gap: "30px"}}>
                                 <div className="CH_GeneralInformation-Content-Box-Address">
                                     <TextBlock content="Latitude"/>
-                                    <FlexComboBox options={provinceOptions} placeholderText="Select"/>
+                                    <FlexCombobox options={provinceOptions} placeholderText="Select"/>
                                 </div>
                                 <div className="CH_GeneralInformation-Content-Box-Address">
                                     <TextBlock content="Longitude"/>
-                                    <FlexComboBox options={provinceOptions} placeholderText="Select"/>
+                                    <FlexCombobox options={provinceOptions} placeholderText="Select"/>
                                 </div>
 
                             </div>

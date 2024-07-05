@@ -1,11 +1,9 @@
 import FacilitiesProperty from "../../../../components/facilities property/facilities-property";
 import "./ch-property-facilities.css";
 import {useContext, useEffect, useState} from "react";
-import {getHotelfacilities} from "../../../api/create-hotel/get-hotelfacilities";
-import {getHoteltypes} from "../../../api/create-hotel/get-hoteltypes";
-import {PrimaryButton} from "../../../components/button/button";
-import {InfoContext} from "../../../context/createhotel-context";
-import {postCreatehotel} from "../../../api/create-hotel/post-createhotel";
+import {InfoContext} from "../../../../context/createhotel-context";
+import {PrimaryButton} from "../../../../components/button/button";
+import {getHotelfacilities} from "../../../../api/create-hotel/get-hotelfacilities";
 
 const CH_PropertyFacilities = () => {
     const { info, setInfo } = useContext(InfoContext);

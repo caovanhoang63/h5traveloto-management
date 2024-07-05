@@ -1,26 +1,9 @@
-import TextBlock from "../../../components/textblock/textblock";
-import UnitTextBox from "../../../components/unittextbox/unittextbox";
-import Divider from "../../../components/divider/divider";
-import TextArea from "../../../components/textarea/textarea";
-import {PrimaryButton} from "../../../components/button/button";
 
-import DragAndDrop from '../../../components/dragdropphotos/DragAndDrop';
-import useFileSelection from '../../../hooks/useFileSelection';
-import {
-    setKey,
-    setDefaults,
-    setLanguage,
-    setRegion,
-    fromAddress,
-    fromLatLng,
-    fromPlaceId,
-    setLocationType,
-    geocode,
-    RequestType,
-} from "react-geocode";
-import {postCreatehotel} from "../../../api/create-hotel/post-createhotel";
-import {uploadFile} from "../../../api/create-hotel/upload-image";
-
+import useFileSelection from "../../../../hooks/useFileSelection";
+import DragAndDrop from "../../../../components/dragdropphotos/DragAndDrop";
+import {PrimaryButton} from "../../../../components/button/button";
+import Divider from "../../../../components/divider/divider";
+import "./ch-photos-information.css";
 // Set default response language and region (optional).
 // This sets default values for language and region for geocoding requests.
 /*
