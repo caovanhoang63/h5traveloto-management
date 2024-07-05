@@ -23,6 +23,7 @@ const RoomFacilities = ({data}) => {
                 ? prevInfo.facility_ids.filter((id) => id !== facilityId)
                 : [...prevInfo.facility_ids, facilityId],
         }));
+
     };
 
     useEffect(() => {

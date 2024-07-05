@@ -1,7 +1,6 @@
 import TextBlock from "../../../components/textblock/textblock";
 import FlexTextbox from "../../../components/flextextbox/flextextbox";
 import Divider from "../../../components/divider/divider";
-import FlexComboBox from "../../../components/flexcombobox/flexcombobox";
 import {PrimaryButton} from "../../../components/button/button";
 import UnitTextBox from "../../../components/unittextbox/unittextbox";
 import Checkbox from "../../../components/checkbox/checkbox";
@@ -18,12 +17,18 @@ const RoomTypesContext = require("../../../context/createroomtypes-context").Roo
 export function GeneralRoomTypes() {
     const navigate = useNavigate();
 
+
+
     const {roomTypesInfo, setRoomTypesInfo} = useContext(RoomTypesContext);
-    let hotelNameOnChange = (e) => {
-        console.log(e);
+    let roomTypeNameOnChange = (e) => {
+        roomTypesInfo.name = e;
+        setRoomTypesInfo(roomTypesInfo);
+        console.log(roomTypesInfo)
     }
-    let cancelPolicyOnChange = (e) => {
-        console.log(e);
+    let roomAreaOnChange = (e) => {
+        roomTypesInfo.area =   e;
+        setRoomTypesInfo(roomTypesInfo);
+        console.log(roomTypesInfo)
     }
     let minimumAgesOnChange = (e) => {
         console.log(e);
@@ -36,6 +41,37 @@ export function GeneralRoomTypes() {
     let nextButtonOnClick = () => {
         navigate("/create-facilities")
     }
+    let priceOnChange = (e) => {
+        roomTypesInfo.price = e;
+        setRoomTypesInfo(roomTypesInfo);
+        console.log(roomTypesInfo)
+    }
+    const handleCheckboxClick = (event) => {
+        // Trạng thái mới của checkbox sau khi click
+        roomTypesInfo.pay_in_hotel = event.target.checked;
+        setRoomTypesInfo(roomTypesInfo);
+        console.log(roomTypesInfo)
+    };
+
+    let freeBreakfastCheckOnChange = (e) => {
+        // Trạng thái mới của checkbox sau khi click
+        roomTypesInfo.break_fast = e.target.checked;
+        setRoomTypesInfo(roomTypesInfo);
+        console.log(roomTypesInfo)
+    }
+    let cancelCheckOnChange = (e) => {
+        roomTypesInfo.free_cancel = e.target.checked;
+        setRoomTypesInfo(roomTypesInfo);
+        console.log(roomTypesInfo)
+    }
+    let maxOccupancyOnChange = (e) => {
+        roomTypesInfo.max_customer = e;
+        setRoomTypesInfo(roomTypesInfo);
+        console.log(roomTypesInfo)
+    }
+    let cancelOnClick = () => {
+        navigate("/roomtypes")
+    };
     return (
 
         <div className="CH_GeneralInformation-Container">
@@ -49,7 +85,7 @@ export function GeneralRoomTypes() {
                     </div>
                     <div className="CH_GeneralInformation-Content">
                         <div className="CH_GeneralInformation-Content-Box">
-                            <FlexTextbox onChange={hotelNameOnChange}/>
+                            <FlexTextbox onChange={roomTypeNameOnChange}/>
                         </div>
                     </div>
                 </div>
@@ -63,7 +99,7 @@ export function GeneralRoomTypes() {
                     <div className="CH_PropertyPolicies-Content">
                         <div className="CH_PropertyPolicies-Content-Box">
                             <div style={{width: "150px", height: "35px"}}>
-                                <UnitTextBox unit="m2" onchange={minimumAgesOnChange}/>
+                                <UnitTextBox unit="m2" onchange={roomAreaOnChange}/>
                             </div>
                         </div>
                     </div>
@@ -78,7 +114,7 @@ export function GeneralRoomTypes() {
                     <div className="CH_PropertyPolicies-Content">
                         <div className="CH_PropertyPolicies-Content-Box">
                             <div style={{width: "150px", height: "35px"}}>
-                                <UnitTextBox unit="VND" onchange={cancelPolicyOnChange}/>
+                                <UnitTextBox unit="VND" onchange={priceOnChange}/>
                             </div>
                         </div>
                     </div>
@@ -94,7 +130,7 @@ export function GeneralRoomTypes() {
                     <div className="CH_PropertyPolicies-Content">
                         <div className="CH_PropertyPolicies-Content-Box">
                             <div style={{width: "150px", height: "35px"}}>
-                                <UnitTextBox unit="Persons" onchange={cancelPolicyOnChange}/>
+                                <UnitTextBox unit="Persons" onchange={maxOccupancyOnChange}/>
                             </div>
                         </div>
                     </div>
@@ -110,7 +146,7 @@ export function GeneralRoomTypes() {
                     <div className="CH_PropertyPolicies-Content">
                         <div className="CH_PropertyPolicies-Content-Box">
                             <div style={{width: "150px", height: "35px"}}>
-                                <Checkbox onChange={requireDocumentOnChange}/>
+                                <Checkbox onChange={requireDocumentOnChange} onclick={handleCheckboxClick}/>
                             </div>
                         </div>
                     </div>
@@ -125,7 +161,7 @@ export function GeneralRoomTypes() {
                     <div className="CH_PropertyPolicies-Content">
                         <div className="CH_PropertyPolicies-Content-Box">
                             <div style={{width: "150px", height: "35px"}}>
-                                <Checkbox onChange={requireDocumentOnChange}/>
+                                <Checkbox onChange={freeBreakfastCheckOnChange} onclick={freeBreakfastCheckOnChange}/>
                             </div>
                         </div>
                     </div>
@@ -140,7 +176,7 @@ export function GeneralRoomTypes() {
                     <div className="CH_PropertyPolicies-Content">
                         <div className="CH_PropertyPolicies-Content-Box">
                             <div style={{width: "150px", height: "35px"}}>
-                                <Checkbox onChange={requireDocumentOnChange}/>
+                                <Checkbox onChange={cancelCheckOnChange} onclick={cancelCheckOnChange}/>
                             </div>
                         </div>
                     </div>
@@ -165,7 +201,7 @@ export function GeneralRoomTypes() {
             </div>
             <div className={"ButtonContainer1"}>
                 <PrimaryButton children={"Next"} onClick={nextButtonOnClick}/>
-                <PrimaryButton children={"Cancel"}/>
+                <PrimaryButton children={"Cancel"} onClick={cancelOnClick}/>
 
             </div>
 
