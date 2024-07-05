@@ -1,28 +1,28 @@
-.frontdesk-table-container {
+.booking-management-table-container {
     position: relative;
     width: 100%;
     font-size: 1.6rem ;
 }
-.frontdesk-table-container table {
+.booking-management-table-container table {
     border: 1px var(--Grey50) solid;
     border-collapse: collapse;
     border-radius: 5px;
     width: 100%;
 }
 
-.frontdesk-table-header {
+.booking-management-table-header {
     height: 38px;
     background: var(--Primary100);
 }
 
-.frontdesk-table-body td {
+.booking-management-table-body td {
     padding: 8px;
     text-align: center;
     border-bottom: 1px solid #ddd;
     color: var(--Grey600);
 }
 
-.frontdesk-table-header th{
+.booking-management-table-header th{
     padding: 8px;
     background: #f0f1f3;
     text-align: center;
@@ -30,10 +30,10 @@
     color: var(--Grey500);
 }
 
-.frontdesk-table-body tr{
+.booking-management-table-body tr{
     height: 76px;
 }
 
-.frontdesk-table-container tr:hover {
+.booking-management-table-container tr:hover {
     background-color: #f5f5f5;
 }

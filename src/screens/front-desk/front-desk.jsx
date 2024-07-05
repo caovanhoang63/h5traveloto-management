@@ -12,8 +12,8 @@ import ico_minus_active from "../../assets/icons/minus-active.png";
 function FrontDesk() {
     const columns = [
         {
-            Header: "Id",
-            accessor: "id"
+            Header: "No.",
+            accessor: "no"
         },
         {
             Header: "Room Type",
@@ -34,56 +34,56 @@ function FrontDesk() {
     ];
     const data = [
         {
-            id: "#045",
+            no: "#045",
             roomType: "Double bed",
             roomFacility: "AC, shower, double bed",
             availableRooms: 4,
             price: 200
         },
         {
-            id: "#045",
+            no: "#045",
             roomType: "Double bed",
             roomFacility: "AC, shower, double bed",
             availableRooms: 4,
             price: 200
         },
         {
-            id: "#045",
+            no: "#045",
             roomType: "Double bed",
             roomFacility: "AC, shower, double bed",
             availableRooms: 4,
             price: 200
         },
         {
-            id: "#045",
+            no: "#045",
             roomType: "Double bed",
             roomFacility: "AC, shower, double bed",
             availableRooms: 4,
             price: 200
         },
         {
-            id: "#045",
+            no: "#045",
             roomType: "Double bed",
             roomFacility: "AC, shower, double bed",
             availableRooms: 4,
             price: 200
         },
         {
-            id: "#045",
+            no: "#045",
             roomType: "Double bed",
             roomFacility: "AC, shower, double bed",
             availableRooms: 4,
             price: 200
         },
         {
-            id: "#045",
+            no: "#045",
             roomType: "Double bed",
             roomFacility: "AC, shower, double bed",
             availableRooms: 4,
             price: 200
         },
         {
-            id: "#045",
+            no: "#045",
             roomType: "Double bed",
             roomFacility: "AC, shower, double bed",
             availableRooms: 4,
