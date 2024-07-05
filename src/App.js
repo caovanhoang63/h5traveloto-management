@@ -37,17 +37,11 @@ import CH_PropertyDetails from "./screens/create-hotel-screen/components/propert
 import CH_PropertyPolicies from "./screens/create-hotel-screen/components/property-policies/ch-property-policies";
 import CH_PropertyFacilities from "./screens/create-hotel-screen/components/property-facilities/ch-property-facilities";
 import CH_PhotosInformation from "./screens/create-hotel-screen/components/photos-information/ch-photos-information";
-<<<<<<< Updated upstream
-=======
 import GuestScreen from "./screens/guest-screen/guest-screen";
-<<<<<<< HEAD
 import {socket } from "./socket-io/index"
-=======
 import FrontDesk from "./screens/front-desk/front-desk";
 import DealScreen from "./screens/deal-screen/deal-screen";
 
->>>>>>> b6fa738d9a78f58fefe1cce4c5187185cd40a93f
->>>>>>> Stashed changes
 
 function App() {
     const refreshToken = localStorage.getItem("refresh-token");
@@ -130,6 +124,7 @@ function App() {
                                <Routes>
                                    <Route path="/dashboard" element={<Dashboard />} />
                                    <Route path="/rooms" element={<RoomPage />} />
+                                   <Route path="/guest" element={<GuestScreen />} />
                                    <Route path="/chat" element={<ChatScreen />} />
                                    <Route path="/bookingmanagement" element={<BookingManagementPage />} />
                                    <Route path="/roomtypes" element={
