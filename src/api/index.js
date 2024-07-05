@@ -1,7 +1,7 @@
 import { API_ROOT } from "../common/constant";
 import axios from "axios";
 
-const getToken = () => localStorage.getItem("token");
+const getToken = () => sessionStorage.getItem("access-token");
 
 export const instance = axios.create({
     baseURL: API_ROOT,

@@ -44,8 +44,8 @@ function App() {
         if (refreshToken) {
             RenewToken({ Token: refreshToken })
                 .then((data) => {
-                    sessionStorage.setItem("access-token", data.Token);
-                    console.log("Token: ", data.Token);
+                    sessionStorage.setItem("access-token", data.data.Token);
+                    console.log("Token: ", data.data.Token);
                     setIsAuthenticated(true);
                 })
                 .catch((error) => {

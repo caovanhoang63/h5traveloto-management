@@ -126,13 +126,12 @@ function RoomTypePage() {
 
     //Fetch API
     useEffect(() => {
-        // mat thoi gian fetch du lieu
         setTimeout(() => {
             setRecords(data);
             console.log("lay du lieu");
         }, 500);
     }, []);
-    console.log(records);
+
     // re-render sau khi fetch
     useEffect(() => {
         RenderDataTable(0);
