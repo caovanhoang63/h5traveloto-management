@@ -46,7 +46,7 @@ const CH_PhotosInformation = () => {
                     </div>
                     <div className="CH_PropertyDetails-Content">
                         <div className="CH_PropertyDetails-Content-Box">
-                            <DragAndDrop addFile={addFileLogo} removeFile={removeFileLogo} selectedFiles={selectedLogo}/>
+                            <DragAndDrop addFile={addFileLogo} removeFile={removeFileLogo} />
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@ const CH_PhotosInformation = () => {
                     </div>
                     <div className="CH_PropertyDetails-Content">
                         <div className="CH_PropertyDetails-Content-Box">
-                            <DragAndDrop addFile={addFileImages} removeFile={removeFileImages}/>
+                            <DragAndDrop addFile={addFileImages} removeFile={removeFileImages} />
                         </div>
                     </div>
                 </div>

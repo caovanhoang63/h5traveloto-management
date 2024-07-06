@@ -128,6 +128,12 @@ function App() {
                                    <Route path="/property_policies" element={<CH_PropertyPolicies/>}/>
                                    <Route path="/property_facilities" element={<CH_PropertyFacilities/>}/>
                                    <Route path="/photos" element={<CH_PhotosInformation/>}/>
+                                   <Route
+                                       path="/"
+                                       element={
+                                           <Navigate to={"/createhotel/general_information"} replace></Navigate>
+                                       }
+                                   />
                                </Routes>
                            </CreateHotel>
                        }

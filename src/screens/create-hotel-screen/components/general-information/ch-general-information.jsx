@@ -31,6 +31,7 @@ import Divider from "../../../../components/divider/divider";
 import {PrimaryButton} from "../../../../components/button/button";
 import UnitTextBox from "../../../../components/unittextbox/unittextbox";
 import FlexCombobox from "../../../../components/flexcombobox/flexcombobox";
+import Textbox from "../../../../components/textbox/textbox";
 
 const CH_GeneralInformation = () => {
     const navigate = useNavigate();
@@ -242,11 +243,11 @@ const CH_GeneralInformation = () => {
                             <div style={{display: "flex", flex: "row", gap: "30px"}}>
                                 <div className="CH_GeneralInformation-Content-Box-Address">
                                     <TextBlock content="Latitude"/>
-                                    <FlexCombobox options={provinceOptions} placeholderText="Select"/>
+                                    <Textbox classname="" />
                                 </div>
                                 <div className="CH_GeneralInformation-Content-Box-Address">
                                     <TextBlock content="Longitude"/>
-                                    <FlexCombobox options={provinceOptions} placeholderText="Select"/>
+                                    <Textbox classname="Location_TextBox" />
                                 </div>
 
                             </div>
