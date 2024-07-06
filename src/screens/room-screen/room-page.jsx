@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import Button, { PrimaryButton } from "../../components/button/button";
-import Table from "../../components/table/table";
 import "./room-page.css";
 import PageNavigation from "../../components/pagenavigation/pagenavigation";
 import { getRoomByHotelId } from "../../api/room_api";
+import DealTable from "../../components/dealtable/deal-table";
 
 const columns = [
     {
@@ -25,7 +25,7 @@ const columns = [
 ];
 
 function RoomPage() {
-    const rowsData = 6; //So dong du lieu
+    const rowsData = 5; //So dong du lieu
     const [selectedCategory, setSelectedCategory] = useState("all");
     const [pageOfTable, setPageOfTable] = useState();
     const [tableData, setTableData] = useState([]);
@@ -49,19 +49,21 @@ function RoomPage() {
                 const allData = [];
                 const availableData = [];
                 const bookedData = [];
-                for (let i = 0; i < length; i++) {
-                    if (data.data[i].status == 1) {
-                        availableData.push(data.data[i]);
-                    } else if (data.data[i].status == 2) {
-                        bookedData.push(data.data[i]);
+                if (res.data !== null) {
+                    for (let i = 0; i < length; i++) {
+                        if (data.data[i].status == 1) {
+                            availableData.push(data.data[i]);
+                        } else if (data.data[i].status == 2) {
+                            bookedData.push(data.data[i]);
+                        }
+                        allData.push(data.data[i]);
                     }
-                    allData.push(data.data[i]);
+                    setRecords({
+                        all: allData,
+                        available: availableData,
+                        booked: bookedData,
+                    });
                 }
-                setRecords({
-                    all: allData,
-                    available: availableData,
-                    booked: bookedData,
-                });
             })
             .catch((e) => console.log(e));
     }, []);
@@ -91,7 +93,7 @@ function RoomPage() {
     function ConvertDataTable(data) {
         return {
             roomNumber: data.name,
-            roomType: data.room_type_id,
+            roomType: data.room_type.name,
             roomFloor: data.floor,
             status: data.status ? "Available" : "Booked",
         };
@@ -144,7 +146,7 @@ function RoomPage() {
                 </PrimaryButton>
             </div>
             <div className="room-content">
-                <Table data={tableData} columns={columns}></Table>
+                <DealTable data={tableData} columns={columns}></DealTable>
             </div>
             <div className="room-page-navigation">
                 {pageOfTable > rowsData && (

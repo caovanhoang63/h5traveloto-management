@@ -6,9 +6,12 @@ import {
 import "./booking-management-page.css";
 import IconFilter from "../../assets/icons/icon-filter.png";
 import TextUnderline from "../../components/textunderline/texunderline";
-import Table from "../../components/table/table";
 import { Link } from "react-router-dom";
 import PageNavigation from "../../components/pagenavigation/pagenavigation";
+import DealTable from "../../components/dealtable/deal-table";
+import { getBookingByHotelId } from "../../api/booking_management_api";
+import { all } from "axios";
+import { set } from "date-fns";
 
 function BookingManagementPage() {
     const columns = [
@@ -22,7 +25,7 @@ function BookingManagementPage() {
         },
         {
             Header: "Room Quantity",
-            accessor: "room Quantity",
+            accessor: "roomQuantity",
         },
         {
             Header: "Start Date",
@@ -32,89 +35,27 @@ function BookingManagementPage() {
             Header: "End Date",
             accessor: "endDate",
         },
-    ];
-
-    const data = [
         {
-            no: 1,
-            roomType: "Single",
-            "room Quantity": 5,
-            startDate: "Reserved",
-            endDate: "Reserved",
-        },
-        {
-            no: 2,
-            roomType: "Double",
-            "room Quantity": 10,
-            startDate: "Available",
-            endDate: "Available",
-        },
-        {
-            no: 3,
-            roomType: "Suite",
-            "room Quantity": 2,
-            startDate: "Available",
-            endDate: "Available",
-        },
-        {
-            no: 4,
-            roomType: "Single",
-            "room Quantity": 8,
-            startDate: "Booked",
-            endDate: "Booked",
-        },
-        {
-            no: 5,
-            roomType: "Double",
-            "room Quantity": 6,
-            startDate: "Reserved",
-            endDate: "Reserved",
-        },
-        {
-            no: 1,
-            roomType: "Single",
-            "room Quantity": 5,
-            startDate: "Reserved",
-            endDate: "Reserved",
-        },
-        {
-            no: 2,
-            roomType: "Double",
-            "room Quantity": 10,
-            startDate: "Available",
-            endDate: "Available",
-        },
-        {
-            no: 3,
-            roomType: "Suite",
-            "room Quantity": 2,
-            startDate: "Available",
-            endDate: "Available",
-        },
-        {
-            no: 4,
-            roomType: "Single",
-            "room Quantity": 8,
-            startDate: "Booked",
-            endDate: "Booked",
-        },
-        {
-            no: 5,
-            roomType: "Double",
-            "room Quantity": 6,
-            startDate: "Reserved",
-            endDate: "Reserved",
+            Header: "Status",
+            accessor: "status",
         },
     ];
 
     const [focusedIndex, setFocusedIndex] = useState(0);
-    const buttons = ["Check-In", "Confirm", "Pending", "Cancel & Checked-Out"];
+    const buttons = [
+        "All-Booking",
+        "Check-In",
+        "Confirmed",
+        "Pending",
+        "Checked-Out",
+    ];
 
-    const rowsData = 6;
-    const [selectedCategory, setSelectedCategory] = useState("checkIn");
+    const rowsData = 5;
+    const [selectedCategory, setSelectedCategory] = useState("all");
     const [pageOfTable, setPageOfTable] = useState();
     const [tableData, setTableData] = useState([]);
     const [records, setRecords] = useState({
+        all: [],
         checkIn: [],
         confirm: [],
         pending: [],
@@ -122,32 +63,51 @@ function BookingManagementPage() {
     });
     //Fetch data
     useEffect(() => {
-        setTimeout(() => {
-            const checkIn = [];
-            const confirm = [];
-            const pending = [];
-            const cancelCheckedOut = [];
-            for (let i = 0; i < data.length; i++) {
-                checkIn.push(data[i]);
-                confirm.push(data[i]);
-                pending.push(data[i]);
-                cancelCheckedOut.push(data[i]);
-            }
-            //Set records
-            setRecords({
-                checkIn: checkIn,
-                confirm: confirm,
-                pending: pending,
-                cancelCheckedOut: cancelCheckedOut,
+        getBookingByHotelId("gGzTBURqhajF")
+            .then((response) => {
+                const all = [];
+                const checkIn = [];
+                const confirm = [];
+                const pending = [];
+                const cancelCheckedOut = [];
+                if (response.data !== null) {
+                    for (let i = 0; i < response.data.length; i++) {
+                        if (response.data[i].state == "checked-in") {
+                            checkIn.push(response.data[i]);
+                        } else if (response.data[i].state == "paid") {
+                            confirm.push(response.data[i]);
+                        } else if (response.data[i].state == "pending") {
+                            pending.push(response.data[i]);
+                        } else if (response.data[i].state == "checked-out") {
+                            cancelCheckedOut.push(response.data[i]);
+                        }
+                        all.push(response.data[i]);
+                    }
+                    setRecords({
+                        all: all,
+                        checkIn: checkIn,
+                        confirm: confirm,
+                        pending: pending,
+                        cancelCheckedOut: cancelCheckedOut,
+                    });
+                }
+            })
+            .catch((error) => {
+                console.error(error);
             });
-        }, 500);
     }, []);
     //re-render after fetch
     useEffect(() => {
-        RenderDataTable(0, "checkIn");
-        console.log(records.checkIn.length);
-        setPageOfTable(records.checkIn.length);
+        RenderDataTable(0, "all");
+        setPageOfTable(records.all.length);
     }, [records]);
+
+    //handle click button All, Check-In, Confirmed, Pending, Checked-Out
+    const handleClickButtonFilter = (type) => {
+        setSelectedCategory(ConvertType(type));
+        RenderDataTable(0, ConvertType(type));
+        setPageOfTable(records[ConvertType(type)].length);
+    };
     //render data
     function RenderDataTable(indexStart, type) {
         const row = [];
@@ -162,25 +122,36 @@ function BookingManagementPage() {
     // convert data from data fetched
     function ConvertDataTable(data) {
         return {
-            roomNumber: data.name,
+            no: data.id,
             roomType: data.room_type_id,
-            roomFloor: data.floor,
-            status: data.status ? "Available" : "Booked",
+            roomQuantity: data.room_quantity,
+            startDate: data.start_date,
+            endDate: data.end_date,
+            status: ConvertStatus(data.state),
         };
+    }
+    function ConvertStatus(status) {
+        if (status === "checked-in") return "Check-In";
+        else if (status === "paid") return "Paid";
+        else if (status === "pending") return "Pending";
+        else if (status === "checked-out") return "Checked-Out";
+        else if (status === "expired") return "Expired";
     }
     //handle click page
     const handleClickPage = (page) => {
         RenderDataTable((page - 1) * rowsData, selectedCategory);
     };
-    const SetPageOfTable = (index) => {
+    //convert type
+    const ConvertType = (index) => {
         let type = "";
-        if (index === 0) {
-            type = "checkIn";
-        } else if (index === 1) type = "confirm";
-        else if (index === 2) type = "pending";
-        else if (index === 3) type = "cancelCheckedOut";
-        setSelectedCategory(type);
+        if (index === 0) type = "all";
+        else if (index === 1) type = "checkIn";
+        else if (index === 2) type = "confirm";
+        else if (index === 3) type = "pending";
+        else if (index === 4) type = "cancelCheckedOut";
+        return type;
     };
+
     return (
         <div className="booking-container">
             <div className="booking-header">
@@ -192,7 +163,11 @@ function BookingManagementPage() {
                             isFocused={focusedIndex === index}
                             onClick={() => {
                                 setFocusedIndex(index);
-                                SetPageOfTable(index);
+                                setPageOfTable(
+                                    records[ConvertType(index)].length
+                                );
+                                setSelectedCategory(ConvertType(index));
+                                handleClickButtonFilter(index);
                             }}
                         />
                     ))}
@@ -227,12 +202,12 @@ function BookingManagementPage() {
                 </div>
             </div>
             <div className="booking-table">
-                <Table columns={columns} data={tableData} />
+                <DealTable columns={columns} data={tableData} />
             </div>
             <div className="booking-page-navigation">
-                {data.length > rowsData && (
+                {pageOfTable > rowsData && (
                     <PageNavigation
-                        page={Math.ceil(records.length / rowsData)}
+                        page={Math.ceil(pageOfTable / rowsData)}
                         onNextPage={handleClickPage}
                         onPreviousPage={handleClickPage}
                         onClickPage={handleClickPage}

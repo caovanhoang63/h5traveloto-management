@@ -20,11 +20,11 @@
 }
 
 .underline-text.focused {
-    color: var(--Primary400);
+    color: var(--Primary500);
 }
 
 .underline-text.focused .underline {
     width: 100%;
     left: 0;
-    background-color: var(--Primary400);
+    background-color: var(--Primary500);
 }
