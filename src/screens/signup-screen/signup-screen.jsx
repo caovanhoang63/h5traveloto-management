@@ -27,8 +27,8 @@ const SignUpScreen = () => {
             last_name : e.target.last_name.value,
             email : e.target.email.value,
             password : e.target.password.value,
+            role : "owner"
         }
-
         Register(userRegister).then((res)=>{
             alert("register success!")
             navigate("/login")

@@ -26,7 +26,7 @@ export function GeneralRoomTypes() {
         console.log(roomTypesInfo)
     }
     let roomAreaOnChange = (e) => {
-        roomTypesInfo.area =   e;
+        roomTypesInfo.area =   parseFloat(e);
         setRoomTypesInfo(roomTypesInfo);
         console.log(roomTypesInfo)
     }
@@ -42,7 +42,7 @@ export function GeneralRoomTypes() {
         navigate("/create-facilities")
     }
     let priceOnChange = (e) => {
-        roomTypesInfo.price = e;
+        roomTypesInfo.price = parseFloat(e);
         setRoomTypesInfo(roomTypesInfo);
         console.log(roomTypesInfo)
     }
@@ -65,7 +65,7 @@ export function GeneralRoomTypes() {
         console.log(roomTypesInfo)
     }
     let maxOccupancyOnChange = (e) => {
-        roomTypesInfo.max_customer = e;
+        roomTypesInfo.max_customer = parseInt(e);
         setRoomTypesInfo(roomTypesInfo);
         console.log(roomTypesInfo)
     }
@@ -74,10 +74,8 @@ export function GeneralRoomTypes() {
     };
     return (
 
-        <div className="CH_GeneralInformation-Container">
-            <div className="CH_GeneralInformation-Header">
-                General Information
-            </div>
+        <div className="RoomType-General-Container">
+
             <div className="CH_GeneralInformation-Main">
                 <div className="CH_GeneralInformation-Property Name">
                     <div className="CH_GeneralInformation-Title">
@@ -125,7 +123,7 @@ export function GeneralRoomTypes() {
                 </div>
                 <div className="CH_PropertyPolicies-Property Floors">
                     <div className="CH_PropertyPolicies-Title">
-                        Maximun Occupancy
+                        Maximum Occupancy
                     </div>
                     <div className="CH_PropertyPolicies-Content">
                         <div className="CH_PropertyPolicies-Content-Box">
@@ -184,7 +182,7 @@ export function GeneralRoomTypes() {
                 <div className="CH_PropertyPolicies-Divider">
                     <Divider isHorizontal={true} thick="1px" type="solid" color="#e8f1fd"/>
                 </div>
-                <div className="CH_PropertyDetails-Property Floors">
+                {/*<div className="CH_PropertyDetails-Property Floors">
                     <div className="CH_PropertyDetails-Title">
                         Photos
                     </div>
@@ -197,7 +195,7 @@ export function GeneralRoomTypes() {
                 </div>
                 <div className="CH_PropertyDetails-Divider">
                     <Divider isHorizontal={true} thick="1px" type="solid" color="#e8f1fd"/>
-                </div>
+                </div>*/}
             </div>
             <div className={"ButtonContainer1"}>
                 <PrimaryButton children={"Next"} onClick={nextButtonOnClick}/>
