@@ -99,3 +99,8 @@
 .CH_GeneralInformation-Content-AddContactBtn {
     padding: 10px;
 }
+
+/* location textbox */
+.Location_TextBox {
+    width: 20px;
+}
