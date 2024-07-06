@@ -11,3 +11,16 @@ export const getRoomByHotelId = async (params) => {
         console.error(error);
     }
 };
+
+export const createRoom = async (data) => {
+    try {
+        const response = await instance.post(
+            `/hotels/${data.path}/rooms/`,
+            data.body
+        );
+        console.log(response.data);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+};

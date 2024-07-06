@@ -7,13 +7,19 @@
 .modal-create-room__field {
     flex: 1;
     height: 100px;
-    width: 400px;
+    width: 360px;
     display: flex;
     flex-direction: column;
     align-items: start;
+    margin: 8px 0px;
 }
 .modal-create-room__input {
-    height: 50px;
     width: 100%;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+}
+.lable-input {
+    line-height: 2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
 }

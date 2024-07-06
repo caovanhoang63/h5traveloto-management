@@ -4,9 +4,11 @@
     align-items: flex-start;
     margin-top: 0;
     padding: 0;
-  }
-  
-  .flexcombobox-select {
+    height: 100%;
+    width: 100%;
+}
+
+.flexcombobox-select {
     padding: 8px 12px;
     /* font-size: 16px; */
     border: 1px solid black;
@@ -18,18 +20,18 @@
     height: 100%;
     color: inherit;
     /* font-family: 'Plus Jakarta Sans', sans-serif; */
-  }
-  
-  .flexcombobox-select:focus {
+}
+
+.flexcombobox-select:focus {
     border-color: dodgerblue;
-  }
-  
-  .flexcombobox-label {
+}
+
+.flexcombobox-label {
     /* font-size: 14px;
     font-weight: medium; */
     margin-bottom: 10px;
     /* font-family: 'Plus Jakarta Sans', sans-serif;   */
-  }
-  .flexcombobox-label.unactive {
+}
+.flexcombobox-label.unactive {
     display: none;
-  }
+}

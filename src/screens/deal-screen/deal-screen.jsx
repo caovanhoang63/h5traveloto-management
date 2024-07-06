@@ -8,6 +8,11 @@ import DealTable from "../../components/dealtable/deal-table";
 import { useEffect, useState } from "react";
 import "./deal-screen.css";
 import { getDealsByHotelId } from "../../api/deal-api";
+import Modal from "../../components/modal/modal";
+import ModalCreateDeal from "../../components/modal/content/create-deal/modal-create-deal";
+import ModalInfoCustomer from "../../components/modal/content/info-customer/modal-info-customer";
+import ModalChangeInfo from "../../components/modal/content/change-info/modal-change-info";
+import { is } from "date-fns/locale";
 
 function DealScreen() {
     const columns = [
@@ -37,44 +42,11 @@ function DealScreen() {
             accessor: "status",
         },
     ];
-    const data = [
-        {
-            no: "#5664",
-            dealName: "Family Deal",
-            reservationsLeft: 10,
-            endDate: "21/3/2023",
-            roomType: "VIP",
-            status: "Ongoing",
-        },
-        {
-            no: "#6112",
-            dealName: "Christmas Deal",
-            reservationsLeft: 12,
-            endDate: "21/3/2023",
-            roomType: "VIP",
-            status: "Ongoing",
-        },
-        {
-            no: "#6141",
-            dealName: "Family Deal",
-            reservationsLeft: 15,
-            endDate: "",
-            roomType: "Triple",
-            status: "Expired",
-        },
-        {
-            no: "#6535",
-            dealName: "Black Friday",
-            reservationsLeft: 10,
-            endDate: "1/5/2023",
-            roomType: "VIP",
-            status: "Expired",
-        },
-    ];
 
     const rowsData = 5;
     const [records, setRecords] = useState([]);
     const [tableData, setTableData] = useState([]);
+    const [isOpenModal, setIsOpenModal] = useState(false);
     //Fetch API
     useEffect(() => {
         getDealsByHotelId({ hotel_id: `"gGzTBURqhajF"` })
@@ -136,9 +108,19 @@ function DealScreen() {
     return (
         <div className="deal-screen-container">
             <div className="deal-screen-option">
-                <PrimaryButton className={"deal-screen-option__button-add"}>
+                <PrimaryButton
+                    className={"deal-screen-option__button-add"}
+                    onClick={() => setIsOpenModal(true)}
+                >
                     Add deal
                 </PrimaryButton>
+                {isOpenModal && (
+                    <Modal
+                        title="Create Deal"
+                        content={<ModalChangeInfo />}
+                        onClose={() => setIsOpenModal(false)}
+                    ></Modal>
+                )}
                 <TransparentButton
                     className={"deal-screen-option__button-filter"}
                     border={true}

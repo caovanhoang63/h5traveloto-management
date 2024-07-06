@@ -2,15 +2,13 @@ import { useEffect, useState } from "react";
 import Button, { PrimaryButton } from "../../components/button/button";
 import "./room-page.css";
 import PageNavigation from "../../components/pagenavigation/pagenavigation";
-import { getRoomByHotelId } from "../../api/room_api";
+import { getRoomByHotelId, createRoom } from "../../api/room_api";
 import DealTable from "../../components/dealtable/deal-table";
 import Toast from "../../components/modal/toast";
-import ModalStatus from "../../components/modal/modal-status";
-import ModalCustom from "../../components/modal/modal-custom";
-import { type } from "@testing-library/user-event/dist/type";
-import { is } from "date-fns/locale";
-import ModalCreateRoom from "../../components/modal/content/modal-create-room";
+import Modal from "../../components/modal/modal";
+import ModalCreateRoom from "../../components/modal/content/create-room/modal-create-room";
 import { set } from "date-fns";
+import { getRoomTypesByHotelId } from "../../api/room_type_api";
 
 const columns = [
     {
@@ -42,13 +40,10 @@ function RoomPage() {
         available: [],
         booked: [],
     });
-    let params = {
-        limit: 8,
-        page: 1,
-    };
 
     //Fetch API
     useEffect(() => {
+        getRoomTypes();
         getRoomByHotelId({})
             .then((res) => {
                 const data = res;
@@ -112,16 +107,55 @@ function RoomPage() {
     };
 
     const handleOnClickAddRoom = () => {
-        // Toast({
-        //     title: "Add room",
-        //     type: "success",
-        // });
-        // ModalStatus({
-        //     title: "Add room",
-        //     type: "success",
-        //     message: "Add room success",
-        // });
         setIsOpenModalCreateRoom(true);
+    };
+
+    //Modal
+    const [roomName, setRoomName] = useState("");
+    const [roomType, setRoomType] = useState("");
+    const [roomFloor, setRoomFloor] = useState("");
+    const [options, setOptions] = useState([]);
+
+    const getRoomTypes = () => {
+        getRoomTypesByHotelId({}).then((res) => {
+            const data = res.data;
+            const length = data.length;
+            const options = [];
+            for (let i = 0; i < length; i++) {
+                options.push({ value: data[i].name, key: data[i].id });
+            }
+            console.log(options);
+            setOptions(options);
+        });
+    };
+
+    const handleOnChangeRoomName = (value) => {
+        console.log(value);
+        setRoomName(value);
+    };
+    const handleOnChangeRoomType = (value) => {
+        setRoomType(value);
+    };
+    const handleOnChangeRoomFloor = (value) => {
+        setRoomFloor(value);
+    };
+    const handleClickCreate = () => {
+        setIsOpenModalCreateRoom(false);
+        console.log(roomName, roomType, roomFloor);
+        createRoom({
+            path: "gGzTBURqhajF",
+            body: {
+                name: roomName,
+                room_type_id: roomType,
+                floor: roomFloor,
+            },
+        })
+            .then((res) => {
+                Toast({ title: "Create room success", type: "success" });
+            })
+            .catch((e) => {
+                Toast({ title: "Create room fail", type: "error" });
+            });
     };
 
     return (
@@ -169,11 +203,20 @@ function RoomPage() {
                     Add room
                 </PrimaryButton>
                 {isOpenModalCreateRoom && (
-                    <ModalCustom
-                        content={<ModalCreateRoom></ModalCreateRoom>}
-                        onConfirm={() => setIsOpenModalCreateRoom(false)}
+                    <Modal
+                        content={
+                            <ModalCreateRoom
+                                options={options}
+                                onChangeRoomName={handleOnChangeRoomName}
+                                onChangeRoomType={handleOnChangeRoomType}
+                                onChangeFloor={handleOnChangeRoomFloor}
+                            ></ModalCreateRoom>
+                        }
                         onClose={() => setIsOpenModalCreateRoom(false)}
-                    ></ModalCustom>
+                        onConfirm={() => handleClickCreate()}
+                        title="Create Room"
+                        buttonSaveText="Create"
+                    ></Modal>
                 )}
             </div>
             <div className="room-content">
