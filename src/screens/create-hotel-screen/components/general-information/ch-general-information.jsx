@@ -51,7 +51,7 @@ const CH_GeneralInformation = () => {
     }, []);
 
     const hotelTypeOnChange = (event) => {
-        info.hotel_type = event.target.value;
+        info.hotel_type = parseInt(event.target.value);
     }
     const propertyTypes = hoteltypes.map && hoteltypes.map(type => (
         <li key={type.id}>
@@ -97,7 +97,7 @@ const CH_GeneralInformation = () => {
     const handleProvinceChange = (value) => {
         const selectedProvince = provinces.find(province => province.name === value);
         if (selectedProvince) {
-            info.province_code = parseInt(selectedProvince.code);
+            info.province_code = selectedProvince.code;
             setSelectedProvince(selectedProvince.code);
 
 
@@ -125,7 +125,7 @@ const CH_GeneralInformation = () => {
     const handleDistrictChange = (value) => {
         const selectedDistrict = district.find(district => district.name === value);
         if (selectedDistrict) {
-            info.dictrict_code = parseInt(selectedDistrict.code);
+            info.district_code = selectedDistrict.code;
             setSelectedDistrict(selectedDistrict.code);
 
         }
@@ -152,7 +152,7 @@ const CH_GeneralInformation = () => {
     const handleWardChange = (value) => {
         const selectedWard = ward.find(ward => ward.name === value);
         if (selectedWard) {
-            info.ward_code = parseInt(selectedWard.code);
+            info.ward_code = selectedWard.code;
             setSelectedWard(selectedWard.code);
         }
     };

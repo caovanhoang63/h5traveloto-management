@@ -6,15 +6,18 @@ import "./ch-property-details.css";
 import {useContext} from "react";
 import {InfoContext} from "../../../../context/createhotel-context";
 import {PrimaryButton} from "../../../../components/button/button";
+import {useNavigate} from "react-router-dom";
 
 
 const CH_PropertyDetails = () => {
+    const navigate = useNavigate();
     const { info, setInfo } = useContext(InfoContext);
     const distantOnChange = (e) => {
         info.hotel_detail.distance_to_center_city = parseInt(e);
     }
     const nextOnClick = () => {
         console.log(info);
+        navigate('/createhotel/property_policies');
     }
 
     const descriptionOnChange = (e) => {

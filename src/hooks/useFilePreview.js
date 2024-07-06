@@ -1,6 +1,8 @@
 import { Modal } from 'antd';
-import { useState } from 'react';
+import {useContext, useState} from 'react';
+import {InfoContext} from "../context/createhotel-context";
 const useFilePreview = () => {
+
     const [previewVisibility, setPreviewVisibility] = useState(false);
     const [previewImage, setPreviewImage] = useState(null);
     const [previewTitle, setPreviewTitle] = useState('');

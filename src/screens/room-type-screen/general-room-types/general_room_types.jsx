@@ -5,7 +5,7 @@ import {PrimaryButton} from "../../../components/button/button";
 import UnitTextBox from "../../../components/unittextbox/unittextbox";
 import Checkbox from "../../../components/checkbox/checkbox";
 import DragAndDrop from "../../../components/dragdropphotos/DragAndDrop";
-import useFileSelection from "../../../hooks/useFileSelection";
+import useFileSelection, {useFileSelectionLogo} from "../../../hooks/useFileSelection";
 import "./general_room_types.css";
 import {useContext} from "react";
 import {useNavigate} from "react-router-dom";
@@ -16,9 +16,6 @@ const RoomTypesContext = require("../../../context/createroomtypes-context").Roo
 
 export function GeneralRoomTypes() {
     const navigate = useNavigate();
-
-
-
     const {roomTypesInfo, setRoomTypesInfo} = useContext(RoomTypesContext);
     let roomTypeNameOnChange = (e) => {
         roomTypesInfo.name = e;
@@ -36,7 +33,6 @@ export function GeneralRoomTypes() {
     let requireDocumentOnChange = (e) => {
         console.log(e);
     }
-    const [addFileLogo, removeFileLogo, selectedLogo] = useFileSelection();
 
     let nextButtonOnClick = () => {
         navigate("/create-facilities")

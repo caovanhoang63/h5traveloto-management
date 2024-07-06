@@ -4,6 +4,7 @@ import {useContext, useEffect, useState} from "react";
 import {InfoContext} from "../../../../context/createhotel-context";
 import {PrimaryButton} from "../../../../components/button/button";
 import {getHotelfacilities} from "../../../../api/create-hotel/get-hotelfacilities";
+import {useNavigate} from "react-router-dom";
 
 const CH_PropertyFacilities = () => {
     const { info, setInfo } = useContext(InfoContext);
@@ -29,8 +30,10 @@ const CH_PropertyFacilities = () => {
             </li>
         ));
 
+    const navigate = useNavigate();
     const nextOnClick = () => {
         console.log(info)
+        navigate("/createhotel/photos")
         /*console.log(localStorage.getItem("token"))
         postCreatehotel(info).then((res) => {
             console.log(res)
