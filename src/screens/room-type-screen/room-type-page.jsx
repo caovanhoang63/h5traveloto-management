@@ -5,16 +5,12 @@ import Button, {
 import PageNavigation from "../../components/pagenavigation/pagenavigation";
 import IconFilter from "../../assets/icons/icon-filter.png";
 import "./room-type-page.css";
-import Table from "../../components/table/table";
 import { useEffect, useState } from "react";
-import Swal from "sweetalert2";
-import ModalStatus from "../../components/modal/modal-status";
-import SweetAlert2 from "react-sweetalert2";
 import ModalCustom from "../../components/modal/modal-custom";
 import Toast from "../../components/modal/toast";
-import { useNavigate } from 'react-router-dom';
-import {RoomTypesProvider} from "../../context/createroomtypes-context";
-
+import { useNavigate } from "react-router-dom";
+import DealTable from "../../components/dealtable/deal-table";
+import { getRoomTypesByHotelId } from "../../api/room_type_api";
 
 function RoomTypePage() {
     const navigate = useNavigate();
@@ -23,11 +19,6 @@ function RoomTypePage() {
             Header: "Room type",
             accessor: "roomType",
         },
-        {
-            Header: "Deals",
-            accessor: "deals",
-        },
-
         {
             Header: "Cancellation policy",
             accessor: "cancellationPolicy",
@@ -129,20 +120,24 @@ function RoomTypePage() {
         },
     ];
 
-    const rowsData = 6;
+    const rowsData = 5;
     const [records, setRecords] = useState([]);
     const [tableData, setTableData] = useState([]);
 
     //Fetch API
     useEffect(() => {
-        // mat thoi gian fetch du lieu
-        setTimeout(() => {
-            setRecords(data);
-            console.log("lay du lieu");
-        }, 500);
+        getRoomTypesByHotelId({})
+            .then((res) => {
+                if (res.data !== null) {
+                    setRecords(res.data);
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }, []);
     console.log(records);
-    // re-render sau khi fetch
+
     useEffect(() => {
         RenderDataTable(0);
         console.log("re render du lieu");
@@ -152,9 +147,20 @@ function RoomTypePage() {
         const row = [];
         for (let i = indexStart; i < rowsData + indexStart; i++) {
             if (i >= records.length) break;
-            row.push(records[i]);
+            row.push(ConvertDataTable(records[i]));
         }
         setTableData(row);
+    }
+
+    function ConvertDataTable(data) {
+        return {
+            roomType: data.name,
+            cancellationPolicy: data.free_cancel
+                ? "Free cancel"
+                : "Non-refundable",
+            dealPrice: data.price,
+            availability: data.status ? "Available" : "Booked",
+        };
     }
 
     const handleClickPage = (page) => {
@@ -162,19 +168,10 @@ function RoomTypePage() {
     };
 
     const handleAddRoomType = () => {
-        navigate('/create-general');
-
+        navigate("/create-general");
     };
 
     const [isOpen, setIsOpen] = useState(false);
-    const clickAddRoomType = () => {
-        // ModalStatus({
-        //     title: "Add room type",
-        //     text: "Add room type success",
-        //     type: "warning",
-        // });
-        setIsOpen(true);
-    };
 
     return (
         <div className="room-type-container">
@@ -188,7 +185,10 @@ function RoomTypePage() {
                 {isOpen && (
                     <ModalCustom
                         content={
-                            <Table data={tableData} columns={columns}></Table>
+                            <DealTable
+                                data={tableData}
+                                columns={columns}
+                            ></DealTable>
                         }
                         onConfirm={() => {
                             setIsOpen(false);
@@ -213,7 +213,7 @@ function RoomTypePage() {
                 </TransparentButton>
             </div>
             <div className="room-type-table">
-                <Table data={tableData} columns={columns}></Table>
+                <DealTable data={tableData} columns={columns}></DealTable>
             </div>
             <div className="room-type-page-navigation">
                 {data.length > rowsData && (

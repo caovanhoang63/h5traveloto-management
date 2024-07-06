@@ -6,9 +6,10 @@ import PageNavigation from "../../components/pagenavigation/pagenavigation";
 import IconFilter from "../../assets/icons/icon-filter.png";
 import DealTable from "../../components/dealtable/deal-table";
 import { useEffect, useState } from "react";
-import "./deal-screen.css"
+import "./deal-screen.css";
+import { getDealsByHotelId } from "../../api/deal-api";
 
-function DealScreen () {
+function DealScreen() {
     const columns = [
         {
             Header: "No.",
@@ -43,7 +44,7 @@ function DealScreen () {
             reservationsLeft: 10,
             endDate: "21/3/2023",
             roomType: "VIP",
-            status: "Ongoing"
+            status: "Ongoing",
         },
         {
             no: "#6112",
@@ -51,7 +52,7 @@ function DealScreen () {
             reservationsLeft: 12,
             endDate: "21/3/2023",
             roomType: "VIP",
-            status: "Ongoing"
+            status: "Ongoing",
         },
         {
             no: "#6141",
@@ -59,7 +60,7 @@ function DealScreen () {
             reservationsLeft: 15,
             endDate: "",
             roomType: "Triple",
-            status: "Expired"
+            status: "Expired",
         },
         {
             no: "#6535",
@@ -67,20 +68,24 @@ function DealScreen () {
             reservationsLeft: 10,
             endDate: "1/5/2023",
             roomType: "VIP",
-            status: "Expired"
+            status: "Expired",
         },
     ];
 
-    const rowsData = 6;
+    const rowsData = 5;
     const [records, setRecords] = useState([]);
     const [tableData, setTableData] = useState([]);
     //Fetch API
     useEffect(() => {
-        // mat thoi gian fetch du lieu
-        setTimeout(() => {
-            setRecords(data);
-            console.log("lay du lieu");
-        }, 500);
+        getDealsByHotelId({ hotel_id: `"gGzTBURqhajF"` })
+            .then((res) => {
+                if (res.data !== null) {
+                    setRecords(res.data);
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }, []);
     console.log(records);
     // re-render sau khi fetch
@@ -93,9 +98,35 @@ function DealScreen () {
         const row = [];
         for (let i = indexStart; i < rowsData + indexStart; i++) {
             if (i >= records.length) break;
-            row.push(records[i]);
+            row.push(ConvertDataTable(records[i]));
         }
         setTableData(row);
+    }
+
+    function ConvertDataTable(data) {
+        return {
+            no: data.id,
+            dealName: data.name,
+            reservationsLeft: ConvertReservationsLeft(data),
+            endDate: data.expiry_date,
+            roomType: data.room_type_id,
+            status: ConvertStatus(data),
+        };
+    }
+
+    function ConvertReservationsLeft(data) {
+        if (data.is_unlimited) {
+            return "Unlimited";
+        }
+        return data.total_quantity;
+    }
+
+    function ConvertStatus(data) {
+        if (data.expiry_date < new Date()) {
+            return "Expired";
+        } else {
+            return "Ongoing";
+        }
     }
 
     const handleClickPage = (page) => {
@@ -122,7 +153,7 @@ function DealScreen () {
                 <DealTable data={tableData} columns={columns}></DealTable>
             </div>
             <div className="deal-screen-page-navigation">
-                {data.length > rowsData && (
+                {records.length > rowsData && (
                     <PageNavigation
                         page={Math.ceil(records.length / rowsData)}
                         onNextPage={handleClickPage}
@@ -132,7 +163,7 @@ function DealScreen () {
                 )}
             </div>
         </div>
-    )
+    );
 }
 
-export default DealScreen
+export default DealScreen;

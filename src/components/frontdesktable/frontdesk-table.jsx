@@ -4,7 +4,12 @@ import "./frontdesk-table.css";
 import Tag, { BlueTag, GreenTag, RedTag, YellowTag } from "../tag/tag";
 
 const FrontdeskTable = ({ data, columns }) => {
-    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({ columns, data });
+    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+        useTable({ columns, data });
+
+    const handleOnClickRow = (index) => {
+        console.log(data[index]);
+    };
 
     return (
         <div className="frontdesk-table-container">
@@ -25,17 +30,30 @@ const FrontdeskTable = ({ data, columns }) => {
                     ))}
                 </thead>
                 <tbody {...getTableBodyProps()}>
-                    {rows.map((row) => {
+                    {rows.map((row, index0) => {
                         prepareRow(row);
                         return (
-                            <tr className="frontdesk-table-body" {...row.getRowProps()}>
+                            <tr
+                                className="frontdesk-table-body"
+                                {...row.getRowProps()}
+                                onClick={() => handleOnClickRow(index0)}
+                            >
                                 {row.cells.map((cell, index) => {
                                     return (
-                                            <td {...cell.getCellProps()}
-                                                style={{color: (index == 0 || index == 3 || index == 4) ? 'var(--Grey900)' : 'var(Grey--600)'}}>
-                                                {cell.render("Cell")}
-                                            </td>
-                                        );
+                                        <td
+                                            {...cell.getCellProps()}
+                                            style={{
+                                                color:
+                                                    index == 0 ||
+                                                    index == 3 ||
+                                                    index == 4
+                                                        ? "var(--Grey900)"
+                                                        : "var(Grey--600)",
+                                            }}
+                                        >
+                                            {cell.render("Cell")}
+                                        </td>
+                                    );
                                 })}
                                 <td></td>
                             </tr>
