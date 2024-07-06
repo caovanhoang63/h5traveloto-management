@@ -4,6 +4,13 @@ import "./room-page.css";
 import PageNavigation from "../../components/pagenavigation/pagenavigation";
 import { getRoomByHotelId } from "../../api/room_api";
 import DealTable from "../../components/dealtable/deal-table";
+import Toast from "../../components/modal/toast";
+import ModalStatus from "../../components/modal/modal-status";
+import ModalCustom from "../../components/modal/modal-custom";
+import { type } from "@testing-library/user-event/dist/type";
+import { is } from "date-fns/locale";
+import ModalCreateRoom from "../../components/modal/content/modal-create-room";
+import { set } from "date-fns";
 
 const columns = [
     {
@@ -25,6 +32,7 @@ const columns = [
 ];
 
 function RoomPage() {
+    const [isOpenModalCreateRoom, setIsOpenModalCreateRoom] = useState(false);
     const rowsData = 5; //So dong du lieu
     const [selectedCategory, setSelectedCategory] = useState("all");
     const [pageOfTable, setPageOfTable] = useState();
@@ -103,6 +111,19 @@ function RoomPage() {
         RenderDataTable((page - 1) * rowsData, selectedCategory);
     };
 
+    const handleOnClickAddRoom = () => {
+        // Toast({
+        //     title: "Add room",
+        //     type: "success",
+        // });
+        // ModalStatus({
+        //     title: "Add room",
+        //     type: "success",
+        //     message: "Add room success",
+        // });
+        setIsOpenModalCreateRoom(true);
+    };
+
     return (
         <div className={"room-container"}>
             <div className="room-option">
@@ -141,9 +162,19 @@ function RoomPage() {
                         Booked({records.booked.length})
                     </Button>
                 </div>
-                <PrimaryButton className={"room-option__button-add"}>
+                <PrimaryButton
+                    className={"room-option__button-add"}
+                    onClick={() => handleOnClickAddRoom()}
+                >
                     Add room
                 </PrimaryButton>
+                {isOpenModalCreateRoom && (
+                    <ModalCustom
+                        content={<ModalCreateRoom></ModalCreateRoom>}
+                        onConfirm={() => setIsOpenModalCreateRoom(false)}
+                        onClose={() => setIsOpenModalCreateRoom(false)}
+                    ></ModalCustom>
+                )}
             </div>
             <div className="room-content">
                 <DealTable data={tableData} columns={columns}></DealTable>

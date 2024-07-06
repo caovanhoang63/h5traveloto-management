@@ -5,8 +5,8 @@ function Toast({ title, type }) {
     const Toast = Swal.mixin({
         toast: true,
         position: "top-end",
-        showConfirmButton: false,
         timer: 3000,
+        showConfirmButton: false,
         timerProgressBar: true,
         customClass: {
             popup: `custom-toast`,
