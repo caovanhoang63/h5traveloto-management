@@ -6,6 +6,7 @@ import {RoomTypesContext, RoomTypesProvider} from "../../../context/createroomty
 import {PrimaryButton} from "../../../components/button/button";
 import {useNavigate} from "react-router-dom";
 import {postCreateRoomTypes} from "../../../api/create_roomtypes_api";
+import Toast from "../../../components/modal/toast";
 
 
 export const RoomTypesFacilities = () => {
@@ -78,8 +79,18 @@ export const RoomTypesFacilities = () => {
         console.log(roomTypesInfo)
         postCreateRoomTypes(roomTypesInfo).then((res) => {
             console.log(res)
+            Toast({
+                title: "Thêm loại phòng thành công!",
+                type: "success",
+            });
+            navigate("/roomtypes")
         }).catch((e) => {
             console.log(e)
+            Toast({
+                title: "Thêm loại phòng thất bại!",
+                type: "error",
+            });
+
         }).finally(() => {
         })
     };
