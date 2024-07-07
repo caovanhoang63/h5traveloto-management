@@ -3,7 +3,7 @@ import { useTable } from "react-table";
 import "./deal-table.css";
 import Tag, { BlueTag, GreenTag, RedTag, YellowTag } from "../tag/tag";
 
-const DealTable = ({ data, columns }) => {
+const DealTable = ({ data, columns, getData = () => {} }) => {
     const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
         useTable({ columns, data });
 
@@ -13,7 +13,8 @@ const DealTable = ({ data, columns }) => {
             text === "Clean" ||
             text === "Ongoing" ||
             text === "Available" ||
-            text === "Pending"
+            text === "Pending" ||
+            text === "Confirmed"
         ) {
             return <BlueTag>{text}</BlueTag>;
         } else if (
@@ -21,14 +22,18 @@ const DealTable = ({ data, columns }) => {
             text === "Full" ||
             text === "Inactive" ||
             text === "Expired" ||
-            text === "Booked"
+            text === "Booked" ||
+            text === "Canceled" ||
+            text === "Check-In"
         ) {
             return <RedTag>{text}</RedTag>;
         } else if (
             text === "Inspected" ||
             text === "New" ||
             text === "Reserved" ||
-            text === "Paid"
+            text === "Paid" ||
+            text === "Checked-Out" ||
+            text === "Pay-In-Hotel"
         ) {
             return <GreenTag>{text}</GreenTag>;
         } else if (
@@ -44,6 +49,7 @@ const DealTable = ({ data, columns }) => {
 
     const handleOnClickRow = (index) => {
         console.log(data[index]);
+        getData(data[index]);
     };
 
     return (
