@@ -31,6 +31,7 @@ import Divider from "../../../../components/divider/divider";
 import {PrimaryButton} from "../../../../components/button/button";
 import UnitTextBox from "../../../../components/unittextbox/unittextbox";
 import FlexCombobox from "../../../../components/flexcombobox/flexcombobox";
+import Textbox from "../../../../components/textbox/textbox";
 
 const CH_GeneralInformation = () => {
     const navigate = useNavigate();
@@ -50,7 +51,7 @@ const CH_GeneralInformation = () => {
     }, []);
 
     const hotelTypeOnChange = (event) => {
-        info.hotel_type = event.target.value;
+        info.hotel_type = parseInt(event.target.value);
     }
     const propertyTypes = hoteltypes.map && hoteltypes.map(type => (
         <li key={type.id}>
@@ -96,7 +97,7 @@ const CH_GeneralInformation = () => {
     const handleProvinceChange = (value) => {
         const selectedProvince = provinces.find(province => province.name === value);
         if (selectedProvince) {
-            info.province_code = parseInt(selectedProvince.code);
+            info.province_code = selectedProvince.code;
             setSelectedProvince(selectedProvince.code);
 
 
@@ -124,7 +125,7 @@ const CH_GeneralInformation = () => {
     const handleDistrictChange = (value) => {
         const selectedDistrict = district.find(district => district.name === value);
         if (selectedDistrict) {
-            info.dictrict_code = parseInt(selectedDistrict.code);
+            info.district_code = selectedDistrict.code;
             setSelectedDistrict(selectedDistrict.code);
 
         }
@@ -151,7 +152,7 @@ const CH_GeneralInformation = () => {
     const handleWardChange = (value) => {
         const selectedWard = ward.find(ward => ward.name === value);
         if (selectedWard) {
-            info.ward_code = parseInt(selectedWard.code);
+            info.ward_code = selectedWard.code;
             setSelectedWard(selectedWard.code);
         }
     };
@@ -242,11 +243,11 @@ const CH_GeneralInformation = () => {
                             <div style={{display: "flex", flex: "row", gap: "30px"}}>
                                 <div className="CH_GeneralInformation-Content-Box-Address">
                                     <TextBlock content="Latitude"/>
-                                    <FlexCombobox options={provinceOptions} placeholderText="Select"/>
+                                    <Textbox classname="" />
                                 </div>
                                 <div className="CH_GeneralInformation-Content-Box-Address">
                                     <TextBlock content="Longitude"/>
-                                    <FlexCombobox options={provinceOptions} placeholderText="Select"/>
+                                    <Textbox classname="Location_TextBox" />
                                 </div>
 
                             </div>

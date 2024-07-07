@@ -5,7 +5,7 @@ import {PrimaryButton} from "../../../components/button/button";
 import UnitTextBox from "../../../components/unittextbox/unittextbox";
 import Checkbox from "../../../components/checkbox/checkbox";
 import DragAndDrop from "../../../components/dragdropphotos/DragAndDrop";
-import useFileSelection from "../../../hooks/useFileSelection";
+import useFileSelection, {useFileSelectionLogo} from "../../../hooks/useFileSelection";
 import "./general_room_types.css";
 import {useContext} from "react";
 import {useNavigate} from "react-router-dom";
@@ -16,9 +16,6 @@ const RoomTypesContext = require("../../../context/createroomtypes-context").Roo
 
 export function GeneralRoomTypes() {
     const navigate = useNavigate();
-
-
-
     const {roomTypesInfo, setRoomTypesInfo} = useContext(RoomTypesContext);
     let roomTypeNameOnChange = (e) => {
         roomTypesInfo.name = e;
@@ -26,7 +23,7 @@ export function GeneralRoomTypes() {
         console.log(roomTypesInfo)
     }
     let roomAreaOnChange = (e) => {
-        roomTypesInfo.area =   e;
+        roomTypesInfo.area =   parseFloat(e);
         setRoomTypesInfo(roomTypesInfo);
         console.log(roomTypesInfo)
     }
@@ -36,13 +33,12 @@ export function GeneralRoomTypes() {
     let requireDocumentOnChange = (e) => {
         console.log(e);
     }
-    const [addFileLogo, removeFileLogo, selectedLogo] = useFileSelection();
 
     let nextButtonOnClick = () => {
         navigate("/create-facilities")
     }
     let priceOnChange = (e) => {
-        roomTypesInfo.price = e;
+        roomTypesInfo.price = parseFloat(e);
         setRoomTypesInfo(roomTypesInfo);
         console.log(roomTypesInfo)
     }
@@ -65,7 +61,7 @@ export function GeneralRoomTypes() {
         console.log(roomTypesInfo)
     }
     let maxOccupancyOnChange = (e) => {
-        roomTypesInfo.max_customer = e;
+        roomTypesInfo.max_customer = parseInt(e);
         setRoomTypesInfo(roomTypesInfo);
         console.log(roomTypesInfo)
     }
@@ -74,10 +70,8 @@ export function GeneralRoomTypes() {
     };
     return (
 
-        <div className="CH_GeneralInformation-Container">
-            <div className="CH_GeneralInformation-Header">
-                General Information
-            </div>
+        <div className="RoomType-General-Container">
+
             <div className="CH_GeneralInformation-Main">
                 <div className="CH_GeneralInformation-Property Name">
                     <div className="CH_GeneralInformation-Title">
@@ -125,7 +119,7 @@ export function GeneralRoomTypes() {
                 </div>
                 <div className="CH_PropertyPolicies-Property Floors">
                     <div className="CH_PropertyPolicies-Title">
-                        Maximun Occupancy
+                        Maximum Occupancy
                     </div>
                     <div className="CH_PropertyPolicies-Content">
                         <div className="CH_PropertyPolicies-Content-Box">
@@ -184,7 +178,7 @@ export function GeneralRoomTypes() {
                 <div className="CH_PropertyPolicies-Divider">
                     <Divider isHorizontal={true} thick="1px" type="solid" color="#e8f1fd"/>
                 </div>
-                <div className="CH_PropertyDetails-Property Floors">
+                {/*<div className="CH_PropertyDetails-Property Floors">
                     <div className="CH_PropertyDetails-Title">
                         Photos
                     </div>
@@ -197,7 +191,7 @@ export function GeneralRoomTypes() {
                 </div>
                 <div className="CH_PropertyDetails-Divider">
                     <Divider isHorizontal={true} thick="1px" type="solid" color="#e8f1fd"/>
-                </div>
+                </div>*/}
             </div>
             <div className={"ButtonContainer1"}>
                 <PrimaryButton children={"Next"} onClick={nextButtonOnClick}/>

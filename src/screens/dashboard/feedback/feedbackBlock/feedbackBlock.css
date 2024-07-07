@@ -3,23 +3,24 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
+    cursor: pointer;
 }
 
-.feedbackblock-container:hover{
-    background-color: var(--Grey50);
-}
+
 .feedbackblock-content{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 .feedbackblock-name{
     color: var(--Grey600);
-    width: 60%;
+    font-size: 2rem;
+
     font-family: "Plus Jakarta Sans", serif;
 
 }
 .feedbackblock-room{
-    width:40%;
+    font-size: 2rem;
     color: var(--Grey800);
     font-family: "Plus Jakarta Sans", serif;
     vertical-align: center;

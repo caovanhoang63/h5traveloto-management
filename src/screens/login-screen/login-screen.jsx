@@ -24,6 +24,7 @@ const LoginScreen = () => {
         Authenticate(userLogin)
             .then((response) => {
                 const data = response.data;
+                localStorage.setItem("hotel-id", data.hotel_id);
                 localStorage.setItem("refresh-token", data.refresh_token.Token);
                 console.log(data.access_token.Token);
                 sessionStorage.setItem("hotel-id", data.hotel_id);
@@ -31,7 +32,12 @@ const LoginScreen = () => {
                 //socket.connect()
                // socketInstance.initialize(sessionStorage.getItem("access-token"));
                // socketInstance.getSocket().connect();
-                navigate("/dashboard");
+                if (data.hotel_id != null){
+                    navigate("/dashboard");
+                }
+                else {
+                    navigate("/createhotel");
+                }
             })
             .catch((error) => {
                 console.log(error)
@@ -63,7 +69,7 @@ const LoginScreen = () => {
                 </div>
                 <p className="LoginScreenP">
                     Don't have an account?{" "}
-                    <a className="LoginScreenA" href="../signup-screen/signup-screen.jsx">Sign Up</a>
+                    <a className="LoginScreenA" href="../signup">Sign Up</a>
                 </p>
             </div>
         </div>

@@ -3,14 +3,18 @@ import SidebarCreateHotel from "../../components/sidebar-create-hotel/sidebar-cr
 import './create-hotel-screen.css';
 import {InfoProvider} from "../../context/createhotel-context";
 
+
+
+
+
 const CreateHotel = ({...props}) => {
 
-    const data = [
+    let data = [
         {
             id: 1,
             content: "General Information",
             navigate: "general_information",
-            taskNum: 10
+            taskNum: 0
         },
         {
             id: 2,

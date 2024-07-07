@@ -5,13 +5,13 @@ import RoomFacilities from "../../../components/RoomFacilities/RoomFacilities";
 import {RoomTypesContext, RoomTypesProvider} from "../../../context/createroomtypes-context";
 import {PrimaryButton} from "../../../components/button/button";
 import {useNavigate} from "react-router-dom";
+import {postCreateRoomTypes} from "../../../api/create_roomtypes_api";
+import Toast from "../../../components/modal/toast";
 
 
 export const RoomTypesFacilities = () => {
     const navigate = useNavigate();
-
     const {roomTypesInfo, setRoomTypesInfo} = useContext(RoomTypesContext);
-
     const [facility_data, setFacility_data] = useState({});
     useEffect(() => {
         getRoomFacilities().then((res => {
@@ -34,22 +34,38 @@ export const RoomTypesFacilities = () => {
 
     let saveButtonOnClick = () => {
         console.log(roomTypesInfo)
+        postCreateRoomTypes(roomTypesInfo).then((res) => {
+            console.log(res)
+            Toast({
+                title: "Thêm loại phòng thành công!",
+                type: "success",
+            });
+            navigate("/roomtypes")
+        }).catch((e) => {
+            console.log(e)
+            Toast({
+                title: "Thêm loại phòng thất bại!",
+                type: "error",
+            });
+
+        }).finally(() => {
+        })
     };
     let cancelOnClick = () => {
         navigate("/roomtypes")
     };
     return (
-            <div className="CH_PropertyFacilities-Container">
-                <div className="CH_PropertyFacilities-Main">
-                    <ul>
-                        {allProperty}
-                    </ul>
-                </div>
-                <div className={"ButtonContainer1"}>
-                    <PrimaryButton children={"Save"} onClick={saveButtonOnClick}/>
-                    <PrimaryButton children={"Cancel"} onClick={cancelOnClick}/>
-                </div>
+        <div className="CH_PropertyFacilities-Container">
+            <div className="CH_PropertyFacilities-Main">
+                <ul>
+                    {allProperty}
+                </ul>
             </div>
+            <div className={"ButtonContainer1"}>
+                <PrimaryButton children={"Save"} onClick={saveButtonOnClick}/>
+                <PrimaryButton children={"Cancel"} onClick={cancelOnClick}/>
+            </div>
+        </div>
     );
 }
 

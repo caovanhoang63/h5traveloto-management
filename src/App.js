@@ -47,10 +47,6 @@ function App() {
     const refreshToken = localStorage.getItem("refresh-token");
     console.log("refresh", refreshToken);
 
-    /*const [isConnected, setIsConnected] = useState(
-    );
-    //const [fooEvents, setFooEvents] = useState([]);*/
-
     const [isAuthenticated, setIsAuthenticated] = useState();
     const [loading, setLoading] = useState(true);
     useEffect(() => {
@@ -74,9 +70,7 @@ function App() {
             setIsAuthenticated(false);
             setLoading(false);
         }
-
     }, [refreshToken]);
-
 
     return loading ? (
         <Spinner />
@@ -101,7 +95,7 @@ function App() {
                                <Routes>
                                    <Route path="/dashboard" element={<Dashboard />} />
                                    <Route path="/rooms" element={<RoomPage />} />
-                                   <Route path="/guest" element={<GuestScreen />} />
+                                   <Route path="/guest" element={<GuestScreen/>}/>
                                    <Route path="/chat" element={<ChatScreen />} />
                                    <Route path="/bookingmanagement" element={<BookingManagementPage />} />
                                    <Route path="/roomtypes" element={
@@ -135,6 +129,12 @@ function App() {
                                    <Route path="/property_policies" element={<CH_PropertyPolicies/>}/>
                                    <Route path="/property_facilities" element={<CH_PropertyFacilities/>}/>
                                    <Route path="/photos" element={<CH_PhotosInformation/>}/>
+                                   <Route
+                                       path="/"
+                                       element={
+                                           <Navigate to={"/createhotel/general_information"} replace></Navigate>
+                                       }
+                                   />
                                </Routes>
                            </CreateHotel>
                        }

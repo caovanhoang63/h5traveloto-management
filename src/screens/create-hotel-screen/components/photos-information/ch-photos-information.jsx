@@ -1,35 +1,35 @@
 
-import useFileSelection from "../../../../hooks/useFileSelection";
+import useFileSelection, {useFileSelectionImage, useFileSelectionLogo} from "../../../../hooks/useFileSelection";
 import DragAndDrop from "../../../../components/dragdropphotos/DragAndDrop";
 import {PrimaryButton} from "../../../../components/button/button";
 import Divider from "../../../../components/divider/divider";
 import "./ch-photos-information.css";
-// Set default response language and region (optional).
-// This sets default values for language and region for geocoding requests.
-/*
-setDefaults({
-    key: "", // Your API key here.
-    language: "en", // Default language for responses.
-    region: "es", // Default region for responses.
-});
-
-const address = "1600 Amphitheatre Parkway, Mountain View, CA";
-geocode(RequestType.ADDRESS, address)
-    .then((response) => {
-        console.log(response);
-    })
-    .catch((error) => {
-        console.error(error);
-    });
-
-*/
-
+import {useContext} from "react";
+import {InfoContext} from "../../../../context/createhotel-context";
+import {postCreatehotel} from "../../../../api/create-hotel/post-createhotel";
+import Toast from "../../../../components/modal/toast";
+import {useNavigate} from "react-router-dom";
 const CH_PhotosInformation = () => {
-    const [addFileLogo, removeFileLogo, selectedLogo] = useFileSelection();
-    const [addFileImages, removeFileImages] = useFileSelection();
-
+    const [addFileLogo, removeFileLogo] = useFileSelectionLogo();
+    const [addFileImages, removeFileImages] = useFileSelectionImage();
+    const { info, setInfo } = useContext(InfoContext);
+    const navigate = useNavigate();
     const nextOnClick = () => {
-
+        console.log(info)
+        postCreatehotel(info).then((res) => {
+            console.log(res)
+            Toast({
+                title: "Create Hotel Successfully!",
+                type: "success",
+            });
+            navigate("/create-general")
+        }).catch((err) => {
+            console.log(err)
+            Toast({
+                title: "Create Hotel Failed!",
+                type: "error",
+            });
+        })
 
     }
     return (
@@ -46,7 +46,7 @@ const CH_PhotosInformation = () => {
                     </div>
                     <div className="CH_PropertyDetails-Content">
                         <div className="CH_PropertyDetails-Content-Box">
-                            <DragAndDrop addFile={addFileLogo} removeFile={removeFileLogo} selectedFiles={selectedLogo}/>
+                            <DragAndDrop addFile={addFileLogo} removeFile={removeFileLogo} />
                         </div>
                     </div>
                 </div>
@@ -59,13 +59,13 @@ const CH_PhotosInformation = () => {
                     </div>
                     <div className="CH_PropertyDetails-Content">
                         <div className="CH_PropertyDetails-Content-Box">
-                            <DragAndDrop addFile={addFileImages} removeFile={removeFileImages}/>
+                            <DragAndDrop addFile={addFileImages} removeFile={removeFileImages} />
                         </div>
                     </div>
                 </div>
 
             </div>
-            <PrimaryButton onClick={nextOnClick}>Next</PrimaryButton>
+            <PrimaryButton onClick={nextOnClick}>Save</PrimaryButton>
 
         </div>
 

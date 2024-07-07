@@ -11,9 +11,9 @@ function Overview() {
             <div className="overview-content">
                 <Overviewtag label={"Check-in"} contentNumber={'23'} header={"Today's"}></Overviewtag>
                 <Overviewtag label={"Check-out"} contentNumber={'13'} header={"Today's"}></Overviewtag>
-                <Overviewtag label={"In hotel"} contentNumber={'60'} header={"Total"}></Overviewtag>
+                <Overviewtag label={"Customers"} contentNumber={'60'} header={"Total"}></Overviewtag>
                 <Overviewtag label={"Available room"} contentNumber={'23'} header={"Total"}></Overviewtag>
-                <Overviewtag label={"Occupied room"} contentNumber={'90'} header={"Total"}></Overviewtag>
+                <Overviewtag label={"Booked room"} contentNumber={'90'} header={"Total"}></Overviewtag>
             </div>
         </div>
     );

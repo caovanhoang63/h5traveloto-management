@@ -5,9 +5,9 @@
 
 }
 .Balance-Eye {
-    width: 3em;  /* Kích thước bằng với chiều cao của chữ */
-    height: 3em; /* Kích thước bằng với chiều cao của chữ */
-    margin-right: 2em; /* Khoảng cách giữa icon và chữ */
+    width: 2em;  /* Kích thước bằng với chiều cao của chữ */
+    height: 2em; /* Kích thước bằng với chiều cao của chữ */
+    margin-left: 2em; /* Khoảng cách giữa icon và chữ */
     object-fit: contain; /* Đảm bảo hình ảnh vừa khít trong kích thước đã định */
     cursor: pointer; /* Biến con trỏ thành hình bàn tay khi di chuột qua */
 }
@@ -16,7 +16,7 @@
     color: var(--Grey800);
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: normal;
-    font-size: 4rem; /* Điều chỉnh kích thước chữ theo ý muốn */
+    font-size: 3rem; /* Điều chỉnh kích thước chữ theo ý muốn */
     margin: 0; /* Loại bỏ margin mặc định của h2 */
 }
 .Balance-hidden {

@@ -5,7 +5,6 @@ const SidebarTabCreateHotel = ({content, navigate, taskNum, isActive}) => {
         <div className={"sidebar-tab-ch" + (isActive ? ' active' : '')}>
             <Link to={navigate}>
                 <div className="sidebar-tab-ch-content">{content}</div>
-                <div className={"sidebar-tab-ch-tasknum" + ( (taskNum==0)? ' finished': '')}>{taskNum}</div>
             </Link>
         </div>
      );

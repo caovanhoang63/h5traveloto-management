@@ -1,0 +1,53 @@
+.modal-change-info__container {
+    margin-top: 8px;
+    height: auto;
+    width: 720px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-change-info-double {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+.modal-change-info_field {
+    height: 80px;
+    width: 310px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.modal-change-info__avatar {
+    width: 100%;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+}
+.modal-change-info__img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    background-color: blue;
+}
+
+.label-field {
+    line-height: 2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.modal-change-info__input {
+    width: 100%;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+}
+
+.modal-change-info__name {
+    margin-left: 16px;
+    font-size: 2rem;
+    font-weight: bold;
+}

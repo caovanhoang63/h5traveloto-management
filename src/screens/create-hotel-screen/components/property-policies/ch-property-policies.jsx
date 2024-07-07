@@ -9,6 +9,7 @@ import UnitTextBox from "../../../../components/unittextbox/unittextbox";
 import FlexCombobox from "../../../../components/flexcombobox/flexcombobox";
 import TextArea from "../../../../components/textarea/textarea";
 import {PrimaryButton} from "../../../../components/button/button";
+import {useNavigate} from "react-router-dom";
 
 
 const CH_PropertyPolicies = () => {
@@ -107,10 +108,14 @@ const CH_PropertyPolicies = () => {
             }
         }));
     }
+    const navigate = useNavigate();
     const nextOnClick = () => {
         console.log(info);
+        navigate("/createhotel/property_facilities")
     }
-
+    const handleCheckboxClick = (event) => {
+        info.hotel_detail.require_document = event.target.checked;
+    };
 
     return (
         <div className="CH_PropertyPolicies-Container">
@@ -149,7 +154,7 @@ const CH_PropertyPolicies = () => {
                     <div className="CH_PropertyPolicies-Content">
                         <div className="CH_PropertyPolicies-Content-Box">
                             <div style={{width: "150px", height: "35px"}}>
-                                <Checkbox onChange={requireDocumentOnChange}/>
+                                <Checkbox onChange={requireDocumentOnChange} onclick={handleCheckboxClick}/>
                             </div>
                         </div>
                     </div>

@@ -1,10 +1,14 @@
 import {message, Upload} from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import useFilePreview from '../../hooks/useFilePreview';
+import {useContext} from "react";
+import {InfoContext} from "../../context/createhotel-context";
 
 const { Dragger } = Upload;
 
 const DragAndDrop = ({ addFile, removeFile, selectedFiles }) => {
+    const { info, setInfo } = useContext(InfoContext);
+
     const [handlePreview, previewContent] = useFilePreview();
 
     const beforeUploadHandler = async (file) => {
