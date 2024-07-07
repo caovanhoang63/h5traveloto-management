@@ -46,6 +46,7 @@ function BookingManagementPage() {
 
     const [isOpenModal, setIsOpenModal] = useState(false);
     const [isOpenModalChooseRoom, setIsOpenModalChooseRoom] = useState(false);
+    //Data khi an vao mot booking
     const [dataDetail, setDataDetail] = useState({});
     const [focusedIndex, setFocusedIndex] = useState(0);
     const buttons = [
@@ -60,6 +61,7 @@ function BookingManagementPage() {
     const [selectedCategory, setSelectedCategory] = useState("all");
     const [pageOfTable, setPageOfTable] = useState();
     const [tableData, setTableData] = useState([]);
+    //List room selected de lam body call API
     const [roomSelected, setRoomSelected] = useState([]);
     const [records, setRecords] = useState({
         all: [],
@@ -70,6 +72,9 @@ function BookingManagementPage() {
     });
     //Fetch data
     useEffect(() => {
+        getListBooking();
+    }, []);
+    const getListBooking = () => {
         getBookingByHotelId(sessionStorage.getItem("hotel-id"))
             .then((response) => {
                 const all = [];
@@ -89,7 +94,12 @@ function BookingManagementPage() {
                                 confirm.push(response.data[i]);
                             else pending.push(response.data[i]);
                         } else if (response.data[i].state == "pending") {
-                            pending.push(response.data[i]);
+                            if (
+                                response.data[i].rooms !== null &&
+                                response.data[i].rooms.length > 0
+                            )
+                                confirm.push(response.data[i]);
+                            else pending.push(response.data[i]);
                         } else if (response.data[i].state == "checked-out") {
                             cancelCheckedOut.push(response.data[i]);
                         }
@@ -107,11 +117,11 @@ function BookingManagementPage() {
             .catch((error) => {
                 console.error(error);
             });
-    }, []);
+    };
     //re-render after fetch
     useEffect(() => {
-        RenderDataTable(0, "all");
-        setPageOfTable(records.all.length);
+        RenderDataTable(0, selectedCategory);
+        setPageOfTable(records[selectedCategory].length);
     }, [records]);
 
     //handle click button All, Check-In, Confirmed, Pending, Checked-Out
@@ -204,6 +214,7 @@ function BookingManagementPage() {
     };
     //Get list Room selected
     const handleGetRoomSelected = (roomSelected) => {
+        console.log(roomSelected);
         setRoomSelected(roomSelected);
     };
     //Call API sau khi chon phong
@@ -303,6 +314,7 @@ function BookingManagementPage() {
                         title="Create Deal"
                         content={
                             <ModalChooseRoom
+                                roomTypeId={dataDetail.room_type.id}
                                 roomQuantity={getRoomQuantity()}
                                 getRoomSelected={handleGetRoomSelected}
                             />

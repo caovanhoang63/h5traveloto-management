@@ -6,7 +6,7 @@ import { getRoomByHotelId } from "../../../../api/room_api";
 import { set } from "date-fns";
 import { se } from "date-fns/locale";
 
-function ModalChooseRoom({ roomQuantity, getRoomSelected }) {
+function ModalChooseRoom({ roomTypeId, roomQuantity, getRoomSelected }) {
     const [rooms, setRooms] = useState([]);
     const [roomSelected, setRoomSelected] = useState([]);
     const [canDisabled, setCanDisabled] = useState(false);
@@ -69,6 +69,7 @@ function ModalChooseRoom({ roomQuantity, getRoomSelected }) {
                 {`Room Selected: ${roomSelected.length}/${roomQuantity}`}
             </span>
             <RoomGrid
+                roomTypeId={roomTypeId}
                 rooms={rooms}
                 onChooseRoom={handleChooseRoom}
                 canDisabled={canDisabled}

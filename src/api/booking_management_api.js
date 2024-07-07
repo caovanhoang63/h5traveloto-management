@@ -46,3 +46,17 @@ export const chooseRoomBooking = async (data) => {
         console.error(error);
     }
 };
+
+export const createBooking = async (data) => {
+    try {
+        const hotelId = sessionStorage.getItem("hotel-id");
+        const response = await instance.post(
+            `/hotels/${hotelId}/bookings/front-desk`,
+            data
+        );
+        console.log(response.data);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+};

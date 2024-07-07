@@ -2,14 +2,15 @@ import FlexTextBox from "../../../flextextbox/flextextbox";
 import FlexComboBox from "../../../flexcombobox/flexcombobox";
 import "./modal-info-customer.css";
 
-function ModalAddEmployee({}) {
+function ModalInfoCustomer({ onChangeName, onChangePhone, onChangeGender }) {
     return (
         <div className="modal-info-customer__container">
             <div className="modal-info-customer__field">
-                <span className="label-field">Employee Name</span>
+                <span className="label-field">Customer Name</span>
                 <FlexTextBox
                     classname={"modal-info-customer__input"}
                     placeHolder={"Enter Customer Name"}
+                    onChange={onChangeName}
                 />
             </div>
             <div className="modal-info-customer__field">
@@ -17,6 +18,7 @@ function ModalAddEmployee({}) {
                 <FlexTextBox
                     classname={"modal-info-customer__input"}
                     placeHolder={"Enter Phone Number"}
+                    onChange={onChangePhone}
                 />
             </div>
             <div className="modal-info-customer__field">
@@ -32,12 +34,12 @@ function ModalAddEmployee({}) {
                     id={"roomType"}
                     classname={"modal-info-customer__input"}
                     placeholderText={"Select Room Type"}
-                    options={[{ value: "Male" }, { value: "Female" }]}
-                    onChange={() => {}}
+                    options={[{ value: "male" }, { value: "female" }]}
+                    onChange={onChangeGender}
                 />
             </div>
         </div>
     );
 }
 
-export default ModalAddEmployee;
+export default ModalInfoCustomer;

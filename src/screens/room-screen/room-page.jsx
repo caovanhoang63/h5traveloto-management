@@ -57,9 +57,9 @@ function RoomPage() {
                 const bookedData = [];
                 if (res.data !== null) {
                     for (let i = 0; i < length; i++) {
-                        if (data.data[i].status == 1) {
+                        if (data.data[i].condition == "available") {
                             availableData.push(data.data[i]);
-                        } else if (data.data[i].status == 2) {
+                        } else if (data.data[i].status != "available") {
                             bookedData.push(data.data[i]);
                         }
                         allData.push(data.data[i]);
@@ -101,7 +101,7 @@ function RoomPage() {
             roomNumber: data.name,
             roomType: data.room_type.name,
             roomFloor: data.floor,
-            status: data.status ? "Available" : "Booked",
+            status: data.condition == "available" ? "Available" : "Booked",
         };
     }
 

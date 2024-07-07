@@ -14,7 +14,10 @@ import ico_plus_active from "../../assets/icons/plus-active.png";
 import ico_minus_active from "../../assets/icons/minus-active.png";
 import { searchRoomTypes } from "../../api/check_availability";
 import DealTable from "../../components/dealtable/deal-table";
-import { set } from "date-fns";
+import Modal from "../../components/modal/modal";
+import ModalChooseRoom from "../../components/modal/content/choose-room/modal-choose-room";
+import ModalInfoCustomer from "../../components/modal/content/info-customer/modal-info-customer";
+import { createBooking } from "../../api/booking_management_api";
 
 function FrontDesk() {
     const columns = [
@@ -40,7 +43,7 @@ function FrontDesk() {
         },
     ];
 
-    const rowsData = 2;
+    const rowsData = 5;
     const [records, setRecords] = useState([]);
     const [tableData, setTableData] = useState([]);
     const [filter, setFilter] = useState("all");
@@ -117,7 +120,7 @@ function FrontDesk() {
             room_quantity: roomNum,
             start_date: startDate,
             end_date: endDate,
-            hotel_id: "gGzTBURqhajG",
+            hotel_id: sessionStorage.getItem("hotel-id"),
         })
             .then((res) => {
                 if (res.data !== null) {
@@ -158,6 +161,57 @@ function FrontDesk() {
 
     const handleClickPage = (page) => {
         RenderDataTable((page - 1) * rowsData);
+    };
+
+    const [isOpenModalInfo, setIsOpenModalInfo] = useState(false);
+    const [isOpenModalChooseRoom, setIsOpenModalChooseRoom] = useState(false);
+    const [bookingData, setBookingData] = useState({});
+    const [dataRoomTypeSelected, setDataRoomTypeSelected] = useState({});
+    const [nameUser, setNameUser] = useState("");
+    const [phoneUser, setPhoneUser] = useState("");
+    const [genderUser, setGenderUser] = useState("");
+
+    const handleClickRow = (dataRow) => {
+        setIsOpenModalInfo(true);
+        setDataRoomTypeSelected(dataRow);
+    };
+
+    const handleConfirmCreateBooking = (data) => {
+        // call api create booking
+        setIsOpenModalInfo(false);
+        console.log(nameUser, phoneUser, genderUser, dataRoomTypeSelected);
+        createBooking({
+            booking: {
+                hotel_id: sessionStorage.getItem("hotel-id"),
+                room_type_id: dataRoomTypeSelected.id,
+                room_quantity: roomNum,
+                adults: adultNum,
+                children: childNum,
+                start_date: convertDate(startDate),
+                end_date: convertDate(endDate),
+            },
+            customer: {
+                name: nameUser,
+                address: phoneUser,
+                gender: genderUser,
+            },
+        });
+    };
+    const handleChangeName = (value) => {
+        setNameUser(value);
+    };
+    const handleChangePhone = (value) => {
+        setPhoneUser(value);
+    };
+    const handleChangeGender = (value) => {
+        setGenderUser(value);
+    };
+    const convertDate = (date) => {
+        const d = new Date(date);
+        const year = d.getFullYear();
+        const month = (d.getMonth() + 1).toString().padStart(2, "0");
+        const day = d.getDate().toString().padStart(2, "0");
+        return `${day}-${month}-${year}`;
     };
 
     return (
@@ -252,7 +306,25 @@ function FrontDesk() {
                 </div>
             </div>
             <div className="frontdesk-table">
-                <DealTable data={tableData} columns={columns}></DealTable>
+                <DealTable
+                    data={tableData}
+                    columns={columns}
+                    getData={handleClickRow}
+                ></DealTable>
+                {isOpenModalInfo && (
+                    <Modal
+                        title="Create Booking"
+                        onClose={() => setIsOpenModalInfo(false)}
+                        onConfirm={() => handleConfirmCreateBooking()}
+                        content={
+                            <ModalInfoCustomer
+                                onChangeName={handleChangeName}
+                                onChangePhone={handleChangePhone}
+                                onChangeGender={handleChangeGender}
+                            ></ModalInfoCustomer>
+                        }
+                    ></Modal>
+                )}
             </div>
             <div className="frontdesk-pagenav">
                 {records.length > rowsData && (
