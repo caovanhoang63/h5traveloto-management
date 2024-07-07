@@ -11,3 +11,15 @@ export const getDealsByHotelId = async (params) => {
         console.error(error);
     }
 };
+
+export const createDeal = async (data) => {
+    const hotelId = localStorage.getItem('hotel-id')
+    try {
+        const response = await instance.post(
+            `/hotels/${hotelId}/deals/`,
+            data)
+        return response.data
+    }catch(error) {
+        console.error(error);
+    }
+}

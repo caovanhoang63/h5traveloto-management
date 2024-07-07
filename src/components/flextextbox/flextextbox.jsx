@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./flextextbox.css";
 
-const FlexTextbox = ({ id, classname, title, placeHolder, onChange }) => {
-    const [text, setText] = useState("");
+const FlexTextbox = ({ id, classname, title, placeHolder, onChange,value="" ,readonly=false}) => {
+    const [text, setText] = useState(value);
 
     const handleChange = (e) => {
         setText(e.target.value);
@@ -24,10 +24,13 @@ const FlexTextbox = ({ id, classname, title, placeHolder, onChange }) => {
                     onChange={handleChange}
                     placeholder={placeHolder}
                     className="bettertextbox-input"
+                    readOnly={readonly}
                 />
             </div>
         </div>
     );
 };
+
+
 
 export default FlexTextbox;
