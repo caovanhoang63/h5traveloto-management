@@ -42,7 +42,8 @@ const SendMessage = ({ws,onSendMessage,selectedMessage}) => {
     event.preventDefault();
       if (message.trim() === ""||!roomId) {
         alert("Enter valid message");
-        return;
+          setMessage("");
+          return;
       }
       //onSendMessage(message,roomId);
       if(roomId){

@@ -18,9 +18,11 @@ import ico_calendar from "../../assets/icons/calendar.png";
 import ico_calendar_active from "../../assets/icons/calendar-active.png";
 import ico_bubble_chat from "../../assets/icons/bubble-chat.png";
 import ico_bubble_chat_active from "../../assets/icons/bubble-chat-active.png";
+import doraemon from "../../assets/icons/doraemon.jpg";
 import "./main-layout.css";
 import RoomPage from "../../screens/room-screen/room-page.jsx";
 import RoomTypePage from "../../screens/room-type-screen/room-type-page.jsx";
+import {useState} from "react";
 
 const sidebar_data = [
     {
@@ -98,6 +100,11 @@ const sidebar_data = [
 ];
 
 const MainLayout = ({ screenName = "screen name", ...props }) => {
+    const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setDropdownOpen(!isDropdownOpen);
+    };
     return (
         <div>
             <div className={"container"}>
@@ -108,9 +115,19 @@ const MainLayout = ({ screenName = "screen name", ...props }) => {
                             <SearchBar
                                 className={"searchBar--position top50"}
                             />
-                            <div className={"header-buttons"}>
+                            {/*<div className={"header-buttons"}>
                                 <span>12</span>
                                 <span>32</span>
+                            </div>*/}
+                            <div className="avatar-container" onClick={toggleDropdown}>
+                                <img src={doraemon} alt="Avatar" className="avatar"/>
+                                {isDropdownOpen && (
+                                    <div className="dropdown-menu">
+                                        <div className="dropdown-item">Profile</div>
+                                        <div className="dropdown-item">Settings</div>
+                                        <div className="dropdown-item">Logout</div>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </header>

@@ -81,6 +81,7 @@ const ChatScreen = (props) => {
                 <ul className='list-message'>
                     {activeChats?.map((activechat) => (
                         <ActiveChat
+                            name={activechat.name? activechat.name : 'unknown'}
                             key={activechat.id}
                             text={activechat.last_message.message}
                             date={activechat.last_message.updated_at}

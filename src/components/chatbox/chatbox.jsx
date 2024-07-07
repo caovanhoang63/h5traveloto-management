@@ -8,7 +8,10 @@ import io from "socket.io-client";
 
 const ChatBox = ({ws,onSendMessage,selectedMessage}) => {
   const [messages, setMessages] = useState([]);
-  const scroll = useRef();
+  const scroll = useRef(null);
+    useEffect(() => {
+        scroll.current?.scrollIntoView({behavior: "smooth"});
+    }, [messages]);
     useEffect(()=>{
         if(selectedMessage){
             getListChats(selectedMessage);
@@ -19,8 +22,8 @@ const ChatBox = ({ws,onSendMessage,selectedMessage}) => {
         const onMessageReceived = (message) => {
             console.log('received message')
             setMessages((prevMessages) => [...prevMessages, message]);
-            getListChats(selectedMessage);
-
+            //getListChats(selectedMessage);
+           // scroll.current?.scrollIntoView({behavior: "smooth"});
         };
 
         //const socket = socketInstance.getSocket();
@@ -39,7 +42,6 @@ const ChatBox = ({ws,onSendMessage,selectedMessage}) => {
             });
         }
         return () => {
-            //const socket = socketInstance.getSocket();
             if (socket) {
                 socket.off('new_message', onMessageReceived);
             }
@@ -58,7 +60,6 @@ const ChatBox = ({ws,onSendMessage,selectedMessage}) => {
     }, [socket]);*/
     const getListChats = (selectedMessage) => {
         const params ={
-
         }
         getListChatByRoomId()
             .then((res) => {
@@ -70,16 +71,16 @@ const ChatBox = ({ws,onSendMessage,selectedMessage}) => {
         })
     }
 
-
     return (
     <main className="chat-box">
-      <div className="messages-wrapper">
-        {messages?.map((message) => (
-          <Message key={message.id} message={message} />
-        ))}
-      </div>
-      {/* when a new message enters the chat, the screen scrolls down to the scroll div */}
-      <span ref={scroll}></span>
+        <div className="messages-wrapper">
+            {messages?.map((message) => (
+                <Message key={message.id} message={message}/>
+            ))}
+            <span ref={scroll}></span>
+        </div>
+        {/* when a new message enters the chat, the screen scrolls down to the scroll div */}
+
       <SendMessage  onSendMessage={getListChats} selectedMessage={selectedMessage} scroll={scroll}></SendMessage>
     </main>
   );

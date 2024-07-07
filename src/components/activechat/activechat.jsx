@@ -1,7 +1,7 @@
 import React from 'react';
 import './activechat.css'
 import {format} from "date-fns";
-const ActiveChat = ({name = "unknown",text="Last message",date,onClick}) => {
+const ActiveChat = ({name,text="Last message",date,onClick}) => {
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         return format(date, 'dd/MM');
