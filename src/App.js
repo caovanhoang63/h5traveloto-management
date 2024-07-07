@@ -44,7 +44,6 @@ import DealScreen from "./screens/deal-screen/deal-screen";
 
 function App() {
     const refreshToken = localStorage.getItem("refresh-token");
-    console.log("refresh", refreshToken);
 
     const [isAuthenticated, setIsAuthenticated] = useState();
     const [loading, setLoading] = useState(true);

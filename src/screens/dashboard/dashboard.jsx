@@ -6,6 +6,8 @@ import PendingBooking from "./feedback/PendingBooking";
 import Statistics from "./occupancyStatistics/occupancyStatistics";
 import RoomStatus from "./roomstatus/roomstatus";
 import CustomersFeedback from "./floorstatus/CustomersFeedback";
+import {useLayoutEffect} from "react";
+
 
 function Dashboard({roomsdata}) {
 

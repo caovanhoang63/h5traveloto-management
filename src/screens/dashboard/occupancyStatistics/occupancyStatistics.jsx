@@ -2,11 +2,16 @@ import "./occupancyStatistics.css"
 import Overviewtag from "../overview/overviewtag/overviewtag";
 import Chart from "../chart/chart";
 
+const  dateOfWeek = ['Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
 function Statistics() {
-    const chartOption = {
+    let  today = new Date().getDay();
+    let dates = dateOfWeek.slice(today+1).concat(dateOfWeek.slice(0,today +1))
+
+    let chartOption = {
         xAxis: {
             type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            data: dates
         },
         yAxis: {
             type: 'value'
