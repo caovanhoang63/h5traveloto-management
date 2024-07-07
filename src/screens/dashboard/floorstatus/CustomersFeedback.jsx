@@ -1,19 +1,24 @@
-import ReactECharts from "echarts-for-react";
 import "./CustomersFeedback.css";
-import Chart from "../chart/chart";
 import FeedbackBlock from "../feedback/feedbackBlock/feedbackBlock";
 import {useEffect, useState} from "react";
 import {Spin} from "antd";
-import {Spinner} from "@phosphor-icons/react";
 import {listReviews} from "../../../api/reviews";
 export default function CustomersFeedback() {
     const [reviews, setReviews] = useState(null)
-
+    const hotelId = '\"' + sessionStorage.getItem("hotel-id") + '\"';
     useEffect(() => {
         setInterval(() => {
-            listReviews().then(res => {
-                setReviews(res)
-            }).catch().finally()
+            listReviews({"hotel_id" : hotelId}).then(res => {
+                try {
+                    setReviews(res)
+                } catch (error) {
+                    console.log(error)
+                }
+            }).catch(
+
+            ).finally(
+
+            )
         },5000 )
     }, []);
 
@@ -23,7 +28,7 @@ export default function CustomersFeedback() {
             <h1 className="customersfeedback-header">Customers Feedback</h1>
             {reviews != null ?
             <div className="customersfeedback-blocks">
-                { reviews.data.map((feedback) => (
+                { reviews.data?.map((feedback) => (
                     <FeedbackBlock
                         key={feedback.id}
                         feedback={feedback.comment}

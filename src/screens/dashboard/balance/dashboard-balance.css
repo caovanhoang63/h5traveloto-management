@@ -20,6 +20,7 @@
     font-size: 2rem; /* Điều chỉnh kích thước chữ theo ý muốn */
     text-align: center;
     color: var(--Primary600);
+    cursor: pointer;
 }
 .Balance-hidden {
     font-family: monospace; /* Sử dụng font chữ cố định chiều rộng */
