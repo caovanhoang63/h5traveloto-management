@@ -72,7 +72,14 @@
     background-color: #f0f0f0;
 }
 
-
+.dropdown-item--logout {
+    padding: 10px 20px;
+    cursor: pointer;
+    background: #eb4f34;
+}
+.dropdown-item--logout:hover {
+    background-color: #f0f0f0;
+}
 .content-container {
     width: 100%;
     top: 0;

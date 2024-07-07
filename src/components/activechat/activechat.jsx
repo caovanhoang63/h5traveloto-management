@@ -1,6 +1,7 @@
 import React from 'react';
 import './activechat.css'
 import {format} from "date-fns";
+import icon_avatar from '../../assets/icons/icon_avatar.png'
 const ActiveChat = ({name,text="Last message",date,onClick}) => {
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -16,7 +17,7 @@ const ActiveChat = ({name,text="Last message",date,onClick}) => {
         <div className="message-container"
             onClick={()=>onClick()}>
             <div className='message-wrapper'>
-                <div className="avatar"></div>
+                <img src={icon_avatar  } className="avatar"></img>
                 <div className="content">
                     <div className="name">{name}</div>
                     <div className="text">{text}</div>

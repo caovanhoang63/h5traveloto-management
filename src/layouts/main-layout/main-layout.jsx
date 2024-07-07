@@ -19,6 +19,7 @@ import ico_calendar_active from "../../assets/icons/calendar-active.png";
 import ico_bubble_chat from "../../assets/icons/bubble-chat.png";
 import ico_bubble_chat_active from "../../assets/icons/bubble-chat-active.png";
 import doraemon from "../../assets/icons/doraemon.jpg";
+import avatar from "../../assets/icons/icon_avatar.png";
 import "./main-layout.css";
 import RoomPage from "../../screens/room-screen/room-page.jsx";
 import RoomTypePage from "../../screens/room-type-screen/room-type-page.jsx";
@@ -31,7 +32,8 @@ import {changeProfile, getProfile} from "../../api/profile_api";
 import {getHotelChats} from "../../api/chat_api";
 import {createRoom} from "../../api/room_api";
 import Toast from "../../components/modal/toast";
-
+import {format} from "date-fns";
+import {useNavigate} from "react-router-dom"
 const sidebar_data = [
     {
         id: 0,
@@ -121,13 +123,13 @@ const MainLayout = ({ screenName = "screen name", ...props }) => {
     const [preFirstName, setPreFirstName] = useState("");
     const [preLastName, setPreLastName] = useState("");
     const [preProfilePhone, setPreProfilePhone] = useState("");
-    const [preProfileBirth, setPreProfileBirth] = useState();
+    const [preProfileBirth, setPreProfileBirth] = useState("");
 
     const [profileName, setProfileName] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [profilePhone, setProfilePhone] = useState("");
-    const [profileBirth, setProfileBirth] = useState();
+    const [profileBirth, setProfileBirth] = useState("");
     const [options, setOptions] = useState([]);
     const handleOnChangeProfileName = (value) => {
         console.log(value);
@@ -145,13 +147,14 @@ const MainLayout = ({ screenName = "screen name", ...props }) => {
         setProfilePhone(value);
     };
     const handleOnChangeProfileBirth = (value) => {
-        setProfileBirth(value);
+        setProfileBirth(format(value,"dd-MM-yyyy"));
     };
 
     const handleClickCreate = () => {
         setOpenModalInfo(false);
         console.log(profileName, profilePhone, profileBirth,lastName,firstName);
         console.log(preLastName, preFirstName, preProfilePhone,preProfileBirth);
+
         changeProfile({
             last_name: lastName===preLastName?null:lastName,
             first_name: firstName===preFirstName?null:firstName,
@@ -191,6 +194,15 @@ const MainLayout = ({ screenName = "screen name", ...props }) => {
                 console.log(e);
             })
     }
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        // Xóa token khỏi localStorage
+        //localStorage.removeItem('token');
+        sessionStorage.removeItem("access-token");
+        // Điều hướng người dùng đến trang đăng nhập hoặc trang chủ
+        navigate('/login')
+    };
     return (
         <div>
             <div className={"container"}>
@@ -201,19 +213,16 @@ const MainLayout = ({ screenName = "screen name", ...props }) => {
                             <SearchBar
                                 className={"searchBar--position top50"}
                             />
-                            {/*<div className={"header-buttons"}>
-                                <span>12</span>
-                                <span>32</span>
-                            </div>*/}
                             <div className="avatar-container" onClick={toggleDropdown}>
-                                <img src={doraemon} alt="Avatar" className="avatar"/>
+                                <img src={avatar} alt="Avatar" className="avatar"/>
                                 {isDropdownOpen && (
                                     <div className="dropdown-menu">
                                         <div className="dropdown-item"
                                         onClick={()=> setOpenModalInfo(true)}
                                         >Profile</div>
-                                        <div className="dropdown-item">Settings</div>
-                                        <div className="dropdown-item">Logout</div>
+                                        <div className="dropdown-item"
+                                             onClick={()=>{handleLogout()}}
+                                        >Logout</div>
                                     </div>
                                 )}
                             </div>
@@ -237,7 +246,6 @@ const MainLayout = ({ screenName = "screen name", ...props }) => {
                     )}
                     <div className={"content"}>
                         <div className={"screen-name"}>
-                            <span>{screenName}</span>
                         </div>
                         <div className={"screen-content"}>{props.children}</div>
                     </div>

@@ -40,7 +40,7 @@ import { HashRouter as Router } from 'react-router-dom';
 
 function App() {
     const refreshToken = localStorage.getItem("refresh-token");
-
+    const [screenName,setScreenName] = useState();
     const [isAuthenticated, setIsAuthenticated] = useState();
     const [loading, setLoading] = useState(true);
     useEffect(() => {
@@ -86,10 +86,10 @@ function App() {
                        element={
                            <MainLayout>
                                <Routes>
-                                   <Route path="/signup" element={<SignUpScreen />} />
+                                   <Route path="/signup" element={<SignUpScreen />}  />
                                    <Route path="/dashboard" element={<Dashboard />} />
                                    <Route path="/rooms" element={<RoomPage />} />
-                                   <Route path="/guest" element={<GuestScreen/>}/>
+                                   <Route path="/guest"  element={<GuestScreen/>}/>
                                    <Route path="/chat" element={<ChatScreen />} />
                                    <Route path="/bookingmanagement" element={<BookingManagementPage />} />
                                    <Route path="/roomtypes" element={
