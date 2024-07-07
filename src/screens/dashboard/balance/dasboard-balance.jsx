@@ -4,16 +4,14 @@ import {useState} from "react";
 import eye from "../../../assets/icons/icons8-eye-90.png"
 import eyeSlash from "../../../assets/icons/icons8-invisible-90.png"
 export function DasboardBalance(){
-    const [eyeClicked, setEyeClicked] = useState(false)
-
+    const [eyeClicked, setEyeClicked] = useState(true)
 
     return(
         <div className={"Balance_container"}>
-
             <div className={"Balance"}>
-                <h2 className={`Balance-number ${eyeClicked ? 'Balance-hidden' : ''}`}>
+                <div className={`Balance-number ${eyeClicked ? 'Balance-hidden' : ''}`}>
                     {eyeClicked ? "********" : "10.000.000VND"}
-                </h2>
+                </div>
             </div>
             <img className={"Balance-Eye"}
                  src={eyeClicked ? eye : eyeSlash}

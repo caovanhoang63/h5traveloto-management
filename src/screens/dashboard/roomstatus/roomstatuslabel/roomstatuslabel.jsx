@@ -1,32 +1,28 @@
 import "./roomstatuslabel.css"
-function RoomstatusLabelLeft({label,roomAmount,cleanAmount,dirtyAmount,inspectedAmount}){
+function RoomstatusLabelLeft({availableAmount,dirtyAmount}){
     return(
         <div className="roomstatuslabel-container">
             <div className={"roomstatuslabel-content-container"}>
-                <span className="roomstatuslabel-roomtype-label">{label}</span>
-                <span className="roomstatuslabel-roomtype-amount">{roomAmount}</span>
-            </div>
-            <div className={"roomstatuslabel-content-container"}>
-                <span className="roomstatuslabel-label">Fixing</span>
-                <span className="roomstatuslabel-amount">{cleanAmount}</span>
+                <span className="roomstatuslabel-label">Available</span>
+                <span className="roomstatuslabel-amount">{availableAmount ? availableAmount : 0 }</span>
             </div>
             <div className={"roomstatuslabel-content-container"}>
                 <span className="roomstatuslabel-label">Dirty</span>
-                <span className="roomstatuslabel-amount">{dirtyAmount}</span>
+                <span className="roomstatuslabel-amount">{dirtyAmount ? dirtyAmount  : 0}</span>
             </div>
         </div>
     )
 }
-export function RoomstatusLabelRight({label,roomAmount,inspectedAmount}){
+export function RoomstatusLabelRight({bookedAmount,fixingAmount}){
     return(
         <div className="roomstatuslabel-container">
             <div className={"roomstatuslabel-content-container"}>
-                <span className="roomstatuslabel-roomtype-label">{label}</span>
-                <span className="roomstatuslabel-roomtype-amount">{roomAmount}</span>
+                <span className="roomstatuslabel-label">Booked</span>
+                <span className="roomstatuslabel-amount">{bookedAmount ? bookedAmount : 0 }</span>
             </div>
             <div className={"roomstatuslabel-content-container"}>
-                <span className="roomstatuslabel-label">Checked In</span>
-                <span className="roomstatuslabel-amount">{inspectedAmount}</span>
+                <span className="roomstatuslabel-label">Fixing</span>
+                <span className="roomstatuslabel-amount">{fixingAmount ? fixingAmount : 0}</span>
             </div>
         </div>
     )

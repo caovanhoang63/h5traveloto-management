@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-
 }
 .Balance-Eye {
     width: 2em;  /* Kích thước bằng với chiều cao của chữ */
@@ -12,14 +11,17 @@
     cursor: pointer; /* Biến con trỏ thành hình bàn tay khi di chuột qua */
 }
 
+
+
 .Balance-number {
-    color: var(--Grey800);
+    line-height: 100%;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: normal;
-    font-size: 3rem; /* Điều chỉnh kích thước chữ theo ý muốn */
-    margin: 0; /* Loại bỏ margin mặc định của h2 */
+    font-size: 2rem; /* Điều chỉnh kích thước chữ theo ý muốn */
+    text-align: center;
+    color: var(--Primary600);
 }
 .Balance-hidden {
     font-family: monospace; /* Sử dụng font chữ cố định chiều rộng */
-    letter-spacing: 0.5rem; /* Tăng khoảng cách giữa các dấu * */
+    font-size: 2.5rem; /* Điều chỉnh kích thước chữ theo ý muốn */
 }

@@ -1,7 +1,4 @@
 import "./PendingBooking.css";
-import FeedbackBlock from "./feedbackBlock/feedbackBlock";
-import { useEffect, useState } from "react";
-import { listReviews } from "../../../api/reviews";
 import {PendingBookingBlock} from "./PendingBookingBlock/PendingBookingBlock";
 
 function PendingBooking() {
