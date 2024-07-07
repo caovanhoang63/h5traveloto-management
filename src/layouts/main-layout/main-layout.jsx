@@ -98,7 +98,6 @@ const sidebar_data = [
 ];
 
 const MainLayout = ({ screenName = "screen name", ...props }) => {
-    const options = [{ value: "tuoi" }, { value: "báo" }, { value: "s" }];
     return (
         <div>
             <div className={"container"}>

@@ -38,7 +38,7 @@ import CH_PropertyPolicies from "./screens/create-hotel-screen/components/proper
 import CH_PropertyFacilities from "./screens/create-hotel-screen/components/property-facilities/ch-property-facilities";
 import CH_PhotosInformation from "./screens/create-hotel-screen/components/photos-information/ch-photos-information";
 import GuestScreen from "./screens/guest-screen/guest-screen";
-import {socket } from "./socket-io/index"
+import socketInstance, {socket } from "./socket-io/index"
 import FrontDesk from "./screens/front-desk/front-desk";
 import DealScreen from "./screens/deal-screen/deal-screen";
 
@@ -46,10 +46,10 @@ import DealScreen from "./screens/deal-screen/deal-screen";
 function App() {
     const refreshToken = localStorage.getItem("refresh-token");
     console.log("refresh", refreshToken);
-    const [isConnected, setIsConnected] = useState(
-        socket.connected
+
+    /*const [isConnected, setIsConnected] = useState(
     );
-    const [fooEvents, setFooEvents] = useState([]);
+    //const [fooEvents, setFooEvents] = useState([]);*/
 
     const [isAuthenticated, setIsAuthenticated] = useState();
     const [loading, setLoading] = useState(true);
@@ -74,32 +74,9 @@ function App() {
             setIsAuthenticated(false);
             setLoading(false);
         }
-        function onConnect() {
-            console.log("onConnect");
-            setIsConnected(true);
-        }
 
-        function onDisconnect() {
-            console.log("onDisconnect");
-            setIsConnected(false);
-        }
-
-        function onFooEvent(value) {
-            console.log("onFooEvent")
-            setFooEvents(previous => [...previous, value]);
-        }
-
-        socket.on('connect', (err) => {
-            console.log(err);
-        });
-        socket.on('disconnect', onDisconnect);
-        socket.on('foo', onFooEvent);
-        return () => {
-            socket.off('connect', onConnect);
-            socket.off('disconnect', onDisconnect);
-            socket.off('foo', onFooEvent);
-        };
     }, [refreshToken]);
+
 
     return loading ? (
         <Spinner />

@@ -1,162 +1,110 @@
 import React, {useEffect, useState} from 'react';
 import './chat-screen.css';
-import SearchBar from '../../components/searchbar/searchbar';
 import ActiveChat from '../../components/activechat/activechat';
 import MessageQueue from '../../components/messagequeue/messagequeue';
 import ChatBox from '../../components/chatbox/chatbox';
-import SendMessage from '../../components/sendmessage/sendmessage';
-import Button from "../../components/button/button";
 import {getHotelChats} from "../../api/chat_api";
-import Message from "../../components/message/message";
-import useWebSocket, {ReadyState} from "react-use-websocket";
+import {joinRoom, socket} from "../../socket-io";
 const ChatScreen = (props) => {
-    const [message, setMessage] = useState([]);
-    const [messageInput, setMessageInput] = useState('');
-    const [ws, setWs] = useState(null);
+    const [allMessages, setAllMessages] = useState([]);
     const [messagesQueue, setMessagesQueue] = useState([]);
+    const [activeChats, setActiveChats] = useState([]);
     const [selectedMessage, setSelectedMessage] = useState(null);
     const token = sessionStorage.getItem('access-token');
-    const { sendMessage, lastMessage, readyState } = useWebSocket('wss://api.h5traveloto.site', {
-        onOpen: () => {
-            console.log('WebSocket connection established');
-            sendMessage(JSON.stringify({
-                type: 'authenticate',
-                token: token,
-            }));
-        },
-        onMessage: (event) => {
-            const data = JSON.parse(event.data);
-            switch (data.type) {
-                case 'joined':
-                    console.log('Joined room', data);
-                    break;
-                case 'new_message':
-                    console.log('New message', data);
-                    //setMessages((prevMessages) => [...prevMessages, data.message]);
-                    break;
-                default:
-                    break;
-            }
-        },
-        onClose: (event) => {
-            if (event.wasClean) {
-                console.log('WebSocket connection closed cleanly');
-            } else {
-                console.error('WebSocket connection closed unexpectedly');
-            }
-            console.log(`Code: ${event.code}, Reason: ${event.reason}`);
-        },
-        onError: (error) => {
-            console.error('WebSocket error', error);
-        },
-    });
-
-    useEffect(() => {
-        console.log('token',token)
-        getChats();
-        /*try {
-
-           // const socket = io("https://api.h5traveloto.site", { transports: ['websocket'] })
-            //tao ket noi websocket
-            const socket = new WebSocket('wss://api.h5traveloto.site/socket-io');
-            // Lưu WebSocket instance vào state
-            setWs(socket);
-            //su kien khi ket noi mo
-
-            socket.onopen = () => {
-                console.log('WebSocket Open');
-                socket.send(JSON.stringify({
-                    type: 'authenticate',
-                    token: token,
-                }));
-            };
-
-            // Sự kiện khi nhận được tin nhắn
-            socket.onmessage = (event) => {
-                setMessage(event.data);
-            };
 
 
-            socket.onmessage = (event) => {
-                const data = JSON.parse(event.data);
-                switch (data.type) {
-                    case 'joined':
-                        console.log('Joined room', data);
-                        break;
-                    case 'new_message':
-                        console.log('New message', data);
-                       //setMessages((prevMessages) => [...prevMessages, data.message]);
-                        break;
-                    default:
-                        break;
-                }
-            };
-            // Sự kiện khi kết nối đóng
-            socket.onclose = () => {
-                console.log('WebSocket connection closed');
-            };
-            // Dọn dẹp khi component bị unmount
-            return () => {
-                socket.close();
-            };
-        }catch(err) {
-            console.log(err);
-        }*/
-    }, []);
-    const getChats = () => {
-        getHotelChats()
-            .then(res => {
-                const chats = res.data;
-                console.log(chats);
-                setMessagesQueue(chats);
-            })
-            .catch((e) => {
-                console.log(e);
-            })
+    const getChats =  () => {
+            getHotelChats()
+                .then(res => {
+                    let chats = res.data;
+                    setAllMessages(chats);
+                    //setMessagesQueue(chats);
+                    console.log("chat",chats);
+                    console.log("chatQueue",allMessages);
+                })
+                .catch((e) => {
+                    console.log(e);
+                })
     }
-    const handleSendMessage = (message, roomId) => {
-        if (readyState === ReadyState.OPEN) {
-            sendMessage(JSON.stringify({
-                type: 'message_sent',
-                message: message,
-                room_id: roomId,
-            }));
-        }
-    };
+    const classifyChats = ()=>{
+        let arr=[]
+        let arr2=[]
+        allMessages.forEach(message => {
+            if(message.total_message !== message.user_unread+message.hotel_unread){
+                arr.push(message)
+            }else{
+                arr2.push(message)
+            }
+        })
+        setMessagesQueue(arr)
+        setActiveChats(arr2)
+        console.log("arr",arr)
+        console.log("allMessage",allMessages)
+        console.log("arr2",arr2)
+    }
     const handleSelectMessage = (messageQueue) => {
-        if (readyState === ReadyState.OPEN) {
-            sendMessage(JSON.stringify({
-                type: 'user_joined',
-                room_id: messageQueue.id,
-            }));
-        }
+        console.log('joined', messageQueue.id);
+        joinRoom(messageQueue.id);
+        sessionStorage.setItem("room-id",messageQueue.id);
         setSelectedMessage(messageQueue);
     };
+
+    useEffect(() => {
+        socket.connect();
+        getChats();
+        function onConnect() {
+            console.log("onConnect");
+            socket.emit('authenticate', token);
+        }
+
+        function onDisconnect() {
+            console.log("onDisconnect");
+        }
+        socket.on('connect', onConnect );
+        socket.on('disconnect', onDisconnect);
+        socket.on('joined', (data) => {
+            console.log('Joined room', data)
+        });
+
+        return () => {
+            socket.off('connect', onConnect);
+            socket.off('disconnect', onDisconnect);
+        };
+    }, [token]);
+    useEffect(() => {
+        classifyChats();
+    }, [allMessages]);
     return (
         <div className='chatScreen-container'>
             <div className='active-chat'>
                 <div className='label-activechat'>Active Chats</div>
                 <ul className='list-message'>
-                    <ActiveChat ></ActiveChat>
-                    <ActiveChat ></ActiveChat>
-                    <ActiveChat ></ActiveChat>
+                    {activeChats?.map((activechat) => (
+                        <ActiveChat
+                            key={activechat.id}
+                            text={activechat.last_message.message}
+                            date={activechat.last_message.updated_at}
+                            onClick={()=>handleSelectMessage(activechat)}
+                        />
+                    ))
+                    }
                 </ul>
             </div>
             <div className='message-chat'>
-            <ChatBox  onSendMessage={handleSendMessage} selectedMessage={selectedMessage} ></ChatBox>
-            {/* <SendMessage></SendMessage> */}
+            <ChatBox  selectedMessage={selectedMessage} ></ChatBox>
             </div>
             <div className='message-queue'>
                 <ul className='list-messagequeue'>
                     {messagesQueue?.map((messageQueue) => (
                         <MessageQueue
                             key={messageQueue.id}
-                            text={messageQueue.last_message}
-                            date={messageQueue.created_at}
+                            text=""
+                            date={messageQueue.updated_at}
                             id={messageQueue.id}
                             onSelectMessage={()=> handleSelectMessage(messageQueue)}
                         />
-                    ))}
+                    ))
+                    }
                 </ul>
             </div>
         </div>

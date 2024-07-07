@@ -13,21 +13,6 @@ const MessageQueue = ({name="Account",text,date="0/0/0",ws,id,onSelectMessage}) 
     };
     const formattedDate = formatDate(date);
     const formattedTime = formatTime(date);
-    /*const joinRoom = ()=>{
-        if (ws && ws.readyState === WebSocket.OPEN) {
-            ws.send(JSON.stringify({
-                type: 'user_joined',
-                room_id: id,
-            }));
-        }
-        onSelectMessage();
-    }*/
-    /*ws.on('joined', (msg) => {
-        console.log('Joined room', msg);
-    });
-    ws.on('new_message', (msg) => {
-        console.log('New message', msg);
-    });*/
     return (
         <div className='messagequeue-container'>
             <div className='messagequeue-header'>

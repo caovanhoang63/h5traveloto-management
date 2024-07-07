@@ -1,3 +1,4 @@
+/*
 .chat-bubble {
     display: flex;
     align-items: center;
@@ -5,30 +6,30 @@
     border-radius: 10px;
     background-color: var(--Primary100);
     margin-top: 20px;
-    justify-content: flex-start; 
+    justify-content: flex-start;
     min-width: 50px;
     min-height: 50px;
     width: auto;
     height: auto;
   }
-  
+
   .chat-bubble__left {
     width: 30px;
     height: 30px;
     border-radius: 50%;
     margin-right: 10px;
   }
-  
+
   .chat-bubble__right {
     flex: 1;
   }
-  
+
   .user-name {
     margin: 0px 0px;
     font-weight: bold;
     width: fit-content;
   }
-  
+
   .user-message {
     margin-top: 5px;
     font-size: 14px;
@@ -44,21 +45,85 @@
     width: fit-content;
     font-size: 1.2rem;
     left: 10px;
-    bottom: -30px;
+    bottom: -20px;
     position: absolute;
 }
   .chat-bubble.right {
-    justify-content: flex-end; 
+    justify-content: flex-end;
     background-color: white;
   }
-  
+
   .chat-bubble.right .chat-bubble__left {
-    order: 2; 
+    order: 2;
   }
-  
+
   .chat-bubble.right .chat-bubble__right {
-    order: 1; 
+    order: 1;
   }
   .chat-layout{
     position: relative;
-  }
+  }*/
+.chat-layout {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    position: relative;
+    align-items: flex-start;
+}
+
+.chat-layout.right {
+    align-items: flex-end;
+}
+
+.chat-bubble {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #f1f0f0;
+    margin-top: 10px;
+    max-width: 60%;
+    word-wrap: break-word;
+    position: relative;
+}
+
+.chat-bubble.right {
+    background-color: #0084ff;
+    color: white;
+}
+
+.chat-bubble__right {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    margin: 0;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.user-message {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.chat-time {
+    font-size: 12px;
+    color: #999;
+    position: absolute;
+    bottom: -15px;
+}
+
+.chat-time.right {
+    right: 0;
+}
+
+.chat-time.left {
+    left: 0;
+}
+
+.chat-layout.right .chat-time {
+    color: #989fad;
+}
