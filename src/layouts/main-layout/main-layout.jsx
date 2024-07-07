@@ -22,7 +22,15 @@ import doraemon from "../../assets/icons/doraemon.jpg";
 import "./main-layout.css";
 import RoomPage from "../../screens/room-screen/room-page.jsx";
 import RoomTypePage from "../../screens/room-type-screen/room-type-page.jsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import Modal from "../../components/modal/modal";
+import ModalCreateRoom from "../../components/modal/content/create-room/modal-create-room";
+import ModalInfoCustomer from "../../components/modal/content/info-customer/modal-info-customer";
+import ModalChangeInfo from "../../components/modal/content/change-info/modal-change-info";
+import {changeProfile, getProfile} from "../../api/profile_api";
+import {getHotelChats} from "../../api/chat_api";
+import {createRoom} from "../../api/room_api";
+import Toast from "../../components/modal/toast";
 
 const sidebar_data = [
     {
@@ -101,10 +109,88 @@ const sidebar_data = [
 
 const MainLayout = ({ screenName = "screen name", ...props }) => {
     const [isDropdownOpen, setDropdownOpen] = useState(false);
-
+    const [isOpenModalInfo, setOpenModalInfo] = useState(false);
+    const [isOpenModalSetting, setOpenModalSetting] = useState(false);
+    const token = sessionStorage.getItem("access-token")
+    const [profile,setProfile] = useState(null)
     const toggleDropdown = () => {
         setDropdownOpen(!isDropdownOpen);
     };
+    //Modal
+    const [preProfileName, setPreProfileName] = useState("");
+    const [preFirstName, setPreFirstName] = useState("");
+    const [preLastName, setPreLastName] = useState("");
+    const [preProfilePhone, setPreProfilePhone] = useState("");
+    const [preProfileBirth, setPreProfileBirth] = useState();
+
+    const [profileName, setProfileName] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [profilePhone, setProfilePhone] = useState("");
+    const [profileBirth, setProfileBirth] = useState();
+    const [options, setOptions] = useState([]);
+    const handleOnChangeProfileName = (value) => {
+        console.log(value);
+        setProfileName(value);
+        let name = value.split(" ");
+        if(name.length > 1){
+            setLastName(name[name.length - 1]);
+            setFirstName(name.slice(0, -1).join(" "));
+        } else{
+            setFirstName(name);
+        }
+
+    };
+    const handleOnChangeProfilePhone = (value) => {
+        setProfilePhone(value);
+    };
+    const handleOnChangeProfileBirth = (value) => {
+        setProfileBirth(value);
+    };
+
+    const handleClickCreate = () => {
+        setOpenModalInfo(false);
+        console.log(profileName, profilePhone, profileBirth,lastName,firstName);
+        console.log(preLastName, preFirstName, preProfilePhone,preProfileBirth);
+        changeProfile({
+            last_name: lastName===preLastName?null:lastName,
+            first_name: firstName===preFirstName?null:firstName,
+            phone: profilePhone===preProfilePhone?null:profilePhone,
+            date_of_birth: profileBirth===preProfileBirth?null:profileBirth,
+        })
+            .then((res) => {
+                Toast({ title: "Change information success", type: "success" });
+                GetProfile();
+            })
+            .catch((e) => {
+                Toast({ title: "Change information fail", type: "error" });
+            });
+    };
+    useEffect(() => {
+        GetProfile();
+    }, [token]);
+
+    const GetProfile = ()=>{
+        getProfile()
+            .then(res => {
+                let profile = res.data;
+                setProfile(profile)
+                setFirstName(profile.first_name)
+                setLastName(profile.last_name)
+                setProfileName(profile.first_name + " " + profile.last_name);
+                setProfileBirth(profile.date_of_birth)
+
+                setPreFirstName(profile.first_name)
+                setPreLastName(profile.last_name)
+                setPreProfileName(profile.first_name + " " + profile.last_name);
+                setPreProfileBirth(profile.date_of_birth)
+                setPreProfileBirth(profile.phone)
+                console.log("profile",profile)
+            })
+            .catch((e) => {
+                console.log(e);
+            })
+    }
     return (
         <div>
             <div className={"container"}>
@@ -123,7 +209,9 @@ const MainLayout = ({ screenName = "screen name", ...props }) => {
                                 <img src={doraemon} alt="Avatar" className="avatar"/>
                                 {isDropdownOpen && (
                                     <div className="dropdown-menu">
-                                        <div className="dropdown-item">Profile</div>
+                                        <div className="dropdown-item"
+                                        onClick={()=> setOpenModalInfo(true)}
+                                        >Profile</div>
                                         <div className="dropdown-item">Settings</div>
                                         <div className="dropdown-item">Logout</div>
                                     </div>
@@ -131,6 +219,22 @@ const MainLayout = ({ screenName = "screen name", ...props }) => {
                             </div>
                         </div>
                     </header>
+                    {isOpenModalInfo && (
+                        <Modal
+                            content={
+                                <ModalChangeInfo
+                                    props={profile}
+                                    onChangeBirth={handleOnChangeProfileBirth}
+                                    onChangeName={handleOnChangeProfileName}
+                                    onChangePhone={handleOnChangeProfilePhone}
+                                ></ModalChangeInfo>
+                            }
+                            onClose={() => setOpenModalInfo(false)}
+                            onConfirm={() => handleClickCreate()}
+                            title="Information"
+                            buttonSaveText="Save"
+                        ></Modal>
+                    )}
                     <div className={"content"}>
                         <div className={"screen-name"}>
                             <span>{screenName}</span>

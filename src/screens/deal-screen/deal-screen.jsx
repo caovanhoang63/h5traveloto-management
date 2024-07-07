@@ -7,13 +7,16 @@ import IconFilter from "../../assets/icons/icon-filter.png";
 import DealTable from "../../components/dealtable/deal-table";
 import { useEffect, useState } from "react";
 import "./deal-screen.css";
-import { getDealsByHotelId } from "../../api/deal-api";
+import {createDeal, getDealsByHotelId} from "../../api/deal-api";
 import Modal from "../../components/modal/modal";
 import ModalCreateDeal from "../../components/modal/content/create-deal/modal-create-deal";
 import ModalInfoCustomer from "../../components/modal/content/info-customer/modal-info-customer";
 import ModalChangeInfo from "../../components/modal/content/change-info/modal-change-info";
 import ModalChooseRoom from "../../components/modal/content/choose-room/modal-choose-room";
 import { is } from "date-fns/locale";
+import {changeProfile} from "../../api/profile_api";
+import Toast from "../../components/modal/toast";
+import {getRoomTypesByHotelId} from "../../api/room_type_api";
 
 function DealScreen() {
     const columns = [
@@ -48,9 +51,18 @@ function DealScreen() {
     const [records, setRecords] = useState([]);
     const [tableData, setTableData] = useState([]);
     const [isOpenModal, setIsOpenModal] = useState(false);
+    const [dealName, setDealName] = useState("");
+    const [quantity, setQuantity] = useState("");
+    const [description, setDescription] = useState("");
+    const [roomType, setRoomType] = useState("");
+    const [discount, setDiscount] = useState("");
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
     //Fetch API
     useEffect(() => {
-        getDealsByHotelId({ hotel_id: `"gGzTBURqhajF"` })
+        getRoomTypes();
+        const hotelId = sessionStorage.getItem("hotel-id");
+        getDealsByHotelId({ hotel_id: `"${hotelId}"` })
             .then((res) => {
                 if (res.data !== null) {
                     setRecords(res.data);
@@ -102,10 +114,69 @@ function DealScreen() {
         }
     }
 
+    const handleOnChangeDealName = (value) => {
+        setDealName(value);
+    };
+    const handleOnChangeDescription = (value) => {
+        setDescription(value);
+    };
+    const handleOnChangeQuantity = (value) => {
+        setQuantity(value);
+    };
+    const handleOnChangeStartDate = (value) => {
+        setStartDate(value);
+    }
+    const handleOnChangeEndDate = (value) => {
+        setEndDate(value);
+    }
+    const handleOnChangeRoomType = (value) => {
+        setRoomType(value);
+    };
+    const handleOnChangeDiscount = (value) => {
+        setDiscount(value);
+    }
     const handleClickPage = (page) => {
         RenderDataTable((page - 1) * rowsData);
     };
 
+    const handleClickCreate=()=>{
+        setIsOpenModal(false);
+        createDeal({
+            hotel_id: sessionStorage.getItem("hotel-id"),
+            room_type_id:roomType,
+            name: dealName,
+            description: description,
+            total_quantity: parseInt(quantity,10),
+            start_date: startDate,
+            expiry_date: endDate,
+            discount_amount:parseInt(discount,10),
+            discount_type:"percent",
+            is_unlimited:true,
+        })
+            .then((res) => {
+                Toast({ title: "Create deal success", type: "success" });
+            })
+            .catch((e) => {
+                Toast({ title: "Create deal fail", type: "error" });
+            });
+    };
+
+    const [options, setOptions] = useState([]);
+
+    const getRoomTypes = () => {
+        getRoomTypesByHotelId({
+            hotel_id:`"${sessionStorage.getItem("hotel-id")}"`
+        }).then((res) => {
+            const data = res.data;
+            const length = data.length;
+            const options = [];
+            for (let i = 0; i < length; i++) {
+                options.push({ value: data[i].name, key: data[i].id });
+            }
+            console.log(options);
+            setOptions(options);
+        });
+    };
     return (
         <div className="deal-screen-container">
             <div className="deal-screen-option">
@@ -118,8 +189,19 @@ function DealScreen() {
                 {isOpenModal && (
                     <Modal
                         title="Create Deal"
-                        content={<ModalChooseRoom />}
+                        content={<ModalCreateDeal
+                            onChangeDealName={handleOnChangeDealName}
+                            onChangeDescription={handleOnChangeDescription}
+                            onChangeQuantity={handleOnChangeQuantity}
+                            onChangeDiscount={handleOnChangeDiscount}
+                            onChangeStartDate={handleOnChangeStartDate}
+                            onChangeEndDate={handleOnChangeEndDate}
+                            onChangeRoomType={handleOnChangeRoomType}
+                            options={options}
+                        />}
                         onClose={() => setIsOpenModal(false)}
+                        onConfirm={()=>handleClickCreate()}
+                        buttonSaveText="Create"
                     ></Modal>
                 )}
                 <TransparentButton

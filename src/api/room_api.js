@@ -2,7 +2,8 @@ import { instance } from "./index";
 
 export const getRoomByHotelId = async (params) => {
     try {
-        const response = await instance.get("/hotels/gGzTBURqhajF/rooms", {
+        const hotelId = sessionStorage.getItem("hotel-id");
+        const response = await instance.get(`/hotels/${hotelId}/rooms`, {
             params: params,
         });
         console.log(response.data);
