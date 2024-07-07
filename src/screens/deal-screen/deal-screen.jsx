@@ -12,6 +12,7 @@ import Modal from "../../components/modal/modal";
 import ModalCreateDeal from "../../components/modal/content/create-deal/modal-create-deal";
 import ModalInfoCustomer from "../../components/modal/content/info-customer/modal-info-customer";
 import ModalChangeInfo from "../../components/modal/content/change-info/modal-change-info";
+import ModalChooseRoom from "../../components/modal/content/choose-room/modal-choose-room";
 import { is } from "date-fns/locale";
 
 function DealScreen() {
@@ -117,7 +118,7 @@ function DealScreen() {
                 {isOpenModal && (
                     <Modal
                         title="Create Deal"
-                        content={<ModalChangeInfo />}
+                        content={<ModalChooseRoom />}
                         onClose={() => setIsOpenModal(false)}
                     ></Modal>
                 )}
