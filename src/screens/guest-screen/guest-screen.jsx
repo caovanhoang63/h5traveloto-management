@@ -7,124 +7,48 @@ import IconFilter from "../../assets/icons/icon-filter.png";
 import "./guest-screen.css";
 import Table from "../../components/table/table";
 import { useEffect, useState } from "react";
+import {getWorker} from "../../api/worker_api";
+import {format} from "date-fns";
+import Modal from "../../components/modal/modal";
+import ModalAddEmployee from "../../components/modal/content/info-customer/modal-info-customer";
 
 function GuestScreen() {
     const columns = [
         {
             Header: "Reservation ID",
-            accessor: "reservation_id",
+            accessor: "id",
         },
         {
             Header: "Name",
             accessor: "name",
         },
         {
-            Header: "Total amount",
-            accessor: "total_amount",
+            Header: "Role",
+            accessor: "role",
         },
         {
-            Header: "Last booking",
-            accessor: "last_booking",
+            Header: "Phone Number",
+            accessor: "phone",
+        },
+        {
+            Header: "Start date",
+            accessor: "created_at",
         }
     ];
 
-    const data = [
-        {
-            reservation_id: "001",
-            name: "John Doe",
-            total_amount: 200,
-            last_booking: "31/05/2004"
-        },
-        {
-            reservation_id: "002",
-            name: "Jane Smith",
-            total_amount: 250,
-            last_booking: "31/05/2004"
-        },
-        {
-            reservation_id: "003",
-            name: "Alice Johnson",
-            total_amount: 300,
-            last_booking: "31/05/2004"
-        },
-        {
-            reservation_id: "004",
-            name: "Bob Brown",
-            total_amount: 400,
-            last_booking: "31/05/2004"
-        },
-        {
-            reservation_id: "005",
-            name: "Charlie Davis",
-            total_amount: 150,
-            last_booking: "31/05/2004"
-        },
-        {
-            reservation_id: "006",
-            name: "David Green",
-            total_amount: 220,
-            last_booking: "31/05/2004"
-        },
-        {
-            reservation_id: "007",
-            name: "Eva White",
-            total_amount: 180,
-            last_booking: "31/05/2004"
-        },
-        {
-            reservation_id: "008",
-            name: "Frank Black",
-            total_amount: 320,
-            last_booking: "31/05/2004"
-        },
-        {
-            reservation_id: "009",
-            name: "Grace Pink",
-            total_amount: 270,
-            last_booking: "31/05/2004"
-        },
-        {
-            reservation_id: "010",
-            name: "Henry Orange",
-            total_amount: 190,
-            last_booking: "31/05/2004"
-        },
-        {
-            reservation_id: "011",
-            name: "Isabel Gray",
-            total_amount: 300,
-            last_booking: "31/05/2004"
-        },
-        {
-            reservation_id: "012",
-            name: "Jack Blue",
-            total_amount: 280,
-            last_booking: "31/05/2004"
-        },
-        {
-            reservation_id: "013",
-            name: "Kathy Yellow",
-            total_amount: 350,
-            last_booking: "31/05/2004"
-        },
-        {
-            reservation_id: "014",
-            name: "Leo Brown",
-            total_amount: 240,
-            last_booking: "31/05/2004"
-        },
-        {
-            reservation_id: "015",
-            name: "Maria Black",
-            total_amount: 400,
-            last_booking: "31/05/2004"
-        }
-    ];
+
 
     const rowsData = 6;
     const [records, setRecords] = useState([]);
     const [tableData, setTableData] = useState([]);
-
+    const [data,setData] = useState([]);
+    const GetWorker = ()=>{
+        getWorker().then((res) => {
+            const data = res.data;
+            setData(data)
+            setRecords(data)
+        });
+    }
     let params = {
         limit: 8,
         page: 1,
@@ -132,12 +56,12 @@ function GuestScreen() {
     //Fetch API
     useEffect(() => {
         // mat thoi gian fetch du lieu
+        GetWorker();
         setTimeout(() => {
-            setRecords(data);
+            //setRecords(data);
             console.log("lay du lieu");
         }, 500);
     }, []);
-    console.log(records);
     // re-render sau khi fetch
     useEffect(() => {
         RenderDataTable(0);
@@ -148,11 +72,20 @@ function GuestScreen() {
         const row = [];
         for (let i = indexStart; i < rowsData + indexStart; i++) {
             if (i >= records.length) break;
-            row.push(records[i]);
+            row.push(ConvertDataTable(records[i]));
         }
         setTableData(row);
     }
 
+    function ConvertDataTable(data) {
+        return {
+            id: data.id,
+            name: data.first_name + " "+ data.last_name,
+            phone:data.phone?data.phone:"",
+            role: data.role,
+            created_at: format(data.created_at,"dd-MM-yyyy")
+        };
+    }
     const handleClickPage = (page) => {
         RenderDataTable((page - 1) * rowsData);
     };
@@ -164,9 +97,16 @@ function GuestScreen() {
 //        RenderDataTable(0, type);
 //        setPageOfTable(records[type].length);
     };
+    const [isOpenModal,setIsOpenModal] = useState(false);
     return (
         <div className="guest-container">
             <div className="guest-option">
+                {/*<PrimaryButton
+                    className={"deal-screen-option__button-add"}
+                    onClick={() => setIsOpenModal(true)}
+                >
+                    Add employee
+                </PrimaryButton>*/}
                 <TransparentButton
                     className={"guest-option__button-filter"}
                     border={true}
@@ -177,6 +117,16 @@ function GuestScreen() {
                     Filter
                 </TransparentButton>
             </div>
+            {isOpenModal && (
+                <Modal
+                    title="Add Employee"
+                    content={<ModalAddEmployee
+                    />}
+                    onClose={() => setIsOpenModal(false)}
+                    onConfirm={()=>{}}
+                    buttonSaveText="Create"
+                ></Modal>
+            )}
             <div className="guest-table">
                 <Table data={tableData} columns={columns}></Table>
             </div>

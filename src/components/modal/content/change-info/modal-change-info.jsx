@@ -1,8 +1,14 @@
 import "./modal-change-info.css";
 import FlexTextBox from "../../../flextextbox/flextextbox";
 import FlexTextBoxDate from "../../../flextextboxdate/flextextboxdate";
-import doraemon from "../../../../assets/icons/doraemon.jpg";
+import doraemon from "../../../../assets/icons/icon_avatar.png";
+import DatePicker from "react-datepicker";
+import {useEffect, useState} from "react";
 function ModalChangeInfo({props,onChangeName,onChangePhone,onChangeBirth}) {
+
+    const [day, month, year] = props.date_of_birth.split('-').map(part => parseInt(part, 10));
+    const [date,setDate]=useState(new Date(year,month-1,day));
+    console.log(date);
     return (
         <div className="modal-change-info__container">
             <div className="modal-change-info__avatar">
@@ -57,11 +63,18 @@ function ModalChangeInfo({props,onChangeName,onChangePhone,onChangeBirth}) {
             <div className="modal-change-info-double">
                 <div className="modal-change-info_field">
                     <span className="label-field">Date of birth</span>
-                    <FlexTextBoxDate
+                    {/*<FlexTextBoxDate
                         classname={"modal-change-info__input"}
                         placeHolder={"Enter Date of birth"}
                         value={props.date_of_birth}
                         onChange={onChangeBirth}
+                    />*/}
+                    <DatePicker onSelect={()=>{}} onChange={(value)=>{setDate(value);
+                        onChangeBirth(value)
+                    }
+                    }
+                                className={"modal-change-info__input"}
+                                selected={date}
                     />
                 </div>
                 <div className="modal-change-info_field">

@@ -78,7 +78,9 @@ const Table = ({ data, columns }) => {
                                     }
                                 })}
                                 <td>
+{/*
                                     <button>View</button>
+*/}
                                 </td>
                             </tr>
                         );

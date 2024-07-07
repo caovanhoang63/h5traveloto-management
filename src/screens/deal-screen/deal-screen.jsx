@@ -94,7 +94,7 @@ function DealScreen() {
             dealName: data.name,
             reservationsLeft: ConvertReservationsLeft(data),
             endDate: data.expiry_date,
-            roomType: data.room_type_id,
+            roomType: data.room_type.name,
             status: ConvertStatus(data),
         };
     }
@@ -155,7 +155,16 @@ function DealScreen() {
         })
             .then((res) => {
                 Toast({ title: "Create deal success", type: "success" });
-
+                const hotelId = sessionStorage.getItem("hotel-id");
+                getDealsByHotelId({ hotel_id: `"${hotelId}"` })
+                    .then((res) => {
+                        if (res.data !== null) {
+                            setRecords(res.data);
+                        }
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
             })
             .catch((e) => {
                 Toast({ title: "Create deal fail", type: "error" });

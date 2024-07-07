@@ -2,11 +2,11 @@ import FlexTextBox from "../../../flextextbox/flextextbox";
 import FlexComboBox from "../../../flexcombobox/flexcombobox";
 import "./modal-info-customer.css";
 
-function ModalInfoCustomer({}) {
+function ModalAddEmployee({}) {
     return (
         <div className="modal-info-customer__container">
             <div className="modal-info-customer__field">
-                <span className="label-field">Customer Name</span>
+                <span className="label-field">Employee Name</span>
                 <FlexTextBox
                     classname={"modal-info-customer__input"}
                     placeHolder={"Enter Customer Name"}
@@ -40,4 +40,4 @@ function ModalInfoCustomer({}) {
     );
 }
 
-export default ModalInfoCustomer;
+export default ModalAddEmployee;
