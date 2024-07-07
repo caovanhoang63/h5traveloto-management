@@ -3,8 +3,9 @@ import Textbox, { PasswordTextbox } from "../../components/textbox/textbox";
 import "./login-screen.css";
 import { PrimaryButton } from "../../components/button/button";
 import { useNavigate } from "react-router-dom";
-import {Authenticate} from "../../api/user_api";
-import {initializeSocket, socket} from "../../socket-io";
+import { Authenticate } from "../../api/user_api";
+import { initializeSocket, socket } from "../../socket-io";
+import { se } from "date-fns/locale";
 
 const LoginScreen = () => {
     const [rememberMe, setRememberMe] = useState(false);
@@ -29,18 +30,18 @@ const LoginScreen = () => {
                 console.log(data.access_token.Token);
                 sessionStorage.setItem("hotel-id", data.hotel_id);
                 initializeSocket(sessionStorage.getItem("access-token"));
+                sessionStorage.setItem("access-token", data.access_token.Token);
                 //socket.connect()
-               // socketInstance.initialize(sessionStorage.getItem("access-token"));
-               // socketInstance.getSocket().connect();
-                if (data.hotel_id != null){
+                // socketInstance.initialize(sessionStorage.getItem("access-token"));
+                // socketInstance.getSocket().connect();
+                if (data.hotel_id != null) {
                     navigate("/dashboard");
-                }
-                else {
+                } else {
                     navigate("/createhotel");
                 }
             })
             .catch((error) => {
-                console.log(error)
+                console.log(error);
             });
     };
 
@@ -52,8 +53,18 @@ const LoginScreen = () => {
                 <div className="LoginScreenContent">
                     <h2 className="LoginScreenH2">Welcome Back</h2>
                     <form className="LoginScreenForm" onSubmit={handleSubmit}>
-                        <Textbox id={"email"} classname="LoginScreenEmail" title="Email" placeHolder="Enter your email"/>
-                        <Textbox id={"password"} classname="LoginScreenPassword" title="Password" placeHolder="Enter your password"/>
+                        <Textbox
+                            id={"email"}
+                            classname="LoginScreenEmail"
+                            title="Email"
+                            placeHolder="Enter your email"
+                        />
+                        <Textbox
+                            id={"password"}
+                            classname="LoginScreenPassword"
+                            title="Password"
+                            placeHolder="Enter your password"
+                        />
                         <div className="remembermeDiv">
                             <label>
                                 <input
@@ -64,12 +75,16 @@ const LoginScreen = () => {
                                 Remember me
                             </label>
                         </div>
-                        <PrimaryButton type={"submit"} size={"md"}>Login</PrimaryButton>
+                        <PrimaryButton type={"submit"} size={"md"}>
+                            Login
+                        </PrimaryButton>
                     </form>
                 </div>
                 <p className="LoginScreenP">
                     Don't have an account?{" "}
-                    <a className="LoginScreenA" href="../signup">Sign Up</a>
+                    <a className="LoginScreenA" href="../signup">
+                        Sign Up
+                    </a>
                 </p>
             </div>
         </div>

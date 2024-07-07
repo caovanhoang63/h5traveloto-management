@@ -10,6 +10,7 @@ function Modal({
     onConfirm,
     buttonCloseText = "Close",
     buttonSaveText = "Save",
+    showButton = true,
 }) {
     const handleClickOutside = (e) => {
         if (e.target.classList.contains("modal__overlay")) {
@@ -22,22 +23,24 @@ function Modal({
             <div className="modal__container">
                 {title !== "" && <div className="modal__title">{title}</div>}
                 <div className="modal__content">{content}</div>
-                <div className="modal__container__button">
-                    <PrimaryButton
-                        className={"modal__button-save"}
-                        onClick={onConfirm}
-                    >
-                        {buttonSaveText}
-                    </PrimaryButton>
-                    <TransparentButton
-                        className={"modal__button-close"}
-                        border={true}
-                        alt=""
-                        onClick={onClose}
-                    >
-                        {buttonCloseText}
-                    </TransparentButton>
-                </div>
+                {showButton && (
+                    <div className="modal__container__button">
+                        <PrimaryButton
+                            className={"modal__button-save"}
+                            onClick={onConfirm}
+                        >
+                            {buttonSaveText}
+                        </PrimaryButton>
+                        <TransparentButton
+                            className={"modal__button-close"}
+                            border={true}
+                            alt=""
+                            onClick={onClose}
+                        >
+                            {buttonCloseText}
+                        </TransparentButton>
+                    </div>
+                )}
             </div>
         </div>
     );

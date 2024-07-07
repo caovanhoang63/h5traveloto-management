@@ -126,7 +126,9 @@ function RoomTypePage() {
 
     //Fetch API
     useEffect(() => {
-        getRoomTypesByHotelId({})
+        getRoomTypesByHotelId({
+            hotel_id: `"${sessionStorage.getItem("hotel-id")}"`,
+        })
             .then((res) => {
                 if (res.data !== null) {
                     setRecords(res.data);

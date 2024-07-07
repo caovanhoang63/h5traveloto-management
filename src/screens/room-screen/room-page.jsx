@@ -44,7 +44,10 @@ function RoomPage() {
     //Fetch API
     useEffect(() => {
         getRoomTypes();
-        getRoomByHotelId({})
+        getRoomByHotelId(
+            { "hotel-id": `"${sessionStorage.getItem("hotel-id")}"` },
+            sessionStorage.getItem("hotel-id")
+        )
             .then((res) => {
                 const data = res;
                 console.log(data.data);
@@ -117,7 +120,9 @@ function RoomPage() {
     const [options, setOptions] = useState([]);
 
     const getRoomTypes = () => {
-        getRoomTypesByHotelId({}).then((res) => {
+        getRoomTypesByHotelId({
+            hotel_id: `"${sessionStorage.getItem("hotel-id")}"`,
+        }).then((res) => {
             const data = res.data;
             const length = data.length;
             const options = [];

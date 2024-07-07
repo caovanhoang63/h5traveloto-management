@@ -9,16 +9,19 @@ import TextUnderline from "../../components/textunderline/texunderline";
 import { Link } from "react-router-dom";
 import PageNavigation from "../../components/pagenavigation/pagenavigation";
 import DealTable from "../../components/dealtable/deal-table";
-import { getBookingByHotelId } from "../../api/booking_management_api";
-import { all } from "axios";
+import {
+    getBookingByHotelId,
+    checkInBooking,
+    checkOutBooking,
+    chooseRoomBooking,
+} from "../../api/booking_management_api";
+import Modal from "../../components/modal/modal";
+import DataDetailBooking from "../../components/datadetail/bookingmanagement/data-detail-booking";
+import ModalChooseRoom from "../../components/modal/content/choose-room/modal-choose-room";
 import { set } from "date-fns";
 
 function BookingManagementPage() {
     const columns = [
-        {
-            Header: "No.",
-            accessor: "no",
-        },
         {
             Header: "Room type",
             accessor: "roomType",
@@ -41,6 +44,9 @@ function BookingManagementPage() {
         },
     ];
 
+    const [isOpenModal, setIsOpenModal] = useState(false);
+    const [isOpenModalChooseRoom, setIsOpenModalChooseRoom] = useState(false);
+    const [dataDetail, setDataDetail] = useState({});
     const [focusedIndex, setFocusedIndex] = useState(0);
     const buttons = [
         "All-Booking",
@@ -54,6 +60,7 @@ function BookingManagementPage() {
     const [selectedCategory, setSelectedCategory] = useState("all");
     const [pageOfTable, setPageOfTable] = useState();
     const [tableData, setTableData] = useState([]);
+    const [roomSelected, setRoomSelected] = useState([]);
     const [records, setRecords] = useState({
         all: [],
         checkIn: [],
@@ -63,7 +70,7 @@ function BookingManagementPage() {
     });
     //Fetch data
     useEffect(() => {
-        getBookingByHotelId("gGzTBURqhajF")
+        getBookingByHotelId(sessionStorage.getItem("hotel-id"))
             .then((response) => {
                 const all = [];
                 const checkIn = [];
@@ -75,7 +82,12 @@ function BookingManagementPage() {
                         if (response.data[i].state == "checked-in") {
                             checkIn.push(response.data[i]);
                         } else if (response.data[i].state == "paid") {
-                            confirm.push(response.data[i]);
+                            if (
+                                response.data[i].rooms !== null &&
+                                response.data[i].rooms.length > 0
+                            )
+                                confirm.push(response.data[i]);
+                            else pending.push(response.data[i]);
                         } else if (response.data[i].state == "pending") {
                             pending.push(response.data[i]);
                         } else if (response.data[i].state == "checked-out") {
@@ -122,20 +134,33 @@ function BookingManagementPage() {
     // convert data from data fetched
     function ConvertDataTable(data) {
         return {
+            ...data,
             no: data.id,
-            roomType: data.room_type_id,
+            roomType: data.room_type.name,
             roomQuantity: data.room_quantity,
             startDate: data.start_date,
             endDate: data.end_date,
-            status: ConvertStatus(data.state),
+            status: ConvertStatus(data),
         };
     }
-    function ConvertStatus(status) {
-        if (status === "checked-in") return "Check-In";
-        else if (status === "paid") return "Paid";
-        else if (status === "pending") return "Pending";
-        else if (status === "checked-out") return "Checked-Out";
-        else if (status === "expired") return "Expired";
+    function ConvertStatus(data) {
+        //Check-In CheckOut
+        if (data.state === "checked-in") return "Check-In";
+        if (data.state === "checked-out") return "Checked-Out";
+        //Confirmed
+        if (data.rooms !== null && data.rooms.length > 0) {
+            if (data.state === "expired") return "Expired";
+            else return "Confirmed";
+        }
+        //pay in hotel
+        if (data.pay_in_hotel == true) {
+            return "Pay-In-Hotel";
+        }
+        //other
+        if (data.state === "paid") return "Paid";
+        if (data.state === "pending") return "Pending";
+        if (data.state === "canceled") return "Canceled";
+        return "Expired";
     }
     //handle click page
     const handleClickPage = (page) => {
@@ -150,6 +175,56 @@ function BookingManagementPage() {
         else if (index === 3) type = "pending";
         else if (index === 4) type = "cancelCheckedOut";
         return type;
+    };
+
+    const handleClickRow = (dataRow) => {
+        console.log(dataRow);
+        setIsOpenModal(true);
+        setDataDetail(dataRow);
+    };
+
+    //Choose room, Check-In, Check-Out
+    const handleClickChooseRoom = () => {
+        setIsOpenModal(false);
+        setIsOpenModalChooseRoom(true);
+    };
+    const handleClickCheckIn = () => {
+        checkInBooking({
+            hotelId: sessionStorage.getItem("hotel-id"),
+            bookingId: dataDetail.id,
+        });
+        setIsOpenModal(false);
+    };
+    const handleClickCheckOut = () => {
+        checkOutBooking({
+            hotelId: sessionStorage.getItem("hotel-id"),
+            bookingId: dataDetail.id,
+        });
+        setIsOpenModal(false);
+    };
+    //Get list Room selected
+    const handleGetRoomSelected = (roomSelected) => {
+        setRoomSelected(roomSelected);
+    };
+    //Call API sau khi chon phong
+    const handleChooseRoom = () => {
+        const roomIds = [];
+        for (let i = 0; i < roomSelected.length; i++) {
+            roomIds.push(roomSelected[i].roomId);
+        }
+        chooseRoomBooking({
+            hotelId: sessionStorage.getItem("hotel-id"),
+            bookingId: dataDetail.id,
+            body: { room_ids: roomIds },
+        }).then((response) => {
+            console.log(response);
+        });
+        setIsOpenModalChooseRoom(false);
+    };
+    //get room quantity of booking
+    const getRoomQuantity = () => {
+        if (dataDetail.room_quantity == null) return 0;
+        return dataDetail.room_quantity;
     };
 
     return (
@@ -202,7 +277,40 @@ function BookingManagementPage() {
                 </div>
             </div>
             <div className="booking-table">
-                <DealTable columns={columns} data={tableData} />
+                <DealTable
+                    columns={columns}
+                    data={tableData}
+                    getData={handleClickRow}
+                />
+                {isOpenModal && (
+                    <Modal
+                        title={"Booking Detail"}
+                        content={
+                            <DataDetailBooking
+                                data={dataDetail}
+                                chooseRoom={handleClickChooseRoom}
+                                checkIn={handleClickCheckIn}
+                                checkOut={handleClickCheckOut}
+                            ></DataDetailBooking>
+                        }
+                        onConfirm={() => {}}
+                        onClose={() => setIsOpenModal(false)}
+                        showButton={false}
+                    ></Modal>
+                )}
+                {isOpenModalChooseRoom && (
+                    <Modal
+                        title="Create Deal"
+                        content={
+                            <ModalChooseRoom
+                                roomQuantity={getRoomQuantity()}
+                                getRoomSelected={handleGetRoomSelected}
+                            />
+                        }
+                        onClose={() => setIsOpenModalChooseRoom(false)}
+                        onConfirm={() => handleChooseRoom()}
+                    ></Modal>
+                )}
             </div>
             <div className="booking-page-navigation">
                 {pageOfTable > rowsData && (

@@ -6,13 +6,16 @@ import { getRoomByHotelId } from "../../../../api/room_api";
 import { set } from "date-fns";
 import { se } from "date-fns/locale";
 
-function ModalChooseRoom({}) {
+function ModalChooseRoom({ roomQuantity, getRoomSelected }) {
     const [rooms, setRooms] = useState([]);
     const [roomSelected, setRoomSelected] = useState([]);
     const [canDisabled, setCanDisabled] = useState(false);
 
     useEffect(() => {
-        getRoomByHotelId({})
+        getRoomByHotelId(
+            { "hotel-id": `"${sessionStorage.getItem("hotel-id")}"` },
+            sessionStorage.getItem("hotel-id")
+        )
             .then((res) => {
                 if (res.data !== null) {
                     console.log(res.data);
@@ -50,7 +53,8 @@ function ModalChooseRoom({}) {
             }
         }
         setRoomSelected(roomChoose);
-        if (roomChoose.length >= 6) {
+        getRoomSelected(roomChoose);
+        if (roomChoose.length >= roomQuantity) {
             console.log("Can not choose more than 6 rooms");
             setCanDisabled(true);
         } else {
@@ -62,7 +66,7 @@ function ModalChooseRoom({}) {
     return (
         <div className="modal-choose-room__container">
             <span className="modal-choose-room__title">
-                {`Room Selected: ${roomSelected.length}/6`}
+                {`Room Selected: ${roomSelected.length}/${roomQuantity}`}
             </span>
             <RoomGrid
                 rooms={rooms}
