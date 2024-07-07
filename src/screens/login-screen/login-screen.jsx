@@ -4,6 +4,7 @@ import "./login-screen.css";
 import { PrimaryButton } from "../../components/button/button";
 import { useNavigate } from "react-router-dom";
 import {Authenticate} from "../../api/user_api";
+import {initializeSocket, socket} from "../../socket-io";
 
 const LoginScreen = () => {
     const [rememberMe, setRememberMe] = useState(false);
@@ -26,7 +27,11 @@ const LoginScreen = () => {
                 localStorage.setItem("hotel-id", data.hotel_id);
                 localStorage.setItem("refresh-token", data.refresh_token.Token);
                 console.log(data.access_token.Token);
-
+                sessionStorage.setItem("hotel-id", data.hotel_id);
+                initializeSocket(sessionStorage.getItem("access-token"));
+                //socket.connect()
+               // socketInstance.initialize(sessionStorage.getItem("access-token"));
+               // socketInstance.getSocket().connect();
                 if (data.hotel_id != null){
                     navigate("/dashboard");
                 }

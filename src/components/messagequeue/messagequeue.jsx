@@ -2,7 +2,7 @@ import React from 'react';
 import './messagequeue.css'
 import Button, { PrimaryButton } from '../button/button';
 import {format} from 'date-fns';
-const MessageQueue = ({name="Account",text,date="0/0/0",ws,id}) =>{
+const MessageQueue = ({name="Account",text,date="0/0/0",ws,id,onSelectMessage}) =>{
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         return format(date, 'dd/MM/yyyy');
@@ -13,22 +13,13 @@ const MessageQueue = ({name="Account",text,date="0/0/0",ws,id}) =>{
     };
     const formattedDate = formatDate(date);
     const formattedTime = formatTime(date);
-    const joinRoom = ()=>{
-        ws.emit('user_joined',id);
-    }
-    /*ws.on('joined', (msg) => {
-        console.log('Joined room', msg);
-    });
-    ws.on('new_message', (msg) => {
-        console.log('New message', msg);
-    });*/
     return (
         <div className='messagequeue-container'>
             <div className='messagequeue-header'>
                 <span>
                 {`Engaged with ${name}`}
                 </span>
-                <PrimaryButton onClick={joinRoom} size='sm' className={"messagequeue-button"}>Engaged</PrimaryButton>
+                <PrimaryButton onClick={()=>onSelectMessage()} size='sm' className={"messagequeue-button"}>Engaged</PrimaryButton>
             </div>
             <div className='messagequeue-body'>
             {text||`Thank you. Please feel free to reach out if you require any further assistance. Have a great day`}

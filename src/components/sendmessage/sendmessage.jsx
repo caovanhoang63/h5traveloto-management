@@ -33,24 +33,45 @@
 import React from "react";
 import { useState } from "react";
 import "./sendmessage.css"
-const SendMessage = ({ws}) => {
+import {socket} from "../../socket-io";
+const SendMessage = ({ws,onSendMessage,selectedMessage}) => {
   const [message, setMessage] = useState("");
-  const sendMessage = async (event) => {
+  const sendMessage2 = async (event) => {
+      const roomId = selectedMessage ? selectedMessage.id : null;
+
     event.preventDefault();
-      if (message.trim() === "") {
+      if (message.trim() === ""||!roomId) {
         alert("Enter valid message");
-        return;
+          setMessage("");
+          return;
       }
-      const messages = {
-          message: message,
-          room_id: ""
+      //onSendMessage(message,roomId);
+      if(roomId){
+          console.log("Sending message", message);
+          //const socket = socketInstance.getSocket();
+          //console.log("Sending message", socket);
+          //sendMessage(message, roomId);
+          handleSendMessage(message, roomId);
+          setMessage("");
+      if(selectedMessage){
+          onSendMessage(selectedMessage);
       }
-      //ws.send(JSON.stringify(messages));
-      ws.emit("message_sent", messages);
-      setMessage("");
+      }
   }
+    const handleSendMessage = (message, roomId) => {
+        if (message.trim() && roomId) {
+            console.log("Sending message");
+            console.log(roomId);
+           // const socket = socketInstance.getSocket();
+            console.log(socket);
+            socket.emit('message_sent', { message, room_id: roomId });
+        }
+        if(selectedMessage){
+            onSendMessage(selectedMessage);
+        }
+    };
   return (
-    <form onSubmit={(e)=>sendMessage(e)} className="send-message">
+    <form onSubmit={(e)=>sendMessage2(e)} className="send-message">
       <label htmlFor="messageInput" hidden>
         Enter Message
       </label>

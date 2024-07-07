@@ -38,6 +38,7 @@ import CH_PropertyPolicies from "./screens/create-hotel-screen/components/proper
 import CH_PropertyFacilities from "./screens/create-hotel-screen/components/property-facilities/ch-property-facilities";
 import CH_PhotosInformation from "./screens/create-hotel-screen/components/photos-information/ch-photos-information";
 import GuestScreen from "./screens/guest-screen/guest-screen";
+import socketInstance, {socket } from "./socket-io/index"
 import FrontDesk from "./screens/front-desk/front-desk";
 import DealScreen from "./screens/deal-screen/deal-screen";
 
