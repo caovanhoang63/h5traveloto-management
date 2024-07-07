@@ -4,15 +4,16 @@ import {DasboardBalance} from "../balance/dasboard-balance";
 import {useEffect, useState} from "react";
 import {overViewBooking} from "../../../api/statistic";
 import {Spin} from "antd";
+import {format} from "date-fns";
 function Overview() {
     const [overView, setOverView] = useState({})
-    const today = "\"07-07-2024\""
+    const today = "\"" +  format(Date.now(),"dd-MM-yyyy") + "\"";
     useEffect(() => {
-        overViewBooking({date: today.toString()}).then(
+        overViewBooking({date: today.toString() }).then(
             res => {
                 setOverView(res.data)
             }
-        ).finally()
+        ).catch().finally()
     }, []);
 
     return(

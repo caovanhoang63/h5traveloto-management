@@ -27,3 +27,17 @@ export const roomStatusStatistic = async (params) => {
     }
 };
 
+export const occupancyStatistic = async (params) => {
+    try {
+        const hotelId = sessionStorage.getItem("hotel-id")
+
+        const response = await instance.get(`hotels/${hotelId}/bookings/occupancy-statistic`, {
+            params: params,
+        });
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+

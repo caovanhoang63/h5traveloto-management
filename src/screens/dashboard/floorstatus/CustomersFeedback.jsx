@@ -10,9 +10,11 @@ export default function CustomersFeedback() {
     const [reviews, setReviews] = useState(null)
 
     useEffect(() => {
-         listReviews().then(res => {
-             setReviews(res)
-         }).catch().finally()
+        setInterval(() => {
+            listReviews().then(res => {
+                setReviews(res)
+            }).catch().finally()
+        },5000 )
     }, []);
 
     const  func = () => {};

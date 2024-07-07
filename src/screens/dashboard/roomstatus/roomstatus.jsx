@@ -5,17 +5,19 @@ import RoomstatusLabel, {RoomstatusLabelRight} from "./roomstatuslabel/roomstatu
 import RoomstatusLabelLeft from "./roomstatuslabel/roomstatuslabel";
 import {useEffect, useState} from "react";
 import {overViewBooking, roomStatusStatistic} from "../../../api/statistic";
+import {format} from "date-fns";
 
 function RoomStatus() {
     const [roomStatus, setRoomStatus] = useState({})
 
-    const today = "\"07-07-2024\""
+    const today = "\"" +  format(Date.now(),"dd-MM-yyyy") + "\"";
+
     useEffect(() => {
         roomStatusStatistic({date: today.toString()}).then(
             res => {
                setRoomStatus(res.data)
             }
-        ).finally()
+        ).catch().finally()
     }, []);
     return (
         <div className={"roomstatus-container"}>
