@@ -155,6 +155,7 @@ function DealScreen() {
         })
             .then((res) => {
                 Toast({ title: "Create deal success", type: "success" });
+
             })
             .catch((e) => {
                 Toast({ title: "Create deal fail", type: "error" });
