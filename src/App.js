@@ -1,9 +1,4 @@
-import Button, {
-    ButtonIconOnly,
-    PrimaryButton,
-    SecondaryButton,
-    TransparentButton,
-} from "./components/button/button";
+
 import {
     BrowserRouter,
     Link,
@@ -41,7 +36,7 @@ import GuestScreen from "./screens/guest-screen/guest-screen";
 import socketInstance, {socket } from "./socket-io/index"
 import FrontDesk from "./screens/front-desk/front-desk";
 import DealScreen from "./screens/deal-screen/deal-screen";
-
+import { HashRouter as Router } from 'react-router-dom';
 
 function App() {
     const refreshToken = localStorage.getItem("refresh-token");
@@ -74,10 +69,9 @@ function App() {
     return loading ? (
         <Spinner />
     ) : (
-        <BrowserRouter>
+        <Router>
             <Routes>
                 <Route path="/login" element={<LoginScreen />} />
-                <Route path="/signup" element={<SignUpScreen />} />
                 <Route
                     path="/"
                     element={
@@ -92,6 +86,7 @@ function App() {
                        element={
                            <MainLayout>
                                <Routes>
+                                   <Route path="/signup" element={<SignUpScreen />} />
                                    <Route path="/dashboard" element={<Dashboard />} />
                                    <Route path="/rooms" element={<RoomPage />} />
                                    <Route path="/guest" element={<GuestScreen/>}/>
@@ -139,7 +134,7 @@ function App() {
                        }
                 />
             </Routes>
-        </BrowserRouter>
+        </Router>
     );
 }
 

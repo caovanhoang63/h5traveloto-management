@@ -32,8 +32,11 @@ import {PrimaryButton} from "../../../../components/button/button";
 import UnitTextBox from "../../../../components/unittextbox/unittextbox";
 import FlexCombobox from "../../../../components/flexcombobox/flexcombobox";
 import Textbox from "../../../../components/textbox/textbox";
+import getLocation from "../../../../util/getCurrentLocation";
 
 const CH_GeneralInformation = () => {
+    const [lat, setLat] = useState(0)
+    const [lng, setLng] = useState(0)
     const navigate = useNavigate();
 
     const { info, setInfo } = useContext(InfoContext);
@@ -170,12 +173,18 @@ const CH_GeneralInformation = () => {
         info.star = parseInt(value);
     }
 
+    const getCurrentLocation = () => {
+        function getLocation () {
+            navigator.geolocation.getCurrentPosition((position) => {
+                setLng(position.coords.longitude)
+                setLat(position.coords.latitude)
+            })
+        }
+    }
 
     const nextPage = () => {
         console.log(info);
         navigate('/createhotel/property_details');
-
-
     }
 
     return (
@@ -243,15 +252,15 @@ const CH_GeneralInformation = () => {
                             <div style={{display: "flex", flex: "row", gap: "30px"}}>
                                 <div className="CH_GeneralInformation-Content-Box-Address">
                                     <TextBlock content="Latitude"/>
-                                    <Textbox classname="" />
+                                    <Textbox classname="Location_TextBox" ></Textbox>
                                 </div>
                                 <div className="CH_GeneralInformation-Content-Box-Address">
                                     <TextBlock content="Longitude"/>
-                                    <Textbox classname="Location_TextBox" />
+                                    <Textbox classname="Location_TextBox" ></Textbox>
                                 </div>
 
                             </div>
-                            <PrimaryButton>Locate</PrimaryButton>
+                            <PrimaryButton onClick={getCurrentLocation}>Locate</PrimaryButton>
                         </div>
                     </div>
                 </div>

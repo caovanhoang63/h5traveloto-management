@@ -7,10 +7,11 @@ import {occupancyStatistic} from "../../../api/statistic";
 const  dateOfWeek = ['Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 function Statistics() {
-    const   today = new Date().getDay();
+    const  today = new Date().getDay();
     const curDay = "\"" +  format(Date.now(),"dd-MM-yyyy") + "\"";
     const [percentages, setPercentages] = useState([0,0,0, 0, 0,0,0])
     const  dates = dateOfWeek.slice(today+1).concat(dateOfWeek.slice(0,today +1))
+
     useEffect(() => {
         occupancyStatistic({date : curDay}).then((res) => {
             let newPercentage = []
@@ -18,6 +19,7 @@ function Statistics() {
                 newPercentage.push(parseFloat(res.data[item])*100);
             }
             if (newPercentage) {
+                newPercentage = percentages.slice(today+1).concat(newPercentage.slice(0,today+1));
                 setPercentages(newPercentage)
             }
         }).catch().finally()
