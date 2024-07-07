@@ -60,7 +60,7 @@ const SignUpScreen = () => {
                 </div>
                 <p className="SignupScreenP">
                     Already have an account?
-                    <a className="SignupScreenA" href="/login">Login</a>
+                    <a className="SignupScreenA" href="#/login">Login</a>
                 </p>
             </div>
         </div>

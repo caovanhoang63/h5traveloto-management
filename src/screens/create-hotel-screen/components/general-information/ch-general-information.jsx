@@ -1,21 +1,3 @@
-/*import TextBlock from "../../../components/textblock/textblock";
-import FlexComboBox from "../../../components/flexcombobox/flexcombobox";
-import FlexTextbox from "../../../components/flextextbox/flextextbox";
-import Divider from "../../../components/divider/divider";
-import RadioButton from "../../../components/radiobutton/radiobutton";
-import {PrimaryButton, SecondaryButton} from "../../../components/button/button";
-import ico_plus from "../../../assets/icons/plus.png";
-import ico_plus_active from "../../../assets/icons/plus-active.png";
-
-import {useContext, useEffect, useState} from "react";
-import {getProvinces} from "../../../api/create-hotel/get-provinces";
-import {getHoteltypes} from "../../../api/create-hotel/get-hoteltypes";
-import {getWards} from "../../../api/create-hotel/get-wards";
-import {getDistricts} from "../../../api/create-hotel/get-districts";
-import {InfoContext} from "../../../context/createhotel-context";
-import UnitTextBox from "../../../components/unittextbox/unittextbox";
-import {tab} from "@testing-library/user-event/dist/tab";
-import { useNavigate } from 'react-router-dom';*/
 import "./ch-general-information.css";
 import {useNavigate} from "react-router-dom";
 import {useContext, useEffect, useState} from "react";
@@ -26,7 +8,7 @@ import {getProvinces} from "../../../../api/create-hotel/get-provinces";
 import {getDistricts} from "../../../../api/create-hotel/get-districts";
 import {getWards} from "../../../../api/create-hotel/get-wards";
 import TextBlock from "../../../../components/textblock/textblock";
-import FlexTextbox from "../../../../components/flextextbox/flextextbox";
+import FlexTextbox, {Textbox1} from "../../../../components/flextextbox/flextextbox";
 import Divider from "../../../../components/divider/divider";
 import {PrimaryButton} from "../../../../components/button/button";
 import UnitTextBox from "../../../../components/unittextbox/unittextbox";
@@ -174,12 +156,11 @@ const CH_GeneralInformation = () => {
     }
 
     const getCurrentLocation = () => {
-        function getLocation () {
-            navigator.geolocation.getCurrentPosition((position) => {
-                setLng(position.coords.longitude)
-                setLat(position.coords.latitude)
-            })
-        }
+        navigator.geolocation.getCurrentPosition((position) => {
+            setLng(position.coords.longitude)
+            setLat(position.coords.latitude)
+        })
+
     }
 
     const nextPage = () => {
@@ -252,11 +233,17 @@ const CH_GeneralInformation = () => {
                             <div style={{display: "flex", flex: "row", gap: "30px"}}>
                                 <div className="CH_GeneralInformation-Content-Box-Address">
                                     <TextBlock content="Latitude"/>
-                                    <Textbox classname="Location_TextBox" ></Textbox>
+                                    <Textbox1 value={lat} onChange={(e) => {
+                                        setLat(e)
+                                        info.lat = lat
+                                    }} ></Textbox1>
                                 </div>
                                 <div className="CH_GeneralInformation-Content-Box-Address">
-                                    <TextBlock content="Longitude"/>
-                                    <Textbox classname="Location_TextBox" ></Textbox>
+                                    <TextBlock  content="Longitude"/>
+                                    <Textbox1 value={lng} onChange={(e) => {
+                                        setLng(e)
+                                        info.lng = lng
+                                    }} ></Textbox1>
                                 </div>
 
                             </div>

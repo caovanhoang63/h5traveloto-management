@@ -80,9 +80,9 @@ const LoginScreen = () => {
                         </PrimaryButton>
                     </form>
                 </div>
-                <p className="LoginScreenP">
+                <p className="LoginScreenP" >
                     Don't have an account?{" "}
-                    <a className="LoginScreenA" href="../signup">
+                    <a className="LoginScreenA" href="#/signup">
                         Sign Up
                     </a>
                 </p>

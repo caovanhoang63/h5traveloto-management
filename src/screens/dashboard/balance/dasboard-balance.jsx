@@ -3,7 +3,9 @@ import {useState} from "react";
 
 import eye from "../../../assets/icons/icons8-eye-90.png"
 import eyeSlash from "../../../assets/icons/icons8-invisible-90.png"
+import Modal from "../../../components/modal/modal";
 export function DasboardBalance(){
+    const [isOpenModal, setIsOpenModal] = useState(true)
     const [eyeClicked, setEyeClicked] = useState(true)
 
     return(
@@ -19,5 +21,6 @@ export function DasboardBalance(){
                  onClick={() => setEyeClicked(!eyeClicked)}
             />
         </div>
+        
     )
 }

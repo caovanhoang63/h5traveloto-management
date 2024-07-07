@@ -31,6 +31,39 @@ const FlexTextbox = ({ id, classname, title, placeHolder, onChange,value="" ,rea
     );
 };
 
+export const Textbox1 = ({ id, classname, title, placeHolder, onChange,value="" ,readonly=false}) => {
+    const [text, setText] = useState(value);
+
+    const handleChange = (e) => {
+        setText(e.target.value);
+        if (onChange) {
+            onChange(e.target.value);
+        }
+    };
+
+    return (
+        <div className={classname}>
+            <div className="bettertextbox-container">
+                <label className="bettertextbox-label" htmlFor={id}>
+                    {title || ""}
+                </label>
+                <input
+                    id={id}
+                    type="text"
+                    value={value}
+                    onChange={handleChange}
+                    placeholder={placeHolder}
+                    className="bettertextbox-input"
+                    readOnly={readonly}
+                />
+            </div>
+        </div>
+    );
+};
+
+
+
+
 
 
 export default FlexTextbox;

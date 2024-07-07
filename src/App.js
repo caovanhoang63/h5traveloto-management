@@ -33,32 +33,38 @@ import CH_PropertyPolicies from "./screens/create-hotel-screen/components/proper
 import CH_PropertyFacilities from "./screens/create-hotel-screen/components/property-facilities/ch-property-facilities";
 import CH_PhotosInformation from "./screens/create-hotel-screen/components/photos-information/ch-photos-information";
 import GuestScreen from "./screens/guest-screen/guest-screen";
-import socketInstance, {socket } from "./socket-io/index"
 import FrontDesk from "./screens/front-desk/front-desk";
 import DealScreen from "./screens/deal-screen/deal-screen";
 import { HashRouter as Router } from 'react-router-dom';
+import {GetCurrentHotel} from "./api/hotel_api";
 
 function App() {
     const refreshToken = localStorage.getItem("refresh-token");
+    let  hotelId = localStorage.getItem("hotel-id");
 
     const [isAuthenticated, setIsAuthenticated] = useState();
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         setLoading(true);
-        if (refreshToken) {
+        if (refreshToken && hotelId) {
             RenewToken({ Token: refreshToken })
                 .then((data) => {
                     sessionStorage.setItem("access-token", data.data.Token);
-                    console.log("Token: ", data.data.Token);
                     setIsAuthenticated(true);
+                    GetCurrentHotel().then((res) => {
+                         hotelId = res.data.id;
+                        sessionStorage.setItem("hotel-id", hotelId);
+                        console.log(hotelId)
+                    }).catch().finally( () =>{
+                            setLoading(false);
+                    }
+                    );
                 })
                 .catch((error) => {
                     setIsAuthenticated(false);
                     localStorage.removeItem("refresh-token");
-                    console.log(error);
                 })
                 .finally(() => {
-                    setLoading(false);
                 });
         } else {
             setIsAuthenticated(false);
@@ -72,6 +78,7 @@ function App() {
         <Router>
             <Routes>
                 <Route path="/login" element={<LoginScreen />} />
+                <Route path="/signup" element={<SignUpScreen />} />
                 <Route
                     path="/"
                     element={
@@ -86,7 +93,6 @@ function App() {
                        element={
                            <MainLayout>
                                <Routes>
-                                   <Route path="/signup" element={<SignUpScreen />} />
                                    <Route path="/dashboard" element={<Dashboard />} />
                                    <Route path="/rooms" element={<RoomPage />} />
                                    <Route path="/guest" element={<GuestScreen/>}/>
