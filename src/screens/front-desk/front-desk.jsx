@@ -120,7 +120,7 @@ function FrontDesk() {
             room_quantity: roomNum,
             start_date: startDate,
             end_date: endDate,
-            hotel_id: "gGzTBURqhajG",
+            hotel_id: sessionStorage.getItem("hotel-id"),
         })
             .then((res) => {
                 if (res.data !== null) {
