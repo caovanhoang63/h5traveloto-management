@@ -7,6 +7,7 @@ function ButtonChooseRoom({ roomTypeId, roomData, onClick, canDisabled }) {
     const [isDisabled, setIsDisabled] = useState(false);
 
     useEffect(() => {
+        console.log("hhhhhhhhh", roomData);
         if (
             roomTypeId !== roomData.roomTypeId ||
             (canDisabled && !selectedRoom)
