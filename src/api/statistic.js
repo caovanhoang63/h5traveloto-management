@@ -2,7 +2,9 @@ import {instance} from "./index";
 
 export const overViewBooking = async (params) => {
     try {
-        const response = await instance.get("hotels/3mHP8w3u35tRZZ/bookings/overview", {
+        const hotelId = sessionStorage.getItem("hotel-id")
+
+        const response = await instance.get(`hotels/${hotelId}/bookings/overview`, {
             params: params,
         });
         return response.data;
@@ -14,7 +16,9 @@ export const overViewBooking = async (params) => {
 
 export const roomStatusStatistic = async (params) => {
     try {
-        const response = await instance.get("hotels/3mHP8w3u35tRZZ/bookings/room-status", {
+        const hotelId = sessionStorage.getItem("hotel-id")
+
+        const response = await instance.get(`hotels/${hotelId}/bookings/room-status`, {
             params: params,
         });
         return response.data;
