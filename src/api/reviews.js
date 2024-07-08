@@ -10,7 +10,6 @@ export const listReviews = async (params) => {
         );
         return response.data;
     } catch {
-        throw new Error("have no reviews")
     } finally {
         console.log("")
     }

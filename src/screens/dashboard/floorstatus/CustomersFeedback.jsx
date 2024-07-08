@@ -8,17 +8,13 @@ export default function CustomersFeedback() {
     const hotelId = '\"' + sessionStorage.getItem("hotel-id") + '\"';
     useEffect(() => {
         setInterval(() => {
-            listReviews({"hotel_id" : hotelId}).then(res => {
-                try {
+            try {
+                listReviews({"hotel_id" : hotelId}).then(res => {
                     setReviews(res)
-                } catch (error) {
-                    console.log(error)
-                }
-            }).catch(
+                })
+            } catch {}
 
-            ).finally(
 
-            )
         },5000 )
     }, []);
 

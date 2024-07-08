@@ -57,7 +57,7 @@ const sidebar_data = [
         id: 2,
         ico: ico_check_file,
         active_ico: ico_check_file_active,
-        content: "Guest",
+        content: "Employee",
         isToggle: true,
         isActive: false,
         navLink: "/guest",

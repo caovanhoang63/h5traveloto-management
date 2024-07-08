@@ -33,7 +33,7 @@ function ModalInfoCustomer({ onChangeName, onChangePhone, onChangeGender }) {
                 <FlexComboBox
                     id={"roomType"}
                     classname={"modal-info-customer__input"}
-                    placeholderText={"Select Room Type"}
+                    placeholderText={"Gender"}
                     options={[{ value: "male" }, { value: "female" }]}
                     onChange={onChangeGender}
                 />
